@@ -7,7 +7,6 @@ featured: false
 draft: false
 tags:
   - headers
-ogImage: "logosquare.png"
 description: Wipe data from a web browser with this header
 ---
 
