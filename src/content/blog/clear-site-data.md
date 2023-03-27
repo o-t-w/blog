@@ -7,6 +7,7 @@ featured: false
 draft: false
 tags:
   - headers
+ogImage: "/logosquare.png"
 description: Wipe data from a web browser with this header
 ---
 
@@ -77,8 +78,8 @@ There’s also `executionContexts` but it is not implemented in any browser and 
 
 Firefox will helpfully log a message in the console.
 
-![](/public/clear.png)
+![](/clear.png)
 
 Check out the Application tab in any browser and you should see that all the data has been removed.
 
-![](/public/applicationtab.png)
+![](/applicationtab.png)
