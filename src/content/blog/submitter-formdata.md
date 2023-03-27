@@ -8,7 +8,7 @@ draft: false
 tags:
   - forms
   - javascript
-ogImage: ""
+ogImage: "logosquare.png"
 description: Learn about the new submitter parameter for FormData
 ---
 
