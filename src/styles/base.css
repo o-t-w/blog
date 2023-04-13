@@ -124,3 +124,8 @@
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
   }
 }
+
+
+html[data-theme="dark"] .formkit-form:where(.astro-SZ7XMLTE)[data-uid=b13fc9e6ed] .formkit-powered-by-convertkit:where(.astro-SZ7XMLTE) {
+  filter: brightness(4.5);
+}
