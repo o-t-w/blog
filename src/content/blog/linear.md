@@ -10,7 +10,7 @@ tags:
   - Web Animation API
   - CSS
 ogImage: "/assets/linear.png"
-description: Using the linear() easing function with CSS transitions, animations and the JavaScript Web Animation API
+description: Using the linear() easing function with CSS transitions, animations and the JavaScript Web Animations API
 ---
 
 
