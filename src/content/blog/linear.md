@@ -13,9 +13,6 @@ ogImage: "/assets/linear.png"
 description: Using the linear() easing function with CSS transitions, animations and the JavaScript Web Animations API
 ---
 
-
-The `linear()` easing function is currently implemented in Chromium-based browsers and Firefox. The Safari [position on the proposal](https://github.com/WebKit/standards-positions/issues/130) is positive.
-
 When working with a `@keyframes` CSS animation, a CSS transition, or the Web Animations API in Javascript, we’ve long been able to specify an easing as either a cubic bezier, a keyword like `ease-in`, or a step function. 
 
 An easing function has typically looked something like this:
@@ -95,3 +92,7 @@ You can then use it as the value for `easing`:
 If you want to hear more, check out this YouTube video from Google developer advocate Bramus Van Damme.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oDcb3fvtETs?start=721" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## Browser support
+The `linear()` easing function is currently implemented in Chromium-based browsers and Firefox. The Safari [position on the proposal](https://github.com/WebKit/standards-positions/issues/130) is positive.
