@@ -91,7 +91,7 @@ You can then use it as the value for `easing`:
 
 If you want to hear more, check out this YouTube video from Google developer advocate Bramus Van Damme.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oDcb3fvtETs?start=721" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="max-width: 100%;" width="560" height="315" src="https://www.youtube.com/embed/oDcb3fvtETs?start=721" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## Browser support
