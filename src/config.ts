@@ -7,7 +7,7 @@ export const SITE: Site = {
   title: "Fully Stacked",
   ogImage: "logosquare.png",
   lightAndDarkMode: true,
-  postPerPage: 3,
+  postPerPage: 8,
 };
 
 export const LOGO_IMAGE = {
