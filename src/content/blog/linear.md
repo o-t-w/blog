@@ -3,7 +3,7 @@ author: Ollie Williams
 pubDatetime: 2023-05-19T15:22:00Z
 title: Using linear() for better animation
 postSlug: linear
-featured: true
+featured: false
 draft: false
 tags:
   - animation
