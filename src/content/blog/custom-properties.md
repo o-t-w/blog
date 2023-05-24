@@ -15,7 +15,9 @@ ogImage: "/assets/custom-properties.png"
 description: Use @property to register custom properties in CSS. Get and update them in JavaScript with the Typed OM. 
 ---
 
-In this article you’ll learn how to register CSS custom properties (popularly known as CSS variables) as being of a particular type. We’ll also look at two ways to get the value of a custom property using JavaScript and setting or overriding the value of a custom property using JavaScript. One of those ways uses of the Typed OM, which is a newer API. 
+In this article we’ll look at two different ways to get the value of a custom property and set or override the value of a custom property using JavaScript. The first is supported in all browsers. The second approach uses the Typed OM, which isn't supported in Firefox just yet.  
+
+We’ll then learn how to register CSS custom properties (popularly known as CSS variables) as being of a particular type.
 
 Let’s say we have a `--size` variable defined on the `:root`/`html` element:
 
@@ -47,7 +49,7 @@ An alternative way to get the value of a custom property is using the Typed OM.
 ```javascript
 const size = document.documentElement.computedStyleMap().get("--size");
 ```
-If you `console.log` size now, it’ll show `*CSSUnparsedValue {0: '24px', length: 1}*`. You’ll notice that `'24px'` is a string. By using `CSSNumericValue.parse()` we can get the value as a number and the unit as a string.
+If you `console.log` size now, it’ll show `CSSUnparsedValue {0: '24px', length: 1}`. You’ll notice that `'24px'` is a string. By using `CSSNumericValue.parse()` we can get the value as a number and the unit as a string.
 ```javascript
 const parsedSize = CSSNumericValue.parse(document.documentElement.computedStyleMap().get("--size"))
 ```
