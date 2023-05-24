@@ -35,10 +35,11 @@ Here’s how you set a CSS custom property inline on the `:root`/`html` element 
 ```javascript
 document.documentElement.style.setProperty('--accent-color', 'rgb(100,110,10)');
 ```
+Now let's take a look at doing the same thing with the Typed OM API. 
 
 ## Setting a custom property using the Typed OM API
 
-Another approach to setting an inline CSS custom property is to use the Typed OM API. 
+Setting an inline custom property is to use the Typed OM: 
 ```javascript
 document.documentElement.attributeStyleMap.set('--size', '20px');
 ```
