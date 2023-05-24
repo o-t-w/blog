@@ -15,9 +15,9 @@ ogImage: "/assets/custom-properties.png"
 description: Use @property to register custom properties in CSS. Get and update them in JavaScript with the Typed OM. 
 ---
 
-In this article we’ll look at two different ways to get the value of a custom property and set or override the value of a custom property using JavaScript. The first is supported in all browsers. The second approach uses the Typed OM, which isn't supported in Firefox just yet.  
+In this article we’ll look at two different ways to get the value of a CSS custom property and set or override the value of a custom property using JavaScript. The first is supported in all browsers. The second approach uses the Typed OM, which isn't supported in Firefox just yet.  
 
-We’ll then learn how to register CSS custom properties (popularly known as CSS variables) as being of a particular type.
+We’ll then learn how to register a custom properties as being of a particular type.
 
 Let’s say we have a `--size` variable defined on the `:root`/`html` element:
 
