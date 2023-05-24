@@ -39,14 +39,14 @@ Now let's take a look at doing the same thing with the Typed OM API.
 
 ## Setting a custom property using the Typed OM API
 
-Setting an inline custom property is to use the Typed OM: 
+We can use `attributeStyleMap.set()` to set a custom property as an inline style: 
 ```javascript
 document.documentElement.attributeStyleMap.set('--size', '20px');
 ```
 
 ## Getting custom properties using the Typed OM API
 
-To get the value of a custom property using the Typed OM:
+To get the value of a custom property we use `computedStyleMap().get()`:
 ```javascript
 const size = document.documentElement.computedStyleMap().get("--size");
 ```
