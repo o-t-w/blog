@@ -44,6 +44,11 @@ We can use `attributeStyleMap.set()` to set a custom property as an inline style
 document.documentElement.attributeStyleMap.set('--size', '20px');
 ```
 
+Somewhat surprisingly, the following does **not** work and will cause an error, regardless of whether you have registered the property or not: 
+```js
+document.documentElement.attributeStyleMap.set('--size', CSS.px(20));
+```
+
 ## Getting custom properties using the Typed OM API
 
 To get the value of a custom property we use `computedStyleMap().get()`:
