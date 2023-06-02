@@ -11,7 +11,7 @@ ogImage: "/assets/scope.png"
 description: Style based on proximity and set a lower boundary for a selector.  
 ---
 
-In January 2019 I raised an issue in the W3C CSS GitHub titled [*Please bring back scoped styles*](https://github.com/w3c/csswg-drafts/issues/3547). There had once been a `scoped` HTML attribute but it got deprecated. It’s been replaced by `@scope`in CSS. Browser support is still forthcoming. It’s due to land in [Chrome 117](https://chromestatus.com/feature/5100672734199808). Safari has a [positive position](https://github.com/WebKit/standards-positions/issues/13) on the specification. 
+In January 2019 I raised an issue in the W3C CSS GitHub titled [*Please bring back scoped styles*](https://github.com/w3c/csswg-drafts/issues/3547). There had once been a `scoped` HTML attribute but it got deprecated. It’s been replaced by `@scope` in CSS. Browser support is still forthcoming. It’s due to land in [Chrome 117](https://chromestatus.com/feature/5100672734199808). Safari has a [positive position](https://github.com/WebKit/standards-positions/issues/13) on the specification. 
 
 There are two selling points of `@scope`: styling based on proximity and setting a lower boundary for a selector.  
 
@@ -27,15 +27,15 @@ Rather than just relying on source order and specificity, we now have the option
 }
     
 @scope (.green) {
-button {
-    background-color: green;
-  }
+    button {
+      background-color: green;
+    }
 }
     
 @scope (.red) {
-  button {
+    button {
       background-color: red;
-  }
+    }
 }
 ```
 
@@ -139,7 +139,7 @@ With `@scope` we can solve this issue:
 ```
 Now whenever a link is on a white or gray background it’ll be dark blue. Whenever it’s on black background it’ll be a brighter lighter blue. 
 
-We could optionally rewrite the previous CSS to use the `:scope` pseudo-class which references the root of the current scope. In the following example would select any element that has a `.theme-black` class. 
+We could optionally rewrite the previous CSS to use the `:scope` pseudo-class which references the root of the current scope. In the following example `:scope` would select any element that has a `.theme-black` class. 
 
 ```css
 @scope (.theme-black) {
@@ -152,20 +152,7 @@ We could optionally rewrite the previous CSS to use the `:scope` pseudo-class wh
    }
 }
 ```
-The above code is equivalent to:
 
-```css
-.theme-black {
-      background-color: black;
-      color: white;
-}
-    
-@scope (.theme-black) {
-  a {
-    color: #35adce;
-  }
-}
-```
 [`:scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) isn’t a new pseudo-class. Its been in browsers for years but was previously pretty pointless when used in a stylesheet because outside of a `@scope` block it always means the same as `:root` (which selects the root element of the document — the `<html>` element). 
 
 ## Set a lower boundary for a selector
