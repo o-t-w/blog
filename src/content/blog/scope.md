@@ -17,7 +17,7 @@ There are two selling points of `@scope`: styling based on proximity and setting
 
 ## Style based on proximity
 
-Rather than just relying on source order and specificity, we now have the option to override styles based based on proximity. Guess what color the button will be in the following examples:
+Rather than just relying on source order and specificity, we now have the option to override styles based on proximity. Guess what color the button will be in the following examples:
 
 ```css
 @scope (.blue) {
