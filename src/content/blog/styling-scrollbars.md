@@ -31,10 +31,10 @@ The older non-standard approach allowed a great deal of control. You could even 
 
 About the non-standardized approach the [W3C spec](https://drafts.csswg.org/css-scrollbars/) states:
 
-> “Exposing the scrollbar-related `::-webkit-` prefixed pseudo-elements to the Web is considered a mistake by both the CSS Working Group and Webkit”
+> Exposing the scrollbar-related `::-webkit-` prefixed pseudo-elements to the Web is considered a mistake by both the CSS Working Group and Webkit.
 
 And:
-> “The internal structure, layout, and configuration of scrollbars, as well as precise control over their coloring, is out of scope. This is because different platforms have different scrollbar structures and styling conventions, and operating systems continuously evolve their scrollbar designs to provide better user experience. Pseudo-elements for selecting specific parts of a scrollbar, for example, were considered and rejected. While this level of fine control would be tempting for authors, the arrangement of the various parts—or whether they’re even all present—cannot be depended on. Providing too much control would allow authors to get perfect results on some platforms, but at the expense of broken results on others.”
+> The internal structure, layout, and configuration of scrollbars, as well as precise control over their coloring, is out of scope. This is because different platforms have different scrollbar structures and styling conventions, and operating systems continuously evolve their scrollbar designs to provide better user experience. Pseudo-elements for selecting specific parts of a scrollbar, for example, were considered and rejected. While this level of fine control would be tempting for authors, the arrangement of the various parts—or whether they’re even all present—cannot be depended on. Providing too much control would allow authors to get perfect results on some platforms, but at the expense of broken results on others.
 
 For that reason I’m only going to cover standardized solutions in this article, even though browser support remains limited.
 
@@ -42,10 +42,10 @@ For that reason I’m only going to cover standardized solutions in this article
 
 Eric Bailey recently published an article titled [*Don’t use custom CSS scrollbars*](https://ericwbailey.website/published/dont-use-custom-css-scrollbars/) that makes some points that are worth considering:
 
-> “Browser UI is used to help create consistency across the entire experience of using a device. When you deviate from these standards, you introduce ambiguity. Ambiguity means less certainty about what the piece of UI is, how you interact with it, and what effects taking action on it will cause. The more you deviate, the more confusing things get… It now no longer looks like any other scrollbar on a person's device, as well as any other website or web app on the internet.”
+> Browser UI is used to help create consistency across the entire experience of using a device. When you deviate from these standards, you introduce ambiguity. Ambiguity means less certainty about what the piece of UI is, how you interact with it, and what effects taking action on it will cause. The more you deviate, the more confusing things get… It now no longer looks like any other scrollbar on a person's device, as well as any other website or web app on the internet.
 
 This is echoed in the W3C spec itself:
-> “Scrollbars are a UI mechanism essential to interact with the page. Operating systems tend to want consistency in such controls to improve usability through familiarity, and users with specific preferences or needs can adjust the appearance of various UI components, including scrollbars, through OS or UA settings. While using this property in support of specific UX goals is appropriate, authors should otherwise refrain from overriding such user preferences.”
+> Scrollbars are a UI mechanism essential to interact with the page. Operating systems tend to want consistency in such controls to improve usability through familiarity, and users with specific preferences or needs can adjust the appearance of various UI components, including scrollbars, through OS or UA settings. While using this property in support of specific UX goals is appropriate, authors should otherwise refrain from overriding such user preferences.
 
 ## `scrollbar-width`
 ```css    
@@ -63,7 +63,7 @@ You can set this value to `none` to have a scrollable area with no visible scrol
 
 The W3C spec describes the purpose of the `scrollbar-width` property and addresses some of the previously mentioned UX concerns:
 
-> “The primary purpose of this property is not to allow authors to chose a particular scrollbar aesthetic for their pages, but to let them indicate for certain small or cramped elements of their pages that a smaller scrollbar would be desirable.”
+> The primary purpose of this property is not to allow authors to chose a particular scrollbar aesthetic for their pages, but to let them indicate for certain small or cramped elements of their pages that a smaller scrollbar would be desirable.
 
 So its not advised to use this property on the html element, but it could come in useful for UI elements such as a custom select menu, for example. 
 
