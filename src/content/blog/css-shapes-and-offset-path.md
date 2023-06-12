@@ -42,7 +42,7 @@ Copy the path part of the SVG and use it in your CSS:
 ```css
 offset-path: path("M2 323c55-58 91-138 180-144 50-3 70 18 110 43C544 380 618-3 779 2s217 134 412 60");
 ```
-`path()` has been supported in all browsers for a while now (the information on caniuse is innacurate — `path()` has been supported in Safari since version 16). Other ways to specify a path are currently only implemented in Chrome Canary. Motion Path is part of [Interop 2023](https://web.dev/interop-2023/#:~:text=Motion%20Path%20in%20CSS%20Animations) and is being actively worked on by Safari and Firefox so it’s likely that full support will ship in all browsers this year.
+`path()` has been supported in all browsers for a while now (the information on caniuse is innacurate — `path()` has been supported in Safari since version 16). Other ways to specify a path are currently being implemented in browsers. Most of the CodePen examples in this article currently only work in Chrome Canary. Motion Path is part of [Interop 2023](https://web.dev/interop-2023/#:~:text=Motion%20Path%20in%20CSS%20Animations) and is being actively worked on by Safari and Firefox so it’s likely that full support will ship in all browsers this year.
 
 `path()` suffers from one *major* shortcoming: its not [responsive](https://css-tricks.com/create-a-responsive-css-motion-path-sure-we-can/). You can resize the SVG in a vector editing tool, copy the path of the resized SVG and use it to redefine the path in a media query, but the path is effectively a pixel value. 
 
@@ -64,11 +64,11 @@ The CSS `clip-path` and `shape-outside` properties use the same syntax for defin
 
 - `circle()`
 - `ellipse()` — a circle that’s squished in one direction and stretched in the other
-- coord-box follows the outline of a HTML element
 - `rect()`, `inset()` and `xywh()`, each of which can be used to define a rectangle
 - `polygon()` for more complex shapes
 - `ray()`
 - `url()` — to reference an SVG path or SVG shape
+- coord-box
 
 ## `circle()`
 
@@ -118,19 +118,6 @@ The syntax for `ellipse()` is the same as `circle()` but you specify two radii i
 ```css
 offset-path: ellipse(40px 200px at center);
 ```
-
-## coord-box
-
-coord-box will follow along the outline of a HTML element. Can be one of `content-box`, `padding-box`, `border-box`, `fill-box`, `stroke-box` or `view-box`. It will automatically respect the `border-radius` of the element.
-
-For this example I exported an animation from Adobe After Effects as a mini video. I’m setting the `offset-path` to `border-box` so the video moves along the edge of the button.  
-
-<iframe src="https://codesandbox.io/embed/sad-lamport-6g6x67?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Sparkly button using offset-path: border-box"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
 
 ## `inset()`
 Defines a rectangle via insets from each edge of the reference box.
@@ -282,12 +269,35 @@ You can then [reference that path in CSS](https://codepen.io/cssgrid/pen/QWJbQmb
 ```
 ## `ray()`
 
-Unlike the other values listed in this article `ray()` only works as a value for `offset-path()` — you can’t use it with `clip-path` or `shape-outside`. 
+Unlike the other values listed in this article `ray()` only works as a value for `offset-path` — you can’t use it with `clip-path` or `shape-outside`. 
 
 The [spec](https://drafts.fxtf.org/motion/#funcdef-ray) says: 
 > The ray() function defines an offset path as a straight line emerging from a point at some defined angle. 
 
 You can read more about it on [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/ray). 
+
+## coord-box
+
+Can be one of `content-box`, `padding-box`, `border-box`, `fill-box`, `stroke-box` or `view-box`. This value can be specified by itself or together with a shape. Any of the following should be valid: 
+
+```css
+offset-path: padding-box;
+offset-path: content-box;
+offset-path: inset(5%) content-box;
+offset-path: circle(40%) padding-box;
+offset-path: polygon(0% 0%, 100% 0%, 100% 100%) border-box;
+```
+
+It will automatically respect the `border-radius` of the element.
+
+For the following example I exported an animation from Adobe After Effects as a mini video. I’m setting the `offset-path` to `border-box` so the video moves along the edge of the button.  
+
+<iframe src="https://codesandbox.io/embed/sad-lamport-6g6x67?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Sparkly button using offset-path: border-box"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 Now that I’ve covered all the different ways to define a path, let’s look at the other `offset-` properties.
 
