@@ -150,7 +150,7 @@ jobs:
         with:
           commit_message: Update CSS output
 ```
-I used another GitHub Action to publish the output as an NPM package on the [GitHub Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) so that it can be installed by any frontend project (I’m not an Android or iOS developer so I have no idea what the best solution is for those platforms).
+I used another GitHub Action to publish the output as an NPM package on the [GitHub Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) (I’m not an Android or iOS developer so I have no idea what the best solution is for those platforms).
 
 ```yaml   
 name: Package
