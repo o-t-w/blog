@@ -37,7 +37,7 @@ The DTCG is a W3C Community Group but the standard is [not a W3C Standard](https
 The design tokens spec was designed with readability in mind. Tokens are often written and edited by hand, usually by developers. I am going to briefly look at the syntax used by the design tokens standard but you don’t necessarily have to edit JSON by hand to use design tokens. Hopefully in the future most design tools will be able to export, update and sync design tokens. 
 
 **Important note:** **The specification is still a draft and changes could be made.** (I’ll try to keep this article up-to-date).
-****
+
 Design tokens are defined as JSON. You can name the file with either a `.tokens` extension or a `.tokens.json` extension. 
 
 A token requires a name and a value:
@@ -100,7 +100,8 @@ Different types defined by the standard include `color`, `dimension`, `fontWeigh
 A token may optionally include a description:
 
 ```json
-{   "error": { 
+{   
+    "error": { 
         "$value": "#CA3618",
         "$type": "color",
         "$description": "Use this color exclusively for error states" 
@@ -110,7 +111,7 @@ A token may optionally include a description:
  
 If you’re going to write and edit design tokens by hand it’s worth reading [the spec](https://tr.designtokens.org/format/#more-token-properties-tbc) in full as this was only a brief introduction.
 
-You can check your tokens are formatted correctly by using a [Design Token Validator](https://animaapp.github.io/design-token-validator-site/). 
+You can check your tokens are written correctly by using a [Design Token Validator](https://animaapp.github.io/design-token-validator-site/). 
 
 ## Translating design tokens
 
@@ -127,9 +128,7 @@ If you’re an engineer who would rather build your own thing there’s an early
 
 There’s also [Specify](https://specifyapp.com), a rather expensive tool co-founded by Louis Chenais, a contributor to the design token specification. It’s more than a CLI tool, marketing itself as “the world's first Design Data Platform to help organizations efficiently manage their brand identity at scale”. 
 
-I went with Design Tokens CLI for now ([repo here](https://github.com/o-t-w/tokens)). I used a GitHub Action to run Design Tokens CLI to translate the tokens into CSS custom properties and used another GitHub Action to publish the output as an NPM package on the [GitHub Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) so that it can be installed by any frontend project (I’m not an Android or iOS developer so I have no idea what the best solution is for those platforms).
- 
-I’d never used GitHub Actions before and they aren’t a lot of fun but this worked for me. One action translates the tokens:
+I went with Design Tokens CLI for now ([repo here](https://github.com/o-t-w/tokens)). I used a GitHub Action to run Design Tokens CLI to translate the tokens into CSS custom properties (aka CSS variables): 
 
 ```yaml
 name: transform
@@ -147,20 +146,15 @@ jobs:
           node-version: '18'
       # Transform the tokens
       - run: npx design-tokens-cli transform
-      # Add files that were created during a run
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update CSS output
 ```
-Another publishes it as a package:
+I used another GitHub Action to publish the output as an NPM package on the [GitHub Packages registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry) so that it can be installed by any frontend project (I’m not an Android or iOS developer so I have no idea what the best solution is for those platforms).
 
-```yaml
-# This workflow will run tests using node and then publish a package to GitHubPackages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packagespublishing-nodejs-packages
-    
+```yaml   
 name: Package
     
-# Only trigger, when the build workflow succeeded
 on:
   workflow_run:
     workflows: ["transform"]
@@ -184,7 +178,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
-From the command line I can then install the package in any frontend project with `npm install` and make use of the CSS custom properties. 
+From the command line the package can then be installed on any frontend project with `npm install`. 
 
 ## Using design tokens in Figma
 
