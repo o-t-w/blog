@@ -1,7 +1,7 @@
 ---
 author: Ollie Williams
 pubDatetime: 2023-06-16T15:22:00Z
-title: Looking forward to standardised design tokens
+title: Standardising design tokens
 postSlug: design-tokens
 featured: false
 draft: false
@@ -181,10 +181,9 @@ jobs:
 From the command line the package can then be installed on any frontend project with `npm install`. 
 
 ## Using design tokens in Figma
+In June 2023 Figma introduced variables for defining colors, strings, numbers and booleans. Support for additional kinds of variables will land later this year. Semantically the difference in meaning between a variable and a token is an extremely fine line. Jacob Miller, a product manager at Figma, [has stated](https://twitter.com/pwnies/status/1671584984057151489) "once the W3C spec is ratified, we'll be supporting native import/export" of JSON tokens. Miller has also stated that full native support for JSON tokens is blocked by support for theming, which is still an [open issue](https://github.com/design-tokens/community-group/issues/210) for the design tokens specification. For the time being you can use the plugin API to import JSON tokens. For those on the enterprise plan there's also a REST API. 
 
-For working with tokens in Figma, the [Figma Tokens plugin](https://www.figma.com/community/plugin/843461159747178978) has been the go-to option. Figma has natively supported the creation of reusable styles for years. This included some visual properties (like color) but not others (like border-radius or spacing). The Figma Tokens plugin brings the ability to apply values defined in your design system (via tokens) to more properties. Native support for tokens has been the most requested feature from Figma users for a few years. Hopefully it will be announced at the upcoming Schema 2023 next week. 
-
-Figma Tokens recently rebranded as [Tokens Studio](https://twitter.com/EstherCheran/status/1667440676336807936) and is “evolving from the Figma plugin you all know to a powerful Design Token management and Design System automation platform”.  
+The [Figma Tokens plugin](https://www.figma.com/community/plugin/843461159747178978) had been the go-to option for using tokens in Figma. If you can, its worth waiting for native support. Figma Tokens recently rebranded as [Tokens Studio](https://twitter.com/EstherCheran/status/1667440676336807936) and is “evolving from the Figma plugin you all know to a powerful Design Token management and Design System automation platform”.  
 
 ## Conclusion
 
