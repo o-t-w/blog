@@ -17,7 +17,7 @@ A design token is a glorified variable — but a variable that is platform agnos
 
 The concept and term *design tokens* originated with the design system team at Salesforce. They open-sourced a tool called [Theo](https://github.com/salesforce-ux/theo). In order for design tokens to be platform agnostic, they exist in one format (usually YAML or JSON) and get translated into a range of other formats (CSS custom properties, for example). Theo did that. Amazon released a similar open-source project called [Style Dictionary](https://amzn.github.io/style-dictionary/) which became the most popular tool for working with design tokens. 
 
-![A chart showing the number of NPM downloads of style-dictionary and Theo over the last 5 years. Style Dictonary used in far more projects](npmtrends.png)
+![A chart showing the number of NPM downloads of style-dictionary and Theo over the last 5 years. Style Dictonary used in far more projects](/assets/npmtrends.png)
 
 
 There was another equivalent open-source tool called Diez but it is now entirely unmaintained. 
@@ -182,7 +182,7 @@ From the command line the package can then be installed on any frontend project 
 
 ## Using design tokens in Figma
 
-![A screenshot of the Figma variables UI](figmavariables.avif)
+![A screenshot of the Figma variables UI](/assets/figmavariables.avif)
 
 In June 2023 Figma introduced variables for defining colors, strings, numbers and booleans. Support for additional kinds of variables will land later this year. Semantically the difference in meaning between a variable and a token is an extremely fine line. Jacob Miller, a product manager at Figma, [has stated](https://twitter.com/pwnies/status/1671584984057151489) "once the W3C spec is ratified, we'll be supporting native import/export" of JSON tokens. Miller has also stated that full native support for JSON tokens is blocked by support for theming, which is still an [open issue](https://github.com/design-tokens/community-group/issues/210) for the design tokens specification. For the time being you can use the plugin API to import JSON tokens. For those on the enterprise plan there's also a REST API. 
 
