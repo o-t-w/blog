@@ -117,6 +117,8 @@ You can check your tokens are written correctly by using a [Design Token Validat
 
 Now that we have some tokens, we need a way to translate them into something that developers can use in their code. That could be CSS custom properties or Sass variables for web projects, or JavaScript variables for projects making use of CSS-in-JS. Style Dictionary is by far the most popular option, and is still actively maintained (unlike Theo and Diez).
 
+If you're exclusively using Tailwind, you could opt to skip this step entirely. You can import the JSON into your `tailwind.config.js` file. Personally, as a Tailwind user I'd prefer to specify the values in my Tailwind config file using CSS custom properties, not JSON.
+
 Style Dictionary hasn’t landed support for the standard design tokens syntax yet (they will do once the spec is finalised). 
 
 At the time of writing, the only open-source translation tools that have implemented support for the design tokens standard are:
