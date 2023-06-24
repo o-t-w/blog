@@ -184,4 +184,4 @@ When using `color-mix()` you have to specify a color space. Any of the following
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-See this Twitter thread for some suggested use cases for `color-mix`. 
+See this [Twitter thread](https://twitter.com/hypeddev/status/1672254995599708167) for some suggested use cases for `color-mix`. 
