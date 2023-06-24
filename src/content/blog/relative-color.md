@@ -51,12 +51,12 @@ With the new relative color syntax we can define and use our color variables in 
     background-color: rgb(from var(--blue) r g b / 50%);
 }
 ```
-
-
-https://codepen.io/cssgrid/embed/bGQeyoY
-
-
-[https://codepen.io/cssgrid/pen/bGQeyoY](https://codepen.io/cssgrid/pen/bGQeyoY)
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="bGQeyoY" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/bGQeyoY">
+  Modify opacity of a CSS Custom Property</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 We use `from` to specify the origin color (the color we want to base the new color on). The above example takes a hex color and uses it to create an rgb color. The origin color can be *any kind of color* — `rgb()`, `hsl()`, a named color like `blue`, etc. 
 
