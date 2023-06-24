@@ -66,7 +66,7 @@ Sass has color manipulation functions such as `darken()` and `lighten()`. With t
 
 Each color channel can either be directly specified or taken from the origin color and modified using math functions like `calc()`.
 
-Example of setting the lightness to 20% but keeping the chroma and hue the same as the origin color:
+Example of setting the lightness to 20% but keeping the chroma (chroma means saturation) and hue the same as the origin color:
 ```css
 background-color: lch(from var(--color) 20% c h)
 ```
@@ -80,10 +80,10 @@ You can create a whole range of different shades this way, all based on the same
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-Alternatively you can take the lightness of the origin color and make it lighter or darker. By taking this approach, if the origin color is made darker the modified color would also get darker.
+Alternatively you can take the lightness of the origin color and make it lighter or darker. By taking this approach, if the lightness of the origin color changed, the modified color would also change.
 
 ```css
-    background-color: oklch(from var(--color) calc(l + .04) c h);
+background-color: oklch(from var(--color) calc(l + .04) c h);
  ```
 
 <p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="vYQKQMz" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
@@ -93,7 +93,7 @@ Alternatively you can take the lightness of the origin color and make it lighter
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-Here’s an example that halves the chroma (chroma means saturation) of the origin color but leaves the lightness and hue unchanged:
+Here’s an example that halves the chroma of the origin color but leaves the lightness and hue unchanged:
 ```css
 background-color: lch(from var(--color) l calc(c / 2) h); 
 ```
