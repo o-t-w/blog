@@ -9,7 +9,7 @@ tags:
   - CSS
   - Typography
   - Design
-ogImage: "/assets/scope.png"
+ogImage: "/assets/systemfonts.png"
 description: system-ui, ui-monospace, ui-rounded, ui-sans-serif and ui-serif.  
 ---
 
