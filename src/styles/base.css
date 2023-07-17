@@ -89,30 +89,6 @@
     @apply hidden;
   }
 
-  /* ===== scrollbar ===== */
-  html {
-    overflow-y: scroll;
-  }
-
-  /* width */
-  ::-webkit-scrollbar {
-    @apply w-3;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    @apply bg-skin-fill;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    @apply bg-skin-card;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-skin-card-muted;
-  }
 }
 
 @layer components {
@@ -127,4 +103,20 @@
 
 html[data-theme="dark"] .formkit-form:where(.astro-SZ7XMLTE)[data-uid=b13fc9e6ed] .formkit-powered-by-convertkit:where(.astro-SZ7XMLTE) {
   filter: brightness(4.5);
+}
+
+@font-face {
+  font-family: "mishmashmoji";
+  src: url("/MishMashMojiCOLRv1.woff2") tech(color-COLRv1),
+       url("/MishMashMojiSVG.woff2");
+}
+
+.custom-emoji {
+  font-family: 'mishmashmoji';
+  letter-spacing: 4px;
+  font-size: 54px;
+  text-align: center;
+  font-weight: 400;
+  margin: auto;
+  text-wrap: balance;
 }
