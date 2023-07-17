@@ -72,11 +72,13 @@ Let’s say you have the [following code](https://codepen.io/cssgrid/pen/MWzVKZb
 ```
 Paraphrasing [Monica Dinculescu](https://meowni.ca/posts/emoji-emoji-emoji/), who previously worked as an engineer on Google Chrome:
 
-Chrome will first look up the glyph corresponding to ♥ in the Comic Sans font. It won’t find it, so it will use whichever emoji font is on the user's system. We were lucky here because Comic Sans doesn’t contain any emoji. The problem is, some fonts designed for regular text do contain the black pseudo-emoji were trying to avoid. On a Mac, for example, the system font contains a black heart character. Chrome will first look up the glyph corresponding to ♥ in San Francisco (the system font on mac) and it *will* find it, so the following code will not render a colorful emoji:
+Chrome will first look up the glyph corresponding to ♥ in the Comic Sans font. It won’t find it, so it will use whichever emoji font is on the user's system. We were lucky here because Comic Sans doesn’t contain any emoji. The problem is, some fonts designed for regular text do contain the black pseudo-emoji were trying to avoid. On a Mac, for example, the system font contains a black heart symbol.
 
 ```html
 <h1 style="font-family: system-ui, Apple Color Emoji, 'Segoe UI Emoji', 'Noto Color Emoji';">I ♥ emoji</h1>
 ```
+
+Chrome will first look up the glyph corresponding to ♥ in San Francisco (the system font on mac) and it *will* find it, so the code will not render a colorful emoji.
 
 A more reliable way to render a character as an emoji is to append the variation selector `&#xFE0F;` to the emoji:
 
