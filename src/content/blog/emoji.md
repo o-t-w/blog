@@ -49,7 +49,7 @@ This isn’t just a problem of legacy tech. Some *current* operating systems, no
 
 ### Solving problem 1 with `font-variant-emoji`
 
-Nolan Lawson offers the solution of explicitly setting the `font-family` to an emoji font. Ideally, we’d be able to use `font-family: emoji`. In the same way that we have `font-family: system-ui` to specify the system font, this is an equivalent way to specify the system emoji font. 
+Explicitly setting the `font-family` to an emoji font is often enough to solve this issue. Ideally, we’d be able to use `font-family: emoji`. In the same way that we have `font-family: system-ui` to specify the system font, this is an equivalent way to specify the system emoji font. 
 
 `font-family: emoji` is roughly equivalent to:
 ```css
@@ -57,14 +57,14 @@ p {
     font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji";
     }
 ``` 
-`font-family: emoji` would remain forever up-to-date. By contrast, by using named fonts, were Apple, Google or Microsoft to design a brand new emoji font with a different name, the above code would be obsolete. No browser has shipped `font-family: emoji` yet, so we’ll have to list out the different fonts of each operating system: 
+`font-family: emoji` would remain forever up-to-date. By contrast, by using named fonts, were Apple, Google or Microsoft to design a brand new emoji font with a different name, the above code would be obsolete. No browser has shipped `font-family: emoji` yet, so we’ll have to list out the different fonts of each operating system (and "Twemoji Mozilla", the font used by Firefox on Windows): 
 
 ```css
 h1 {
     font-family: "Twemoji Mozilla", Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji", "EmojiOne Color";
     }
 ```
-Should you have text that includes both emoji and regular text, the solution depends on the font. 
+Should you have text that includes both emoji and regular text, things get more complicated. 
 Let’s say you have the [following code](https://codepen.io/cssgrid/pen/MWzVKZb):
 
 ```html
@@ -72,15 +72,15 @@ Let’s say you have the [following code](https://codepen.io/cssgrid/pen/MWzVKZb
 ```
 Paraphrasing [Monica Dinculescu](https://meowni.ca/posts/emoji-emoji-emoji/), who previously worked as an engineer on Google Chrome:
 
-Chrome will first look up the glyph corresponding to ♥ in the Comic Sans font. It won’t find it, so it will use whichever emoji font is on the user's system. We were lucky here because Comic Sans doesn’t contain any emoji. The problem is, some fonts designed for regular text do contain the black pseudo-emoji were trying to avoid. On a Mac, for example, the system font contains a black heart symbol.
+Chrome will first look up the glyph corresponding to ♥ in the Comic Sans font. It won’t find it, so it will look through the rest of the fonts we've listed and use whichever emoji font is on the user's system. We were lucky here because Comic Sans doesn’t contain this emoji. The problem is, some fonts designed for regular text do contain the black pseudo-emoji were trying to avoid. On a Mac, for example, the system font contains a black heart symbol.
 
 ```html
 <h1 style="font-family: system-ui, Apple Color Emoji, 'Segoe UI Emoji', 'Noto Color Emoji';">I ♥ emoji</h1>
 ```
 
-Chrome will first look up the glyph corresponding to ♥ in San Francisco (the system font on mac) and it *will* find it, so the code will not render a colorful emoji.
+Chrome will first look up the glyph corresponding to ♥ in SF Pro (the system font on mac) and it *will* find it, so the code will not render a colorful emoji.
 
-A more reliable way to render a character as an emoji is to append the variation selector `&#xFE0F;` to the emoji:
+As well as setting the font, you should also append the variation selector `&#xFE0F;` to the emoji:
 
 ```html
 <h1>I ♥&#xFE0F; emoji</h1>
@@ -90,7 +90,7 @@ If you want the single color version, append `&#xFE0E;`
 ```html
 <h1>I ♥&#xFE0E; emoji</h1>
 ```
-On Chrome on Windows this solution is not always enough to render what you want as your font stack can still [effect the result](https://stackoverflow.com/questions/70993962/emoji-variation-selector-doesnt-work-for-user-specified-font). 
+The variation selector alone is not always enough to render what you want. Unicode Technical Committee Chair Peter Constable told me, "Font fallback logic in text engines is not necessarily going to have special-case logic for variation sequences". In some browsers, notably Chrome, your font stack can still [effect the result](https://stackoverflow.com/questions/70993962/emoji-variation-selector-doesnt-work-for-user-specified-font).
 
 If you're using a lot of emoji, constant use of the variation selector is rather verbose. There's a new CSS property on the horizon that will make this easier. 
 
