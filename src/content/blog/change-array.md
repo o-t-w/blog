@@ -12,7 +12,7 @@ ogImage: "/assets/changearray.png"
 description: toReversed(), toSorted() and toSpliced()
 ---
 
-These methods are supported in Node [since version 20](https://openjsf.org/blog/2023/04/18/node-js-20-now-available/#:~:text=Methods%20that%20change%20Array%20and%20TypedArray%20by%20copy), Deno, [Bun](https://twitter.com/jarredsumner/status/1523279875754266624), Safari (since version 16), Chrome/Edge ([from version 110](https://chromestatus.com/feature/5068609911521280)) and Firefox (since [version 115](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/115#javascript)).
+These methods are supported in Node ([since version 20](https://openjsf.org/blog/2023/04/18/node-js-20-now-available/#:~:text=Methods%20that%20change%20Array%20and%20TypedArray%20by%20copy)), Deno, [Bun](https://twitter.com/jarredsumner/status/1523279875754266624), Safari (since version 16), Chrome/Edge ([from version 110](https://chromestatus.com/feature/5068609911521280)) and Firefox (since [version 115](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/115#javascript)).
 
 ## Immutability
 
@@ -46,18 +46,18 @@ const users = #['Xavier', 'Anna', 'Zach', 'Brad'];
 ```
 The key difference between arrays and tuples: tuples are immutable. Tuples have all the methods that Arrays have, except for the destructive ones. Because tuples can't be mutated, they can't have any of the methods listed above.
 
+Some new non-destructive methods have been added that will work with both Tuples and Arrays.
+
 There are now immutable equivalents to the `reverse`, `sort`, and `splice` methods that will return a new copy of the array with the changes applied, leaving the original array unchanged:
 
 - `.toReversed()`
 - `.toSorted()`
 - `.toSpliced()` 
 
-While these new methods were originally created with tuples in mind, they have also been added to arrays. Tuples are still a work in progress, but we’ll be able to use the same methods to non-destructively change both Arrays and Tuples in the future.
+There’s also `.with()`, which doesn’t have an older equivalent.
 
 Here's the [official motivation](https://github.com/tc39/proposal-change-array-by-copy#motivation) for adding them, as explained by members of the TC39:
 > The [Tuple.prototype](https://tc39.es/proposal-record-tuple/#sec-properties-of-the-tuple-prototype-object) introduces these functions as a way to deal with the immutable aspect of the Tuples in [Record & Tuple](https://github.com/tc39/proposal-record-tuple). While Arrays are not immutable by nature, this style of programming can be beneficial to users dealing with frozen arrays for instance. This proposal notably makes it easier to write code able to deal with Arrays and Tuples interchangeably.
-
-There’s also `.with()`, which doesn’t have an older mutating equivalent.
 
 ## Immutable array methods
 
