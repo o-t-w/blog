@@ -1,10 +1,10 @@
 ---
 author: Ollie Williams
 pubDatetime: 2023-07-24T15:22:00Z
-title: Importing JSON and more with import attributes
+title: Import JSON, CSS and more with import attributes
 postSlug: import-attributes
 featured: false
-draft: true
+draft: false
 tags:
   - JavaScript
 ogImage: "/assets/importattribute.png"
@@ -42,7 +42,8 @@ The default export of a CSS module is a [constructable stylesheet](https://web.d
 
 ```js
 import styles from "./styles.css" with { type: "css" };
-document.adoptedStyleSheets = [styles];
+import morestyles from "./morestyles.css" with { type: "css" };
+document.adoptedStyleSheets = [styles, morestyles];
 ```
 
 An article on the [web.dev](https://web.dev/css-module-scripts/) blog explains some of their benefits: 
