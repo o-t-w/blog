@@ -96,12 +96,9 @@ button.addEventListener('click', function() {
 Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project.
 
 ## Browser support
-Import attributes were previously known as import assertions. Due to issues with CSP (Content Security Policy) they have been renamed and the syntax has changed. Chrome/Edge had already shipped JSON modules and CSS modules using the older syntax (`import json from "./data.json" assert { type: "json" }`). That syntax still works, but is now deprecated. Chrome Canary has updated to use the new syntax. The older syntax is also supported in [Deno](https://examples.deno.land/importing-json) and (experimentally) in [Node](https://nodejs.org/api/esm.html#import-assertions). Hopefully they will get an update soon. [Safari](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) has a positive position on the proposal.
+Import attributes were previously known as import assertions. Due to issues with CSP (Content Security Policy) they have been renamed and the syntax has changed. Chrome/Edge had already shipped JSON modules and CSS modules using the older syntax (`import json from "./data.json" assert { type: "json" }`). That syntax still works, but is now deprecated. Chrome Canary has updated to use the new syntax. The older syntax is also supported in [Deno](https://examples.deno.land/importing-json) and (experimentally) in [Node](https://nodejs.org/api/esm.html#import-assertions). Hopefully they will get an update soon. [Safari](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) has a positive position on the CSS modules and had previously implemented JSON modules with the old syntax in Safari Technology Preview.
 
 [Babel](https://babeljs.io/blog/2023/05/26/7.22.0#import-attributes-15536-15620), [Webpack and Rollup](https://github.com/nicolo-ribaudo/import-attributes-ecosystem-support#import-attributes-support-in-tools) have all implemented support for the syntax. 
 
-Bun has already [adopted import attributes](https://bun.sh/blog/bun-macros).
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Also the is first major API I know of that takes advantage of import attributes. They&#39;re cool! Curious to see how they&#39;ll percolate into frameworks going forward<a href="https://t.co/SgwTWi11LP">https://t.co/SgwTWi11LP</a> <a href="https://t.co/ld0Z4AK3rx">pic.twitter.com/ld0Z4AK3rx</a></p>&mdash; Colin McDonnell (@colinhacks) <a href="https://twitter.com/colinhacks/status/1664042942720528384?ref_src=twsrc%5Etfw">May 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+Bun has already [adopted import attributes](https://bun.sh/blog/bun-macros) for macros.
 
