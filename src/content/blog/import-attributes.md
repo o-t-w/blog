@@ -1,6 +1,6 @@
 ---
 author: Ollie Williams
-pubDatetime: 2023-07-24T15:22:00Z
+pubDatetime: 2023-07-27T10:22:00Z
 title: Import JSON, CSS and more with import attributes
 postSlug: import-attributes
 featured: false
@@ -67,7 +67,7 @@ import morestyles from "./morestyles.css" with { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles, morestyles];
 ```
 
-If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document: `shadowRoot.adoptedStyleSheets = [sheet];`:
+If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document: `shadowRoot.adoptedStyleSheets = [CSSStyleSheet];`:
 ```html
 <my-element></my-element>
 <script type="module">
@@ -99,7 +99,7 @@ button.addEventListener('click', function() {
 })
 </script>
 ```
-The CSSStyleSheet is accessed with `.default` because its the default export of the module.
+The CSSStyleSheet is accessed with `.default` because it is the default export of the module.
 
 Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
