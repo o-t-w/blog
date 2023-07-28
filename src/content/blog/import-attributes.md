@@ -67,7 +67,26 @@ import morestyles from "./morestyles.css" with { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles, morestyles];
 ```
 
-If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document: `shadowRoot.adoptedStyleSheets = [CSSStyleSheet];`:
+As with JSON modules, you can dynamically import a stylesheet:
+
+```html
+<button>Add some style</button>
+
+<script type="module">
+const button = document.querySelector("button");
+button.addEventListener('click', function() {
+    const styles = await import('./style.css', { assert: { type: 'css' } });
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles.default];
+})
+</script>
+```
+The CSSStyleSheet is accessed with `.default` because it is the default export of the module.
+
+Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
+
+## Importing CSS modules with Shadow DOM
+If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document:
+
 ```html
 <my-element></my-element>
 <script type="module">
@@ -86,22 +105,24 @@ customElements.define("my-element", MyElement);
 </script>
 ```
 
-As with JSON modules, you can dynamically import a stylesheet:
+Or if you're using Lit to create your web components it would look like this:
 
-```html
-<button>Add some style</button>
+```js
+import {LitElement, html} from 'lit';
+import CSSStylesheet from './my-element.css' with { type: 'css' };
 
-<script type="module">
-const button = document.querySelector("button");
-button.addEventListener('click', function() {
-    const styles = await import('./style.css', { assert: { type: 'css' } });
-    document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles.default];
-})
-</script>
+export class MyElement extends LitElement {
+  static styles = CSSStylesheet;
+
+  render() {
+    return html`
+      <h1>Hello world</h1>
+    `;
+  }
+}
+
+window.customElements.define('my-element', MyElement);
 ```
-The CSSStyleSheet is accessed with `.default` because it is the default export of the module.
-
-Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
 ## Preload
 
