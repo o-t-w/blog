@@ -84,9 +84,24 @@ The CSSStyleSheet is accessed with `.default` because it is the default export o
 
 Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
-## Importing CSS modules with Shadow DOM
+## Using CSS modules with Shadow DOM
 If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document:
 
+```html
+<div>
+    <template shadowrootmode="open">
+        <p>This is in the shadow DOM</p>
+        <button>Shadow button</button>
+    </template> 
+</div>   
+
+    <script type="module">
+         import styles from "./styles.css" with { type: "css" };
+         document.querySelector('div').shadowRoot.adoptedStyleSheets = [styles];
+    </script>
+```
+
+Or for a custom element:
 ```html
 <my-element></my-element>
 <script type="module">
@@ -105,7 +120,7 @@ customElements.define("my-element", MyElement);
 </script>
 ```
 
-Or if you're using Lit to create your web components it would look like this:
+Or if you're using Lit to create your web component it would look like this:
 
 ```js
 import {LitElement, html} from 'lit';
