@@ -79,3 +79,22 @@ You can use a `<style>` tag to style the contents of the shadow DOM:
     </template>
 </div>   
 ```
+
+## React problems
+
+If you try to use declarative shadow DOM in a React component, you'll run into problems:
+```jsx
+export default function Thing() {
+  return (
+    <div>
+      <template shadowrootmode="open">
+        <h2>This is in the shadow DOM</h2>
+      </template>
+    </div>
+  );
+}
+```
+
+In Next.js, you'll get the error "Error: Hydration failed because the initial UI does not match what was rendered on the server. Warning: Expected server HTML to contain a matching <template> in <div>." In Remix it won't render anything in the shadow DOM, but doesn't log any kind of error. 
+
+I'm not that sure if there's a good solution  ¯\_(ツ)_/¯ 
