@@ -95,6 +95,6 @@ export default function Thing() {
 }
 ```
 
-In Next.js, you'll get the error "Error: Hydration failed because the initial UI does not match what was rendered on the server. Warning: Expected server HTML to contain a matching <template> in <div>." In Remix it won't render anything in the shadow DOM, but doesn't log any kind of error. 
+In Next.js, you'll get the error "Error: Hydration failed because the initial UI does not match what was rendered on the server. Warning: Expected server HTML to contain a matching <template> in <div>." In Remix the shadow DOM will momentarily render before disappearing, but doesn't log any kind of error. 
 
 I'm not that sure if there's a good solution  ¯\_(ツ)_/¯ 
