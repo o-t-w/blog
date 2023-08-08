@@ -46,3 +46,7 @@ Below is an example of a custom radio and checkbox using `AccentColor`:
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+   <h2 class="h3">Browser support</h2>
+
+   `AccentColor` has been supported in Firefox since [version 103](https://bugzilla.mozilla.org/show_bug.cgi?id=1775247). It is supported in [Chrome 115](https://chromestatus.com/feature/5068127364186112) behind a flag. 
