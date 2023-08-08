@@ -120,3 +120,11 @@ html[data-theme="dark"] .formkit-form:where(.astro-SZ7XMLTE)[data-uid=b13fc9e6ed
   margin: auto;
   text-wrap: balance;
 }
+
+.h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+}
