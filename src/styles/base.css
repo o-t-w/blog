@@ -128,3 +128,11 @@ html[data-theme="dark"] .formkit-form:where(.astro-SZ7XMLTE)[data-uid=b13fc9e6ed
   margin-bottom: 0.6em;
   line-height: 1.6;
 }
+
+.prose :where(blockquote p:first-of-type):not(:where([class~="not-prose"] *))::before {
+  content: none;
+}
+
+.prose :where(blockquote p:last-of-type):not(:where([class~="not-prose"] *))::after {
+content: none;
+}
