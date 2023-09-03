@@ -71,7 +71,7 @@ The View Transitions API is a way to animate between states when you make change
 document.startViewTransition(() => updateDOM(data));
 ```
 
-It captures a screenshot of the current state and the new state and animates between the two. You can use it for all sorts of things (sorting a list, for example), but animating page navigations is the most notable use case. 
+It captures a screenshot of the current state and a screenshot of the new state and animates between the two. You can use it for all sorts of things (sorting a list, for example), but animating page navigations is the most notable use case. 
 
 The View Transitions API works for SPA navigations in Chrome and Edge. [Safari](https://github.com/WebKit/standards-positions/issues/48) and [Firefox](https://github.com/mozilla/standards-positions/issues/677) have both expressed positive positions on the standard. 
 
@@ -115,7 +115,7 @@ Perhaps the biggest issue isn’t client-side routing itself but the NPM-driven 
 
 ![](/assets/javascript-over-time.png)
 
-Here's a chart from [Zach Leatherman](https://www.zachleat.com/web/site-generator-review/#client-javascript-baseline) showing the weight of JavaScript sent to the browser by various static site generators and frontend meta-frameworks (measured in kilobytes of uncompressed resource size):
+Zach Leatherman created the [following chart](https://www.zachleat.com/web/site-generator-review/#client-javascript-baseline) showing the weight of JavaScript sent to the browser by various static site generators and frontend meta-frameworks (measured in kilobytes of uncompressed resource size):
 
 ![A bar chart showing Astro, Eleventy and Enhance shipping 0 kilobytes, but with Next.js Shipping 248](/assets/weight-of-frameworks.png)
 
