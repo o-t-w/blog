@@ -1,6 +1,6 @@
 ---
 author: Ollie Williams
-pubDatetime: 2023-08-27T15:22:00Z
+pubDatetime: 2023-09-03T15:22:00Z
 title: The View Transitions API, the Navigation API and the SPA vs MPA debate
 postSlug: the-spa-vs-mpa-debate
 featured: false
