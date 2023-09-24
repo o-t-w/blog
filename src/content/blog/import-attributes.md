@@ -85,7 +85,9 @@ The CSSStyleSheet is accessed with `.default` because it is the default export o
 Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
 ## Using CSS modules with Shadow DOM
-If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document:
+If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document. 
+
+Here's an example using declarative shadow DOM (using the `shadowrootmode` attribute on a template element means the contents of the template will be put into a shadow tree attached to the parent element).
 
 ```html
 <div>
@@ -120,7 +122,7 @@ customElements.define("my-element", MyElement);
 </script>
 ```
 
-Or if you're using Lit to create your web component it would look like this:
+Or if you're using Lit to create a web component it would look like this:
 
 ```js
 import {LitElement, html} from 'lit';
@@ -149,7 +151,7 @@ You can preload non-JavaScript modules with `rel="preload"` (rather than `"modul
 ```
 
 ## Browser support
-Import attributes are at stage three. JSON modules and CSS modules are included the [HTML spec](https://html.spec.whatwg.org/#css-module-script:~:text=Module%20scripts%20can%20be%20classified%20into%20three%20types%3A). Import attributes were previously known as import assertions. They have been [renamed](https://github.com/whatwg/html/issues/7233) and the syntax has changed. Chrome/Edge had already shipped JSON modules and CSS modules using the older syntax (`import json from "./data.json" assert { type: "json" }`). [Chrome Canary](https://bugs.chromium.org/p/v8/issues/detail?id=13856#c11) has updated to use the new syntax (the old syntax still works, but is deprecated). The older syntax is also supported in [Deno](https://examples.deno.land/importing-json) and (experimentally) in [Node](https://nodejs.org/api/esm.html#import-assertions). Hopefully they will get an update soon. [Safari](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) has a positive position on CSS modules and had previously implemented JSON modules with the old syntax in Safari Technology Preview.
+Import attributes are at stage three. JSON modules and CSS modules are included the [HTML spec](https://html.spec.whatwg.org/#css-module-script:~:text=Module%20scripts%20can%20be%20classified%20into%20three%20types%3A). Import attributes were previously known as import assertions. They have been [renamed](https://github.com/whatwg/html/issues/7233) and the syntax has changed. Chrome/Edge had already shipped JSON modules and CSS modules using the older syntax (`import json from "./data.json" assert { type: "json" }`). [Chrome Canary](https://bugs.chromium.org/p/v8/issues/detail?id=13856#c11) has updated to use the new syntax (the old syntax still works, but is deprecated). JSON modules are supported in Safari Technology Preview. The older syntax is also supported in [Deno](https://examples.deno.land/importing-json) and (experimentally) in [Node](https://nodejs.org/api/esm.html#import-assertions). Hopefully they will get an update soon. [Safari](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) has a positive position on CSS modules and had previously implemented JSON modules with the old syntax in Safari Technology Preview.
 
 [Babel](https://babeljs.io/blog/2023/05/26/7.22.0#import-attributes-15536-15620), [Webpack and Rollup](https://github.com/nicolo-ribaudo/import-attributes-ecosystem-support#import-attributes-support-in-tools) have all implemented support for the syntax. 
 
