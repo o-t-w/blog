@@ -25,6 +25,22 @@ document.querySelector('button').addEventListener('click', function() { document
 });
 ```
 
+<div>
+    <template shadowrootmode="open">
+  <select name="" id="">
+  <option value="one">one</option>
+  <option value="two">two</option>
+</select>
+
+<button>Show Picker</button><select name="" id="">
+  <option value="one">one</option>
+  <option value="two">two</option>
+</select>
+
+<button>Show Picker</button>
+    </template>
+</div>   
+
 <select name="" id="">
   <option value="one">Option one</option>
   <option value="two">Option two</option>
