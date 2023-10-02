@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module">
+        document.querySelector('button').addEventListener('click', function() { document.querySelector('select').showPicker();
+});
+    </script>
+
+    <style>
+        body {
+            max-width: 1000px;
+            margin-inline: auto;
+            margin-top: 48px;
+            padding-inline: 24px;
+        }
+
+        button, select {
+            height: 22px;
+            display: inline-block;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="">
+        <option value="one">Option one</option>
+        <option value="two">Option two</option>
+        <option value="three">Option three</option>
+      </select>
+      
+      <button>Show Picker</button>
+</body>
+</html>

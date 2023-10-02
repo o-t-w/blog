@@ -25,29 +25,7 @@ document.querySelector('button').addEventListener('click', function() { document
 });
 ```
 
-<div>
-    <template shadowrootmode="open">
-  <select name="" id="">
-  <option value="one">one</option>
-  <option value="two">two</option>
-</select>
-
-<button>Show Picker</button><select name="" id="">
-  <option value="one">one</option>
-  <option value="two">two</option>
-</select>
-
-<button>Show Picker</button>
-    </template>
-</div>   
-
-<select name="" id="">
-  <option value="one">Option one</option>
-  <option value="two">Option two</option>
-  <option value="three">Option three</option>
-</select>
-  
-<button>Show Picker</button>
+<iframe src="/iframes/picker.html" frameborder="0"> 
 
 ### Usage within iframes
 Using `.showPicker()` on a select element will only work in same-origin iframes. If called in a cross-origin iframe it will throw a "SecurityError" DOMException.
