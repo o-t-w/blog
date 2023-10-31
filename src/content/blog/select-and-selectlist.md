@@ -25,7 +25,7 @@ document.querySelector('button').addEventListener('click', function() { document
 });
 ```
 
-<iframe src="/iframes/picker.html" frameborder="0"> 
+<iframe style="height: 48px;" src="/iframes/picker.html" frameborder="0"> 
 
 ### Usage within iframes
 Using `.showPicker()` on a select element will only work in same-origin iframes. If called in a cross-origin iframe it will throw a "SecurityError" DOMException.
@@ -43,7 +43,7 @@ This feature is supported in Chrome 119. [Firefox](https://github.com/mozilla/st
 
 ## Using horizontal rules in a `<select>`
 
-It's sometimes useful to group options with a select menu. We can now use a `<hr>` element to add a simple horizontal line to visually divide different groups.
+It's sometimes useful to group options with a select menu. We can now use a `<hr>` element to add a simple horizontal line to visually divide different options.
 
 ```html
 <select name="" id="">
@@ -55,7 +55,7 @@ It's sometimes useful to group options with a select menu. We can now use a `<hr
 </select>
 ```
 
-<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwqrNQK" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="VwqrNQK" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/cssgrid/pen/VwqrNQK">
   Horizontal rule in select </a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
@@ -69,6 +69,13 @@ You might want to further customize a `<select>`. For that we need a whole new e
 ## `<selectlist>`
 **There are currently no up-to-date docs about this new API**
 
+In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_pain_points), styling form elements was voted as one of the worst pain points for developers. According to a [survey](https://www.gwhitworth.com/posts/2019/form-controls-components/) by Greg Whitworth, styling select elements is the form control that gives developers the most frustration.
+
+![](/assets/form-controls-graph.avif)
+
+"While it’s relatively easy to style the appearance of the button part of a <select> (the thing you see in the page when the popup is closed), it’s almost impossible to style the options (the thing you see when the popup is open), let alone add more content within the popup. As a result, design systems and component libraries have been rolling out their own selects, made from scratch using custom HTML markup, CSS, and often a lot of JavaScript, in order to have something that integrates nicely with the other components. Unfortunately, doing so correctly with the right accessibility semantics, keyboard support, and popup positioning is not easy." - [Patrick Brosset, CSS Tricks](https://css-tricks.com/the-selectmenu-element/)
+
+The new selectlist HTML element is a more customisable alternative to the select element. 
 After a name change and some API changes, it looks like its finally on its way to being stable.
 
 Here are some demos from the Microsoft Edge team https://microsoftedge.github.io/Demos/selectlist/
