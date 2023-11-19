@@ -12,7 +12,7 @@ description: Customizing the select menu
 ---
 
 ## Programmatically open an option picker with `.showPicker()`
-Until now, there was no way to programatically open a `<select>` menu. `document.querySelector('select').click();` does not work. Instead we can use `.showPicker()`. `.showPicker` was originally added for certain HTML inputs: color, date, month, week, time, datetime-local and file, but it now works for the select element as well. 
+Until now, there was no way to programatically open a `<select>` menu. `document.querySelector('select').click();` does not work. Instead we can use `.showPicker()`. `.showPicker` originally worked for color, date, month, week, time, datetime-local and file inputs. It now also works for the select element: 
 
 ```js
 document.querySelector('select').showPicker();
@@ -64,6 +64,41 @@ It's sometimes useful to group options with a select menu. We can now use a `<hr
 
 This feature is currently supported in Safari 17 and Chrome 118.
 
+We already had a way to group options with `<optgroup>`, which displays a label for each group:
+
+```html
+<select id="dino-select">
+  <optgroup label="Theropods">
+    <option>Tyrannosaurus</option>
+    <option>Velociraptor</option>
+    <option>Deinonychus</option>
+  </optgroup>
+  <optgroup label="Sauropods">
+    <option>Diplodocus</option>
+    <option>Saltasaurus</option>
+    <option>Apatosaurus</option>
+  </optgroup>
+</select>
+```
+
+You can optionally use both `optgroup` and `hr` together:
+
+```html
+<select id="dino-select">
+  <optgroup label="Theropods">
+    <option>Tyrannosaurus</option>
+    <option>Velociraptor</option>
+    <option>Deinonychus</option>
+  </optgroup>
+  <hr>
+  <optgroup label="Sauropods">
+    <option>Diplodocus</option>
+    <option>Saltasaurus</option>
+    <option>Apatosaurus</option>
+  </optgroup>
+</select>
+```
+
 You might want to further customize a `<select>`. For that we need a whole new element: `<selectlist>`.
 
 ## `<selectlist>`
@@ -75,9 +110,9 @@ In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_p
 
 "While it’s relatively easy to style the appearance of the button part of a <select> (the thing you see in the page when the popup is closed), it’s almost impossible to style the options (the thing you see when the popup is open), let alone add more content within the popup. As a result, design systems and component libraries have been rolling out their own selects, made from scratch using custom HTML markup, CSS, and often a lot of JavaScript, in order to have something that integrates nicely with the other components. Unfortunately, doing so correctly with the right accessibility semantics, keyboard support, and popup positioning is not easy." - [Patrick Brosset, CSS Tricks](https://css-tricks.com/the-selectmenu-element/)
 
-The new selectlist HTML element is a more customisable alternative to the select element. 
-After a name change and some API changes, it looks like its finally on its way to being stable.
+The new `selectlist` HTML element is a more customisable alternative to the `select` element. 
+After a name change and some API changes, it looks like its finally on its way to being stable, but its still too early for me to want to document in this article.
 
-Here are some demos from the Microsoft Edge team https://microsoftedge.github.io/Demos/selectlist/
+Here are [some demos](https://microsoftedge.github.io/Demos/selectlist/) from the Microsoft Edge team for a taste of what will be possible in the future. 
 
 [Una CodePen examples](https://codepen.io/collection/QWeLGB/3b329b601dae2f8ebbbc2711f2564d55?grid_type=grid&cursor=eyJwYWdlIjoxfQ==)
