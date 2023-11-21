@@ -113,6 +113,49 @@ In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_p
 The new `selectlist` HTML element is a more customisable alternative to the `select` element. 
 After a name change and some API changes, it looks like its finally on its way to being stable, but its still too early for me to want to document in this article.
 
+Here's an example I made that uses images within the options (something that was not possible with a `select` element):
+
+<iframe src="https://codesandbox.io/embed/nifty-mestorf-q9r727?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="nifty-mestorf-q9r727"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+And here's an example using inline SVG:
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="ZEwxJOw" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/ZEwxJOw">
+  Untitled</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+By nesting a `div` within the `listbox`, you can even display the options horizontally: 
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="xxMWLjZ" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/xxMWLjZ">
+  Untitled</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+To style the currently selected option within the dropdown, use `option:checked`:
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="BaMrwme" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/BaMrwme">
+  Styling the currently selected option in a selectlist</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+You can use a completely custom `button` within the select to open and close it. If you stick to the default button, there's a handy `::marker` pseudo-class we can use to style the arrow:
+
+> this isn't implemented yet in Chrome Canary... make an example when it is ready. Should be selectlist::marker
+
+
 Here are [some demos](https://microsoftedge.github.io/Demos/selectlist/) from the Microsoft Edge team for a taste of what will be possible in the future. 
+
+[A fun demo](https://codepen.io/utilitybend/pen/PoXOzzw) from utilitybend.
 
 [Una CodePen examples](https://codepen.io/collection/QWeLGB/3b329b601dae2f8ebbbc2711f2564d55?grid_type=grid&cursor=eyJwYWdlIjoxfQ==)
