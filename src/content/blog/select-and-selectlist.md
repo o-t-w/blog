@@ -102,7 +102,6 @@ You can optionally use both `optgroup` and `hr` together:
 You might want to further customize a `<select>`. For that we need a whole new element: `<selectlist>`.
 
 ## `<selectlist>`
-**There are currently no up-to-date docs about this new API**
 
 In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_pain_points), styling form elements was voted as one of the worst pain points for developers. According to a [survey](https://www.gwhitworth.com/posts/2019/form-controls-components/) by Greg Whitworth, styling select elements is the form control that gives developers the most frustration.
 
@@ -111,16 +110,21 @@ In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_p
 "While it’s relatively easy to style the appearance of the button part of a <select> (the thing you see in the page when the popup is closed), it’s almost impossible to style the options (the thing you see when the popup is open), let alone add more content within the popup. As a result, design systems and component libraries have been rolling out their own selects, made from scratch using custom HTML markup, CSS, and often a lot of JavaScript, in order to have something that integrates nicely with the other components. Unfortunately, doing so correctly with the right accessibility semantics, keyboard support, and popup positioning is not easy." - [Patrick Brosset, CSS Tricks](https://css-tricks.com/the-selectmenu-element/)
 
 The new `selectlist` HTML element is a more customisable alternative to the `select` element. 
-After a name change and some API changes, it looks like its finally on its way to being stable, but its still too early for me to want to document in this article.
+After a name change and some API changes, it looks like its finally on its way to being stable. It's currently available in Chrome Canary. This is the most useful addition to HTML that we've seen in quite some time. Below are some examples to show what sort of thing will be possible in the future.
 
 Here's an example I made that uses images within the options (something that was not possible with a `select` element):
 
-<iframe src="https://codesandbox.io/embed/nifty-mestorf-q9r727?fontsize=14&hidenavigation=1&theme=dark"
+   <iframe src="https://codesandbox.io/embed/custom-button-vs-default-button-q9r727?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="nifty-mestorf-q9r727"
+     title="custom button vs default button"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+The default `selectlist` button doesn't offer much in terms of customisation. You can nest a `button` element within the select, over which you have full stylistic control. You can nest `<selectedoption></selectedoption>` within the button to reflect whatever DOM elements are in the currently selected `option`. If you stick to the default button, there's a handy `::marker` pseudo-class we can use to style the arrow:
+
+> this isn't implemented yet in Chrome Canary... make an example when it is ready. Should be selectlist::marker
+
 
 And here's an example using inline SVG:
 
@@ -149,10 +153,8 @@ To style the currently selected option within the dropdown, use `option:checked`
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-You can use a completely custom `button` within the select to open and close it. If you stick to the default button, there's a handy `::marker` pseudo-class we can use to style the arrow:
 
-> this isn't implemented yet in Chrome Canary... make an example when it is ready. Should be selectlist::marker
-
+As with a `select` element, you can use <hr> and `<optgroup>` within a `selectlist`. You can also call `.showPicker()` on a `selectlist`.
 
 Here are [some demos](https://microsoftedge.github.io/Demos/selectlist/) from the Microsoft Edge team for a taste of what will be possible in the future. 
 
