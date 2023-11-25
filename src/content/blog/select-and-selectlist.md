@@ -161,3 +161,7 @@ Here are [some demos](https://microsoftedge.github.io/Demos/selectlist/) from th
 [A fun demo](https://codepen.io/utilitybend/pen/PoXOzzw) from utilitybend.
 
 [Una CodePen examples](https://codepen.io/collection/QWeLGB/3b329b601dae2f8ebbbc2711f2564d55?grid_type=grid&cursor=eyJwYWdlIjoxfQ==)
+
+There are certain limitations with selectlist that might require you to build your: selecting multiple options isn't possible. 
+
+Combobox (an element that combines an text input with a dropdown list) is [being developed](https://open-ui.org/components/combobox.explainer/) by the Open UI group seperately. 
