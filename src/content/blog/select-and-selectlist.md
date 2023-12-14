@@ -62,7 +62,7 @@ It's sometimes useful to group options with a select menu. We can now use a `<hr
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-This feature is currently supported in Safari 17 and Chrome 118.
+This feature is supported in Safari 17, Chrome 118 and Firefox 122.
 
 We already had a way to group options with `<optgroup>`, which displays a label for each group:
 
@@ -109,6 +109,37 @@ In the 2023 [State of CSS survey](https://2023.stateofcss.com/en-US/usage/#css_p
 
 "While it’s relatively easy to style the appearance of the button part of a <select> (the thing you see in the page when the popup is closed), it’s almost impossible to style the options (the thing you see when the popup is open), let alone add more content within the popup. As a result, design systems and component libraries have been rolling out their own selects, made from scratch using custom HTML markup, CSS, and often a lot of JavaScript, in order to have something that integrates nicely with the other components. Unfortunately, doing so correctly with the right accessibility semantics, keyboard support, and popup positioning is not easy." - [Patrick Brosset, CSS Tricks](https://css-tricks.com/the-selectmenu-element/)
 
+A lot of developers end up relying on a third-party component library. Not only will that involve a lot of excess JavaScript, it also brings its own complexity. Here's some example markup from Radiux UI 😱:
+
+```jsx
+import * as Select from '@radix-ui/react-select';
+
+export default () => (
+  <Select.Root>
+    <Select.Trigger>…</Select.Trigger>
+    <Select.Portal>
+      <Select.Content>
+        <Select.Viewport>
+          <Select.Item>
+            <Select.ItemText>
+              <img src="…" />
+              Adolfo Hess
+            </Select.ItemText>
+            <Select.ItemIndicator>…</Select.ItemIndicator>
+          </Select.Item>
+          <Select.Item>…</Select.Item>
+          <Select.Item>…</Select.Item>
+        </Select.Viewport>
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+);
+```
+
+## UPDATE THIS SECTION
+### History
+This had previously been added as a new seperate HTML called `selectmenu`, later changed to `selectlist`. It was then decided to augment the `<select>` element rather than creating a new alternative.
+
 The new `selectlist` HTML element is a more customisable alternative to the `select` element. 
 After a name change and some API changes, it looks like its finally on its way to being stable. It's currently available in Chrome Canary. This is the most useful addition to HTML that we've seen in quite some time. Below are some examples to show what sort of thing will be possible in the future.
 
@@ -153,6 +184,8 @@ To style the currently selected option within the dropdown, use `option:checked`
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
+YET ANOTHER EXAMPLE I MADE BUT ONE THAT IS NICELY DESIGNED, based on the design of the Newskit component:
+https://codepen.io/cssgrid/pen/MWLLwWe
 
 As with a `select` element, you can use <hr> and `<optgroup>` within a `selectlist`. You can also call `.showPicker()` on a `selectlist`.
 
