@@ -58,7 +58,7 @@ It’s well past time that Outlook got a proper update, and [it’s finally here
 Outlook on Windows didn’t support `background-image`, one of the oldest and [most useful CSS properties](https://www.campaignmonitor.com/css/email-client/outlook-2007-16/). It didn’t support `border-radius`, flexbox, `float`, `opacity`, `outline`, `z-index`, animated GIFs and a whole host of other features. Even support for `width`, `margin`, and `display: none` was partial and buggy. Usage of Outlook has been decreasing over time but remains the third most popular email client. Outlook was truly terrible yet too big to ignore.
 
 <figure>
-    <img src="/assets/emailstats.png"
+    <img src="/emailstats.png"
          alt="">
     <figcaption><a style="text-decoration: none; color: rgb(11, 128, 255) !important" href="https://www.litmus.com/email-client-market-share">Email Client Market Share</a> as of February 2023 calculated from over 1.3 billion opens in Litmus Email Analytics</figcaption>
 </figure>

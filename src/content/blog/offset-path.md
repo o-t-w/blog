@@ -116,9 +116,7 @@ offset-path: ellipse(40px 200px at center);
 ```
 
 ## `inset()`
-Defines a rectangle via insets from each edge of the reference box.
-
-You can specify anywhere from one to four values.
+Defines a rectangle via insets from each edge of the reference box. You can specify from one to four values.
 
 Set all sides to be inset by 15%:
 ```css
