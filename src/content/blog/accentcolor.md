@@ -1,7 +1,6 @@
 ---
 pubDate: 'Aug 08 2023'
 title: User-adaptive interfaces with AccentColor
-postSlug: accentcolor
 tags:
   - CSS
   - UI design

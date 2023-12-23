@@ -1,7 +1,6 @@
 ---
 pubDate: 'Mar 27 2023'
 title: The clear-site-data header
-postSlug: clear-site-data-header
 tags:
   - headers
 heroImage: "/logosquare.png"

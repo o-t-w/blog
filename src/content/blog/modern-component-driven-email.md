@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jun 18 2023'
 title: Modern component-driven HTML email
-postSlug: modern-component-driven-email
 tags:
   - HTML Email
   - React

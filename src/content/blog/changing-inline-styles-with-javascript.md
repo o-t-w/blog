@@ -1,7 +1,6 @@
 ---
 pubDate: 'May 24 2023'
 title: Changing inline styles with JavaScript
-postSlug: changing-inline-styles-with-javascript
 tags:
   - CSS
   - JavaScript

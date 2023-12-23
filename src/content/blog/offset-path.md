@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jun 11 2023'
 title: A guide to CSS shapes and offset-path
-postSlug: offset-path
 tags:
   - CSS
   - animation

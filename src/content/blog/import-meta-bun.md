@@ -1,7 +1,6 @@
 ---
 pubDate: 'Apr 02 2023'
 title: __dirname & __filename equivalent in Bun
-postSlug: import-meta-bun
 tags:
   - Bun
 heroImage: "/bun.png"

@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 27 2023'
 title: Import JSON, CSS and more with import attributes
-postSlug: import-attributes
 tags:
   - JavaScript
 heroImage: "/importattribute.png"

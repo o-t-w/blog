@@ -1,7 +1,6 @@
 ---
 pubDate: 'May 19 2023'
 title: Using linear() for better animation
-postSlug: linear
 tags:
   - animation
   - Web Animation API

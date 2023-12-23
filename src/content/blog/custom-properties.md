@@ -1,7 +1,6 @@
 ---
 pubDate: 'May 24 2023'
 title: Register custom properties in CSS, get and update them with JavaScript
-postSlug: custom-properties
 tags:
   - CSS
   - Houdini

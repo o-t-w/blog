@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 27 2023'
 title: Converting between iterables and web streams
-postSlug: converting-between-iterables-and-web-streams
 tags:
   - JavaScript
   - streams

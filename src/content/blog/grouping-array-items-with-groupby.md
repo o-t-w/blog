@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 20 2023'
 title: Grouping array items with groupBy()
-postSlug: grouping-array-items-with-groupby
 tags:
   - JavaScript
   - arrays

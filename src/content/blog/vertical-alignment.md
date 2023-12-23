@@ -1,5 +1,5 @@
 ---
-pubDate: 'Dec 21 2023'
+pubDate: 'Dec 23 2023'
 title: Easy vertical centering without flexbox
 tags:
   - CSS
@@ -7,7 +7,7 @@ heroImage: "/easy-centering.png"
 description: Easy vertical alignment with display block
 ---
 
-Its currently not uncommon to see `display: flex` applied to just about everything. The addition of flexbox to CSS made vertical alignment significantly easier. Until now, the `align-content` CSS property only worked with flexbox and CSS grid. Now that power has come to `display: block`. `display: block` is the default value of the ubiquitous <div> element. Its handy to be able to center things without the need to write any additional CSS to change this default display value.
+It is common to see `display: flex` applied to just about everything. The addition of flexbox to CSS made vertical alignment significantly easier. Until now, the `align-content` CSS property only worked with flexbox and CSS grid. Now that power has come to `display: block`. `display: block` is the default value of the ubiquitous <div> element. Its handy to be able to center things without the need to write any additional CSS to change this default display value.
 
 If all we need is vertical centering, instead of:
 

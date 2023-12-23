@@ -1,7 +1,6 @@
 ---
 pubDate: 'Oct 31 2023'
 title: The AV1 video codec gains broader hardware support
-postSlug: av1
 tags:
   - video
 heroImage: "/m3.jpg"

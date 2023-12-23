@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 01 2023'
 title: System font deep dive
-postSlug: system-font-deep-dive
 tags:
   - CSS
   - Typography

@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 16 2023'
 title: Using emoji on the web
-postSlug: using-emoji-on-the-web
 tags:
   - emoji
   - fonts

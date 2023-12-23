@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 30 2023'
 title: Declarative Shadow DOM
-postSlug: declarative-shadow-dom
 tags:
   - JavaScript
   - Shadow DOM

@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jun 06 2023'
 title: image-set() for CSS background images
-postSlug: image-set
 tags:
   - CSS
   - images

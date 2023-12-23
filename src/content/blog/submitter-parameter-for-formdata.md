@@ -1,7 +1,6 @@
 ---
 pubDate: 'Mar 25 2023'
 title: The submitter parameter for FormData
-postSlug: submitter-parameter-for-formdata
 tags:
   - forms
   - javascript

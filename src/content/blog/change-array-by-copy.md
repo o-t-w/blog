@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jul 20 2023'
 title: Change array by copy
-postSlug: change-array-by-copy
 tags:
   - JavaScript
   - arrays

@@ -1,7 +1,6 @@
 ---
 pubDate: 'Jun 16 2023'
 title: Standardising design tokens
-postSlug: design-tokens
 tags:
   - Design Tokens
   - Design Systems
