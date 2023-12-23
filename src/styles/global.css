@@ -5,7 +5,8 @@
  */
 
 :root {
-	--accent: #2337ff;
+	--accent: oklch(0.44 0.21 258.48);
+	--accent-light: #0b80ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -117,7 +118,7 @@ pre, code {
 	font-size: 16px !important;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
+	border-left: 4px solid var(--accent-light);
 	padding: 0 0 0 20px;
 	margin: 0px;
 	font-size: 18px;

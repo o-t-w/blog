@@ -9,7 +9,7 @@ heroImage: "/scrollbars.png"
 description: How to style scrollbars... and the question of whether you should.  
 ---
 
-It’s been possible to style scrollbars for many years but only in a [non-standard way](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar) that’s supported in Chrome, Edge and Safari, but not Firefox. This makes use of a large amount of CSS pseudo-elements:
+It’s been possible to style scrollbars for many years but only in a [non-standard way](https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar). This is supported in Chrome, Edge and Safari, but not Firefox. This makes use of a large amount of CSS pseudo-elements:
 
 - `::-webkit-scrollbar`
 - `::-webkit-scrollbar-button`
@@ -21,7 +21,7 @@ It’s been possible to style scrollbars for many years but only in a [non-stand
 
 These pseudo-elements are not on a standards track, so won’t ever get implemented in Firefox.
 
-In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both of these properties. Chrome 118 has also [added support](https://chromestatus.com/feature/5665308343795712). Safari have expressed a positive position on both [scrollbar-color](https://github.com/WebKit/standards-positions/issues/134) or [scrollbar-width](https://github.com/WebKit/standards-positions/issues/133#issuecomment-1551300724)).
+In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. Chrome 118 has also [added support](https://chromestatus.com/feature/5665308343795712). Safari have expressed a positive position on both [scrollbar-color](https://github.com/WebKit/standards-positions/issues/134) or [scrollbar-width](https://github.com/WebKit/standards-positions/issues/133#issuecomment-1551300724)).
 
 The older non-standard approach allowed a great deal of control. You could even recreate Windows 95 style scrollbars for a retro look if you wanted to. The standardized CSS properties are much more limited in scope. 
 
