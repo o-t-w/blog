@@ -11,7 +11,7 @@ AVIF is also supported in most [email clients](https://www.caniemail.com/feature
 
 AVIF is newer than WebP, and superior for most use-cases. Compared to JPEG or PNG at a similar visual quality, it offers a vastly smaller file size.
 
-AVIF is great for still images, but it supports animation so its also an [ideal replacement for gifs](https://css-tricks.com/gifs-without-the-gif-the-most-performant-image-and-video-options-right-now/).
+AVIF supports animation so its also an [ideal replacement for gifs](https://css-tricks.com/gifs-without-the-gif-the-most-performant-image-and-video-options-right-now/).
 
 In the tooling space, there is still some catching-up to do. Figma does not support importing or exporting AVIF images, for example. 
 
