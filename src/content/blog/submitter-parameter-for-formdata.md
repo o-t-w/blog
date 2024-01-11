@@ -4,7 +4,7 @@ title: The submitter parameter for FormData
 tags:
   - forms
   - javascript
-heroImage: "/logosquare.png"
+heroImage: "/placeholder.png"
 description: Learn about the new submitter parameter for FormData
 ---
 

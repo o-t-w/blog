@@ -3,7 +3,7 @@ pubDate: 'Mar 27 2023'
 title: The clear-site-data header
 tags:
   - headers
-heroImage: "/logosquare.png"
+heroImage: "/placeholder.png"
 description: Wipe data from a web browser with this header
 ---
 

@@ -1,7 +1,7 @@
 ---
 pubDate: 'Jan 09 2024'
 title: AVIF Everywhere
-heroImage: "/avif.jpg"
+heroImage: '/avif.jpg'
 description: A new image format for the web finally gets full browser support.
 ---
 
