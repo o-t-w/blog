@@ -1,5 +1,5 @@
 ---
-pubDate: 'Feb 10 2024'
+pubDate: 'Feb 17 2024'
 title: Menus, toasts and more with the Popover API, the dialog element, invokers, anchor positioning and @starting-style
 tags:
   - HTML
@@ -7,34 +7,32 @@ heroImage: "/popover.png"
 description: Dropdowns, menus, tooltips, comboboxes, toasts — the popover HTML attribute will make building a large variety of UI components easier.
 ---
 
-Dropdowns, menus, tooltips, comboboxes, bottom sheets, toasts — the `popover` attribute will make building a large variety of UI components easier. The `popover` attribute is now available in Chrome, Edge, Safari and behind a flag in Firefox. Much of what I cover in this post is also useful when working with the HTML `<dialog>` element. 
-
-The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most relevant semantically for each particular use case. To open and close the popover, a `button` element needs to include a `popovertarget` attribute with a value that matches the `id` of the popover.
+Dropdowns, menus, tooltips, comboboxes, bottom sheets, toasts — the `popover` attribute will make building a large variety of UI components easier. A popover is an overlay displayed on top of the main content of a web page. Unlike a dialog, they are always [non-modal](https://hidde.blog/dialog-modal-popover-differences/). The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most appropriate semantically for each particular use case. To toggle a popover open and closed, a `button` element needs to include an `invoketarget` attribute with a value that matches the `id` of the popover.
 
 ```html
-<button popovertarget="foobar"> Open Popover </button>
+<button invoketarget="foobar">Toggle popover</button>
 
 <div id="foobar" popover>
   Popover content goes here...
 </div>
 ```
 
-## Invokers
-" Invokers allow for declarative control using HTML attributes for equivalent JavaScript APIs. It is very common on the web to control interactive elements using button elements, adding JavaScript event listeners to control what a button does when pressed. Invokers provide a declarative way to achieve the same effect for simple behaviors, such as toggling a popover or dialog element."
+A `<button>` with an `invoketarget` attribute is called an _invoker_. Invokers might eventually bring all sorts of power to HTML markup, but in its first iteration its limited to opening and closing popovers and dialogs. You don’t need `onclick=` or `addEventListener`, it’ll just work. 
 
-`popovertarget` is popover-specific. What if we wanted to open a HTML `<dialog>` element in a similar way? `popovertarget` will likely eventually be [deprecated and replaced](https://github.com/openui/open-ui/issues/869) by the more flexible `invoketarget`. A `<button>` with an `invoketarget` attribute is called an _invoker_. Invokers might eventually bring all sorts of power to HTML markup, but in its first iteration its limited to opening and closing popovers and dialogs. Let's rewrite the previous example with invokers:
+## Browser support
+The `popover` attribute is supported in Chrome, Safari, and behind a flag in Firefox. The `popovertarget` attribute currently has better browser support than `invoketarget`. `popovertarget` is popover-specific, offering a declarative way to toggle popovers open and closed. `popovertarget` will likely eventually be [deprecated and replaced](https://github.com/openui/open-ui/issues/869) by the more flexible `invoketarget`. After popovers shipped in Chrome, some smart people realised it would also be handy to have a declarative way for buttons to open dialogs and perform other tasks, which is why `invoketarget` has superseded `popovertarget`. A [polyfill for invokers](https://www.npmjs.com/package/invokers-polyfill) is available.
 
-```html
-<button invoketarget="foobar"> Open Popover </button>
-
-<div id="foobar" popover>
-  Popover content goes here...
-</div>
-```
+## Actions
 
 Along with the `invoketarget` attribute, a button can also optionally include an `invokeaction` attribute. The different actions are listed below.
 
 <table>
+    <thead>
+    <tr>
+    <th>Action</th>
+    <th>Description</th>
+    </tr>
+    </thead>
    <tbody>
     <tr>
      <td><code data-x="">auto</code></td>
@@ -78,8 +76,12 @@ While a selling point of invokers is forgoing JavaScript, they also provide a ne
 ```js
 document.querySelector("[popover]").addEventListener("invoke", function(event) {
     console.log(event.action);
+    console.log(event.invoker);
+    // do something useful here...
   });
 ```
+
+Within the event handler you can get a reference to whichever button triggered the invocation with `event.invoker` and determine the action specified by `invokeaction` with `event.action`.
 
 ## Default popover styles
 
@@ -241,7 +243,8 @@ With a component like a toast or a dialog, we generally want to position the ele
 
 ![](/youtube-menu-example.png)
 
-This sort of behaviour usually requires JavaScript and led to the creation of the popular JavaScript libraries Popper, Floating UI and Tether. With the addition of anchor positioning to CSS, we'll no longer need to reach for JavaScript. The [`anchor()` function](https://drafts.csswg.org/css-anchor-position-1/) allows developers to tether an absolutely positioned element to one or more other elements on the page. Unfortunately it's a work-in-progress so I'll revisit the topic when the spec and implementation are more solid.
+This sort of behaviour usually requires JavaScript and led to the creation of the popular JavaScript libraries Popper, Floating UI and Tether. With the addition of anchor positioning to CSS, we'll no longer need to reach for JavaScript. The [`anchor()` function](https://drafts.csswg.org/css-anchor-position-1/) allows developers to tether an absolutely positioned element to one or more other elements on the page. Unfortunately it's a work-in-progress so I'll revisit the topic when the spec and implementation are more solid. For now, the open-source [floating-ui](https://floating-ui.com/) library is probably the best option
+
 
 ## Conclusion
 

@@ -74,8 +74,13 @@ p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
 }
+
+.prose h2 {
+	margin-top: 1.5em;
+}
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -217,4 +222,8 @@ hr {
     --color-card: 230, 230, 230;
     --color-card-muted: 205, 205, 205;
     --color-border: 11, 128, 255;
+  }
+
+ td:nth-child(2) {
+	padding-left: 16px;
   }
