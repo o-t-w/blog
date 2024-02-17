@@ -7,7 +7,7 @@ heroImage: "/popover.png"
 description: Dropdowns, menus, tooltips, comboboxes, toasts — the popover HTML attribute will make building a large variety of UI components easier.
 ---
 
-Dropdowns, menus, tooltips, comboboxes, bottom sheets, toasts — the `popover` attribute will make building a large variety of UI components easier. A popover is an overlay displayed on top of the main content of a web page. Unlike a dialog, they are always [non-modal](https://hidde.blog/dialog-modal-popover-differences/). The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most appropriate semantically for each particular use case. To toggle a popover open and closed, a `button` element needs to include an `invoketarget` attribute with a value that matches the `id` of the popover.
+Dropdowns, menus, tooltips, comboboxes, toasts — the `popover` attribute will make building a large variety of UI components easier. Unlike a dialog, a popover is always [non-modal](https://hidde.blog/dialog-modal-popover-differences/) — meaning they don't block interaction with anything else on the page. The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most appropriate semantically for each particular use case. To toggle a popover open and closed, a `button` element needs to include an `invoketarget` attribute with a value that matches the `id` of the popover.
 
 ```html
 <button invoketarget="foobar">Toggle popover</button>
@@ -158,7 +158,7 @@ If I wanted to position a popover in the bottom left, for example, I'd need to s
 }
 ```
 
-## The top layer
+## Beyond `z-index`: The top layer
 Some JavaScript frameworks have something called _portals_ for rendering things like tooltips and dialogs. I always found portals difficult to work with. The [React docs](https://react.dev/reference/react-dom/createPortal#rendering-to-a-different-part-of-the-dom) describe portals like so: 
 
 > "Portals let your components render some of their children into a different place in the DOM. This lets a part of your component “escape” from whatever containers it may be in. For example, a component can display a modal dialog or a tooltip that appears above and outside of the rest of the page... You can use a portal to create a modal dialog that floats above the rest of the page, even if the component that summons the dialog is inside a container with overflow: hidden."
