@@ -19,8 +19,28 @@ Dropdowns, menus, tooltips, comboboxes, bottom sheets, toasts — the `popover` 
 
 A `<button>` with an `invoketarget` attribute is called an _invoker_. Invokers might eventually bring all sorts of power to HTML markup, but in its first iteration its limited to opening and closing popovers and dialogs. You don’t need `onclick=` or `addEventListener`, it’ll just work. 
 
+The fact that popovers work without JavaScript is nice, but toggling `display: none` on an element using JS was never challenging. Popovers do, however, bring far more to the table:
+
+- Popovers make use of the top layer.  
+- Optional light-dismiss functionality: clicking outside of the popover will close the popover.
+- Hitting the escape key will close the popover.
+- Focus management: when you open a popover, the next tab stop will be the first focusable element inside the popover. If you've focused an element within the popover and then close the popover, focus is returned to the correct place (this was tricky to get right with JavaScript).
+
 ## Browser support
-The `popover` attribute is supported in Chrome, Safari, and behind a flag in Firefox. The `popovertarget` attribute currently has better browser support than `invoketarget`. `popovertarget` is popover-specific, offering a declarative way to toggle popovers open and closed. `popovertarget` will likely eventually be [deprecated and replaced](https://github.com/openui/open-ui/issues/869) by the more flexible `invoketarget`. After popovers shipped in Chrome, some smart people realised it would also be handy to have a declarative way for buttons to open dialogs and perform other tasks, which is why `invoketarget` has superseded `popovertarget`. A [polyfill for invokers](https://www.npmjs.com/package/invokers-polyfill) is available.
+The `popover` attribute is supported in Chrome, Safari, and behind a flag in Firefox. The `popovertarget` attribute currently has better browser support than `invoketarget`. `popovertarget` is popover-specific, offering a declarative way to toggle popovers open and closed. `popovertarget` will likely eventually be [deprecated and replaced](https://github.com/openui/open-ui/issues/869) by the more flexible `invoketarget`. After popovers shipped in Chrome, some smart people realised it would also be handy to have a declarative way for buttons to open dialogs and perform other tasks, which is why there are two ways to do the same thing. A [polyfill for invokers](https://www.npmjs.com/package/invokers-polyfill) is available.
+
+## Light dismiss
+The `popover` attribute can be set to either `auto` (the default) or `manual`. When set to `auto`, the popover has light dismiss functionality: if the user clicks outside of the popover, the popover is closed. Opening another popover will also close the popover. Pressing the escape key will also close the popover.
+
+When set to `manual`, there is no light dismiss functionality and the escape key does not close the popover. The popover must be explicitly closed by pressing the button again (or by calling `hidePopover()` in JavaScript). It is not closed when another popover is opened, meaning multiple `manual` popovers can be open at the same time. 
+
+```html
+<button invoketarget="foobar">Toggle popover</button>
+
+<div id="foobar" popover="manual">
+  Popover content goes here...
+</div>
+```
 
 ## Actions
 
@@ -65,7 +85,7 @@ Using invokers for the dialog element looks much the same as the popover example
 
 <dialog id="my-dialog">
   Dialog content goes here.
-  <button invoketarget="my-dialog" invokeaction="close">Close</button>
+  <button invoketarget="my-dialog" invokeaction="close">Close dialog</button>
 </dialog>
 ```
 
@@ -82,6 +102,37 @@ document.querySelector("[popover]").addEventListener("invoke", function(event) {
 ```
 
 Within the event handler you can get a reference to whichever button triggered the invocation with `event.invoker` and determine the action specified by `invokeaction` with `event.action`.
+
+## Popover methods and events
+
+For many use cases, the popover API doesn’t require JavaScript. What if we want to display a toast notification without a user first interacting with a button, for example?
+
+There are methods to show, hide, or toggle a popover element: `.showPopover()`, `.hidePopover()` and `.togglePopover()`, respectively. 
+
+```js
+document.getElementById('toast').showPopover();
+```
+
+When it comes to listening to events on the popover, there’s just one: a `toggle` event that fires both when the popover gets shown and when it gets hidden (there are no separate open or close events). This would be useful for a toast alert that automatically disappears after a set amount of time, for example, as there’s no markup or CSS based way to do that. 
+
+Its worth checking that the popover isn’t already hidden before calling `hidePopover()`. We can do that with either `.matches(':popover-open')` or [`.checkVisibility()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility), both of which will return `true` if the popover is open. 
+
+```js
+toast.addEventListener('toggle', function(event) {
+    if (event.target.matches(':popover-open')) {
+        setTimeout(function() {
+        toast.hidePopover();
+    }, 3000);
+    }
+});
+```
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="XWxVWyw" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/XWxVWyw">
+  Toast using popover API with entry and exit animation</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 ## Default popover styles
 
@@ -106,12 +157,6 @@ If I wanted to position a popover in the bottom left, for example, I'd need to s
     left: 12px;
 }
 ```
-
-The fact that popovers work without JavaScript is pretty cool, but toggling `display: none` on a fixed-position element using JS was never challenging. Popovers do, however, bring more to the table than that. Popovers and the `<dialog>` element both make use of the top layer.  
-
-Light-dismiss functionality. Clicking outside of the popover will close the popover.
-Focus management. When you open a popover, the next tab stop will be the first focusable element inside the popover. If you've focused an element within the popover and then close the popover with the escape key or light dismiss, focus is returned to the correct place.
-Hitting the escape key will close the popover.
 
 ## The top layer
 Some JavaScript frameworks have something called _portals_ for rendering things like tooltips and dialogs. I always found portals difficult to work with. The [React docs](https://react.dev/reference/react-dom/createPortal#rendering-to-a-different-part-of-the-dom) describe portals like so: 
@@ -206,37 +251,6 @@ The `:open` and `:closed` selectors are new pseudo-selectors. They work for deta
 
 These examples all work in Chrome. `@starting-style` and `transition-behavior` are part of [Interop 2024](https://web.dev/blog/interop-2024), meaning they'll likely be fully supported by the end of the year. [Safari 17.4](https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#Web-Animations) added support for `transition-behavior: allow-discrete`. The `overlay` property is still being debated.
 
-## Popover methods and events
-
-For many use cases, the popover API doesn’t require JavaScript. What if we want to display a toast notification without a user first interacting with a button, for example?
-
-There are methods to show, hide, or toggle a popover element: `.showPopover()`, `.hidePopover()` and `.togglePopover()`, respectively. 
-
-```js
-document.getElementById('toast').showPopover();
-```
-
-When it comes to listening to events on the popover, there’s just one: a `toggle` event that fires both when the popover gets shown and when it gets hidden (there are no separate open or close events). This would be useful for a toast alert that automatically disappears after a set amount of time as there’s no markup or CSS based way to do that. 
-
-Its worth checking that the popover isn’t already hidden before calling `hidePopover()`. We can do that with either `.matches(':popover-open')` or [`.checkVisibility()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility), both of which will return `true` if the popover is open. 
-
-```js
-toast.addEventListener('toggle', function(event) {
-    if (event.target.matches(':popover-open')) {
-        setTimeout(function() {
-        toast.hidePopover();
-    }, 3000);
-    }
-});
-```
-
-<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="XWxVWyw" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/XWxVWyw">
-  Toast using popover API with entry and exit animation</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
 ## Anchor positioning
 
 With a component like a toast or a dialog, we generally want to position the element in relation to the viewport. We typically display a dialog in the center of the screen, and a toast at the bottom. That’s easy to do. There are other times when you need to position an element in relation to another element on the page. For a dropdown menu, for example, we want to place the popover in relation to the button that opened it. This is far more challenging.
@@ -248,4 +262,4 @@ This sort of behaviour usually requires JavaScript and led to the creation of th
 
 ## Conclusion
 
-I covered a lot in this article but there's more to come. The popover attribute can be useful all by itself but some forthcoming web APIs will help cover more use cases. Anchor positioning looks set to be the most useful CSS feature since grid. Building a menu using the popover attribute will hopefully be made far easier with the upcoming [`focusgroup` attribute](https://open-ui.org/components/focusgroup.explainer/). There's a strong chance we'll finally get an easy and standard way to achieve styled tooltips on the web with [`interesttarget`](https://open-ui.org/components/invokers.explainer/), a declarative way to show a popover on hover. Stay tuned.
+I covered a lot in this article but there's more to come. The popover attribute can be useful all by itself but some forthcoming web APIs will help cover more use cases. Anchor positioning looks set to be the most useful CSS feature since grid. There's a strong chance we'll finally get an easy and standard way to achieve styled tooltips on the web with [`interesttarget`](https://open-ui.org/components/invokers.explainer/), a declarative way to show a popover on hover. Stay tuned.
