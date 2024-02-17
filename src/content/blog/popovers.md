@@ -42,7 +42,7 @@ When set to `manual`, there is no light dismiss functionality and the escape key
 </div>
 ```
 
-## Actions
+## Invoker actions
 
 Along with the `invoketarget` attribute, a button can also optionally include an `invokeaction` attribute. The different actions are listed below.
 
@@ -249,7 +249,7 @@ dialog:closed {
 
 The `:open` and `:closed` selectors are new pseudo-selectors. They work for details, dialog, and select elements — but not for popovers. You can use `dialog[open]` and `dialog:not([open])` for the time being for better browser support.
 
-These examples all work in Chrome. `@starting-style` and `transition-behavior` are part of [Interop 2024](https://web.dev/blog/interop-2024), meaning they'll likely be fully supported by the end of the year. [Safari 17.4](https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#Web-Animations) added support for `transition-behavior: allow-discrete`. The `overlay` property is still being debated.
+These examples all work in Chrome. `@starting-style` and `transition-behavior` are part of [Interop 2024](https://web.dev/blog/interop-2024), meaning they'll likely be fully supported by the end of the year. [Safari 17.4](https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#Web-Animations) added support for `transition-behavior: allow-discrete`. WebKit have yet to declare a [position](https://github.com/WebKit/standards-positions/issues/169) on the `overlay` property.
 
 ## Anchor positioning
 
