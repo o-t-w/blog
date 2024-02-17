@@ -22,7 +22,7 @@ A `<button>` with an `invoketarget` attribute is called an _invoker_. Invokers m
 The fact that popovers work without JavaScript is nice, but toggling `display: none` on an element using JS was never challenging. Popovers do, however, bring far more to the table:
 
 - Popovers make use of the top layer.  
-- Optional light-dismiss functionality: clicking outside of the popover will close the popover.
+- Light-dismiss functionality: clicking outside of the popover will close the popover.
 - Hitting the escape key will close the popover.
 - Focus management: when you open a popover, the next tab stop will be the first focusable element inside the popover. If you've focused an element within the popover and then close the popover, focus is returned to the correct place (this was tricky to get right with JavaScript).
 
@@ -30,9 +30,9 @@ The fact that popovers work without JavaScript is nice, but toggling `display: n
 The `popover` attribute is supported in Chrome, Safari, and behind a flag in Firefox. The `popovertarget` attribute currently has better browser support than `invoketarget`. `popovertarget` is popover-specific, offering a declarative way to toggle popovers open and closed. `popovertarget` will likely eventually be [deprecated and replaced](https://github.com/openui/open-ui/issues/869) by the more flexible `invoketarget`. After popovers shipped in Chrome, some smart people realised it would also be handy to have a declarative way for buttons to open dialogs and perform other tasks, which is why there are two ways to do the same thing. A [polyfill for invokers](https://www.npmjs.com/package/invokers-polyfill) is available.
 
 ## Light dismiss
-The `popover` attribute can be set to either `auto` (the default) or `manual`. When set to `auto`, the popover has light dismiss functionality: if the user clicks outside of the popover, the popover is closed. Opening another popover will also close the popover. Pressing the escape key will also close the popover.
+The `popover` attribute can be set to either `auto` (the default) or `manual`. When set to `auto`, the popover has light dismiss functionality: if the user clicks outside of the popover, the popover is closed. Pressing the escape key will also close the popover. Only one `auto` popover is ever open at a time.
 
-When set to `manual`, there is no light dismiss functionality and the escape key does not close the popover. The popover must be explicitly closed by pressing the button again (or by calling `hidePopover()` in JavaScript). It is not closed when another popover is opened, meaning multiple `manual` popovers can be open at the same time. 
+When set to `manual`, there is no light dismiss functionality and the escape key does not close the popover. The popover must be explicitly closed by pressing the button again (or by calling `hidePopover()` in JavaScript). Multiple `manual` popovers can be open at the same time. 
 
 ```html
 <button invoketarget="foobar">Toggle popover</button>
@@ -166,7 +166,7 @@ Some JavaScript frameworks have something called _portals_ for rendering things 
 When working with either the `<dialog>` element (rather than crafting one out of divs) or the `popover` attribute, you can avoid this issue entirely — no portals required. Their location in the DOM doesn't matter. Its often convenient to collocate the markup for a popover or `<dialog>` together with the button that opens it. They can appear anywhere in your markup and won't get cropped by `overflow: hidden` on a parent element. They make use of the top layer, which is a native web solution for rendering content above the rest of the document. The top layer sits above the document and always trumps `z-index`. An element in the top layer can also make use of a styleable `::backdrop` pseudo-element.
 
 ## Animate an element into and out of the top layer
-When a popover or dialog gets opened, you may want an entry animation. Perhaps a quick opacity fade-in, for example. `@starting-style` is used to animate an element into view with a CSS `transition` (you don't need `@starting-style` when working with `@keyframes`). `@starting-style` works both when you're adding a new element to the DOM and when an element is already in the DOM but is being made visible by changing its display value from `display: none`. When in a closed state, both the popover attribute and the `<dialog>` element make use of `display: none` under the hood, so `@starting-style` can be used to animate them onto the page. 
+By default, when a popover or dialog is opened, it instantly appears. You might want to add an entry animation — perhaps a quick opacity fade-in, for example. `@starting-style` is used to animate an element into view with a CSS `transition` (you don't need `@starting-style` when working with `@keyframes`). `@starting-style` works both when you're adding a new element to the DOM and when an element is already in the DOM but is being made visible by changing its display value from `display: none`. When in a closed state, both the popover attribute and the `<dialog>` element make use of `display: none` under the hood, so `@starting-style` can be used to animate them onto the page. 
 
 The following transition will fade and spin the popover into view, and scale down the size of the popover for the exit transition.
 
@@ -204,7 +204,7 @@ The popover will transition from its `@starting-style` styles to its `[popover]:
 
 The `overlay` transition is necessary boilerplate when transitioning an element in or out of the top layer. The [`overlay`](https://drafts.csswg.org/css-position-4/#overlay) property was added to CSS purely for this use case and has no other practical application. It is an unusual property to the extent that, outside of transitions, it can only be specified by the browser — you can't set it with your own CSS. By default, a dialog or popover is instantly removed from the top layer when closed. This will lead to the element getting clipped and obscured. By transitioning `overlay`, the element stays in the top layer until the transition has finished. 
 
-`transition-behavior` is another new CSS property that can be set to either `normal` or `allow-discrete`. In the above code example I'm using the shorthand.
+`transition-behavior` is a new CSS property that can be set to either `normal` or `allow-discrete`. In the above code example I'm using the shorthand.
 
 Similarly for the `display` property, by including it in the transition and specifying `transition-behavior: allow-discrete` we ensure that a change from `display: none` happens at the very start of the entrance transition and that a change to `display: none` happens at the very end of the exit transition.
 
