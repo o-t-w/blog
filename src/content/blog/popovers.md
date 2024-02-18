@@ -118,12 +118,12 @@ When it comes to listening to events on the popover, there’s just one: a `togg
 Its worth checking that the popover isn’t already hidden before calling `hidePopover()`. We can do that with either `.matches(':popover-open')` or [`.checkVisibility()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility), both of which will return `true` if the popover is open. 
 
 ```js
-toast.addEventListener('toggle', function(event) {
-    if (event.target.matches(':popover-open')) {
-        setTimeout(function() {
-        toast.hidePopover();
+toast.addEventListener("toggle", function (event) {
+  if (event.target.matches(":popover-open")) {
+    setTimeout(function () {
+      toast.hidePopover();
     }, 3000);
-    }
+  }
 });
 ```
 
@@ -145,6 +145,8 @@ By default a popover is set to `position: fixed` and displayed in the center of 
     height: fit-content;
     inset: 0px;
     margin: auto;
+    border: solid;
+    padding: 0.25em;
 }
 ```
 
@@ -253,12 +255,21 @@ These examples all work in Chrome. `@starting-style` and `transition-behavior` a
 
 ## Anchor positioning
 
-With a component like a toast or a dialog, we generally want to position the element in relation to the viewport. We typically display a dialog in the center of the screen, and a toast at the bottom. That’s easy to do. There are other times when you need to position an element in relation to another element on the page. For a dropdown menu, for example, we want to place the popover in relation to the button that opened it. This is far more challenging.
+With a component like a toast or a dialog, we generally want to position the element in relation to the viewport. We typically display a dialog in the center of the screen, and a toast at the bottom. That’s easy to do. There are other times when you need to position an element in relation to another element on the page. For a dropdown menu, for example, we want to place the popover in relation to the button that opened it. This is more challenging.
 
 ![](/youtube-menu-example.png)
 
-This sort of behaviour usually requires JavaScript and led to the creation of the popular JavaScript libraries Popper, Floating UI and Tether. With the addition of anchor positioning to CSS, we'll no longer need to reach for JavaScript. The [`anchor()` function](https://drafts.csswg.org/css-anchor-position-1/) allows developers to tether an absolutely positioned element to one or more other elements on the page. Unfortunately it's a work-in-progress so I'll revisit the topic when the spec and implementation are more solid. For now, the open-source [floating-ui](https://floating-ui.com/) library is probably the best option
+This sort of behaviour usually requires JavaScript and led to the creation of the popular JavaScript libraries Popper, Floating UI and Tether. With the addition of anchor positioning to CSS, we'll no longer need to reach for JavaScript. The [`anchor()` function](https://drafts.csswg.org/css-anchor-position-1/) allows developers to tether an absolutely positioned element to one or more other elements on the page. Unfortunately it's a work-in-progress so I'll revisit the topic when the spec and implementation are more solid. 
 
+Even without anchor positioning, the use of the top layer by popovers simplifies positioning. Let's say you have a button with `position: static`, a dropdown set to `position: absolute` and some ancester div with a position of `relative`. Without the popover API, this could get tricky: `.getBoundingClientRect()` gives coordinates relative to the viewport but in this scenario positioning the dropdown is relative to the ancester. By making use of the popover API, you don't need to worry about positioned ancestors because the popover is in the top layer, so `getBoundingClientRect()` is probably enough for your positioning needs:
+
+```js
+const popover = document.querySelector("#my-popover");
+const buttonPosition = document.querySelector("#popover-invoker").getBoundingClientRect();
+
+popover.style.left = `${buttonPosition.left}px`;
+popover.style.top = `${buttonPosition.bottom + 4}px`;
+```
 
 ## Conclusion
 
