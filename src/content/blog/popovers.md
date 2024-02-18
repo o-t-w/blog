@@ -7,7 +7,7 @@ heroImage: "/popover.png"
 description: Dropdowns, menus, tooltips, comboboxes, toasts — the popover HTML attribute will make building a large variety of UI components easier.
 ---
 
-Dropdowns, menus, tooltips, comboboxes, toasts — the `popover` attribute will make building a large variety of UI components easier. Unlike a dialog, a popover is always [non-modal](https://hidde.blog/dialog-modal-popover-differences/) — meaning they don't block interaction with anything else on the page. The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most appropriate semantically for each particular use case. To toggle a popover open and closed, a `button` element needs to include an `invoketarget` attribute with a value that matches the `id` of the popover.
+Dropdowns, menus, tooltips, comboboxes, toasts — the `popover` attribute will make building a large variety of UI components easier. The `popover` attribute can be used on any HTML element, so you have the flexibility to choose whichever element is most appropriate semantically for each particular use case. Unlike a dialog, a popover is always [non-modal](https://hidde.blog/dialog-modal-popover-differences/) — meaning they don't block interaction with anything else on the page. To toggle a popover open and closed, a `button` element needs to include an `invoketarget` attribute with a value that matches the `id` of the popover.
 
 ```html
 <button invoketarget="foobar">Toggle popover</button>
