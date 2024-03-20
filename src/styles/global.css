@@ -74,8 +74,13 @@ p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
 }
+
+.prose h2 {
+	margin-top: 1.5em;
+}
+
 textarea {
 	width: 100%;
 	font-size: 16px;
