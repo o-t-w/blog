@@ -3,7 +3,7 @@ pubDate: 'Mar 18 2024'
 title: Creating and importing styles with constructable stylesheets and CSS module scripts
 tags:
   - CSS
-heroImage: "/placeholder.jpg"
+heroImage: "/cssmodules.png"
 description: Creating, importing and manipulating stylesheets using JavaScript.
 ---
 
