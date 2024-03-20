@@ -223,3 +223,11 @@ hr {
     --color-card-muted: 205, 205, 205;
     --color-border: 11, 128, 255;
   }
+
+  .title + h2 {
+	margin-top: 0;
+  }
+
+  p:has(+ pre) {
+    margin-bottom: 1em !important;
+}
