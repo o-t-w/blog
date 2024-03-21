@@ -50,15 +50,6 @@ An article on the [web.dev](https://web.dev/css-module-scripts/) blog explains s
 >  - Consistent order of evaluation: when the importing JavaScript is running, it can rely on the stylesheet it imports having already been fetched and parsed.
 >  - Security: modules are fetched with CORS and use strict MIME-type checking.
 
-If you need to, it's easy to add or delete CSS rules in the `CSSStyleSheet` before or after applying it to the document. 
-
-```js
-import styles from "./styles.css" with { type: "css" };
-styles.insertRule(".btn { color: white; font-weight: bold; }");
-import morestyles from "./morestyles.css" with { type: "css" };
-document.adoptedStyleSheets.push(styles, morestyles);
-```
-
 As with JSON modules, you can dynamically import a stylesheet:
 
 ```html
@@ -73,8 +64,6 @@ button.addEventListener('click', async function() {
 </script>
 ```
 The CSSStyleSheet is accessed with `.default` because it is the default export of the module.
-
-Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. The web standard is sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
 ## Using CSS modules with Shadow DOM
 If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document. 

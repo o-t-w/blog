@@ -207,3 +207,6 @@ The `adoptedStyleSheets` property and the `CSSStyleSheet()` constructor have bee
 Chrome has supported import attributes, including support for CSS modules, since version 123. [Safari 17.2](https://webkit.org/blog/14787/webkit-features-in-safari-17-2/#:~:text=JavaScript-,Import%20attributes,-Safari%2017.2%20adds) added support for import attributes but currently only supports JSON modules, not CSS modules. Import attributes are [currently being implemented](https://bugzilla.mozilla.org/show_bug.cgi?id=1777526#:~:text=Import%20Attributes%20is%20in%20progress%20and%20quite%20close%20to%20completion) in Firefox. 
 
 There is a [Rollup plugin](https://www.npmjs.com/package/rollup-plugin-css-modules) for using CSS module scripts in browsers that lack support but it does not offer full parity with the native browser feature.
+
+## CSS modules (the open source project)
+Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. The web standard is sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
