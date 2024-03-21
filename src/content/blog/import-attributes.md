@@ -27,14 +27,12 @@ The above example imports a JSON module, but the same syntax is used to import o
 
 <script type="module">
     const button = document.querySelector("button");
-    button.addEventListener('click', function() {
-        const jsonmodule = await import('stuff.json', { with: { type: 'json' } });
-        console.log(json.default);
+    button.addEventListener('click', async function() {
+        const jsonmodule = await import('./stuff.json', { with: { type: 'json' } });
+        console.log(jsonmodule.default);
     });
 </script>
 ```
-
-`import()` returns a promise which fulfills with an object containing all exports from the module. The JSON data is the default export, so we access it with `.default`. There are no named exports. 
 
 ## Importing CSS
 
@@ -42,10 +40,8 @@ The default export of a CSS module is a [`CSSStyleSheet`](https://web.dev/constr
 
 ```js
 import styles from "./styles.css" with { type: "css" };
-document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
+document.adoptedStyleSheets.push(styles);
 ```
-
-We start the array with `...document.adoptedStyleSheets`. This stops any other `CSSStyleSheet` we added via `adoptedStyleSheets` from being overridden.
 
 There are no named exports from a CSS module but that [might change](https://github.com/w3c/csswg-drafts/issues/5629) in the future.
 
@@ -54,13 +50,13 @@ An article on the [web.dev](https://web.dev/css-module-scripts/) blog explains s
 >  - Consistent order of evaluation: when the importing JavaScript is running, it can rely on the stylesheet it imports having already been fetched and parsed.
 >  - Security: modules are fetched with CORS and use strict MIME-type checking.
 
-If you need to, it's easy to add or delete CSS rules in the `CSSStyleSheet` before applying it to the document. 
+If you need to, it's easy to add or delete CSS rules in the `CSSStyleSheet` before or after applying it to the document. 
 
 ```js
 import styles from "./styles.css" with { type: "css" };
 styles.insertRule(".btn { color: white; font-weight: bold; }");
 import morestyles from "./morestyles.css" with { type: "css" };
-document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles, morestyles];
+document.adoptedStyleSheets.push(styles, morestyles);
 ```
 
 As with JSON modules, you can dynamically import a stylesheet:
@@ -70,9 +66,9 @@ As with JSON modules, you can dynamically import a stylesheet:
 
 <script type="module">
 const button = document.querySelector("button");
-button.addEventListener('click', function() {
+button.addEventListener('click', async function() {
     const styles = await import('./style.css', { assert: { type: 'css' } });
-    document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles.default];
+    document.adoptedStyleSheets.push(styles.default);
 })
 </script>
 ```
@@ -83,32 +79,16 @@ Confusingly, CSS Modules is also the name of a popular open source project for s
 ## Using CSS modules with Shadow DOM
 If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document. 
 
-Here's an example using declarative shadow DOM (using the `shadowrootmode` attribute on a template element means the contents of the template will be put into a shadow tree attached to the parent element).
-
-```html
-<div>
-    <template shadowrootmode="open">
-        <p>This is in the shadow DOM</p>
-        <button>Shadow button</button>
-    </template> 
-</div>   
-
-    <script type="module">
-         import styles from "./styles.css" with { type: "css" };
-         document.querySelector('div').shadowRoot.adoptedStyleSheets = [styles];
-    </script>
-```
-
-Or for a custom element:
 ```html
 <my-element></my-element>
+
 <script type="module">
 import styles from "./styles.css" with { type: "css" };
 class MyElement extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: "open"});
-        this.shadowRoot.adoptedStyleSheets = [styles];
+        this.shadowRoot.adoptedStyleSheets.push(styles);
     }
     connectedCallback() {
         this.shadowRoot.innerHTML = "<p>Lorem ipsum</p><button>Hello world!</button>";
@@ -116,25 +96,6 @@ class MyElement extends HTMLElement {
 }
 customElements.define("my-element", MyElement);
 </script>
-```
-
-Or if you're using Lit to create a web component it would look like this:
-
-```js
-import {LitElement, html} from 'lit';
-import CSSStylesheet from './my-element.css' with { type: 'css' };
-
-export class MyElement extends LitElement {
-  static styles = CSSStylesheet;
-
-  render() {
-    return html`
-      <h1>Hello world</h1>
-    `;
-  }
-}
-
-window.customElements.define('my-element', MyElement);
 ```
 
 ## Preload
@@ -147,9 +108,10 @@ You can preload non-JavaScript modules with `rel="preload"` (rather than `"modul
 ```
 
 ## Browser support
-Import attributes are at stage three. JSON modules and CSS modules are included the [HTML spec](https://html.spec.whatwg.org/#css-module-script:~:text=Module%20scripts%20can%20be%20classified%20into%20three%20types%3A). Import attributes were previously known as import assertions. They have been [renamed](https://github.com/whatwg/html/issues/7233) and the syntax has changed. Chrome/Edge had already shipped JSON modules and CSS modules using the older syntax (`import json from "./data.json" assert { type: "json" }`). [Chrome Canary](https://bugs.chromium.org/p/v8/issues/detail?id=13856#c11) has updated to use the new syntax (the old syntax still works, but is deprecated). JSON modules are supported in Safari Technology Preview. The older syntax is also supported in [Deno](https://examples.deno.land/importing-json) and (experimentally) in [Node](https://nodejs.org/api/esm.html#import-assertions). Hopefully they will get an update soon. [Safari](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) has a positive position on CSS modules and had previously implemented JSON modules with the old syntax in Safari Technology Preview.
+Import attributes are at stage three. JSON modules and CSS modules are included the [HTML spec](https://html.spec.whatwg.org/#css-module-script:~:text=Module%20scripts%20can%20be%20classified%20into%20three%20types%3A). Import attributes were previously known as import assertions. They have been [renamed](https://github.com/whatwg/html/issues/7233) and the syntax has changed. Chrome/Edge had shipped JSON modules and CSS modules using the old syntax (`import json from "./data.json" assert { type: "json" }`). Chrome has updated to the new syntax as of version 123 (the old syntax is deprecated). JSON modules are supported in Safari since version 17.2. Safari has a [positive position](https://github.com/WebKit/standards-positions/issues/77#issuecomment-1290347676) on CSS modules.
+
+On the backend, import attributes are supported in [Deno](https://examples.deno.land/importing-json) and [Node](https://nodejs.org/api/esm.html#import-attributes). Bun has [adopted import attributes](https://bun.sh/blog/bun-macros) for macros.
 
 [Babel](https://babeljs.io/blog/2023/05/26/7.22.0#import-attributes-15536-15620), [Webpack and Rollup](https://github.com/nicolo-ribaudo/import-attributes-ecosystem-support#import-attributes-support-in-tools) have all implemented support for the syntax. 
 
-Bun has already [adopted import attributes](https://bun.sh/blog/bun-macros) for macros.
 
