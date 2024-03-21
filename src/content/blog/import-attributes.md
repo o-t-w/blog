@@ -67,7 +67,7 @@ As with JSON modules, you can dynamically import a stylesheet:
 <script type="module">
 const button = document.querySelector("button");
 button.addEventListener('click', async function() {
-    const styles = await import('./style.css', { assert: { type: 'css' } });
+    const styles = await import('./style.css', { with: { type: 'css' } });
     document.adoptedStyleSheets.push(styles.default);
 })
 </script>
