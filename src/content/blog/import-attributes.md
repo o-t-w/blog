@@ -74,7 +74,7 @@ button.addEventListener('click', async function() {
 ```
 The CSSStyleSheet is accessed with `.default` because it is the default export of the module.
 
-Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. They are sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
+Confusingly, CSS Modules is also the name of a popular open source project for scoping CSS. That is not something that the web standard does, and there isn't any relation or similarity between the standard and the open-source project. The web standard is sometimes referred to as “CSS Module Scripts”, which might help to avoid the confusion.
 
 ## Using CSS modules with Shadow DOM
 If you're using shadow DOM you can apply the stylesheet to a shadow root instead of the document. 
