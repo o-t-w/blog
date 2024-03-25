@@ -31,4 +31,14 @@ customElements.define("my-card", MyCard);
 
 Opting in to the shared stylesheet is only one line of code per component.
 
+To share styles between both light DOM and shadow DOM, request the shame stylesheet in a link tag:
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="shared.css"> <!-- shared.css gets applied to light DOM -->
+</head>
+```
+
 Read more about import attributes and [CSS modules here](/constructable).
