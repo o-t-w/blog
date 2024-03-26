@@ -35,6 +35,8 @@ we can use the slightly terser:
 
 I'm a fan of keeping CSS as pruned and minimal as possible, so this is a nice addition to how layout works on the web.
 
+This isn't just about saving a line of code. It's been common to use flexbox purely to center things, but flexbox also has other effects. Flexbox expands items to fill the available free space. This is often not what you want. Flexbox will also force items to line up in a row, even if they have a display value of `block`.That's often useful, but not always. One limiting factor of this new approach to centering is that we can't use the `gap` property as it only works with `display` values of `grid` or `flex`, but margins still work well enough.
+
 `align-content` now also works for elements with a `display` of `table-cell` or `list-item`:
 
 <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="gOqVwBP" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
@@ -44,4 +46,5 @@ I'm a fan of keeping CSS as pruned and minimal as possible, so this is a nice ad
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-As of December 2023, this works in Safari Technology Preview and Chrome Canary. 
+## Browser support
+`align-content` in `block` layout is supported as of [Chrome 123](https://chromestatus.com/feature/5159040328138752), [Safari 17.4](https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#CSS), and [Firefox 125](https://www.mozilla.org/en-US/firefox/125.0a1/releasenotes/#:~:text=align%2Dcontent%20works%20now%20in%20block%20layout%2C%20allowing%20block%20direction%20alignment%20without%20needing%20a%20flex%20or%20grid%20container.).
