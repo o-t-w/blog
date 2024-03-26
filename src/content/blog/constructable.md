@@ -40,8 +40,8 @@ You can also create a `<style>` element and add styles using `.textContent` and/
 ```js
 const styleElement = document.createElement('style');
 styleElement.textContent = "h1 {color: green;}";
-styleElement.sheet.insertRule("h2 {color: blue;}");
 document.head.appendChild(styleElement);
+styleElement.sheet.insertRule("h2 {color: blue;}");
 ```
 
 Constructable stylesheets are a new approach. 
