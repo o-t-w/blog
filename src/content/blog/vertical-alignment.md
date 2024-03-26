@@ -35,7 +35,7 @@ we can use the slightly terser:
 
 I'm a fan of keeping CSS as pruned and minimal as possible, so this is a nice addition to how layout works on the web.
 
-This isn't just about saving a line of code. It's been common to use flexbox purely to center things, but flexbox also has other effects. Flexbox expands items to fill the available free space. This is often not what you want. Flexbox will also force items to line up in a row, even if they have a display value of `block`.That's often useful, but not always. One limiting factor of this new approach to centering is that we can't use the `gap` property as it only works with `display` values of `grid` or `flex`, but margins still work well enough.
+This isn't just about saving a line of code. It's been common to use flexbox purely to center things, but flexbox also has other effects. Flexbox expands items to fill the available free space. This is often not what you want. Flexbox will also force items to line up in a row, even if they have a display value of `block`. That's often useful, but not always. One limiting factor of this new approach to centering is that we can't use the `gap` property as it only works with `display` values of `grid` or `flex`, but margins still work well enough.
 
 `align-content` now also works for elements with a `display` of `table-cell` or `list-item`:
 

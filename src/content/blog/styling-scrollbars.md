@@ -21,7 +21,7 @@ It’s been possible to style scrollbars for many years but only in a [non-stand
 
 These pseudo-elements are not on a standards track, so won’t ever get implemented in Firefox.
 
-In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121], Chrome browser also supports both properties. Safari have expressed a positive position on both [scrollbar-color](https://github.com/WebKit/standards-positions/issues/134) and [scrollbar-width](https://github.com/WebKit/standards-positions/issues/133#issuecomment-1551300724)).
+In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121](https://developer.chrome.com/blog/new-in-chrome-121#css-updates), Chrome browser also supports both properties. Safari have expressed a positive position on both [scrollbar-color](https://github.com/WebKit/standards-positions/issues/134) and [scrollbar-width](https://github.com/WebKit/standards-positions/issues/133#issuecomment-1551300724)).
 
 The older non-standard approach allowed a great deal of control. You could even recreate Windows 95 style scrollbars for a retro look if you wanted to. The standardized CSS properties are much more limited in scope. 
 
