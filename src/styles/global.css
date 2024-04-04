@@ -46,7 +46,7 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 40px;
+	font-size: 37px;
 }
 h2 {
 	font-size: 23px;
@@ -230,4 +230,10 @@ hr {
 
   p:has(+ pre) {
     margin-bottom: 1em !important;
+}
+
+@media (max-width: 500px) {
+	h1 {
+		font-size: 32px;
+	}
 }
