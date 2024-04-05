@@ -5,7 +5,7 @@ heroImage: "/custompseudo.png"
 description: Custom CSS pseudo-classes for custom elements
 ---
 
-CSS has pseudo-classes to style HTML elements based on state. To take some examples, there's `:invalid`, `:hover`, `:checked`, `:placeholder-shown`, etc. In a similar vein, with the `CustomStateSet` API, web components can expose their own pseudo-classes like `:state(loaded)`, `:state(done)`, etc.
+CSS has pseudo-classes to style HTML elements based on state — there's `:invalid`, `:hover`, `:checked`, `:placeholder-shown`, etc. In a similar vein, with the `CustomStateSet` API, web components can expose their own pseudo-classes like `:state(loaded)`, `:state(done)`, etc.
 
 ## Browser support 
 [Safari 17.4](https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#New-Features) added support for the CustomStateSet API. It is also available in Firefox Nightly. Chrome had supported an older deprecated syntax. Chrome supports the new syntax as of [version 125](https://chromestatus.com/feature/5586433790443520). 
