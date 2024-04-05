@@ -16,7 +16,7 @@ Let's look at an example: a button that copies text to the users clipboard. The 
 
 <copy-button value="razmataz shakalaka ✨: this text was copied to your clipboard"></copy-button>
 
-Being able to style based on state is useful for both the creator of the custom element and the consumer of the custom element. In the examples below, the author of the custom element is using the state to change the icon from a copy symbol to a tick symbol. The user of the custom element is using the state to customise the `background-color` to their preferred shade of green.
+Being able to style based on state is useful for both the creator and the consumer of the custom element. In the examples below, the author of the custom element is using the state to change the icon from a copy symbol to a tick symbol. The user of the custom element is using the state to customise the `background-color` to their preferred shade of green.
 
 Styling from inside the shadow DOM:
 
@@ -100,7 +100,7 @@ customElements.define("copy-button", CopyButton);
 ```
 
 ## Selecting components based on custom state with `querySelector` 
-`querySelector` and `querySelectorAll` accept any valid CSS selector as an argument, so we can use the same syntax. If you created a `<toggle-button>` web component with a custom _selected_ state, for example, the following would select only those elements in that state:
+`querySelector` and `querySelectorAll` accept any valid CSS selector as an argument, so we can use the same syntax. If you create a `<toggle-button>` web component with a custom _selected_ state, for example, the following would select only those elements in that state:
 
 ```js
 document.querySelectorAll('toggle-button:state(selected)');
