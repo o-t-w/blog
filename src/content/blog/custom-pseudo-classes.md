@@ -44,7 +44,9 @@ copy-button:state(confirmation)::part(button) {
     }
 ```
 
-## Adding state to a custom element 
+That's the CSS syntax, but how do we set this up?
+
+## Adding state to a custom element
 The [`.attachInternals()` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/attachInternals) returns an [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) object. `ElementInternals` has a `.states` property that returns a [`CustomStateSet`](https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet) object. 
 
 ```js
