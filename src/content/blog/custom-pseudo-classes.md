@@ -99,11 +99,11 @@ class CopyButton extends HTMLElement {
 customElements.define("copy-button", CopyButton);
 ```
 
-## Selecting components based on custom state with `querySelector` 
-`querySelector` and `querySelectorAll` accept any valid CSS selector as an argument, so we can use the same syntax. If you create a `<toggle-button>` web component with a custom _selected_ state, for example, the following would select only those elements in that state:
+## Selecting components based on custom state with `querySelector`
+Not only can you style components based on state, you can also select components with JavaScript based on state. `querySelector` and `querySelectorAll` accept any valid CSS selector as an argument, so we can use the same syntax. If you create a `<toggle-button>` web component with a custom _selected_ state, for example, the following would select only those elements in that state:
 
 ```js
-document.querySelectorAll('toggle-button:state(selected)');
+const selectedButtons = document.querySelectorAll('toggle-button:state(selected)');
 ```
 
 <style>
