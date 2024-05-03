@@ -20,6 +20,7 @@ Why do we need a new attribute?
 - It makes the blocking behaviour explicit.
 - It makes it possible to block rendering without blocking the HTML parser by using the `defer` or `async` attribute.
 - Unlike classic scripts, module scripts defer by default. `<script type="module">` can now block rendering by using the `blocking` attribute.
+- `<script>`, `<link>` and `<style>` elements added to the `<head>` dynamically with JavaScript are not render blocking. You now have the flexibility to make them blocking. 
 
 ## How does it work?
 The `blocking` attribute can be added to `<script>`, `<link>` and `<style>` elements in the `<head>`. As of today, the only thing that can be blocked is rendering (we might be able to block [more operations](https://html.spec.whatwg.org/multipage/urls-and-fetching.html#blocking-attributes) using this attribute in the future).
@@ -61,8 +62,6 @@ Before the JavaScript has a chance to update the DOM, it briefly shows all forma
 
 Of course not everything is solved with render-blocking — I also needed to give the image a height.
 
-<!-- If the blocking resource takes too long, the browser will eventually unblock rendering. If the resource takes an interminable amount of time to load, the user won't be left waiting forever. -->
-
 ## `blocking="render"` on `<link>`
 
 You can also use the `blocking` attribute on `<link>` elements. However, if you are using the `<link>` to preload resources with `rel="preload"` or to preload JavaScript modules with `rel="modulepreload"` then the `blocking` attribute [will have no effect](https://github.com/whatwg/html/issues/7896). 
@@ -81,8 +80,7 @@ link.rel = 'stylesheet';
 link.href = './styles.css';
 document.head.appendChild(link);
 ```
-
-By making use of the `blocking` attribute, the stylesheet will be render-blocking:
+Developers tend to take advantage of this behaviour to purposefully defer _non-critical_ CSS. If, however, for whatever reason, you need to load critical CSS (styles that change the layout of the entire page or effect something above the fold) in this way, you can make use of the `blocking` attribute and the stylesheet will be render-blocking:
 
 ```js
 const link = document.createElement('link');
@@ -91,9 +89,6 @@ link.href = './styles.css';
 link.setAttribute('blocking', 'render');
 document.head.appendChild(link);
 ```
-
-## Render-blocking DOM elements
-
 
 ## The Performance API
 
@@ -105,19 +100,39 @@ window.performance.getEntriesByType("resource")
 .forEach(resource => console.log(resource.name));
 ```
 
+## Render-blocking DOM nodes
+
+HTML renders progressively/incrementally:
+
+![](/incremental.avif)
+
+Rendering can start before the entire HTML document is fetched and parsed. 
+
+There's a way to block rendering based on whether a particular HTML element has been parsed.
+
+Place a `<link>` in the `<head>` with a `href` attribute referencing the `id` of the element in question:   
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="expect" href="#visually-critical-content" blocking="render">
+  </head>
+  <body>
+    <header>...</header>
+    <div id="visually-critical-content">...</div>
+  </body>
+</html>
+```
+This gives developers more control over what's included in the First Contentful Paint. It should only be used for elements that are above the fold — otherwise you'll be needlessly delaying the first paint. Once the element has been parsed, the page will be made visible to the user. If the expected element is not found, rendering will be unblocked when the entire HTML document has finished parsing.
+
+This feature was added to the web primarily with cross-document view transitions in mind. 
+
 <!-- ## Single Page Applications
 Render-blocking only applies to cross-document navigations (i.e the user clicks a link and is taken to a different HTML document). In a SPA, the use of client-side navigation means the document doesn't change, so `blocking="render"` will only have an effect when the user first navigates to the application. -->
 
-## What does the user actually see?
-
-
-
-## When is render blocking a good idea?
-_It should go without saying that this attribute should be used with some amount of care as it could  potentially tank the First Contentful Paint (FCP), which is an important performance metric._ However, the fact that browsers purposefully block rendering until stylesheets have loaded speaks to the fact that render blocking is the right tradeoff for certain resources. 
-
-### View Transitions
-
-One primary use case for `blocking="render"` is cross-document view transitions. With this in mind, Chrome/Edge recently implemented a new `pagereveal` event: 
+## The `pagereveal` event and View Transitions
+The initial implementation of view transitions only worked with client-side navigation. One primary use case for `blocking="render"` is [_cross-document_ view transitions](https://drafts.csswg.org/css-view-transitions-2/#waiting-for-stable-state). With this in mind, Chrome/Edge recently implemented a new `pagereveal` event: 
 
 ```js
 window.addEventListener('pagereveal', function(event) {
@@ -125,28 +140,17 @@ window.addEventListener('pagereveal', function(event) {
 });
 ```
 
-This event listener needs to be registered in a render-blocking script. Otherwise, by the time JavaScript has added the event listener, the event will have already taken place so won't trigger your callback function. `pagereveal` takes place immediately before the first rendering opportunity. That means after any render-blocking CSS or JavaScript has loaded, but it could fire _before all the HTML has been parsed_. 
-
-As part of the cross-document view transitions API, there's also a way to block rendering based on whether a particular HTML element has been parsed yet, using a `<link>` with a `href` attribute referencing the `id` of the element in question:   
-
-```html
-<head>
-    <link rel="expect" href="#thingy" blocking="render">
-</head>
-```
-
-HTML renders progressively/incrementally:
-
-![](/incremental.avif)
-
-This API gives developers more control over what's included in the First Contentful Paint. It's `rel="expect"` because the element is _expected_ to be in the DOM. Because it blocks rendering, it also effects at what point the `pagereveal` event is fired.
+This event listener needs to be registered in a render-blocking script. Otherwise, by the time JavaScript has added the event listener, the event will likely have already taken place so won't trigger your callback function. `pagereveal` takes place immediately before the first rendering opportunity. That means after any render-blocking CSS or JavaScript has loaded, but it could fire _before all the HTML has been parsed_. However, if you have `<link rel="expect" href="#thing" blocking="render">` in the `<head>`, for example, you can query that element with `document.getElementById('thing')` without the risk of it being `null`.
 
 Read [_View Transitions Break Incremental Rendering_](https://ericportis.com/posts/2023/view-transitions-break-incremental-rendering/) by Eric Portis for an interesting perspective on this topic and [the response](https://dev.to/noamr/incremental-html-rendering-the-footgun-dillema-21ch) from browser engineer Noam Rosenthal.
 
-### Layout shift
-Maybe you have vital dynamic content at the top of a page? Maybe it pushes down other content once its loaded in? If the script is small, it could arguably be a better experience to ensure its ready to go before rendering the page. If a script effects the rendering of critical content the user sees within the viewport when they first land on the page, you could consider render blocking. At its very worst, the discordant and jarring herky-jerk of content moving, changing and shifting as it loads can be discombobulating and almost nausea-inducing for some users. But the alternative on slow connections may be an entirely blank screen. Render blocking can reduce layout shift, but at the cost of a delayed [First Paint](https://developer.mozilla.org/en-US/docs/Glossary/First_paint). There is an unavoidable tradeoff between seeing _something_ quickly and seeing things the way they are supposed to look. 
+## What does the user actually see?
+Render-blocking delays drawing pixels to the screen, so you might assume this involves staring at a blank page, but on fast connections that is rarely the case. When navigating the web, it used to be common to see a flash of white between pages. To solve this, browsers started utilising [_paint holding_](https://developer.chrome.com/blog/paint-holding). Paint holding keeps the user on the previous page and shows a subtle loading indicator until the First Contentful Paint (FCP) of the new page is ready. If you delay FCP, the user will be kept looking at the previous page for slightly longer. Paint holding only lasts for a short amount of time. If you delay FCP for too long, an empty white page will be displayed. For a slow site on slow 3G, this "flash" of white nothingness could potentially be displayed for a significant amount of time. 
 
 ## Browser support
 The `blocking` attribute has been available in Chrome and Edge since [version 105](https://chromestatus.com/feature/5452774595624960). It is also available in Samsung Internet. See MDN for the most up-to-date [browser compatibility data](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#browser_compatibility). 
 
 Blocking via the `id` of a HTML element is supported in [Chrome 124](https://chromestatus.com/feature/5113053598711808). 
+
+---
+_It should go without saying that this attribute should be used with some amount of care as it will negatively impact First Contentful Paint (FCP), which is an important performance metric._ However, the fact that browsers purposefully block rendering until stylesheets have loaded speaks to the fact that render blocking is the right tradeoff for certain critical resources. 
