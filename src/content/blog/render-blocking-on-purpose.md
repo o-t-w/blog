@@ -60,7 +60,7 @@ Before the JavaScript has a chance to update the DOM, it briefly shows all forma
 
 ![](/chromacheck-with.webp)
 
-Of course not everything is solved with render-blocking — I also needed to give the image a height.
+<!-- Of course not everything is solved with render-blocking — I also needed to give the image a height. -->
 
 ## `blocking="render"` on `<link>`
 
@@ -153,4 +153,4 @@ The `blocking` attribute has been available in Chrome and Edge since [version 10
 Blocking via the `id` of a HTML element is supported in [Chrome 124](https://chromestatus.com/feature/5113053598711808). 
 
 ---
-_It should go without saying that this attribute should be used with some amount of care as it will negatively impact First Contentful Paint (FCP), which is an important performance metric._ However, the fact that browsers purposefully block rendering until stylesheets have loaded speaks to the fact that render blocking is the right tradeoff for certain critical resources. 
+_It should go without saying that this attribute should be used with some amount of care as it will negatively impact First Contentful Paint (FCP), which is an important performance metric._ The fact that browsers purposefully block rendering until stylesheets have loaded speaks to the fact that render-blocking is the right tradeoff for certain critical resources.
