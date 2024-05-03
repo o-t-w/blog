@@ -17,7 +17,7 @@ The following script is both __parser-blocking__ and __render-blocking__:
 ```
 
 Why do we need a new attribute?
-- It makes the blocking behaviour explicit.
+- It makes the blocking behaviour explicit and conveys intent.
 - It makes it possible to block rendering without blocking the HTML parser by using the `defer` or `async` attribute.
 - Unlike classic scripts, module scripts defer by default. `<script type="module">` can now block rendering by using the `blocking` attribute.
 - `<script>`, `<link>` and `<style>` elements added to the `<head>` dynamically with JavaScript are not render blocking. You now have the flexibility to make them blocking. 
