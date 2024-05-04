@@ -246,3 +246,11 @@ hr {
 p:has(+ ul), p:has(+ ol) {
 	margin-bottom: .5em !important;
 }
+
+figure {
+	margin-inline: 0;
+}
+
+.font-small {
+	font-size: 15px;
+}

@@ -105,7 +105,10 @@ window.performance.getEntriesByType("resource")
 
 HTML renders progressively/incrementally:
 
-![](/incremental.avif)
+<figure>
+<img src="/incremental.avif" alt="">
+<figcaption class="font-small">Image borrowed from Philip Walton at <a href="https://web.dev/articles/fcp">web.dev</a></figcaption>
+</figure>
 
 Rendering can start before the entire HTML document is fetched and parsed. 
 
