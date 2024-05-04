@@ -5,7 +5,7 @@ heroImage: "/render-block.jpg"
 description: The new blocking="render" attribute.
 ---
 
-Render blocking is something you usually want to avoid. Enter the term into Google and you'll be met with a great many articles about _eliminating_ render blocking. Perhaps somewhat surprisingly then, there's a new HTML `blocking` attribute to purposefully block rendering until a particular resource is downloaded.
+Render blocking is something you usually want to avoid. Enter the term into Google and you'll be met with a great many articles about _eliminating_ render-blocking. Perhaps somewhat surprisingly then, there's a new HTML `blocking` attribute to purposefully block rendering until a particular resource is downloaded.
 
 A regular `<script>` tag, when lacking an `async` or `defer` attribute, will pause the parsing of HTML and block rendering until the script is downloaded, parsed, and executed. 
 
