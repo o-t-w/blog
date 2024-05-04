@@ -5,7 +5,7 @@ heroImage: "/render-block.jpg"
 description: The new blocking="render" attribute.
 ---
 
-Render blocking is something you usually want to avoid. Enter the term into Google and you'll be met with a great many articles about _eliminating_ render blocking. Perhaps somewhat surprisingly then, there's a new HTML `blocking` attribute to explicitly and purposefully block rendering until a particular resource is downloaded.
+Render blocking is something you usually want to avoid. Enter the term into Google and you'll be met with a great many articles about _eliminating_ render blocking. Perhaps somewhat surprisingly then, there's a new HTML `blocking` attribute to purposefully block rendering until a particular resource is downloaded.
 
 A regular `<script>` tag, when lacking an `async` or `defer` attribute, will pause the parsing of HTML and block rendering until the script is downloaded, parsed, and executed. 
 
@@ -17,15 +17,15 @@ The following script is both __parser-blocking__ and __render-blocking__:
 ```
 
 Why do we need a new attribute?
-- It makes the blocking behaviour explicit and conveys intent.
-- It makes it possible to block rendering without blocking the HTML parser by using the `defer` or `async` attribute.
+- It makes the blocking behaviour explicit and conveys intent (your colleague will not accidentally refactor the code to be non-blocking).
+- It makes it possible to block rendering without blocking the HTML parser when used in conjunction with the `defer` or `async` attribute.
 - Unlike classic scripts, module scripts defer by default. `<script type="module">` can now block rendering by using the `blocking` attribute.
 - `<script>`, `<link>` and `<style>` elements added to the `<head>` dynamically with JavaScript are not render blocking. You now have the flexibility to make them blocking. 
 
 ## How does it work?
 The `blocking` attribute can be added to `<script>`, `<link>` and `<style>` elements in the `<head>`. As of today, the only thing that can be blocked is rendering (we might be able to block [more operations](https://html.spec.whatwg.org/multipage/urls-and-fetching.html#blocking-attributes) using this attribute in the future).
 
-`blocking="render"` is a way to mark a resource as being required before anything is visually shown to the user. Not a single pixel will be painted in the viewport until the resource has loaded.
+`blocking="render"` is a way to mark a resource as required before anything is visually shown to the user. Not a single pixel will be painted in the viewport until the resource has loaded.
 
 ```html
 <script blocking="render" 
@@ -33,7 +33,7 @@ The `blocking` attribute can be added to `<script>`, `<link>` and `<style>` elem
         defer></script>
 ```
 
-The browser should assign a high priority to any render-blocking resource by default but seeing as not all browsers support the `blocking` attribute, its worth adding `fetchpriority="high"`:
+The browser should assign a high priority to any render-blocking resource by default. As not all browsers support the `blocking` attribute, its worth adding `fetchpriority="high"`:
 
 ```html
 <script blocking="render" 
@@ -42,7 +42,7 @@ The browser should assign a high priority to any render-blocking resource by def
         defer></script>
 ```
 
-The attribute also works on inline scripts. An inline script is blocking by default — and the `defer` and `async` attributes don't work on classic inline scripts. However, a script with a `type="module"` attribute will be deferred, _even when its inline_.
+The attribute also works on inline scripts. A classic inline script is blocking by default (and the `defer` and `async` attributes aren't used on classic inline scripts). However, a script with a `type="module"` attribute will be deferred, _even when its inline_.
 
 ```html
     <script type="module" async blocking="render">
@@ -52,21 +52,22 @@ The attribute also works on inline scripts. An inline script is blocking by defa
 
 The `async` attribute on an inline module script will cause it to [execute as soon as possible](https://v8.dev/features/modules#module-vs-script).
 
-Let's look at a basic visual demonstration. [ChromaCheck](https://pixelambacht.nl/chromacheck/) is a simple website that display's which font formats your browser supports. To do this it uses client-side JavaScript, without render-blocking:
+Let's look at a basic visual demonstration. [ChromaCheck](https://pixelambacht.nl/chromacheck/) is a simple website that display's which font formats a browser supports. To do this it uses client-side JavaScript, without render-blocking:
 
 ![](/chromacheck-without.webp)
 
-Before the JavaScript has a chance to update the DOM, it briefly shows all formats as unsupported. Its a confusing flash of incorrect content. The sites entire raison d'etre relies on JavaScript. The JavaScript-dependent elements are displayed at the top of the page, above the fold. The script is small. Render-blocking would be an improvement in this case. The user would wait slightly longer for the first paint, but that's a worthwhile tradeoff. The content can be rendered fully-formed with no awkard or disorientating stylistic changes. Here's same site with render-blocking (with slow 3G throttling):
+Before the JavaScript has a chance to update the DOM, it briefly shows all formats as unsupported. It would be better to start with a neutral color in case JavaScript fails, _but you'd still get a flash of changing styles as the page loads_. The sites entire raison d'etre relies on JavaScript. The JavaScript-dependent elements are displayed at the top of the page. The script is small. Render-blocking would be an improvement in this case. The user would wait slightly longer for the first paint, but that's a worthwhile tradeoff. The critical content can be rendered fully-formed with no awkard or disorientating stylistic changes. Here's the same site with render-blocking (with slow 3G throttling):
 
 ![](/chromacheck-with.webp)
 
 <!-- Of course not everything is solved with render-blocking — I also needed to give the image a height. -->
+These sort of last-minute JavaScript DOM updates that effect above the fold content can sometimes justify render-blocking to prevent the discordant and jarring herky-jerky of content updating and rearranging (although layout shifts caused by dynamic content can often be solved simply by [reserving space with `min-height`](https://web.dev/articles/optimize-cls#late-loaded-content)). 
 
 ## `blocking="render"` on `<link>`
 
 You can also use the `blocking` attribute on `<link>` elements. However, if you are using the `<link>` to preload resources with `rel="preload"` or to preload JavaScript modules with `rel="modulepreload"` then the `blocking` attribute [will have no effect](https://github.com/whatwg/html/issues/7896). 
 
-Stylesheets are blocking by default — and for good reason. This avoids a Flash of Unstyled Content (FOUC). Without render-blocking, the user would see the HTML displayed without any custom CSS, using the browsers basic default visual styles: black Times New Roman on a white background, etc. Then, once the stylesheet loads, the view of the page would change drastically, which is not a good user experience. Here's what the theverge.com looks like without any CSS, to take one random example:
+Stylesheets are blocking by default — and for good reason. This avoids a Flash of Unstyled Content (FOUC). Without render-blocking, the user would see the HTML displayed using only the browsers basic default visual styles: black Times New Roman on a white background, etc. Then, once the stylesheet loads, the view of the page would change drastically, which is not a good user experience. Here's what the theverge.com looks like without any CSS, to take one random example:
 
 ![](/theverge.avif)
 
@@ -80,7 +81,7 @@ link.rel = 'stylesheet';
 link.href = './styles.css';
 document.head.appendChild(link);
 ```
-Developers tend to take advantage of this behaviour to purposefully defer _non-critical_ CSS. If, however, for whatever reason, you need to load critical CSS (styles that change the layout of the entire page or effect something above the fold) in this way, you can make use of the `blocking` attribute and the stylesheet will be render-blocking:
+Developers tend to take advantage of this behaviour to purposefully defer _non-critical_ CSS. If, however, you need to load critical CSS (styles that change the layout of the entire page or effect something above the fold) in this way, you can make use of the `blocking` attribute:
 
 ```js
 const link = document.createElement('link');
@@ -145,7 +146,7 @@ This event listener needs to be registered in a render-blocking script. Otherwis
 Read [_View Transitions Break Incremental Rendering_](https://ericportis.com/posts/2023/view-transitions-break-incremental-rendering/) by Eric Portis for an interesting perspective on this topic and [the response](https://dev.to/noamr/incremental-html-rendering-the-footgun-dillema-21ch) from browser engineer Noam Rosenthal.
 
 ## What does the user actually see?
-Render-blocking delays drawing pixels to the screen, so you might assume this involves staring at a blank page, but on fast connections that is rarely the case. When navigating the web, it used to be common to see a flash of white between pages. To solve this, browsers started utilising [_paint holding_](https://developer.chrome.com/blog/paint-holding). Paint holding keeps the user on the previous page and shows a subtle loading indicator until the First Contentful Paint (FCP) of the new page is ready. If you delay FCP, the user will be kept looking at the previous page for slightly longer. Paint holding only lasts for a short amount of time. If you delay FCP for too long, an empty white page will be displayed. For a slow site on slow 3G, this "flash" of white nothingness could potentially be displayed for a significant amount of time. 
+Render-blocking delays drawing pixels to the screen, so you might assume this involves staring at a blank page. On fast connections, that is rarely the case. When navigating the web, it used to be common to see a flash of white between pages. To solve this, browsers started utilising [_paint holding_](https://developer.chrome.com/blog/paint-holding). Paint holding keeps the user on the previous page and shows a loading indicator until the First Contentful Paint (FCP) of the new page is ready. If you delay FCP, the user will be kept looking at the previous page for slightly longer. Paint holding only lasts for a short amount of time. If you delay FCP for too long, an empty white page will be displayed. For a slow site on slow 3G, this "flash" of white nothingness could potentially last for a significant amount of time. 
 
 ## Browser support
 The `blocking` attribute has been available in Chrome and Edge since [version 105](https://chromestatus.com/feature/5452774595624960). It is also available in Samsung Internet. See MDN for the most up-to-date [browser compatibility data](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#browser_compatibility). 
