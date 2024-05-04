@@ -122,6 +122,11 @@ code * {
 pre, code {
 	font-size: 16px !important;
 }
+
+h2 code {
+	font-size: 19px !important;
+}
+
 blockquote {
 	border-left: 4px solid var(--accent-light);
 	padding: 0 0 0 20px;
@@ -236,4 +241,16 @@ hr {
 	h1 {
 		font-size: 32px;
 	}
+}
+
+p:has(+ ul), p:has(+ ol) {
+	margin-bottom: .5em !important;
+}
+
+figure {
+	margin-inline: 0;
+}
+
+.font-small {
+	font-size: 15px;
 }
