@@ -1,0 +1,44 @@
+---
+pubDate: 'May 06 2024'
+title: Parsing declarative shadow DOM
+heroImage: "/parseHTMLUnsafe.jpg"
+description: Parsing declarative shadow DOM
+---
+
+`parseFromString` does not play nicely with declarative shadow DOM. Let’s say you fetch a HTML document, grab some of its contents and inject it into the current page:
+
+```html
+<div id="container"></div>
+<script>
+    const container = document.getElementById('container');
+    fetch('stuff.html')
+    .then(response => response.text())
+    .then((html) => {
+        const parser = new DOMParser();
+        const fetcheddoc = parser.parseFromString(html, "text/html");
+        const main = fetcheddoc.getElementsByTagName('main')[0];
+        container.appendChild(main);
+    })
+</script>
+```
+
+If the fetched HTML contains a `<template>` element with a `shadowrootmode` attribute, it will remain just a `<template>`, rather than becoming shadow DOM. 
+
+The [HTML spec](https://html.spec.whatwg.org/#the-domparser-interface) states: 
+
+> “The design of `DOMParser`, as a class that needs to be constructed and then have its `parseFromString` method called, is an unfortunate historical artifact. If we were designing this functionality today it would be a standalone function. For parsing HTML, the modern alternative is [`Document.parseHTMLUnsafe()`](https://html.spec.whatwg.org/#dom-parsehtmlunsafe).”
+
+`parseHTMLUnsafe` is a new alternative to `parseFromString` that will correctly instantiate shadow DOM from a template element. 
+
+```js
+const container = document.getElementById('container');
+fetch('stuff.html')
+.then(response => response.text())
+.then((html) => {
+    const fetcheddoc = Document.parseHTMLUnsafe(html);            
+    const main = fetcheddoc.getElementsByTagName('main')[0];
+    container.appendChild(main);
+    })
+```
+
+`parseHTMLUnsafe` has been [supported](https://caniuse.com/mdn-api_document_parsehtmlunsafe_static) since Chrome and Edge 124, Safari 17.4 and Firefox 123.
