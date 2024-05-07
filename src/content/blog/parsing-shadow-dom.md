@@ -43,4 +43,8 @@ If you are not using shadow DOM in your project, its still one less line of code
 
 > “The design of `DOMParser`, as a class that needs to be constructed and then have its `parseFromString` method called, is an unfortunate historical artifact. If we were designing this functionality today it would be a standalone function. For parsing HTML, the modern alternative is [`Document.parseHTMLUnsafe()`](https://html.spec.whatwg.org/#dom-parsehtmlunsafe).”
 
-Shadow DOM is the main reason this function exists, but it can be adopted as a general replacement for `.parseFromString`.
+The naming might put you off, but `parseHTMLUnsafe` is no more "unsafe" than `.parseFromString`. In the HTML specification, both methods display the same warning note: 
+
+> "This method performs no sanitization to remove potentially-dangerous elements and attributes like script or event handler content attributes."
+
+Shadow DOM is the main reason this new function exists, but it can be adopted as a general replacement for `.parseFromString`. 
