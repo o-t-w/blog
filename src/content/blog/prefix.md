@@ -37,7 +37,7 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 
 ## Which CSS properties still require a prefix?
 
-- `backdrop-filter`
+- `backdrop-filter` (temporarily)
 - `user-select`
 - `initial-letter`
 - `text-decoration` (sort of)
@@ -47,7 +47,7 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 - `background-clip: text` (temporarily)
 - `mask` (temporarily)
 
-[`backdrop-filter`](https://caniuse.com/css-backdrop-filter), [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari. 
+[`backdrop-filter`](https://caniuse.com/css-backdrop-filter), [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari. An unprefixed version of `backdrop-filter` is supported in [Safari 18](https://webkit.org/blog/15443/news-from-wwdc24-webkit-in-safari-18-beta/#:~:text=Tuesday%20June%2011.-,Backdrop%20Filter,-Originally%20shipped%20in).
 
 Safari supports `text-decoration-color`, `text-decoration-line` and `text-decoration-style` without a prefix. The `text-decoration` property is meant to work as a shorthand for all three. In Safari, however, `text-decoration` can only set `text-decoration-line`. `text-decoration: underline;` works.  `text-decoration: underline orange wavy;` doesn't. `-webkit-text-decoration` works correctly when setting all three properties.
 
