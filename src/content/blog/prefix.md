@@ -37,15 +37,13 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 
 ## Which CSS properties still require a prefix?
 
-- `backdrop-filter` (temporarily)
+- `backdrop-filter`
 - `user-select`
 - `initial-letter`
 - `text-decoration` (sort of)
 - `text-stroke`
 - `text-fill-color`
 - `line-clamp`
-- `background-clip: text` (temporarily)
-- `mask` (temporarily)
 
 [`backdrop-filter`](https://caniuse.com/css-backdrop-filter), [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari. An unprefixed version of `backdrop-filter` is supported in [Safari 18](https://webkit.org/blog/15443/news-from-wwdc24-webkit-in-safari-18-beta/#:~:text=Tuesday%20June%2011.-,Backdrop%20Filter,-Originally%20shipped%20in).
 
@@ -66,4 +64,6 @@ Similarly, `line-clamp` has still not been been standardised. There is currently
 
 You might as well type that out by hand as _there will never be_ a standardised non-prefixed version of `box-orient` or `display: box`. Chrome looks set on implementing an improved non-prefixed [line-clamp](https://groups.google.com/a/chromium.org/g/blink-dev/c/CWP5rb--Gyk), which won't rely on setting any other esoteric obsolete properties.
 
-`background-clip: text` and `mask` still require a prefix for Samsung Internet, but that browser will catch up with Chromium in a forthcoming version.
+## Updates since this article was first published
+
+`background-clip: text` and `mask` had required a prefix for Samsung Internet browser. That is no longer the case as of Samsung Internet version 25.
