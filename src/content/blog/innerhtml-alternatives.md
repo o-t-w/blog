@@ -5,7 +5,7 @@ heroImage: "/sethtml.png"
 description: getHTML, setHTML, setHTMLUnsafe, declarative shadow DOM and sanitization
 ---
 
-__Browser support note__: `setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe). `setHTML` is still being standardised and is only available in Firefox behind a flag. [`getHTML`](https://caniuse.com/mdn-api_element_gethtml) is supported in Chrome and Edge since version 125.
+__Browser support note__: `setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe). `setHTML` is still being standardised and is only available in Firefox behind a flag. [`getHTML`](https://caniuse.com/mdn-api_element_gethtml) is supported in Firefox (since [version 128](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/128)), in Chrome and Edge (since version 125) and in Safari (since [version 18](https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes)).
 
 Browsers recently implemented a new `setHTMLUnsafe` method. *Unsafe* in this context means that, just like `innerHTML`, it does not perform input sanitization. This naming is not consistent with previous browser APIs: we have `innerHTML`, not `innerHTMLUnsafe`; `eval()` not `evalUnsafe()`, etc. `setHTMLUnsafe` is certainly no more dangerous than these older methods. Unlike the older methods though, there is both a safe version (`setHTML`) and an unsafe version (`setHTMLUnsafe`) — hence the naming.
 
