@@ -44,6 +44,8 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 - `text-stroke`
 - `text-fill-color`
 - `line-clamp`
+- `box-decoration-break`
+- `stretch`/`available`/`fill-available`
 
 [`backdrop-filter`](https://caniuse.com/css-backdrop-filter), [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari. An unprefixed version of `backdrop-filter` is supported in [Safari 18](https://webkit.org/blog/15443/news-from-wwdc24-webkit-in-safari-18-beta/#:~:text=Tuesday%20June%2011.-,Backdrop%20Filter,-Originally%20shipped%20in).
 
@@ -63,6 +65,12 @@ Similarly, `line-clamp` has still not been been standardised. There is currently
 ```
 
 You might as well type that out by hand as _there will never be_ a standardised non-prefixed version of `box-orient` or `display: box`. Chrome looks set on implementing an improved non-prefixed [line-clamp](https://groups.google.com/a/chromium.org/g/blink-dev/c/CWP5rb--Gyk), which won't rely on setting any other esoteric obsolete properties.
+
+There are a great many prefixed properties for styling scrollbars. These are not a web standard and will never be a web standard, but they do still work in Chrome and Safari. The standard properties for styling scrollbars are `scrollbar-width` and `scrollbar-color`, which have never required a prefix.
+
+`-webkit-fill-available`/`-moz-available` still [requires a prefix](https://caniuse.com/mdn-css_properties_width_stretch). This is an incredibly niche property which you probably shouldn't use. It might be standardised as `stretch`.
+
+`box-decoration-break` requires a `-webkit` prefix in Chrome/Edge/Samsung Internet and Safari. Chrome looks set to [unprefix this property](https://groups.google.com/a/chromium.org/g/blink-dev/c/PyIR0yUMYsM/m/gaeyFfCIAgAJ).
 
 ## Updates since this article was first published
 
