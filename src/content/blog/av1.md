@@ -7,10 +7,10 @@ heroImage: "/m3.jpg"
 description: The next-gen royalty-free video codec is supported on new Apple devices.
 ---
 _This article was updated on 11 Sept, 2024_
- 
+
 AV1 is the next-gen open-source royalty-free video codec created by the Alliance for Open Media (AOM), a group founded by Google, Mozilla, Cisco, Microsoft, Netflix, Amazon, and Intel. Apple is also a member. 
 
-We are finally broader hardware support for this codec.
+We are finally seeing broader hardware support for this codec.
 
 The [iPhone 15 Pro and iPhone 15 Pro Max](https://bitmovin.com/apple-av1-support/) featured an AV1 hardware decoder. All versions of the iPhone 16 [support AV1](https://www.apple.com/uk/iphone-16/specs/#:~:text=Supported%20formats%20include%20HEVC%2C%20H.264%20and%C2%A0AV1).
 
