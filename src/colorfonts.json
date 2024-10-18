@@ -1,0 +1,175 @@
+{
+    "textfonts": [
+        {
+            "name": "Honk",
+            "creator": "Ek Type",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Honk",
+            "variable": true,
+            "opensource": true
+        },
+        {
+            "name": "Shader Color",
+            "creator": "Dalton Maag",
+            "type": ["COLRv1"],
+            "url": "https://www.daltonmaag.com/font-library/shader-color.html",
+            "variable": true,
+            "opensource": false
+        },
+        {
+            "name": "Kalnia Glaze",
+            "creator": "Frida Medrano",
+            "type": ["COLRv1"],
+            "url": "https://www.fridamedrano.com/kalniaglaze",
+            "variable": true,
+            "opensource": true
+        },
+        {
+            "name": "Nabla",
+            "creator": "Typearture",
+            "type": ["COLRv1"],
+            "url": "https://nabla.typearture.com/",
+            "variable": true,
+            "opensource": true
+        },
+        {
+            "name": "Nupuram Color",
+            "creator": "Santhosh Thottingal",
+            "type": ["COLRv1"],
+            "url": "https://gitlab.com/smc/fonts/Nupuram",
+            "variable": true,
+            "opensource": true
+        },
+        {
+            "name": "Plakato Color",
+            "creator": "Underware",
+            "type": ["COLRv1"],
+            "url": "https://underware.nl/fonts/plakato/features/color/",
+            "variable": true
+        },
+        {
+            "name": "Bradley Initials",
+            "creator": "David Jonathan Ross",
+            "type": ["COLRv1"],
+            "url": "https://djr.com/notes/bradley-initials-font-of-the-month",
+            "variable": true
+        },
+        {
+            "name": "Bungee Spice",
+            "creator": "David Jonathan Ross",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Bungee+Spice",
+            "variable": false,
+            "opensource": true
+        },
+        {
+            "name": "Foldit",
+            "creator": "Sophia Tai",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Foldit",
+            "variable": true,
+            "opensource": true
+        },
+        {
+            "name": "Blaka Ink",
+            "creator": "Mohamed Gaber",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Blaka+Ink",
+            "variable": true,
+            "opensource": true
+        }
+    ],
+    "colrfonts": [
+        {
+            "name": "Merit Badge",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR"],
+            "url": "https://djr.com/notes/merit-badge-font-of-the-month/",
+            "variable": true
+        },
+        {
+            "name": "Rocher Color",
+            "creator": "Harbor Type",
+            "type": ["COLR"],
+            "url": "https://www.harbortype.com/rocher-color-making-a-variable-color-font/",
+            "variable": true,
+            "free": true
+        } 
+    ],
+    "svgfonts": [
+        {
+            "name": "Ziza",
+            "creator": "Novo Typo",
+            "type": ["OpenType-SVG"],
+            "url": "https://www.novotypo.nl/fonts/ziza.html",
+            "variable": false
+        },
+        {
+            "name": "Bixa",
+            "creator": "Novo Typo",
+            "type": ["OpenType-SVG"],
+            "url": "htthttps://www.novotypo.nl/fonts/bixa.html",
+            "variable": false
+        },
+        {
+            "name": "Gilbert",
+            "creator": "Robyn Makinson, Kazunori Shiina, Hayato Yamasaki",
+            "type": ["OpenType-SVG"],
+            "url": "https://github.com/Fontself/TypeWithPride",
+            "variable": false,
+            "opensource": true
+        },
+        {
+            "name": "Trajan Color",
+            "creator": "Adobe",
+            "type": ["OpenType-SVG"],
+            "url": "https://blog.typekit.com/2016/11/17/introducing-trajan-color-concept-a-new-opentype-svg-font-by-adobe/",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "Ooze Out Loud",
+            "creator": "Meg Lewis",
+            "type": ["OpenType-SVG"],
+            "url": "https://meglewis.com/shop/ooze-out-loud-font",
+            "variable": false,
+            "opensource": false
+        }
+    ],
+    "multiformatfonts": [
+        {
+            "name": "Bungee",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR", "OpenType-SVG", "SBIX"],
+            "url": "https://djr.com/bungee",
+            "variable": false,
+            "opensource": true
+        },
+        {
+            "name": "Lab DJR",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR", "OpenType-SVG"],
+            "url": "https://djr.com/notes/lab-djr-font-of-the-month",
+            "variable": true,
+            "note": "Only the COLR version is available as a variable font"
+        },
+        {
+            "name": "Magical Unicorn Neue Pro",
+            "creator": "Typearture",
+            "type": ["COLR", "OpenType-SVG"],
+            "url": "https://www.typearture.com/magical-unicorn/specimen/",
+            "variable": true,
+            "note": "Only the COLR version is available as a variable font",
+            "free": true
+        }
+    ],
+    "emojifonts": [
+        {
+            "name": "EmojiOne Color",
+            "creator": "",
+            "type": ["COLRv1"],
+            "url": "google.com",
+            "variable": true
+        }
+    ]
+}

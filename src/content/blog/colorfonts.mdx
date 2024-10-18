@@ -1,0 +1,57 @@
+---
+pubDate: 'Oct 17 2024'
+title: "Color fonts"
+heroImage: "/accentcolor.png"
+description: Respecting user preferences for form controls.
+---
+
+import json from '../../colorfonts.json';
+
+## COLR
+COLRv0 fonts are limited to solid colors. COLRv0 is supported by all web browsers. They work in Sketch app and the Affinity suite of applications. The professional font creation tools Glyphs and FontLab can both be used to create COLRv0 typefaces.
+
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
+{json.colrfonts.map(thing => <div style="display: flex; flex-direction: column;">
+<div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}
+{thing.free && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Free</span>}
+</div>
+<span style="font-size: 16px;">by {thing.creator}</span>
+</div>)}
+</div>
+
+## COLRv1
+COLRv1 is supported by Firefox, Chrome, Samsung Internet and Edge browsers. They are not currently supported in any design tools. FontLab can be used to create COLRv1 typefaces.
+
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
+{json.textfonts.map(thing => <div style="display: flex; flex-direction: column;">
+<div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}</div>
+<span style="font-size: 16px;">by {thing.creator}</span>
+</div>)}
+</div>
+
+## OpenType-SVG
+OpenType-SVG is supported by Safari and Firefox. They work in most Adobe applications (currently not compatible with Adobe XD, Premiere Pro, and After Effects).
+
+There are currently more OpenType-SVG fonts than any other format, albeit of varying quality and, lacking the backing of Google Fonts, primarily commercially sold rather than free and open source. Below is only a partial selection of what's available.
+
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
+{json.svgfonts.map(thing => <div class="font-listing" style="display: flex; flex-direction: column;">
+<div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}</div>
+<span style="font-size: 16px;">by {thing.creator}</span>
+</div>)}
+</div>
+
+<hr style="margin-top: 32px;" />
+
+Some fonts are available in multiple formats:
+
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
+{json.multiformatfonts.map(thing => <div style="display: flex; flex-direction: column;">
+<div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>} {thing.free && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Free</span>}</div>
+<div style="display: flex; align-items: center; align-content: center; gap: 4px; margin-block: 4px;">
+{thing.type.map(type => <span style="font-size: 13px; background-color: black; color: white; border-radius: 4px; padding: 0px 4px;">{type}</span>)}
+</div>
+<span style="font-size: 16px;">by {thing.creator}</span>
+{thing.note && <p style="font-size: 13px; margin: 0;">({thing.note})</p>}
+</div>)}
+</div>
