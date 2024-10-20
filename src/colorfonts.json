@@ -88,6 +88,13 @@
             "variable": true
         },
         {
+            "name": "Daily Special",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR"],
+            "url": "https://djr.com/notes/daily-special-font-of-the-month",
+            "variable": true
+        },
+        {
             "name": "Rocher Color",
             "creator": "Harbor Type",
             "type": ["COLR"],
@@ -128,6 +135,13 @@
             "opensource": false
         },
         {
+            "name": "LetterBoard",
+            "creator": "Kyle Jones",
+            "type": ["OpenType-SVG"],
+            "url": "http://www.fonts.lol/letterboard",
+            "variable": false
+        },
+        {
             "name": "Ooze Out Loud",
             "creator": "Meg Lewis",
             "type": ["OpenType-SVG"],
@@ -152,6 +166,14 @@
             "url": "https://djr.com/notes/lab-djr-font-of-the-month",
             "variable": true,
             "note": "Only the COLR version is available as a variable font"
+        },
+        {
+            "name": "Megabase",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR", "OpenType-SVG"],
+            "url": "https://djr.com/notes/megabase-v3-font-of-the-month",
+            "variable": true,
+            "note": "Only the COLR version is available as a variable font."
         },
         {
             "name": "Magical Unicorn Neue Pro",
