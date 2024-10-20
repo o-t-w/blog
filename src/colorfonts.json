@@ -183,6 +183,15 @@
             "variable": true,
             "note": "Only the COLR version is available as a variable font",
             "free": true
+        },
+        {
+            "name": "Compyx",
+            "creator": "Roel Nieskens",
+            "type": ["COLR", "OpenType-SVG", "SBIX"],
+            "url": "https://github.com/RoelN/Compyx",
+            "variable": false,
+            "note": "Only the COLR version is available as a variable font",
+            "opensource": true
         }
     ],
     "emojifonts": [
