@@ -154,15 +154,23 @@
         {
             "name": "Bungee",
             "creator": "David Jonathan Ross",
-            "type": ["COLR", "OpenType-SVG", "SBIX"],
+            "type": ["COLRv0", "OpenType-SVG", "SBIX"],
             "url": "https://djr.com/bungee",
             "variable": false,
             "opensource": true
         },
         {
+            "name": "Kyoshi",
+            "creator": "Alanna Munro",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://alannamunro.com/fonts/kyoshi/",
+            "variable": false,
+            "opensource": false
+        },
+        {
             "name": "Lab DJR",
             "creator": "David Jonathan Ross",
-            "type": ["COLR", "OpenType-SVG"],
+            "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://djr.com/notes/lab-djr-font-of-the-month",
             "variable": true,
             "note": "Only the COLR version is available as a variable font"
@@ -170,7 +178,7 @@
         {
             "name": "Megabase",
             "creator": "David Jonathan Ross",
-            "type": ["COLR", "OpenType-SVG"],
+            "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://djr.com/notes/megabase-v3-font-of-the-month",
             "variable": true,
             "note": "Only the COLR version is available as a variable font."
@@ -178,16 +186,25 @@
         {
             "name": "Magical Unicorn Neue Pro",
             "creator": "Typearture",
-            "type": ["COLR", "OpenType-SVG"],
+            "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.typearture.com/magical-unicorn/specimen/",
             "variable": true,
             "note": "Only the COLR version is available as a variable font",
             "free": true
         },
         {
+            "name": "Sugarshop",
+            "creator": "Typearture",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://www.futurefonts.xyz/typearture/sugarshop",
+            "variable": false,
+            "note": "Only the COLR version is available as a variable font",
+            "opensource": false
+        },
+        {
             "name": "Compyx",
             "creator": "Roel Nieskens",
-            "type": ["COLR", "OpenType-SVG", "SBIX"],
+            "type": ["COLRv0", "OpenType-SVG", "SBIX"],
             "url": "https://github.com/RoelN/Compyx",
             "variable": false,
             "note": "Only the COLR version is available as a variable font",
