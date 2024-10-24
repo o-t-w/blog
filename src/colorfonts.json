@@ -202,6 +202,24 @@
             "opensource": false
         },
         {
+            "name": "Gimme",
+            "creator": "Typearture",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://www.futurefonts.xyz/typearture/gimme",
+            "variable": true,
+            "note": "Only the COLR version is available as a variable font",
+            "opensource": false
+        },
+        {
+            "name": "Niklaas",
+            "creator": "Typearture",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://www.typearture.com/niklaas/",
+            "variable": false,
+            "note": "Only the COLR version is available as a variable font",
+            "opensource": false
+        },
+        {
             "name": "Compyx",
             "creator": "Roel Nieskens",
             "type": ["COLRv0", "OpenType-SVG", "SBIX"],
