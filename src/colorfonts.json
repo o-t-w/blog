@@ -154,7 +154,7 @@
         {
             "name": "Bungee",
             "creator": "David Jonathan Ross",
-            "type": ["COLRv0", "OpenType-SVG", "SBIX"],
+            "type": ["COLRv0", "OpenType-SVG", "sbix"],
             "url": "https://djr.com/bungee",
             "variable": false,
             "opensource": true
@@ -222,11 +222,21 @@
         {
             "name": "Compyx",
             "creator": "Roel Nieskens",
-            "type": ["COLRv0", "OpenType-SVG", "SBIX"],
+            "type": ["COLRv0", "OpenType-SVG", "sbix"],
             "url": "https://github.com/RoelN/Compyx",
             "variable": false,
             "note": "Only the COLR version is available as a variable font",
             "opensource": true
+        }
+    ],
+    "sbixfonts": [
+        {
+            "name": "LiebeHeide",
+            "creator": "Ulrike Rausch",
+            "type": ["sbix"],
+            "url": "https://liebefonts.com/fonts/liebeheide",
+            "variable": false,
+            "opensource": false
         }
     ],
     "emojifonts": [

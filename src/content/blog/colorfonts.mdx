@@ -41,6 +41,17 @@ There are currently more OpenType-SVG fonts than any other format, albeit of var
 </div>)}
 </div>
 
+## sbix
+
+sbix was developed by Apple. Apple's emoji font is the most well known sbix font. Few fonts have been released in this format. sbix embeds bitmap images inside the font. sbix fonts tend to have a large file size, so are not usually a good option for websites. sbix fonts are supported in most Adobe design software and Chrome, Edge and Safari browsers, but are not supported by Firefox.
+
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
+{json.sbixfonts.map(thing => <div class="font-listing" style="display: flex; flex-direction: column;">
+<div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}</div>
+<span style="font-size: 16px;">by {thing.creator}</span>
+</div>)}
+</div>
+
 <hr style="margin-top: 32px;" />
 
 Some fonts are available in multiple formats:
