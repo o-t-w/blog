@@ -1,5 +1,5 @@
 {
-    "textfonts": [
+    "colrv1fonts": [
         {
             "name": "Honk",
             "creator": "Ek Type",
@@ -93,6 +93,13 @@
             "type": ["COLR"],
             "url": "https://djr.com/notes/daily-special-font-of-the-month",
             "variable": true
+        },
+        {
+            "name": "Nickel",
+            "creator": "David Jonathan Ross",
+            "type": ["COLR"],
+            "url": "https://djr.com/notes/nickel-v2-font-of-the-month",
+            "variable": false
         },
         {
             "name": "Rocher Color",

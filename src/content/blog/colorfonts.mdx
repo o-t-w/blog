@@ -20,10 +20,10 @@ COLRv0 fonts are limited to solid colors. COLRv0 is supported by all web browser
 </div>
 
 ## COLRv1
-COLRv1 is supported by Firefox, Chrome, Samsung Internet and Edge browsers. They are not currently supported in any design tools. FontLab can be used to create COLRv1 typefaces.
+COLRv1 supports gradients and other visual effects. COLRv1 is supported by Firefox, Chrome, Samsung Internet and Edge browsers. COLRv1 fonts are not currently supported in any design tools. FontLab can be used to create COLRv1 typefaces.
 
 <div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
-{json.textfonts.map(thing => <div style="display: flex; flex-direction: column;">
+{json.colrv1fonts.map(thing => <div style="display: flex; flex-direction: column;">
 <div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}</div>
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
