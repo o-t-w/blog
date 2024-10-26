@@ -189,6 +189,14 @@
             "url": "https://meglewis.com/shop/ooze-out-loud-font",
             "variable": false,
             "opensource": false
+        },
+        {
+            "name": "Schijn",
+            "creator": "Typearture",
+            "type": ["OpenType-SVG"],
+            "url": "https://www.typearture.com/schijn/",
+            "variable": false,
+            "opensource": false
         }
     ],
     "multiformatfonts": [
