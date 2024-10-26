@@ -77,6 +77,14 @@
             "url": "https://fonts.google.com/specimen/Blaka+Ink",
             "variable": true,
             "opensource": true
+        },
+        {
+            "name": "Nesto",
+            "creator": "Grzegorz Luk",
+            "type": ["COLRv1"],
+            "url": "https://www.glukfonts.pl/fontface/NestoVar/index.html",
+            "variable": true,
+            "opensource": false
         }
     ],
     "colrfonts": [
@@ -108,7 +116,16 @@
             "url": "https://www.harbortype.com/rocher-color-making-a-variable-color-font/",
             "variable": true,
             "free": true
-        } 
+        },
+        {
+            "name": "Twemoji",
+            "creator": "Mozilla",
+            "type": ["COLR"],
+            "url": "https://github.com/mozilla/twemoji-colr",
+            "variable": false,
+            "opensource": true,
+            "emoji": true
+        }
     ],
     "svgfonts": [
         {
@@ -244,15 +261,6 @@
             "url": "https://liebefonts.com/fonts/liebeheide",
             "variable": false,
             "opensource": false
-        }
-    ],
-    "emojifonts": [
-        {
-            "name": "EmojiOne Color",
-            "creator": "",
-            "type": ["COLRv1"],
-            "url": "google.com",
-            "variable": true
         }
     ]
 }
