@@ -159,6 +159,15 @@
             "opensource": false
         },
         {
+            "name": "EmojiOne",
+            "creator": "Adobe",
+            "type": ["OpenType-SVG"],
+            "url": "https://github.com/adobe-fonts/emojione-color",
+            "variable": false,
+            "opensource": true,
+            "emoji": true
+        },
+        {
             "name": "LetterBoard",
             "creator": "Kyle Jones",
             "type": ["OpenType-SVG"],
