@@ -85,6 +85,14 @@
             "url": "https://www.glukfonts.pl/fontface/NestoVar/index.html",
             "variable": true,
             "opensource": false
+        },
+        {
+            "name": "Sixtyfour Convergence",
+            "creator": "Simon Cozens, Jens Kutílek",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Sixtyfour+Convergence",
+            "variable": true,
+            "opensource": true
         }
     ],
     "colrfonts": [
