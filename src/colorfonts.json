@@ -159,6 +159,15 @@
             "opensource": true
         },
         {
+            "name": "GT Maru",
+            "creator": "Grilli Type with Anya Danilova",
+            "type": ["OpenType-SVG"],
+            "url": "https://gt-maru.com/#emoji",
+            "variable": false,
+            "opensource": false,
+            "emoji": true
+        },
+        {
             "name": "Trajan Color",
             "creator": "Adobe",
             "type": ["OpenType-SVG"],
@@ -229,16 +238,14 @@
             "creator": "David Jonathan Ross",
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://djr.com/notes/lab-djr-font-of-the-month",
-            "variable": true,
-            "note": "Only the COLR version is available as a variable font"
+            "variable": true
         },
         {
             "name": "Megabase",
             "creator": "David Jonathan Ross",
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://djr.com/notes/megabase-v3-font-of-the-month",
-            "variable": true,
-            "note": "Only the COLR version is available as a variable font."
+            "variable": true
         },
         {
             "name": "Magical Unicorn Neue Pro",
@@ -246,7 +253,6 @@
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.typearture.com/magical-unicorn/specimen/",
             "variable": true,
-            "note": "Only the COLR version is available as a variable font",
             "free": true
         },
         {
@@ -255,7 +261,6 @@
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.futurefonts.xyz/typearture/sugarshop",
             "variable": false,
-            "note": "Only the COLR version is available as a variable font",
             "opensource": false
         },
         {
@@ -264,17 +269,45 @@
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.futurefonts.xyz/typearture/gimme",
             "variable": true,
-            "note": "Only the COLR version is available as a variable font",
             "opensource": false
         },
         {
             "name": "Niklaas",
             "creator": "Typearture",
+            "publisher": "Typearture",
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.typearture.com/niklaas/",
             "variable": false,
-            "note": "Only the COLR version is available as a variable font",
             "opensource": false
+        },
+        {
+            "name": "Pappardelle Party",
+            "creator": "David Jonathan Ross",
+            "publisher": "Font of the Month",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://djr.com/notes/pappardelle-party-font-of-the-month",
+            "variable": true,
+            "opensource": false
+        },
+        {
+            "name": "Gimlet X-Ray",
+            "creator": "David Jonathan Ross",
+            "publisher": "Font of the Month",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://djr.com/gimlet-xray/",
+            "variable": true,
+            "opensource": false,
+            "released": 2020
+        },
+        {
+            "name": "Sango",
+            "creator": "Tanuki Samurai",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://tanukifont.com/sango/",
+            "variable": false,
+            "opensource": true,
+            "characters": ["Latin", "Japanese"],
+            "released": 2024
         },
         {
             "name": "Compyx",
@@ -282,7 +315,6 @@
             "type": ["COLRv0", "OpenType-SVG", "sbix"],
             "url": "https://github.com/RoelN/Compyx",
             "variable": false,
-            "note": "Only the COLR version is available as a variable font",
             "opensource": true
         }
     ],
