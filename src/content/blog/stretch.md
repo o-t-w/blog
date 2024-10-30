@@ -7,7 +7,7 @@ heroImage: "/stretch.png"
 description: ...
 ---
 
-Certain HTML elements, like a `div` or a `p`, will stretch to take up the full available width by default. If you give them a horizontal `margin`, it won’t cause a horizontal scrollbar. This is an incredibly useful default behaviour. Of course, many other elements aren’t full-width by default. Let’s look at a few instances where `width: 100%` comes in handy.
+Certain HTML elements, like a `div` or a `p`, will stretch to take up the full available width by default. If you give them a horizontal `margin`, it won’t cause a horizontal scrollbar. This is an incredibly useful default behaviour. Of course, many other elements aren’t full-width by default. Let’s look at a few instances where `width: 100%` comes in handy, before looking at a newer alternative.
 
 The default dimensions of an image are defined by the embedded image's intrinsic size. It’s necessary to give large images a `width` of `100%` to prevent overflow.
 
