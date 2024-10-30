@@ -50,3 +50,6 @@ width: stretch;
 This property is finally being standardised and [should be available unprefixed soon](https://groups.google.com/a/mozilla.org/g/dev-platform/c/-pMSV-kgUjA/m/VRL09R1NAAAJ).
 
 For now, only `width` is supported by all browsers. Using `-moz-available` or `-webkit-fill-available` for [`min-width`](https://caniuse.com/mdn-css_properties_min-width_stretch) or [`max-width`](https://caniuse.com/mdn-css_properties_max-width_stretch) is not supported by Firefox or Safari. `-moz-available` does not work for `height` in Firefox. Chrome doesn't support `-webkit-fill-available` as a value for `flex-basis`.
+
+## Sidenote on `width: auto`
+If you've ever struggled to understand what `width: auto` meant, understanding `stretch` gets you half way there. `auto` will map to `fit-content` for elements like form controls and will map to `stretch` for elements like divs.
