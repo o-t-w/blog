@@ -35,7 +35,7 @@ button {
 
 This property allows other elements to adopt the `auto` behaviour of divs and paragraph elements: stretch to fill the available width while also allowing for the unproblematic use of margins.
 
-The `stretch` keyword also specced to work when specifying `height` and  `flex-basis`.
+The `stretch` keyword is also specced to work when specifying `height` and  `flex-basis`.
 
 ## Browser support
 
