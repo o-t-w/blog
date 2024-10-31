@@ -4,7 +4,7 @@ title: "The stretch keyword: a better alternative to width: 100% in CSS?"
 tags:
   - CSS
 heroImage: "/stretch.png"
-description: ...
+description: "Use margins while avoiding overflow and horizontal scrollbars with width: stretch"
 ---
 
 Certain HTML elements, like a `div` or a `p`, will stretch to take up the full available width by default. If you give them a horizontal `margin`, it won’t cause a horizontal scrollbar. This is an incredibly useful default behaviour. Of course, many other elements aren’t full-width by default. Let’s look at a few instances where `width: 100%` comes in handy, before looking at a newer alternative.
