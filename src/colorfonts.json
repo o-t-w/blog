@@ -76,7 +76,8 @@
             "type": ["COLRv1"],
             "url": "https://fonts.google.com/specimen/Blaka+Ink",
             "variable": true,
-            "opensource": true
+            "opensource": true,
+            "characters": ["Arabic", "Latin"]
         },
         {
             "name": "Nesto",
@@ -87,12 +88,40 @@
             "opensource": false
         },
         {
+            "name": "Reem Kufi Ink",
+            "creator": "Khaled Hosny, Santiago Orozco",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Reem+Kufi+Ink",
+            "variable": false,
+            "opensource": true,
+            "characters": ["Arabic"],
+            "palettes": 2
+        },
+        {
+            "name": "Aref Ruqaa Ink",
+            "creator": "Abdullah Aref, Khaled Hosny, Hermann Zapf",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/specimen/Aref+Ruqaa+Ink",
+            "variable": false,
+            "opensource": true,
+            "characters": ["Arabic"],
+            "palettes": 2
+        },
+        {
             "name": "Sixtyfour Convergence",
             "creator": "Simon Cozens, Jens Kutílek",
             "type": ["COLRv1"],
             "url": "https://fonts.google.com/specimen/Sixtyfour+Convergence",
             "variable": true,
             "opensource": true
+        },
+        {
+            "name": "Velzyland",
+            "creator": "CJ Dunn",
+            "type": ["COLRv1"],
+            "url": "https://cjtype.com/",
+            "variable": true,
+            "opensource": false
         }
     ],
     "colrfonts": [
@@ -109,6 +138,14 @@
             "type": ["COLR"],
             "url": "https://djr.com/notes/daily-special-font-of-the-month",
             "variable": true
+        },
+        {
+            "name": "Hamster",
+            "creator": "Joe Stitzlein",
+            "type": ["COLR"],
+            "url": "https://hamsterfont.com/",
+            "variable": true,
+            "opensource": false
         },
         {
             "name": "Nickel",
@@ -197,6 +234,7 @@
             "type": ["OpenType-SVG"],
             "url": "https://fonts.adobe.com/fonts/moolong-tokatsuki-kana",
             "variable": false,
+            "characters": ["English", "Indonesian", "Japanese", "Malay"],
             "opensource": false
         },
         {

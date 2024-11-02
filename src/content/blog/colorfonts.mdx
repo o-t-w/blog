@@ -16,6 +16,7 @@ COLRv0 fonts are limited to solid colors. COLRv0 is supported by all web browser
 {thing.free && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Free</span>}
 {thing.emoji && <span style="font-size: 13px; background-color: oklch(0.93 0.22 102.9); color: oklch(0.25 0.16 105.64 / 1); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Emoji <span style="font-size: 15px;">😄</span></span>}
 </div>
+{thing.characters && <div style="font-size: 16px;">Characters/languages: {thing.characters.join(", ")} </div>}
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
 </div>
@@ -26,6 +27,7 @@ COLRv1 supports gradients and other visual effects. COLRv1 is supported by Firef
 <div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
 {json.colrv1fonts.map(thing => <div style="display: flex; flex-direction: column;">
 <div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>} {thing.emoji && <span style="font-size: 13px; background-color: oklch(0.93 0.22 102.9); color: oklch(0.25 0.16 105.64 / 1); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Emoji <span style="font-size: 15px;">😄</span></span>}</div>
+{thing.characters && <div style="font-size: 16px;">Characters/languages: {thing.characters.join(", ")} </div>}
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
 </div>
@@ -38,6 +40,7 @@ There are currently more OpenType-SVG fonts than any other format, albeit of var
 <div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
 {json.svgfonts.map(thing => <div class="font-listing" style="display: flex; flex-direction: column;">
 <div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.variable && <span style="font-size: 13px; color: oklch(0.3 0.1 245.84); background-color: oklch(0.88 0.07 240.74); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Variable</span>} {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>} {thing.emoji && <span style="font-size: 13px; background-color: oklch(0.93 0.22 102.9); color: oklch(0.25 0.16 105.64 / 1); border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Emoji <span style="font-size: 15px;">😄</span></span>}</div>
+{thing.characters && <div style="font-size: 16px;">Characters/languages: {thing.characters.join(", ")} </div>}
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
 </div>
@@ -49,6 +52,7 @@ sbix was developed by Apple. Apple's emoji font is the most well known sbix font
 <div style="display: flex; flex-direction: column; gap: 16px; margin-top: -8px;">
 {json.sbixfonts.map(thing => <div class="font-listing" style="display: flex; flex-direction: column;">
 <div style="display: flex; align-items: center; align-content: center;"><a href={thing.url}>{thing.name}</a> {thing.opensource && <span style="font-size: 13px; background-color: var(--accent-light); color: white; border-radius: 4px; padding: 0px 4px; margin-left: 8px;">Open Source</span>}</div>
+{thing.characters && <div style="font-size: 16px;">Characters/languages: {thing.characters.join(", ")} </div>}
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
 </div>
@@ -63,6 +67,7 @@ Some fonts are available in multiple formats:
 <div style="display: flex; align-items: center; align-content: center; gap: 4px; margin-block: 4px;">
 {thing.type.map(type => <span style="font-size: 13px; background-color: black; color: white; border-radius: 4px; padding: 0px 4px;">{type}</span>)}
 </div>
+{thing.characters && <div style="font-size: 16px;">Characters/languages: {thing.characters.join(", ")} </div>}
 <span style="font-size: 16px;">by {thing.creator}</span>
 </div>)}
 </div>
