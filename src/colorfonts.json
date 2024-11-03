@@ -33,6 +33,15 @@
             "opensource": true
         },
         {
+            "name": "Noto Color Emoji",
+            "creator": "Google",
+            "type": ["COLRv1"],
+            "url": "https://fonts.google.com/noto/specimen/Noto+Color+Emoji",
+            "variable": false,
+            "opensource": true,
+            "emoji": true
+        },
+        {
             "name": "Nupuram Color",
             "creator": "Santhosh Thottingal",
             "type": ["COLRv1"],
