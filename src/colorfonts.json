@@ -138,7 +138,7 @@
             "name": "Cap1",
             "creator": "John Rooney",
             "foundry": "F37",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://f37foundry.com/f37x/f37-cap1",
             "variable": true,
             "opensource": false
@@ -146,21 +146,21 @@
         {
             "name": "Merit Badge",
             "creator": "David Jonathan Ross",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://djr.com/notes/merit-badge-font-of-the-month/",
             "variable": true
         },
         {
             "name": "Daily Special",
             "creator": "David Jonathan Ross",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://djr.com/notes/daily-special-font-of-the-month",
             "variable": true
         },
         {
             "name": "Hamster",
             "creator": "Joe Stitzlein",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://hamsterfont.com/",
             "variable": true,
             "opensource": false
@@ -168,14 +168,14 @@
         {
             "name": "Nickel",
             "creator": "David Jonathan Ross",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://djr.com/notes/nickel-v2-font-of-the-month",
             "variable": false
         },
         {
             "name": "Rocher Color",
             "creator": "Harbor Type",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://www.harbortype.com/rocher-color-making-a-variable-color-font/",
             "variable": true,
             "free": true
@@ -183,11 +183,19 @@
         {
             "name": "Twemoji",
             "creator": "Mozilla",
-            "type": ["COLR"],
+            "type": ["COLRv0"],
             "url": "https://github.com/mozilla/twemoji-colr",
             "variable": false,
             "opensource": true,
             "emoji": true
+        },
+        {
+            "name": "Washi",
+            "creator": "Otherwhere Collective",
+            "type": ["COLRv0"],
+            "url": "https://otherwherecollective.com/washi/",
+            "variable": false,
+            "opensource": false
         }
     ],
     "svgfonts": [
