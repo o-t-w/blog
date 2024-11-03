@@ -126,6 +126,15 @@
     ],
     "colrfonts": [
         {
+            "name": "Cap1",
+            "creator": "John Rooney",
+            "foundry": "F37",
+            "type": ["COLR"],
+            "url": "https://f37foundry.com/f37x/f37-cap1",
+            "variable": true,
+            "opensource": false
+        },
+        {
             "name": "Merit Badge",
             "creator": "David Jonathan Ross",
             "type": ["COLR"],
@@ -238,6 +247,15 @@
             "opensource": false
         },
         {
+            "name": "Brillante Obsidian",
+            "creator": "Jérémie Hornus, Solenn Bordeau",
+            "foundry": "Black Foundry",
+            "type": ["OpenType-SVG"],
+            "url": "https://black-foundry.com/fonts/brillante-obsidian/",
+            "variable": false,
+            "opensource": false
+        },
+        {
             "name": "Ooze Out Loud",
             "creator": "Meg Lewis",
             "type": ["OpenType-SVG"],
@@ -298,6 +316,15 @@
             "creator": "Typearture",
             "type": ["COLRv0", "OpenType-SVG"],
             "url": "https://www.futurefonts.xyz/typearture/sugarshop",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "FDI Kromograph",
+            "creator": "Walter Wege, Ralf Herrmann",
+            "foundry": "FDI",
+            "type": ["COLRv0", "OpenType-SVG"],
+            "url": "https://fdi-type.de/fonts/kromograph/",
             "variable": false,
             "opensource": false
         },
