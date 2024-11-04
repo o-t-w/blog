@@ -144,6 +144,13 @@
             "opensource": false
         },
         {
+            "name": "Juma",
+            "creator": "Naipe Foundry",
+            "type": ["COLRv0"],
+            "url": "https://store.naipe.xyz/fonts/juma",
+            "variable": false
+        },
+        {
             "name": "Merit Badge",
             "creator": "David Jonathan Ross",
             "type": ["COLRv0"],
@@ -163,6 +170,15 @@
             "type": ["COLRv0"],
             "url": "https://hamsterfont.com/",
             "variable": true,
+            "opensource": false
+        },
+        {
+            "name": "Intern",
+            "creator": "Doğukan Karapınar, İbrahim Kaçtıoğlu",
+            "foundry": "Element Type",
+            "type": ["COLRv0"],
+            "url": "https://elementtype.co/intern/",
+            "variable": false,
             "opensource": false
         },
         {
