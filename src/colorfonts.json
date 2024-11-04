@@ -135,6 +135,16 @@
     ],
     "colrfonts": [
         {
+            "name": "Amiri Quran",
+            "creator": "Khaled Hosny, Sebastian Kosch",
+            "foundry": "Google Fonts",
+            "type": ["COLRv0"],
+            "url": "https://fonts.google.com/specimen/Amiri+Quran",
+            "variable": false,
+            "opensource": true,
+            "characters": ["Arabic"]
+        },
+        {
             "name": "Cap1",
             "creator": "John Rooney",
             "foundry": "F37",
@@ -142,6 +152,16 @@
             "url": "https://f37foundry.com/f37x/f37-cap1",
             "variable": true,
             "opensource": false
+        },
+        {
+            "name": "Cairo Play",
+            "creator": "Mohamed Gaber, Accademia di Belle Arti di Urbino",
+            "foundry": "Google Fonts",
+            "type": ["COLRv0"],
+            "url": "https://fonts.google.com/specimen/Cairo+Play",
+            "variable": true,
+            "opensource": true,
+            "characters": ["Arabic", "Latin"]
         },
         {
             "name": "Juma",
@@ -187,6 +207,14 @@
             "type": ["COLRv0"],
             "url": "https://djr.com/notes/nickel-v2-font-of-the-month",
             "variable": false
+        },
+        {
+            "name": "Reem Kufi Fun",
+            "creator": "Khaled Hosny, Santiago Orozco",
+            "type": ["COLRv0"],
+            "url": "https://fonts.google.com/specimen/Reem+Kufi+Fun",
+            "variable": true,
+            "opensource": true
         },
         {
             "name": "Rocher Color",
