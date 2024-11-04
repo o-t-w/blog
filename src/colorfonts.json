@@ -275,6 +275,15 @@
             "emoji": true
         },
         {
+            "name": "Ten Mincho",
+            "creator": "Robert Slimbach and Ryoko Nishizuka",
+            "type": ["OpenType-SVG"],
+            "url": "https://fonts.adobe.com/fonts/ten-mincho",
+            "variable": false,
+            "opensource": false,
+            "emoji": true
+        },
+        {
             "name": "Trajan Color",
             "creator": "Adobe",
             "type": ["OpenType-SVG"],
