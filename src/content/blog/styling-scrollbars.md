@@ -21,9 +21,9 @@ It’s been possible to style scrollbars for many years but only in a [non-stand
 
 These pseudo-elements are not on a standards track, so won’t ever get implemented in Firefox.
 
-In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121](https://developer.chrome.com/blog/new-in-chrome-121#css-updates), Chrome browser also supports both properties. Safari have expressed a positive position on both [scrollbar-color](https://github.com/WebKit/standards-positions/issues/134) and [scrollbar-width](https://github.com/WebKit/standards-positions/issues/133#issuecomment-1551300724)).
+In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121](https://developer.chrome.com/blog/new-in-chrome-121#css-updates), Chrome browser also supports both properties. Safari have expressed a positive position on [`scrollbar-color`](https://github.com/WebKit/standards-positions/issues/134) and have supported `scrollbar-width` since [version 18.2](https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes).
 
-The older non-standard approach allowed a great deal of control. You could even recreate Windows 95 style scrollbars for a retro look if you wanted to. The standardized CSS properties are much more limited in scope. 
+The older non-standard approach allowed a great deal of control. You could even recreate Windows 95 style scrollbars for a retro look if you wanted to. The standardized CSS properties are much more limited in scope.
 
 About the non-standardized approach the [W3C spec](https://drafts.csswg.org/css-scrollbars/) states:
 
@@ -44,11 +44,13 @@ This is echoed in the W3C spec itself:
 > Scrollbars are a UI mechanism essential to interact with the page. Operating systems tend to want consistency in such controls to improve usability through familiarity, and users with specific preferences or needs can adjust the appearance of various UI components, including scrollbars, through OS or UA settings. While using this property in support of specific UX goals is appropriate, authors should otherwise refrain from overriding such user preferences.
 
 ## `scrollbar-width`
-```css    
+
+```css
 .scrollable-section {
     scrollbar-width: thin;
 }
 ```
+
 There are only three possible values for the `scrollbar-width` property: 
 
 - `auto` (the default width)
@@ -61,18 +63,20 @@ The W3C spec describes the purpose of the `scrollbar-width` property and address
 
 > The primary purpose of this property is not to allow authors to chose a particular scrollbar aesthetic for their pages, but to let them indicate for certain small or cramped elements of their pages that a smaller scrollbar would be desirable.
 
-So its not advised to use this property on the html element, but it could come in useful for UI elements such as a custom select menu, for example. 
+So its not advised to use this property on the html element, but it could come in useful for UI elements such as a custom select menu, for example.
 
 ![A screenshot of a custom dropdown menu with a thin scrollbar](/amenu.png)
 
 ## `scrollbar-color`
 
 This property accepts two color values:
+
 ```css
 html {
     scrollbar-color: #6969dd #e0e0e0;
 }
 ```
+
 The first color applies to the thumb of the scrollbar (meaning the part of the scrollbar that you move ), the second to the scrollbar track.
 
 If you decide to customize the color of the scrollbar its important to take accessibility into account when it comes to color contrast. To meet [WCAG 2.1 AA requirements](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html) a minimum contrast ratio of 3:1 is required.
