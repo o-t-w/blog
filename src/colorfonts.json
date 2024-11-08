@@ -178,6 +178,15 @@
             "variable": true
         },
         {
+            "name": "Munchenstein Slab",
+            "creator": "Nikola Djurek",
+            "foundry": "Typotheque",
+            "type": ["COLRv0"],
+            "url": "https://www.typotheque.com/fonts/munchenstein-slab",
+            "variable": true,
+            "opensource": false
+        },
+        {
             "name": "Daily Special",
             "creator": "David Jonathan Ross",
             "type": ["COLRv0"],
