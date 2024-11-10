@@ -23,7 +23,7 @@ In Chrome and Edge, the following code can be used on block layouts to center ch
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-This is a huge update to how layout works in CSS that I feel should have made greater waves in the web community. `justify-items` on the parent and `justify-self` on a child element also work without flexbox or grid, but only in Chromium for now.
+`justify-items` on a parent element and `justify-self` on a child also work without flexbox or grid, but only in Chromium for now.
 
 <p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="xxvaWoq" data-pen-title="Untitled" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/cssgrid/pen/xxvaWoq">
@@ -68,33 +68,32 @@ An alternative approach that currently only works in Chrome and Firefox Nightly 
 
 ## And yet...
 
-Regardless of whether you’ve given an element equal `padding` on the top and bottom, used `margin: auto` or `align-content`, with or without flexbox or grid, its often not enough to vertically center text. The article [Hardest Problem in Computer Science: Centering Things](https://tonsky.me/blog/centering/) has plenty of example screenshots from the websites of large successful companies failing to visually center things. The developers of these websites aren’t stupid — so why is it so difficult?
+Regardless of whether you’ve given an element equal `padding` on the top and bottom, used `margin: auto` or `align-content`, with or without flexbox or grid, its often not enough to vertically center text. The article [Hardest Problem in Computer Science: Centering Things](https://tonsky.me/blog/centering/) has plenty of example screenshots from the websites of large companies failing to visually center things. The developers of these websites aren’t stupid — so why is it so difficult?
 
-Even without any `padding`, a text box will still contain excess white space above and below the actual visible text. The `line-height` set in your CSS will affect this. The font you use will also have an impact on just how much extra vertical space there is — with the same CSS applied, one font might look perfectly centered while another might look askew. A small handful of fonts have been designed with this problem in mind. The sales pitch for [Martian Grotesk](https://evilmartians.com/products/martian-grotesk), for example, reads: "We researched and calculated vertical metrics and set them up in a way that guarantees equal space above the cap height and under the baseline." While certain fonts might help avoid the issue somewhat, two new CSS properties offer a solution.
+Even without any `padding`, a text box will still contain excess white space above and below the actual visible text. The `line-height` set in your CSS will affect this. The font you use will also have an impact on just how much extra vertical space there is — with the same CSS applied, one font might look perfectly centered while another might look askew. A small handful of fonts have been designed with this problem in mind. The sales pitch for [Martian Grotesk](https://evilmartians.com/products/martian-grotesk), for example, reads: "We researched and calculated vertical metrics and set them up in a way that guarantees equal space above the cap height and under the baseline." While certain fonts might help avoid the issue somewhat, two new CSS properties offer a more generally applicable solution.
 
 ## `text-box-trim` and `text-box-edge`
 
 <!-- <baseline-status featureId="text-box-trim"></baseline-status> -->
 
-Used together, these properties trim the whitespace (known as leading) from above the first line of text and below the last line of text. For text that doesn't wrap, such as text in a `button`, it can trim the whitespace both above and below the text.
+Used together, these properties trim the whitespace (known as leading) from above the first line of text and below the last line of text.
 
 Using `text-box-trim`, you can trim from just the top (`trim-start`), just the bottom (`trim-end`) or both (`trim-both`).
-
-### How much to trim?
-`text-box-edge` accepts two values. The first value specifies where to trim at the top of the text. The second value specifies where to trim at the bottom.
-
-In typographic parlance, the term *x-height* is the height of the lowercase “x” character in whichever font you are using.
-
-<img src="/xheight.png" alt="">
 
 ```css
 button {
   text-box-trim: trim-both;
-  text-box-edge: ex alphabetic;
 }
 ```
 
+### How much to trim?
+`text-box-edge` accepts two values. The first value specifies where to trim at the above the text. The second value specifies where to trim below the text.
+
+For trimming above the text you have an option of `ex`, `cap` or `text`. For trimming below the text you have a choice between `alphabetic` or `text`.
+
 `cap` height refers to the height of a capital letter.
+
+`alphabetic` will trim beneath the baseline (the baseline is the invisible line upon which letters sit).
 
 <figure>
 <img src="/leadinggif.gif" alt="">
@@ -106,6 +105,17 @@ button {
 button {
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
+}
+```
+
+In typographic parlance, the term *x-height* is the height of the lowercase “x” character in whichever font you are using.
+
+<img src="/xheight.png" alt="">
+
+```css
+button {
+  text-box-trim: trim-both;
+  text-box-edge: ex alphabetic;
 }
 ```
 
@@ -144,4 +154,4 @@ Whether text looks vertically centered partly depends on the context. Does the b
 
 <button class="btn-example">Submit</button>  <button class="btn-example">query</button>
 
-That `text-box-edge` has so many potential values speaks to the fact that perhaps there is no foolproof boilerplate solution that works for all cases. Until this reaches broader browser support, we're stuck manually offsetting by a single pixel or two using `relative` positioning or applying uneven `padding` whenever things don't look quite right.
+That `text-box-edge` has so many potential values speaks to the fact that there is no foolproof boilerplate solution that works for all cases. Until this reaches broader browser support, we're stuck manually offsetting by a single pixel or two using `relative` positioning or applying uneven `padding` whenever things don't look quite right.
