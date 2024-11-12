@@ -178,6 +178,15 @@
             "variable": true
         },
         {
+            "name": "Material Icons Two Tone",
+            "creator": "Google Fonts",
+            "foundry": "Google Fonts",
+            "type": ["COLRv0"],
+            "url": "https://github.com/google/material-design-icons/tree/master/font",
+            "variable": false,
+            "opensource": true
+        },
+        {
             "name": "Munchenstein Slab",
             "creator": "Nikola Djurek",
             "foundry": "Typotheque",
