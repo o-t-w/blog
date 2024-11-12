@@ -416,6 +416,15 @@
             "opensource": false
         },
         {
+            "name": "Joypixels",
+            "creator": "Joypixels",
+            "type": ["CBDT", "COLRv1", "OpenType-SVG", "sbix"],
+            "url": "https://joypixels.com/fonts",
+            "variable": false,
+            "opensource": false,
+            "emoji": true
+        },
+        {
             "name": "Niklaas",
             "creator": "Typearture",
             "publisher": "Typearture",
@@ -470,6 +479,16 @@
             "url": "https://liebefonts.com/fonts/liebeheide",
             "variable": false,
             "opensource": false
+        },
+        {
+            "name": "Toss Face",
+            "creator": "Toss",
+            "type": ["sbix"],
+            "url": "https://toss.im/tossface",
+            "variable": false,
+            "opensource": false,
+            "emoji": true,
+            "free": true
         }
     ]
 }
