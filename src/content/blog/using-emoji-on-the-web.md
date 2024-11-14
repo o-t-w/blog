@@ -8,6 +8,8 @@ heroImage: "/emoji.png"
 description: Probably more than you ever wanted to know about emoji
 ---
 
+*This article was updated on 14th November 2024*
+
 By default, most browsers utilise whichever emoji font is provided by the underlying operating system. Browsers running on ChromeOS and most Android devices will render Google’s Noto Color Emoji. On iOS and macOS, browsers will use [Apple Color Emoji](https://emojipedia.org/apple/), and on Windows it’ll be [Microsoft Segoe Color Emoji](https://emojipedia.org/microsoft/). Firefox on Windows and Linux is an exception in that it bundles [Twitter’s Twemoji font](https://github.com/mozilla/twemoji-colr) and uses that instead of Segoe. 
 
 When you use an emoji character within HTML markup it usually *just works*: an emoji gets rendered. There are, however, edge cases and issues to be aware of. Nolan Lawson posted an article in 2022 titled [*The struggle of using native emoji on the web*](https://nolanlawson.com/2022/04/08/the-struggle-of-using-native-emoji-on-the-web/). The issues he raised:
@@ -45,27 +47,25 @@ This isn’t just a problem of legacy tech. Some *current* operating systems, no
 
 ### Solving problem 1 with `font-variant-emoji`
 
-Explicitly setting the `font-family` to an emoji font is often enough to solve this issue. Ideally, we’d be able to use `font-family: emoji`. In the same way that we have `font-family: system-ui` to specify the system font, this is an equivalent way to specify the system emoji font. 
+Explicitly setting the `font-family` to an emoji font is often enough to solve this issue.
 
-`font-family: emoji` is roughly equivalent to:
-```css
-p {
-    font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji";
-    }
-``` 
-`font-family: emoji` would remain forever up-to-date. By contrast, by using named fonts, were Apple, Google or Microsoft to design a brand new emoji font with a different name, the above code would be obsolete. No browser has shipped `font-family: emoji` yet, so we’ll have to list out the different fonts of each operating system (and "Twemoji Mozilla", the font used by Firefox on Windows): 
+~~Ideally, we’d be able to use `font-family: emoji`. In the same way that we have `font-family: system-ui` to specify the system font, this is an equivalent way to specify the system emoji font. `font-family: emoji` would remain forever up-to-date. By contrast, by using named fonts, were Apple, Google or Microsoft to design a brand new emoji font with a different name, the above code would be obsolete. No browser has shipped `font-family: emoji` yet~~ Update: The CSS working group has [abandoned plans](https://github.com/w3c/csswg-drafts/issues/9359) for `font-family: emoji`.  
+
+We’ll have to list out the different fonts of each operating system (and "Twemoji Mozilla", the font used by Firefox on Windows):
 
 ```css
 h1 {
     font-family: "Twemoji Mozilla", Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji", "EmojiOne Color";
     }
 ```
-Should you have text that includes both emoji and regular text, things get more complicated. 
+
+Should you have text that includes both emoji and regular text, things get more complicated.
 Let’s say you have the [following code](https://codepen.io/cssgrid/pen/MWzVKZb):
 
 ```html
 <h1 style="font-family: 'Comic Sans MS', Apple Color Emoji, 'Segoe UI Emoji', 'Noto Color Emoji';">I ♥ emoji</h1>
 ```
+
 Paraphrasing [Monica Dinculescu](https://meowni.ca/posts/emoji-emoji-emoji/), who previously worked as an engineer on Google Chrome:
 
 Chrome will first look up the glyph corresponding to ♥ in the Comic Sans font. It won’t find it, so it will look through the rest of the fonts we've listed and use whichever emoji font is on the user's system. We were lucky here because Comic Sans doesn’t contain this emoji. The problem is, some fonts designed for regular text do contain the black pseudo-emoji were trying to avoid. On a Mac, for example, the system font contains a black heart symbol.
@@ -81,14 +81,16 @@ As well as setting the font, you should also append the variation selector `&#xF
 ```html
 <h1>I ♥&#xFE0F; emoji</h1>
 ```
+
 If you want the single color version, append `&#xFE0E;`
 
 ```html
 <h1>I ♥&#xFE0E; emoji</h1>
 ```
+
 The variation selector alone is not always enough to render what you want. Unicode Technical Committee Chair Peter Constable told me, "Font fallback logic in text engines is not necessarily going to have special-case logic for variation sequences". In some browsers, notably Chrome, your font stack can still [effect the result](https://stackoverflow.com/questions/70993962/emoji-variation-selector-doesnt-work-for-user-specified-font).
 
-If you're using a lot of emoji, constant use of the variation selector is rather verbose. There's a new CSS property on the horizon that will make this easier. 
+If you're using a lot of emoji, constant use of the variation selector is rather verbose. There's a new CSS property on the horizon that will make this easier.
 
 ```css
 h1 {
@@ -102,7 +104,7 @@ If you’re using a browser that supports the `font-variant-emoji` CSS property,
 
 You can alternatively use `font-variant-emoji: text` if you want the plain single-color version.
 
-Browser support is forthcoming. It's behind a flag in Firefox. Chrome have announced an [intent to ship](https://groups.google.com/a/chromium.org/g/blink-dev/c/MaXgbE4vTbk/m/Q3QbI37IBQAJ) and it's currently being worked on in Safari.
+[Chrome 131](https://developer.chrome.com/release-notes/131?hl=en#css_font-variant-emoji) shipped support for `font-variant-emoji`. It's behind a flag in Firefox.
 
 ### Solving problem 2 (and 3?) with color fonts
 
@@ -116,18 +118,18 @@ Colin M. Ford has worked as a typeface designer for two of the world’s most re
 
 This position ignores an important fact: if your `@font-face` emoji font doesn't contain certain niche emoji, the browser will fallback to using the system emoji font, so the user will still see an emoji — albeit perhaps one drawn in a different visual style. 
 
-Subsetting is a good answer to problem 2. If you strip all other characters from the font, the size of a flags-only color font isn’t that large.   
+Subsetting is a good answer to problem 2. If you strip all other characters from the font, the size of a flags-only color font isn’t that large.
 
 There are several open-source color emoji fonts you can freely use:
 - [Noto Color](https://fonts.google.com/noto/specimen/Noto+Color+Emoji) from Google
 - [Emoji One](https://github.com/adobe-fonts/emojione-color) from Adobe
 - [Twemoji](https://github.com/13rac1/twemoji-color-font) by Twitter
 - [FxEmoji](https://github.com/mozilla/fxemoji/blob/gh-pages/dist/FirefoxEmoji/FirefoxEmoji.ttf) from Mozilla
-- [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) from Microsoft (they've released the SVG artwork, but you'd need to bundle the SVGs into a font yourself). 
+- [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) from Microsoft (they've released the SVG artwork, but you'd need to bundle the SVGs into a font yourself).
 
 Other than Fluent, they all contain country flags.
 
-There is no great answer to missing emoji on older operating systems. You could subset a color font to include only the newer emoji (and keep it updated as more emoji come out…) but they might be stylistically inconsistent with other emoji on the user's system (which is probably better than nothing). Of the open-source emoji fonts, FxEmoji and Emoji One have not been updated with new emoji for years. Noto Color, by contrast, is always up-to-date. 
+There is no great answer to missing emoji on older operating systems. You could subset a color font to include only the newer emoji (and keep it updated as more emoji come out…) but they might be stylistically inconsistent with other emoji on the user's system (which is probably better than nothing). Of the open-source emoji fonts, FxEmoji and Emoji One have not been updated with new emoji for years. Noto Color, by contrast, is always up-to-date.
 
 If you want to use a color font, you have two options:
 
