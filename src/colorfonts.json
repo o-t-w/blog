@@ -1,6 +1,14 @@
 {
     "colrv1fonts": [
         {
+            "name": "Gradial",
+            "creator": "Lena Weber",
+            "type": ["COLRv1"],
+            "url": "http://www.monomodular.de/gradial.html",
+            "variable": true,
+            "opensource": false
+        },
+        {
             "name": "Honk",
             "creator": "Ek Type",
             "type": ["COLRv1"],
