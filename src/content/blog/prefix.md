@@ -7,6 +7,8 @@ heroImage: "/webkit.jpg"
 description: Do we still need Autoprefixer?
 ---
 
+*This article was updated on 16th November 2024*
+
 CSS prefixes are a relic from a bygone age.
 
 Developers once manually typed out code like:
@@ -51,7 +53,7 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 
 Safari supports `text-decoration-color`, `text-decoration-line` and `text-decoration-style` without a prefix. The `text-decoration` property is meant to work as a shorthand for all three. In Safari, however, `text-decoration` can only set `text-decoration-line`. `text-decoration: underline;` works.  `text-decoration: underline orange wavy;` doesn't. `-webkit-text-decoration` works correctly when setting all three properties.
 
-`text-stroke` and `text-fill-color` have never been successfully standardised, but `-webkit-text-stroke` and  `-webkit-text-fill-color` work in every browser. 
+`text-stroke` and `text-fill-color` have never been standardised, but `-webkit-text-stroke` and  `-webkit-text-fill-color` work in every browser.
 
 Similarly, `line-clamp` has still not been been standardised. There is currently no `line-clamp` property implemented in any browser, only `-webkit-line-clamp`, which only works in conjunction with two other prefixed non-standard properties:
 
@@ -68,10 +70,12 @@ You might as well type that out by hand as _there will never be_ a standardised 
 
 There are a great many prefixed properties for styling scrollbars. These are not a web standard and will never be a web standard, but they do still work in Chrome and Safari. The standard properties for styling scrollbars are `scrollbar-width` and `scrollbar-color`, which have never required a prefix.
 
-`-webkit-fill-available`/`-moz-available` still [requires a prefix](https://caniuse.com/mdn-css_properties_width_stretch). This is an incredibly niche property which you probably shouldn't use. It might be standardised as `stretch`.
+The CSS `stretch` keyword as a value for `width` and `height` is not implemented in [any browser](https://caniuse.com/mdn-css_properties_width_stretch) yet. The equivalent prefixed value `-webkit-fill-available` works in Chrome/Edge and Safari. `-moz-available` is required for Firefox.
 
-`box-decoration-break` requires a `-webkit` prefix in Chrome/Edge/Samsung Internet and Safari. Chrome looks set to [unprefix this property](https://groups.google.com/a/chromium.org/g/blink-dev/c/PyIR0yUMYsM/m/gaeyFfCIAgAJ).
+`box-decoration-break` requires a `-webkit` prefix in Safari. Chrome/Edge shipped full unprefixed support for this property in [version 130](https://developer.chrome.com/blog/box-decoration-break#inline_fragmentation).
 
 ## Updates since this article was first published
 
 `background-clip: text` and `mask` had required a prefix for Samsung Internet browser. That is no longer the case as of Samsung Internet version 25.
+
+`ruby-position` had required a `-webkit` prefix for Safari. This is no longer the case as of [Safari 18.2](https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes#CSS).
