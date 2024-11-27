@@ -266,6 +266,51 @@
             "url": "https://otherwherecollective.com/washi/",
             "variable": false,
             "opensource": false
+        },
+        {
+            "name": "Aetna Streamer Color",
+            "creator": "Aaron Bell",
+            "foundry": "P22",
+            "type": ["COLRv0"],
+            "url": "https://p22.com/fonts/aetna/",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "American Color",
+            "creator": "William Hamilton Page, Richard Kegler, Terry Wüdenbachs",
+            "foundry": "P22",
+            "type": ["COLRv0"],
+            "url": "https://p22.com/fonts/american/",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "BlancoNeg Color",
+            "creator": "Terry Wüdenbachs",
+            "foundry": "P22",
+            "type": ["COLRv0"],
+            "url": "https://p22.com/fonts/blanconeg/",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "Frenzy Color",
+            "creator": "Michael Clark",
+            "foundry": "P22",
+            "type": ["COLRv0"],
+            "url": "https://p22.com/fonts/frenzy/",
+            "variable": false,
+            "opensource": false
+        },
+        {
+            "name": "Glaser Kitchen Color",
+            "creator": "Milton Glaser",
+            "foundry": "P22",
+            "type": ["COLRv0"],
+            "url": "https://p22.com/fonts/glaser-kitchen/",
+            "variable": false,
+            "opensource": false
         }
     ],
     "svgfonts": [
@@ -282,6 +327,14 @@
             "type": ["OpenType-SVG"],
             "url": "htthttps://www.novotypo.nl/fonts/bixa.html",
             "variable": false
+        },
+        {
+            "name": "Colortube",
+            "creator": "Ivan Filipov",
+            "type": ["OpenType-SVG"],
+            "url": "https://www.fontfabric.com/fonts/colortube/",
+            "variable": false,
+            "free": true
         },
         {
             "name": "Gilbert",
