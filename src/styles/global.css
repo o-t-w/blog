@@ -206,18 +206,21 @@ hr {
   
   @font-face {
 	font-family: "mishmashmoji";
-	src: url("/MishMashMojiCOLRv1.woff2") tech(color-COLRv1),
-		 url("/MishMashMojiSVG.woff2");
+	src: url("/MishMashMojiCOLRv1.woff2") format(woff2) tech(color-COLRv1),
+		 url("/Kablammo-Regular-VariableFont_MORFCOLOR-Zoink-SVG.woff2") format(woff2) tech(color-SVG);
   }
   
   .custom-emoji {
-	font-family: 'mishmashmoji';
+	font-family: "mishmashmoji";
+	font-display: block;
 	letter-spacing: 4px;
 	font-size: 54px;
 	text-align: center;
 	font-weight: 400;
 	margin: auto;
 	text-wrap: balance;
+	/* font-variant-emoji: emoji; */
+	line-height: 1.2;
   }
 
   :root {
@@ -259,6 +262,13 @@ figcaption {
 	font-size: 14px;
 }
 
+.warning {
+	background-color: oklch(0.86 0.1 4.48);
+    padding: 12px 16px;
+    border-radius: 8px;
+	margin-bottom: 1.5em;
+}
+
 /* USED BY centering things ARTICLE! */
 .btn-example {
 	font-size: 17px;
@@ -266,4 +276,88 @@ figcaption {
 	padding: 8px 24px;
 	border: 0;
 	border-radius: 8px;
+}
+
+/* for icons article */
+
+@font-face {
+	font-family: 'icons';
+	src: url('/MaterialIconsTwoTone-Regular.otf');
+}
+
+.duotone-icons {
+	font-family: icons;
+	font-palette: --Blue;
+	font-weight: 400;
+	letter-spacing: 5px;
+	text-align: center;
+	font-size: 32px;
+	margin-inline: auto;
+	font-display: block;
+	margin-top: 0 !important;
+}
+
+@font-palette-values --Blue {
+	font-family: icons;
+	override-colors:
+	 0 blue,
+	 1 #afd4f6,
+	 2 blue,
+	 3 blue,
+	 4 #007bed;
+  }
+
+  @font-palette-values --Pink {
+	font-family: icons;
+	override-colors:
+	 0 pink,
+	 1 color(display-p3 1 0.725 0.892),
+	 2 pink,
+	 3 pink,
+	 4 oklch(0.74 0.25 348.95);
+  }
+
+  .icons-pink {
+	font-palette: --Pink;
+  }
+
+  /* For SVG icon article */
+
+  @font-face {
+	font-family: 'geist';
+	src: url(/GeistMono[wght].woff2);
+}
+
+@font-face {
+	font-family: 'twemoji';
+	src: url('/TwemojiCOLR.woff2');
+}
+
+.svg-hover-button:hover, .svg-hover-button:focus  {
+	font-weight: 550;
+	transition: font-weight 0.4s;
+}
+
+.svg-hover-button:hover svg, .svg-hover-button:focus svg {
+	/* transition: stroke-width .4s; */
+	--stroke-width: 2.25px;
+}
+
+.svg-hover-button {
+	font-size: 17px;
+	display: flex;
+	padding-inline: 12px;
+	height: 38px;
+	gap: 8px;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: 300;
+	transition: font-weight 0.4s;
+	font-family: ui-monospace, geist, system-ui;
+	border: 0;
+	background-color: rgb(181, 252, 157);
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 24px;
+	color: rgb(39, 66, 30);
 }
