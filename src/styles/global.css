@@ -325,7 +325,7 @@ figcaption {
 
   @font-face {
 	font-family: 'geist';
-	src: url(/GeistMono[wght].woff2);
+	src: url('/GeistMono-wghtAxis.woff2');
 }
 
 @font-face {

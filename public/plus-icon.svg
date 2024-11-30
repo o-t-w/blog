@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<style>
+    use {
+        display: none;
+    }
+    use:target {
+        display: block;
+    }
+</style>
+    <symbol id="plus-icon" viewBox="0 0 512 512">
+    <path stroke="var(--color1, #bbdefb)" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="var(--color2, #0d47a1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160M336 256H176"/>
+    </symbol>
+    
+    <use id="plus-icon-blue" href="#plus-icon"  />
+    <use id="plus-icon-purple" style="--color1: #b39ddb; --color2: #6200ea;" href="#plus-icon"  />
+</svg>
