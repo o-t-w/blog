@@ -1,5 +1,5 @@
 ---
-pubDate: 'Nov 25 2024'
+pubDate: 'Nov 30 2024'
 title: The best approach to SVG icons
 heroImage: "/svg.jpg"
 description: Inline SVG, <use>, <symbol>, spritesheets, JSX...
