@@ -5,7 +5,7 @@ heroImage: "/svg.jpg"
 description: Inline SVG, <use>, <symbol>, spritesheets, JSX...
 ---
 
-There are several different ways to use SVG. The TL;DR conclusion is: use `<use>`.
+SVG is the best approach to implementing an icon system on the web (I cover [icon fonts](/icon-fonts) elsewhere). There are plethora of ways to use SVG, each with their pros and cons, all of which I cover here.
 
 ## `<img>`
 
