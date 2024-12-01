@@ -89,3 +89,7 @@ Data attributes are easy to update from JavaScript:
 ```js
 someElement.dataset.bg = "purple";
 ```
+
+While there's been a lot of developer interest in this feature, some may be asking: how is this better than inline styles? Or utility classes? How is `<div data-bg="blue">` superior to `<div class="bg-blue">` or `<div style="background-color: blue;">`?
+
+A utility class needs to have an explicit value set in a stylesheet. The value of an `attr()` function can be set to any arbitrary color, any arbitrary size, etc. Much of what you can do with the `attr()` function can be achieved with an inline CSS variable. However, a Content Security Policy might [block inline styles](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#unsafe-inline). Inline styles are often avoided because they can only be overridden with `!important`.
