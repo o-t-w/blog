@@ -50,7 +50,7 @@ An absolutely positioned element can be centered using `margin: auto`. This appr
   height: fit-content;
 ```
 
-An alternative approach that currently only works in Chrome and Firefox Nightly is to use `justify-self` and `align-self` instead of `margin`, but I can't discern any huge benefit over the older method:
+An alternative approach that currently only works in Chrome and [Firefox 134](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/134#css) is to use `justify-self` and `align-self` instead of `margin`, but I can't discern any huge benefit over the older method:
 
 ```css
   position: absolute;
