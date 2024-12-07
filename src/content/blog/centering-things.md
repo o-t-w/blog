@@ -50,13 +50,12 @@ An absolutely positioned element can be centered using `margin: auto`. This appr
   height: fit-content;
 ```
 
-An alternative approach that currently only works in Chrome and [Firefox 134](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/134#css) is to use `justify-self` and `align-self` instead of `margin`, but I can't discern any huge benefit over the older method:
+An alternative approach that currently only works in Chrome and [Firefox 134](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/134#css) is to use `justify-self` and `align-self` (or the `place-self` shorthand) instead of `margin`, but I can't discern any huge benefit over the older method:
 
 ```css
   position: absolute;
   inset: 0;
-  justify-self: center;
-  align-self: center;
+  place-self: center;
 ```
 
 <p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="ExqOPPK" data-pen-title="absolute position centering with justify/align-self" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
