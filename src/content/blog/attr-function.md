@@ -84,12 +84,43 @@ div {
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
+Here's an example using the `maxlength` attribute of an `input` to set the width:
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="LEPZvzJ" data-pen-title="maxlength attribute for width with attr()" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/LEPZvzJ">
+  maxlength attribute for width with attr()</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+You can set the value of a CSS variable using the `attr()` function:
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="jENrRmr" data-pen-title="setting CSS variable with data attribute attr" data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/cssgrid/pen/jENrRmr">
+  setting CSS variable with data attribute attr</a> by Ollie Williams (<a href="https://codepen.io/cssgrid">@cssgrid</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+If you lose the `data-` prefix, the HTML will no longer pass validation (but it will still work in all browsers).
+
+<img src="/invalidhtml.png" alt="">
+
 Data attributes are easy to update from JavaScript:
 
 ```js
 someElement.dataset.bg = "purple";
 ```
 
-While there's been a lot of developer interest in this feature, some may be asking: how is this better than inline styles? Or utility classes? How is `<div data-bg="blue">` superior to `<div class="bg-blue">` or `<div style="background-color: blue;">`?
+Sadly, it seems that `attr()` [can't be used](https://github.com/w3c/csswg-drafts/issues/5092#issuecomment-2367503260) in conjunction with the `url()` function, so code such as the following will not work:
+
+```css
+img {
+    float: left;
+    shape-outside: url(attr(src type(<url>)));
+    }
+```
+
+While there's been a lot of developer interest in `attr()`, some may be asking: how is this better than inline styles? Or utility classes? How is `<div data-bg="blue">` superior to `<div class="bg-blue">` or `<div style="background-color: blue;">`?
 
 A utility class needs to have an explicit value set in a stylesheet. The value of an `attr()` function can be set to any arbitrary color, any arbitrary size, etc. Much of what you can do with the `attr()` function can be achieved with an inline CSS variable. However, a Content Security Policy might [block inline styles](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#unsafe-inline). Inline styles are often avoided because they can only be overridden with `!important`.
