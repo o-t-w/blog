@@ -104,7 +104,7 @@ You can set the value of a CSS variable using the `attr()` function:
 
 If you lose the `data-` prefix, the HTML will no longer pass validation (but it will still work in all browsers).
 
-<img src="/invalidhtml.png" alt="">
+<img src="/invalidhtml.avif" alt="">
 
 Data attributes are easy to update from JavaScript:
 
