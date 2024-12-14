@@ -95,7 +95,7 @@ The following code in the `<head>` of the HTML document avoids that issue:
 </style>
 ```
 
-Even compared to this improved approach, there are performance reasons to preference the `<link>` tag over `@import`:
+Even compared to this improved approach, there are performance reasons to preference the `<link>` tag over `@import`, at least when using media queries:
 
-- In Safari and Chrome, if you use an `@import` statement in a `<style>` element, the preload scanner [doesn't pick it up](https://x.com/tunetheweb/status/1597161125514076160) (this seems to only be the case when using media queries).
+- In Safari and Chrome, when using media queries as part of an `@import` statement, the preload scanner [won't pick up the stylesheets](https://x.com/tunetheweb/status/1597161125514076160).
 - When using media queries, the `<link>` element downloads non-matching stylesheets with a low priority,  `@import` downloads them with a [high priority](https://issues.chromium.org/issues/40645959) and [blocks rendering](https://issues.chromium.org/issues/40869211).
