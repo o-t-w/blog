@@ -1,7 +1,7 @@
 ---
 pubDate: 'Jan 01 2025'
 title: Date pickers and the Temporal API
-heroImage: "/placeholder.png"
+heroImage: "/datetimepicker.png"
 description: ISO 8601, date and time inputs, and the Temporal API
 ---
 
