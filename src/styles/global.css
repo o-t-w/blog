@@ -26,7 +26,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.7;
 }
 main {
@@ -360,4 +360,12 @@ figcaption {
 	cursor: pointer;
 	margin-top: 24px;
 	color: rgb(39, 66, 30);
+}
+
+.twitter-tweet {
+	margin-inline: auto;
+}
+
+.baseline-status {
+	margin-top: 24px;
 }
