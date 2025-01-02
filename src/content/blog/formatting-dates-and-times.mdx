@@ -1,0 +1,301 @@
+---
+pubDate: 'Jan 02 2025'
+title: Formatting dates and times in JavaScript with Temporal and the Internationalization API
+heroImage: "/formattingdates.png"
+description: Human-readable dates and times without a library
+---
+
+import { BaselineStatus } from '@astro-community/astro-embed-baseline-status';
+
+The Temporal API is a much improved successor to the much-hated JavaScript `Date` object. `.toString()` returns Temporal dates and times in the ISO 8601 format. For example:
+
+```
+2025-01-02T13:27:39.955
+```
+
+That isn't easy for a non-technical users to decipher. This article covers ways to display times, dates and durations in a way that's human-readable.
+
+While they are seperate specifications, Temporal and the Internationalization API are designed to work well together. The Internationalization API consists of the `Intl` object and its methods. As its name suggests, its useful for locale-specific formatting and language translation. The Internationalization API doesn't just translate the language of text. It formats data differently depending on the norms and expectations of the users locale (as set in the users browser or operating system). 
+
+In the United States, its customary to display dates in a mm/dd/yyyy format. In the UK and many other regions, dd/mm/yyyy is expected. `Intl` makes it easy to format a date in the way that is most appropriate for the specified language and location:
+
+```js
+const date = new Temporal.PlainDate(2024, 12, 28);
+const dateinUSFormat = new Intl.DateTimeFormat('en-US').format(date);
+// 12/28/2024
+const dateinGBFormat = new Intl.DateTimeFormat('en-GB').format(date);
+// 28/12/2024
+```
+
+Despite its name, this API is more broadly useful than internationalization: it's a standard and easy way to take machine-readable data and output it in a human-readable format.
+
+## Formatting a date or time with `Intl.DateTimeFormat`
+
+`Intl.DateTimeFormat` can be used to format the following types:
+
+- `Temporal.PlainDateTime`
+- `Temporal.PlainDate`
+- `Temporal.PlainTime`
+- `Temporal.PlainMonthDay`
+- `Temporal.PlainYearMonth`
+- `Temporal.Instant`
+
+`Intl.DateTimeFormat` cannot be used to format a `ZonedDateTime`. There is an early-stage [proposal](https://github.com/tc39/proposal-intl-zoneddatetimeformat) for `Intl.ZonedDateTimeFormat`, which is not implemented by any browser.
+
+Format a date and time: 
+
+```js
+const now = Temporal.Now.plainDateTimeISO();
+const dtf = new Intl.DateTimeFormat('en', {dateStyle: 'long', timeStyle: 'short'});
+dtf.format(now);
+// "December 25, 2024 at 7:12 PM" 
+```
+
+The format is highly customizable. The following formatter will output strings such as "Thursday, December 26, 2024 at 1:02 in the afternoon":
+
+```js
+const dtf = new Intl.DateTimeFormat("en", {
+            year: "numeric",
+            day: "2-digit",
+            weekday: "long",
+            month: "long",
+            hour: "numeric",
+            dayPeriod: "long",
+            minute: "numeric"
+        });
+```
+
+See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) for a list of all possible options.
+
+### 12 vs. 24 Hour time
+
+The `hour12` property determines whether to use a 24-hour format or 12-hour format for displaying a time. The default value is locale-dependent.
+
+```js
+const time = Temporal.Now.plainTimeISO();
+
+new Intl.DateTimeFormat('en-GB', {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+}).format(time);
+// "3:45 pm" 
+
+new Intl.DateTimeFormat('en-GB', {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+}).format(time);
+// "15:45"
+```
+
+## Display the day of the week
+
+It's relatively trivial to get the day of the week for any specified date. One approach is to use the `.dayOfWeek` property which returns a number from 1 to 7 (Monday being 1, Sunday being 7):
+
+```js
+const date = Temporal.PlainDate.from('2024-12-28');
+const dayOfDate = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'][date.dayOfWeek - 1]; 
+// 'SAT'
+```
+
+An alternative approach is to use either `toLocaleString()` or `Intl.DateTimeFormat` and to set only a `weekday` option:
+
+```js
+date.toLocaleString('en', {weekday: 'short'});
+// Sat
+
+const dtf = new Intl.DateTimeFormat('en', {weekday: 'long'});
+dtf.format(date);
+// Saturday
+```
+
+## Formatting a range between two dates or times
+
+The `formatRange` method available on `Intl.DateTimeFormat` objects can be used to format a range between two dates or times.
+
+```js
+const dtf = new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "numeric",
+});
+
+const now = Temporal.Now.plainDateTimeISO();
+const later = now.add({hours: 2});
+dtf.formatRange(now, later);
+// "Dec 26, 2024, 1:32 – 3:32 PM"
+
+const today = Temporal.Now.plainDateISO();
+const tomorrow = today.add({days: 1});
+dtf.formatRange(today, tomorrow);
+// Dec 26 – 27, 2024
+```
+
+## Formatting `Temporal.Duration` with `Intl.DurationFormat`
+
+A `Temporal.Duration` represents a fixed amount of time. `toString()` returns the value in a format defined by ISO 8601. e.g.
+
+```
+"P2DT4H5M"
+```
+
+That can be easily understood by a computer, but not by users. `Intl.DurationFormat` provides a way to format a duration in a human-readable locale-sensitive manner.
+
+```js
+const df = new Intl.DurationFormat("en");
+df.format({
+    days: 4,
+    hours: 2,
+    minutes: 23,
+    seconds: 10,
+    });
+// 4 days, 2 hr, 23 min, 10 sec
+```
+
+While `Intl.DurationFormat` can be used independently of the Temporal API (as shown above), the object you pass into `.format` handily supports the same fields as [`Temporal.Duration`](https://github.com/tc39/proposal-temporal/blob/main/docs/duration.md): 
+
+```js
+const duration = Temporal.Duration.from("P2DT4H2M");
+const df = new Intl.DurationFormat("en");
+df.format(duration); 
+// "2 days, 4 hr, 2 min"
+```
+
+The `style` can be set to one of four different values:
+
+- `"long"` e.g. 4 days, 2 hours, 23 minutes, 10 seconds
+- `"short"` e.g. 4 days, 2 hr, 23 min, 10 sec
+- `"narrow"` e.g. 4d 2h 23m 10s
+- `"digital"` e.g. 4 days, 2:23:10
+
+```js
+const df = new Intl.DurationFormat("en", {style: "long"});
+df.format(duration);
+// "2 days, 4 hours, 2 minutes" 
+```
+
+Each part can be formatted differently:
+
+```js
+const duration = Temporal.Duration.from("P1Y2M4DT4H2M10S");
+const df = new Intl.DurationFormat("en", { style: "long", minutes: "short", seconds: "narrow"});
+df.format(duration);
+// 1 year, 2 months, 4 days, 4 hours, 2 min, 10s
+```
+
+While `Intl.DurationFormat` offers a lot of options for customizing the output, it cannot do unit conversion. For that you need the `total` method from the Temporal API. To display a duration in minutes, for example: 
+
+```js
+const duration = Temporal.Duration.from({ hours: 2, minutes: 5 });
+
+const durationInMinutes = duration.total({unit: 'minutes'});
+const formattedDuration = new Intl.DurationFormat("en", { style: "long"}).format({minutes: durationInMinutes});
+// 125 minutes
+```
+
+Vercel maintains a popular [package](https://github.com/vercel/ms) to convert various time formats to milliseconds. This functionality can be implemented relatively easily with Temporal. In the following example, we find there are 86400000 milliseconds in one day.
+
+```js
+Temporal.Duration.from({days: 1}).total({unit: 'milliseconds'}); 
+// 86400000 
+```
+
+The `total()` method will return the total in one specified unit. Conversion in the other direction requires the `round` method:
+
+```js
+const duration = Temporal.Duration.from({seconds: 7400});
+new Intl.DurationFormat('en', {style: "long"}).format(duration.round({largestUnit: 'hours'}));
+// 2 hours, 3 minutes, 20 seconds
+```
+
+## `Intl.RelativeTimeFormat`
+
+Web applications sometimes use phrases like "tomorrow" or "2 days ago" instead of displaying a full date or time. This is known as relative time formatting and can be achieved with `Intl.RelativeTimeFormat`.
+
+```js
+const rtf = new Intl.RelativeTimeFormat(navigator.language, {numeric: 'auto'});
+
+rtf.format(0, 'day'); // today
+rtf.format(1, 'day'); // tomorrow
+rtf.format(-1, 'day'); // yesterday
+rtf.format(3, 'day'); // in 3 days
+rtf.format(3, 'hour'); // in 3 hours
+rtf.format(0, 'year'); // this year
+rtf.format(-1, 'year'); // last year
+rtf.format(0, 'second'); // now
+rtf.format(-10, 'minute'); // 10 minutes ago
+rtf.format(-1, 'quarter'); // last quarter
+```
+
+In the real world you probably won't be hard-coding the number manually, so lets look at combining `Intl.RelativeTimeFormat` with Temporal.
+
+```js
+const today = Temporal.Now.plainDateISO();
+
+rtf.format(today.until({year: 2025, month: 12, day: 29}, { largestUnit: 'day' }).days, 'day');
+// in 367 days
+
+const now = Temporal.Now.plainTimeISO();
+rtf.format(now.until("20:59", { largestUnit: 'minutes' }).minutes, 'minute');
+// e.g. "in 2 minutes"
+```
+
+Its a powerful API that would be challenging to implement from scratch, but needing to specify the unit of time does mean that, for many use cases, custom logic will need to be written.
+
+## `Intl` vs `toLocaleString()`
+
+For one-off formatting, you can use `toLocaleString`.
+
+```js
+date.toLocaleString('en-US');
+```
+
+The above line of code will give the same output as:
+
+```js
+const formatter = new Intl.DateTimeFormat('en-US');
+formatter.format(date);
+```
+
+When using the same formatting rules multiple times, use an `Intl` formatter.
+
+## Setting the right locale
+
+`navigator.language` returns a string representing the users preferred language, as set in their browser or operating system:
+
+```js
+navigator.language; // "en-US"
+```
+
+`navigator.languages` returns an array of strings representing the users preferred languages in order of preference, with the most preferred language first.
+
+```js
+navigator.languages; // ["en-US", "fr"]
+```
+
+Specifying `undefined` will make use of the browser's default locale, so the following lines of code are largely equivalent:
+
+```js
+new Intl.DateTimeFormat(undefined);
+new Intl.DateTimeFormat(navigator.language);
+new Intl.DateTimeFormat(navigator.languages);
+```
+
+You can test different locales by changing the language preferences in the browser settings of Chrome or Firefox.
+
+A list of locale IDs can be found [here](https://www.localeplanet.com/icu/).
+
+## Browser support 
+
+<BaselineStatus id="temporal" />
+
+Temporal is available in Firefox Nightly and is a work in progress in other browsers. Multiple polyfills for Temporal are available but the most production-ready seems to be [this one](https://github.com/fullcalendar/temporal-polyfill).
+
+`Intl.DateTimeFormat` works [in all browsers](https://caniuse.com/mdn-javascript_builtins_intl_datetimeformat). The Internationalization API is part of the JavaScript language, so also works in Node/Deno/Bun.
+
+<BaselineStatus id="intl-duration-format" />
+
+`Intl.DurationFormat` is stage 4 and is available in Firefox Nightly, so should reach full cross-browser support soon. A polyfill is [available](https://formatjs.github.io/docs/polyfills/intl-durationformat/).
