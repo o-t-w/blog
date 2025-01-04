@@ -56,11 +56,8 @@ In the latest W3C [CSS Values and Units specification](https://drafts.csswg.org/
 <div data-bg="blue"></div>
 ```
 
-To test out the following functionality, open Chrome Canary from terminal with the `--enable-features=CSSAdvancedAttrFunction` flag (its due to ship in [Chrome 133](https://chromestatus.com/feature/4680129030651904)).
+This feature is available in Chrome Canary and is due to ship in [Chrome 133](https://chromestatus.com/feature/4680129030651904).
 
-```console
-/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --enable-features=CSSAdvancedAttrFunction
-```
 
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwoNPjd" data-pen-title="attr function doesn't work... " data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/cssgrid/pen/VwoNPjd">
