@@ -1,6 +1,6 @@
 ---
 pubDate: 'Jan 15 2025'
-title: What's new with <dialog>
+title: What's new with dialog
 heroImage: "/dialog.png"
 description: Zero-JavaScript modals, light dismiss functionality, toggle events and more...
 ---
