@@ -50,7 +50,7 @@ I am some dialog content...
 
 ## `closedby` attribute
 
-The `closedby` attribute was recently added to the HTML specification. The `closedby` attribute is currently supported in Chrome Canary.
+The `closedby` attribute was recently added to the HTML specification and is currently supported in Chrome Canary.
 
 Modals are used in different ways. Some may ask an important question like "confirm deletion" that the user needs to answer before closing the dialog. Others, such as promotional marketing dialogs, should be easy to close without the user needing to hunt for a small close button.
 
