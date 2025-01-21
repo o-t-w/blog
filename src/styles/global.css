@@ -369,3 +369,36 @@ figcaption {
 .baseline-status {
 	margin-top: 24px;
 }
+
+dialog::backdrop {
+	background-color: rgba(0,0,0,.5);
+  }
+
+  .portal {
+	anchor-name: --portal;
+  }
+  
+  .outside {
+	position: absolute;
+	position-anchor: --portal;
+	height: anchor-size();
+	width: anchor-size();
+	position-area: center;
+	object-fit: cover;
+	border-radius: 10px;
+  }
+  
+  .grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	max-width: 400px;
+	margin-inline: auto;
+	animation: resize 3s infinite;
+  }
+  
+  .grid > div {
+	aspect-ratio: 1;
+	outline: solid 2px var(--accent-light);
+	border-radius: 10px;
+  }

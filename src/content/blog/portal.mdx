@@ -1,0 +1,136 @@
+---
+pubDate: 'Jan 20 2025'
+title: Do JavaScript frameworks still need portals?
+heroImage: "/portal.jpg"
+description: Problems solved by the HTML dialog element, popover attribute and CSS anchor positioning
+---
+
+<script type="module" src="https://caniuse-embed.vercel.app/embed.js"></script>
+
+import { BaselineStatus } from '@astro-community/astro-embed-baseline-status';
+
+## What is a portal?
+
+Many JavaScript frameworks have a “portal” functionality. Here’s what the documentation of various frameworks have to say.
+
+[React](https://react.dev/reference/react-dom/createPortal#rendering-to-a-different-part-of-the-dom):
+
+> Portals let your components render some of their children into a different place in the DOM. This lets a part of your component “escape” from whatever containers it may be in. For example, a component can display a modal dialog or a tooltip that appears above and outside of the rest of the page... You can use a portal to create a modal dialog that floats above the rest of the page, even if the component that summons the dialog is inside a container with `overflow: hidden` or other styles that interfere with the dialog.
+
+[Vue](https://vuejs.org/guide/built-ins/teleport.html):
+
+> `<Teleport>` is a built-in component that allows us to "teleport" a part of a component's template into a DOM node that exists outside the DOM hierarchy of that component.
+> Sometimes a part of a component's template belongs to it logically, but from a visual standpoint, it should be displayed somewhere else in the DOM... The most common example of this is when building a full-screen modal. Ideally, we want the code for the modal's button and the modal itself to be written within the same single-file component, since they are both related to the open / close state of the modal. But that means the modal will be rendered alongside the button, deeply nested in the application's DOM hierarchy. This can create some tricky issues when positioning the modal via CSS.
+
+[Solid](https://docs.solidjs.com/concepts/control-flow/portal):
+
+> When an element requires rendering outside of the usual document flow, challenges related to stacking contents and `z-index` can interfere with the desired intention or look of an application. `<Portal>` helps with this by putting elements in a different place in the document… Using `<Portal>` can be particularly useful in cases where elements, like information popups, might be clipped or obscured due to the overflow settings of their parent elements.
+
+This information is mostly obsolete. There are simpler solutions built-in to HTML and CSS. The HTML `<dialog>` element, the HTML `popover` attribute and CSS anchor positioning solve these problems and use-cases.
+
+## Solving the problem with CSS and HTML
+
+An element set to `position: fixed` is positioned in relation to the viewport, regardless of where it appears in the markup. Elements with a `position` of `absolute` or `fixed` aren't affected by `overflow: hidden` on an ancestor. Regardless of how deeply nested they may be inside other markup, and regardless of whether a parent has set `overflow: hidden` or `overflow: clip`, an element set to `position` `fixed` or `absolute` will not be clipped or truncated. That's all pretty useful if you're building a modal or popup from scratch. However, if *any ancestor* uses the CSS `transform`, `translate`, `rotate`, `scale`, `perspective` or `filter` property, `position: fixed` will break. These properties come with an uninteded side-effect. These properties also complicate the use of `absolute` positioning, including anchor positioning. This is a problem that might have you reaching for a JavaScript portal to create a HTML structure like:
+
+```html
+<body>
+<main>
+<!-- All app content goes here -->
+</main>
+<div class="modal-dialog"></div>
+</body>
+```
+
+The `<dialog>` element, and any element with a `popover` attribute, avoid this issue. The `dialog` element and popovers make use of the *top layer*. Ancestors using a CSS `transform`, `perspective`, `translate`, `rotate`, `scale` or `filter` don't effect a popover or `dialog`. Neither do ancestors set to `position: relative`, `overflow: clip` or `overflow: hidden`. You can include a dialog or popover anywhere within the markup of a page without any worry that it will get truncated or clipped or obscured.
+
+```html
+<div style="overflow: hidden; transform: skew(-5deg); border: solid red; width: 50px; height: 50px;">
+    <dialog>
+      Placeholder dialog content...
+       <button onclick="this.closest('dialog').close()">Close</button>  
+    </dialog>
+</div>
+```
+
+<div style="overflow: hidden; transform: skew(-5deg); border: solid red; width: 50px; height: 50px;">
+    <dialog>
+    Placeholder dialog content...
+    <button style="display: block;" onclick="this.closest('dialog').close()">Close</button>    
+    </dialog>
+</div>
+<button onclick="document.querySelector('dialog').showModal()">Show dialog</button>
+
+Below is a similar example but this time of a popover within a `div` that uses a CSS `transform`, with its `overflow` set to `clip` and its `position` set to `relative`. Despite all that, the popover works as expected and is displayed outside of the red box. This example uses CSS anchor positioning to position the popover in relation to the button.
+
+```html
+<div style="overflow: clip; transform: skew(5deg); position: relative; width: 50px; height: 50px; border: solid red;">
+  <div popover="auto" id="pop1" style="inset: auto; left: anchor(left); top: anchor(bottom);">Example popover content.</div>
+</div>
+
+<button popovertarget="pop1">Toggle popover</button>
+```
+
+<div style="overflow: clip; transform: skew(5deg); position: relative; width: 50px; height: 50px; border: solid red;">
+  <div popover="auto" id="pop1" style="inset: auto; left: anchor(left); top: anchor(bottom);">Example popover content.</div>
+</div>
+
+<button popovertarget="pop1">Toggle popover</button>
+
+## Browser support
+
+The dialog element has deep browser support.
+
+<BaselineStatus id="dialog" />
+
+The popover API is also supported by all browsers.
+
+<p class="ciu-embed" data-feature="mdn-api_HTMLElement_popover" data-past="3" data-future="1" data-theme="light" data-meta="a9d6"></p>
+
+Anchor positioning currently has more limited support.
+
+<BaselineStatus id="anchor-positioning" />
+
+## Anchor positioning and a CSS-only "portal"
+
+Only the direct children of a CSS grid become grid items. Yet here is an example of an element visually placed inside a grid, even though its markup is outside of it.
+
+```html
+<div class="grid">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div class="portal"></div>  
+</div>
+
+<img class="outside" src="/portal-square.jpg" />
+```
+
+<div class="grid">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div class="portal"></div>  
+</div>
+
+<img class="outside" src="/portal-square.jpg" />
+
+```css
+.portal {
+  anchor-name: --portal;
+}
+
+.outside {
+  position: absolute;
+  position-anchor: --portal;
+  height: anchor-size();
+  width: anchor-size();
+  position-area: center;
+  object-fit: cover;
+}
+```
+
+The same principle would work with a flexbox item. This isn't necessarily a real-world use-case, but it does demonstrate the power and flexibility of anchor positioning.
