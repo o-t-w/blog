@@ -370,6 +370,8 @@ figcaption {
 	margin-top: 24px;
 }
 
+/* the following styles are for the portal article */
+
 dialog::backdrop {
 	background-color: rgba(0,0,0,.5);
   }
@@ -401,4 +403,12 @@ dialog::backdrop {
 	aspect-ratio: 1;
 	outline: solid 2px var(--accent-light);
 	border-radius: 10px;
+  }
+
+  @supports not (height: anchor-size()) {
+	.outside {
+		position: static;
+		width: 100px;
+		height: 100px;
+	}
   }
