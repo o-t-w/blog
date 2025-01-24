@@ -1,7 +1,7 @@
 ---
 pubDate: 'Jan 23 2025'
 title: Building a tooltip with the popover API
-heroImage: "/placeholder.jpg"
+heroImage: "/tooltips-popover.png"
 description: Building a toggletip using the popover API
 ---
 
@@ -236,6 +236,14 @@ popover.showPopover({ source: this });
 <p class="mt8">CSS. Design. UX. UI. Web.</p>
 </div>
 
+```html
+<a href="https://github.com/o-t-w">hover-me</a>
+
+<div popover="hint">
+<!-- contents of the popover -->
+</div>
+```
+
 The `popovertarget` attribute can only be used on a `button`, and only works on click. Calling the `.showPopover()` method in JavaScript offers more flexibility.
 
 ```js
@@ -278,11 +286,9 @@ This UI pattern works well on a desktop or laptop but on a phone or tablet the u
 
 ## `popover="hint"`
 
-The HTML for the previous example basically looks like this:
+The markup for the previous example used `popover="hint"`:
 
 ```html
-<a href="https://github.com/o-t-w">hover-me</a>
-
 <div popover="hint">
 <!-- contents of the popover -->
 </div>
