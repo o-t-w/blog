@@ -310,7 +310,7 @@ popover.showPopover({ source: this });
 </script>
 
 <div style="background: #f6f8fa; border: solid 1px rgb(209, 217, 224); border-radius: 6px; padding-inline: 16px; padding-block: 8px; display: flex; align-items: center;">
-<a class="gh-a gh-a2" href="https://github.com/o-t-w">hover-me</a>
+<a class="gh-a gh-a2" href="https://github.com/o-t-w">Open hint popover</a>
 <button class="gh-button" style="margin-left: auto" popovertarget="pop-auto">Toggle auto popover</button>
 </div>
 
