@@ -288,7 +288,7 @@ The HTML for the previous example basically looks like this:
 </div>
 ```
 
-I could have used `popover="auto"` and things would have worked much the same. The key difference is that an `"auto"` popover will close other popovers, whether you open the popover with a mouse click, a keyboard button press, or with JavaScript. `popover="hint"` is primarily designed for hover interactions, and will not close other popovers (unless its opened with a mouse press, which isn't what its designed for).
+I could have used `popover="auto"` and things would have worked much the same. The key difference is that an `"auto"` popover will close other popovers, whether you open it with a mouse click, a keyboard button press, or with JavaScript. `popover="hint"` is primarily designed for hover interactions, and will not close other popovers (unless its opened with a mouse press, which isn't what its designed for).
 
 <script type="module">
 const link = document.querySelector(".gh-a2");
