@@ -7,7 +7,7 @@ description: ":focus, :focus-visible and the JavaScript .focus() method"
 
 ## `:focus` and `:focus-visible` CSS selectors
 
-For users navigating via a keyboard, its important to keep focus styles prominent and clearly noticable so that the user can follow where they are on the page. Styles defined with the `:focus` pseudo-class are applied whenever an element has focus. Clicking a button or an input with a mouse focuses that element, so mouse users will also see custom `:focus` styles. For mouse users, these styles are unecessary, may be confusing and visually distracting, and might be deemed ugly. For keyboard users, they are a necessity.
+For users navigating via a keyboard, its important to keep focus styles prominent and clearly noticable so that the user can follow where they are on the page. Styles defined with the `:focus` pseudo-class are applied whenever an element has focus. Clicking a button or an input with a mouse focuses that element, so mouse users will also see `:focus` styles. For mouse users, these styles are unecessary, may be confusing and visually distracting, and might be deemed ugly. For keyboard users, they are a necessity.
 
 Styles set using the `:focus-visible` pseudo-class will appear when a user is navigating using a keyboard, but will not be applied by mouse interactions*.
 
@@ -21,7 +21,7 @@ Styles set using the `:focus-visible` pseudo-class will appear when a user is na
 }
 ```
 
-*Which styles get applied depends on the element. A button, link, checkbox, radio, range, color or file input, or an element with a tabindex of 0, will only show `focus-visible` styles when the user has focused the element using a keyboard. A text input, number input, or textarea will show both `focus` and `focus-visible` styles regardless of how the user focused the element. A select will show both `focus` and `focus-visible` styles for mouse-clicks in Chrome, but only `focus` styles in Firefox 🤷‍♂️.
+*Which styles get applied depends on the element. A button, link, checkbox, radio, range, color or file input, or an element with a tabindex of 0, will only show `focus-visible` styles when the user has focused the element using a keyboard. Any input with a text field (e.g. email, password or number input, textarea) will show both `focus` and `focus-visible` styles regardless of how the user focused the element. A select will show both `focus` and `focus-visible` styles for mouse-clicks in Chrome, but only `focus` styles in Firefox 🤷‍♂️.
 
 ## Programmatic focus styles
 
