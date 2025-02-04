@@ -1,5 +1,5 @@
 ---
-pubDate: 'Jan 29 2025'
+pubDate: 'Feb 04 2025'
 title: "How to gif (2025 edition)"
 heroImage: "/howtogif.png"
 description: Animated AVIF, AV1 video, JPEG-XL...
