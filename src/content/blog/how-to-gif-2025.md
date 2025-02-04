@@ -102,7 +102,7 @@ A HTML `<video>` can be any size and aspect ratio, and can be displayed without 
 
 The AV1 video codec was created by the Alliance for Open Media (AOM).
 
-Below is an ancient video I converted to AV1. If it's broken, your browser or device does not support AV1.
+Below is an ancient video I converted to AV1. If it's broken, your browser or device does not support this codec.
 
 <video controls playsinline src="/animated/thisisDVD.mp4"></video>
 
@@ -133,7 +133,7 @@ When weighing up the two options in my CSS Tricks article, I described what was,
 Using multiple `<source>` elements, a different video file can be specified based on screen size, orientation, light mode/dark mode, or any other media query.
 
 ```html
-<video controls autoplay loop muted playsinline>
+<video autoplay loop muted playsinline>
     <source media="(orientation: landscape)" src="/fish-desktop.mp4">
     <source media="(orientation: portrait)"  src="/fish-mobile.mp4">
 </video>
@@ -141,7 +141,7 @@ Using multiple `<source>` elements, a different video file can be specified base
 
 Resize your browser window and reload the page to see the difference.
 
-<video controls autoplay loop muted playsinline style="max-height: 80vh; margin-inline: auto; display: block; margin-top: 24px;">
+<video autoplay loop muted playsinline style="max-height: 80vh; margin-inline: auto; display: block; margin-top: 24px;">
     <source media="(orientation: landscape)" src="/animated/fish-desktop-h264.mp4">
     <source media="(orientation: portrait)"  src="/animated/fish-mobile-h264.mp4">
 </video>
@@ -159,7 +159,7 @@ If a video includes transparency, the best solution is far more tenuous.
 
 Jake Archibald has written an [in-depth article](https://jakearchibald.com/2024/video-with-transparency/#the-performance-is-prohibitively-bad) about this topic.
 
-Animated WebP seems to avoid the Safari issues of animated AVIF, so is worth considering.
+Animated WebP seems to avoid performance issues in Safari, so is worth considering.
 
 ## Looping video beyond "gifs"
 
