@@ -8,12 +8,10 @@ description: Animated AVIF, AV1 video, or JPEG-XL...
 Back in 2022 I published the article [*GIFs Without the .gif: The Most Performant Image and Video Options Right Now*](https://css-tricks.com/gifs-without-the-gif-the-most-performant-image-and-video-options-right-now/) on CSS Tricks. Certain information in that post is now out of date:
 
 - The AV1 video codec is supported in all browsers.
+- Animated AVIF is supported in all browsers.
 - WebM video is supported in all browsers.
 - The `image-set` CSS property is supported in all browsers.
-- Animated AVIF is supported in all browsers.
 - The `media` attribute works on HTML `<source>` elements within a `<video>` in all browsers.
-
-I concluded that article: “I wish there was a TL;DR for this article. For now, at least, there’s no clear winner…” If the video includes transparency/alpha, that's still true. If not, animated AVIF or AV1 video is the best approach.
 
 ## Image formats
 
@@ -47,7 +45,7 @@ I concluded that article: “I wish there was a TL;DR for this article. For now,
 
 <div class="anim-img-grid" style="margin-top: 24px;">
 <img src="/animated/friends.gif" alt="">
-<div class="format">gif</div>
+<div class="format">GIF</div>
 <div>1.5 MB</div>
 <img src="/animated/friends.png" alt="">
 <div class="format">PNG</div>
@@ -66,7 +64,9 @@ I concluded that article: “I wish there was a TL;DR for this article. For now,
 <div>158 KB</div> -->
 </div>
 
-GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. GIF, PNG and WebP are legacy formats.
+GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. If I were an FFmpeg expert, its likely I could have reduced the size of the GIF and PNG files somewhat, but you get the idea. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
+
+### AVIF
 
 ### JPEG-XL
 
@@ -88,24 +88,41 @@ An alternative to animated image formats is the `<video>` element:
 
 Most browsers allow autoplay if the video has no audio track or includes the `muted` attribute, but this does depend on user settings.
 
+A HTML `<video>` can be any size and aspect ratio, and can be displayed without any play/pause/mute buttons, so is more flexible than you might think.
+
 ### AV1
 
 The only video format that can rival AVIF is AV1.
 
-Below is an AV1 video:
+Below is an AV1 video (if you're using Safari, there's a chance it'll look broken).
 
-<video controls src="/animated/thisisDVD.mp4"></video>
+<video controls playsinline src="/animated/thisisDVD.mp4"></video>
 
-AV1 is supported in all browsers, but with a few caveats:
+AV1 is supported in all browsers, but with some major caveats:
 
-- Safari supports WebM for other video codecs, but not for AV1, so MP4 must be used.
+- Safari supports WebM for some video codecs, but not for AV1, so MP4 must be used.
 - Safari only plays AV1 video on devices that support hardware-accelerated decoding.
 
-Most current Apple devices support hardware-accelerated decoding for AV1 video (see [this article](/apple-devices-av1-decoding) for a full list). By the end of 2025, it’s likely all of them will. There are millions of older Apple devices in circulation that will be in use for quite some time. A fallback video using a more-widely supported codec like H.264 can be provided.
+Most current Apple devices support hardware-accelerated decoding for AV1 video (see [this article](/apple-devices-av1-decoding) for a full list). By the end of 2025, it’s likely all of them will. There are millions of older Apple devices in circulation that will be in use for quite some time. A fallback video using a more-widely supported codec like H.264 can be provided by making use of multiple `<source>` elements and the `type` attribute.
+
+```html
+<video controls playsinline>
+  <source src="myvideo-av1.mp4" type="video/mp4; codecs=av01.0.08M.08" />
+  <source src="myvideo-h264.mp4" type="video/mp4" />
+</video>
+```
+
+See [this article](https://jakearchibald.com/2022/html-codecs-parameter-for-av1/) for information on specifying the codec.
+
+Adobe Media Encoder does not support export of AV1 video. DaVinci Resolve 19 on Windows supports exporting AV1 video. The command line tool FFmpeg or a GUI like Shutter Encoder can be used to convert video to AV1.
+
+## Video vs Image formats
+
+When weighing up the two options in my CSS Tricks article, I described what was then a unique benefit of using images: media queries via the `<picture>` tag. Media queries for HTML video are now supported in all browsers.
 
 ### Responsive video
 
-Using the `<source>` element, a different video file can be specified based on screen size, orientation, light mode/dark mode, or any other media query.
+Using multiple `<source>` elements, a different video file can be specified based on screen size, orientation, light mode/dark mode, or any other media query.
 
 ```html
 <video controls autoplay loop muted playsinline>
@@ -133,3 +150,17 @@ If a video includes transparency, the best solution is far more tenuous.
 - Chrome supports the VP9 video codec with transparency, but Safari does not.
 
 Jake Archibald has written an [in-depth article](https://jakearchibald.com/2024/video-with-transparency/#the-performance-is-prohibitively-bad) about this topic.
+
+## Looping video beyond "gifs"
+
+Giphy, a gif search engine once valued at hundreds of millions of dollars, has blamed its [declining business](https://www.theguardian.com/technology/2022/sep/16/gifs-are-cringe-and-for-boomers-giphy-claims-in-meta-takeover-filing) on young people who view gifs as uncool:
+
+> “They have fallen out of fashion as a content form, with younger users in particular describing gifs as ‘for boomers’ and ‘cringe’.”
+
+While the term "gif" is often associated with pixelated graphics, 90's pop-culture references and horrifically dated art-styles, the use-cases for looping silent video are broader than chat reactions. I worked on a web app that imported an entire JavaScript library to animate a loading spinner. While a lot can be achieved with SVG, CSS and JavaScript animations, with modern codecs offering increasingly tiny file-sizes, its possible were under-utilising modern "gifs" in UI design.
+
+## Conclusion
+
+I concluded my CSS Tricks article: “I wish there was a TL;DR for this article. For now, at least, there’s no clear winner…” If the video includes transparency/alpha, that's still true.
+
+While AVIF should be an obvious choice, frame rate performance issues and browser bugs currently make it difficult to fully recommend. AV1 sadly requires the extra effort of exporting the video in two different formats so that a fallback can be provided for older Apple devices.
