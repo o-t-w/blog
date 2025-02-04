@@ -2,13 +2,13 @@
 pubDate: 'Jan 29 2025'
 title: "How to gif (2025 edition)"
 heroImage: "/howtogif.png"
-description: Animated AVIF, AV1 video, or JPEG-XL...
+description: Animated AVIF, AV1 video, JPEG-XL...
 ---
 
 Back in 2022 I published the article [*GIFs Without the .gif: The Most Performant Image and Video Options Right Now*](https://css-tricks.com/gifs-without-the-gif-the-most-performant-image-and-video-options-right-now/) on CSS Tricks. Certain information in that post is now out of date:
 
 - The AV1 video codec is supported in all browsers.
-- Animated AVIF is supported in all browsers.
+- Animated AVIF is supported in all browsers (albeit with issues in Safari).
 - WebM video is supported in all browsers.
 - The `image-set` CSS property is supported in all browsers.
 - The `media` attribute works on HTML `<source>` elements within a `<video>` in all browsers.
@@ -64,9 +64,17 @@ Back in 2022 I published the article [*GIFs Without the .gif: The Most Performan
 <div>158 KB</div> -->
 </div>
 
-GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. If I were an FFmpeg expert, its likely I could have reduced the size of the GIF and PNG files somewhat, but you get the idea. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
+GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. Were I an FFmpeg expert, its likely I could have reduced the size of the GIF and PNG files somewhat, but you get the idea. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
 
 ### AVIF
+
+AVIF (AV1 Image File Format) was created by the Alliance for Open Media (AOM), a group that includes Google, Apple, Microsoft, Netflix, Meta, Zoom, Amazon, Adobe and Intel. AVIF is based on the AV1 video codec.
+
+The AOM [website](https://aomedia.org/specifications/avif/) describes the features of the image format:
+
+> “AVIF supports both lossless and lossy compression, as well as high dynamic range (HDR), wide color gamut (WCG), transparency, and animation, offering flexibility and versatility.”
+
+While animated AVIF has been supported in all browsers for several years, the format can suffer from frame rate performance issues in Safari.
 
 ### JPEG-XL
 
@@ -92,9 +100,9 @@ A HTML `<video>` can be any size and aspect ratio, and can be displayed without 
 
 ### AV1
 
-The only video format that can rival AVIF is AV1.
+The AV1 video codec was created by the Alliance for Open Media (AOM).
 
-Below is an AV1 video (if you're using Safari, there's a chance it'll look broken).
+Below is an ancient video I converted to AV1. If it's broken, your browser or device does not support AV1.
 
 <video controls playsinline src="/animated/thisisDVD.mp4"></video>
 
@@ -118,9 +126,9 @@ Adobe Media Encoder does not support export of AV1 video. DaVinci Resolve 19 on 
 
 ## Video vs Image formats
 
-When weighing up the two options in my CSS Tricks article, I described what was then a unique benefit of using images: media queries via the `<picture>` tag. Media queries for HTML video are now supported in all browsers.
-
 ### Responsive video
+
+When weighing up the two options in my CSS Tricks article, I described what was, at that time, a unique benefit of using images: media queries via the `<picture>` tag. Media queries for HTML video are now supported in all browsers.
 
 Using multiple `<source>` elements, a different video file can be specified based on screen size, orientation, light mode/dark mode, or any other media query.
 
@@ -145,11 +153,13 @@ Media query support for video was implemented in all browsers, then removed from
 If a video includes transparency, the best solution is far more tenuous.
 
 - AV1 does not support transparency.
-- Animated AVIF files with transparency suffer from performance issues in every browser, and are practically unusable in Safari.
+- Animated AVIF files that include transparency suffer from performance issues in every browser, and are practically unusable in Safari.
 - Safari supports the HEVC video codec with transparency, but Chrome does not.
 - Chrome supports the VP9 video codec with transparency, but Safari does not.
 
 Jake Archibald has written an [in-depth article](https://jakearchibald.com/2024/video-with-transparency/#the-performance-is-prohibitively-bad) about this topic.
+
+Animated WebP seems to avoid the Safari issues of animated AVIF, so is worth considering.
 
 ## Looping video beyond "gifs"
 
@@ -157,10 +167,8 @@ Giphy, a gif search engine once valued at hundreds of millions of dollars, has b
 
 > “They have fallen out of fashion as a content form, with younger users in particular describing gifs as ‘for boomers’ and ‘cringe’.”
 
-While the term "gif" is often associated with pixelated graphics, 90's pop-culture references and horrifically dated art-styles, the use-cases for looping silent video are broader than chat reactions. I worked on a web app that imported an entire JavaScript library to animate a loading spinner. While a lot can be achieved with SVG, CSS and JavaScript animations, with modern codecs offering increasingly tiny file-sizes, its possible were under-utilising modern "gifs" in UI design.
+While the term "gif" is often associated with pixelated graphics, 90's pop-culture references and horrifically dated art-styles, the use-cases for looping silent video are broader than chat reactions. I worked on a web app that imported an entire JavaScript library to animate a loading spinner. While a lot can be achieved with SVG, CSS and JavaScript animations, with modern codecs offering increasingly tiny file sizes, its possible were under-utilising modern "gifs" in UI design.
 
 ## Conclusion
-
-I concluded my CSS Tricks article: “I wish there was a TL;DR for this article. For now, at least, there’s no clear winner…” If the video includes transparency/alpha, that's still true.
 
 While AVIF should be an obvious choice, frame rate performance issues and browser bugs currently make it difficult to fully recommend. AV1 sadly requires the extra effort of exporting the video in two different formats so that a fallback can be provided for older Apple devices.
