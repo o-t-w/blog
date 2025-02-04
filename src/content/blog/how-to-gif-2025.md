@@ -141,7 +141,7 @@ Using multiple `<source>` elements, a different video file can be specified base
 
 Resize your browser window and reload the page to see the difference.
 
-<video autoplay loop muted playsinline style="max-height: 80vh; margin-inline: auto; display: block; margin-top: 24px;">
+<video autoplay loop muted playsinline style="max-height: 70vh; max-width: 500px; margin-inline: auto; display: block; margin-top: 24px;">
     <source media="(orientation: landscape)" src="/animated/fish-desktop-h264.mp4">
     <source media="(orientation: portrait)"  src="/animated/fish-mobile-h264.mp4">
 </video>
