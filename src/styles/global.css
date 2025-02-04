@@ -21,8 +21,7 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background-color: rgb(248 252 255);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
@@ -53,6 +52,8 @@ h2 {
 }
 h3 {
 	font-size: 20px;
+	font-weight: 550;
+	font-stretch: 95%;
 }
 h4 {
 	font-size: 1.563em;
