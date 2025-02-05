@@ -9,7 +9,7 @@ Back in 2022 I published the article [*GIFs Without the .gif: The Most Performan
 
 - The AV1 video codec is supported in all browsers.
 - Animated AVIF is supported in all browsers (albeit with issues in Safari).
-- WebM video is supported in all browsers.
+- WebM and the VP9 video codec are supported in all browsers.
 - The `image-set` CSS property is supported in all browsers.
 - The `media` attribute works on HTML `<source>` elements within a `<video>` in all browsers.
 
@@ -64,7 +64,7 @@ Back in 2022 I published the article [*GIFs Without the .gif: The Most Performan
 <div>158 KB</div> -->
 </div>
 
-GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. Were I an FFmpeg expert, its likely I could have reduced the size of the GIF and PNG files somewhat, but you get the idea. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
+GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
 
 ### AVIF
 
@@ -72,7 +72,7 @@ AVIF (AV1 Image File Format) was created by the Alliance for Open Media (AOM), a
 
 The AOM [website](https://aomedia.org/specifications/avif/) describes the features of the image format:
 
-> “AVIF supports both lossless and lossy compression, as well as high dynamic range (HDR), wide color gamut (WCG), transparency, and animation, offering flexibility and versatility.”
+> “AVIF supports both lossless and lossy compression, as well as high dynamic range (HDR), wide color gamut (WCG), transparency, and animation.”
 
 While animated AVIF has been supported in all browsers for several years, the format can suffer from frame rate performance issues in Safari.
 
@@ -100,11 +100,11 @@ A HTML `<video>` can be any size and aspect ratio, and can be displayed without 
 
 ### AV1
 
-The AV1 video codec was created by the Alliance for Open Media (AOM).
+Created by the Alliance for Open Media (AOM), the AV1 video codec is the best codec for video on the web. AV1 can deliver equivalent quality to H265/HEVC and VP9 at 30% lower bitrates.
 
 Below is an ancient video I converted to AV1. If it's broken, your browser or device does not support this codec.
 
-<video controls playsinline src="/animated/thisisDVD.mp4"></video>
+<video style="max-width: 500px; margin-inline: auto; display: block;" controls playsinline src="/animated/thisisDVD.mp4"></video>
 
 AV1 is supported in all browsers, but with some major caveats:
 
