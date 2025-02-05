@@ -104,7 +104,7 @@ Created by the Alliance for Open Media (AOM), the AV1 video codec is the best co
 
 Below is an ancient video I converted to AV1. If it's broken, your browser or device does not support this codec.
 
-<video style="max-width: 500px; margin-inline: auto; display: block;" controls playsinline src="/animated/thisisDVD.mp4"></video>
+<video style="width: 100%; max-width: 500px; margin-inline: auto; display: block;" controls playsinline src="/animated/thisisDVD.mp4"></video>
 
 AV1 is supported in all browsers, but with some major caveats:
 
