@@ -169,7 +169,7 @@ Giphy, a gif search engine once valued at hundreds of millions of dollars, has b
 
 <div class="cringe" style="background: black;
     text-align: center;
-    padding: 24px; display: flex; align-items: center; justify-content: space-around;">
+    padding: 12px; display: flex; align-items: center; justify-content: space-around;">
 <h2 class="comic-colr" style="margin: 0;">Are gifs cringe?</h2>
 <img style="width: 100px;" src="/animated/dancingbaby.webp" alt="">
 </div>
