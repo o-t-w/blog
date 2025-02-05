@@ -167,6 +167,13 @@ Giphy, a gif search engine once valued at hundreds of millions of dollars, has b
 
 > “They have fallen out of fashion as a content form, with younger users in particular describing gifs as ‘for boomers’ and ‘cringe’.”
 
+<div class="cringe" style="background: black;
+    text-align: center;
+    padding: 24px; display: flex; align-items: center; justify-content: space-around;">
+<h2 class="comic-colr" style="margin: 0;">Are gifs cringe?</h2>
+<img style="width: 100px;" src="/animated/dancingbaby.webp" alt="">
+</div>
+
 While the term "gif" is often associated with pixelated graphics, 90's pop-culture references and horrifically dated art-styles, the use-cases for looping silent video are broader than chat reactions. I worked on a web app that imported an entire JavaScript library to animate a loading spinner. While a lot can be achieved with SVG, CSS and JavaScript animations, with modern codecs offering increasingly tiny file sizes, its possible were under-utilising modern "gifs" in UI design.
 
 ## Conclusion

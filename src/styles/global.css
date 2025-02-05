@@ -423,3 +423,19 @@ dialog::backdrop {
 	border-radius: 6px;
 	background-color: rgb(230,230,230);
   }
+
+  @font-face {
+	font-family: 'comic-colr';
+	src: url('/comic-helvetic-rasterized-colr-COLRv1.otf');
+  }
+
+  .comic-colr {
+	font-family: comic-colr;
+	font-size: 42px;
+  }
+
+  @supports not (font-tech(color-COLRv1)) {
+	.cringe {
+		display: none !important;
+	}
+}
