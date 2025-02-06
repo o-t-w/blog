@@ -43,28 +43,14 @@ Back in 2022 I published the article [*GIFs Without the .gif: The Most Performan
     }
 </style>
 
-<div class="anim-img-grid" style="margin-top: 24px;">
-<img src="/animated/friends.gif" alt="">
-<div class="format">GIF</div>
-<div>1.5 MB</div>
-<img src="/animated/friends.png" alt="">
-<div class="format">PNG</div>
-<div>3.2 MB</div>
-<img src="/animated/friends.webp" alt="">
-<div class="format">WebP</div>
-<div>382 KB</div>
-<img src="/animated/friends.avifs" alt="">
-<div class="format">AVIF</div>
-<div>119 KB</div>
 <!-- <picture>
 <source srcset="/animated/friends.jxl" type="image/jxl">
 <img src="/animated/jpegxl-not.png" alt="">
 </picture>
 <div class="format">JPEG-XL</div>
 <div>158 KB</div> -->
-</div>
 
-GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. GIF and PNG are legacy formats and WebP has been superseded by AVIF.
+GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. The GIF format dates from 1987 and is restricted to a 256 color palette. GIF and PNG are legacy formats and WebP has largely been superseded by AVIF.
 
 ### AVIF
 
@@ -75,6 +61,10 @@ The AOM [website](https://aomedia.org/specifications/avif/) describes the featur
 > “AVIF supports both lossless and lossy compression, as well as high dynamic range (HDR), wide color gamut (WCG), transparency, and animation.”
 
 While animated AVIF has been supported in all browsers for several years, the format can suffer from frame rate performance issues in Safari.
+
+### WebP
+
+WebP is a [significant improvement](https://developers.google.com/speed/webp/faq#why_should_i_use_animated_webp) over GIF or animated PNG. According to Google (the creators of WebP) "Animated GIFs converted to lossy WebPs are 64% smaller, while lossless WebPs are 19% smaller." Browser support is universal and extends further back than support for animated AVIF.
 
 ### JPEG-XL
 
@@ -123,6 +113,10 @@ Most current Apple devices support hardware-accelerated decoding for AV1 video (
 See [this article](https://jakearchibald.com/2022/html-codecs-parameter-for-av1/) for information on specifying the codec.
 
 Adobe Media Encoder does not support export of AV1 video. DaVinci Resolve 19 on Windows supports exporting AV1 video. The command line tool FFmpeg or a GUI like Shutter Encoder can be used to convert video to AV1.
+
+### VP9
+
+VP9 is supported in all browsers. Unlike AV1, it is not dependent on the users device supporting hardware-accelerated decoding.
 
 ## Video vs Image formats
 
