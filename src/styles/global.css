@@ -21,7 +21,7 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background-color: rgb(248 252 255);
+	background-color: rgb(253 254 255);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
