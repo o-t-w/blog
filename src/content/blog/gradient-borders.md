@@ -45,7 +45,7 @@ description: "Using background-clip: border-area"
 }
 
 .border-gradient {
-    background-image: linear-gradient(35deg, #1B88FF, oklch(0.82 0.13 223.75)), linear-gradient(#ecfeff);
+    background-image: linear-gradient(35deg, #1B88FF, oklch(0.82 0.13 223.75)), linear-gradient(white);
     border: solid 4px transparent;
     background-clip: border-area, padding-box;
     background-origin: border-box;
@@ -137,7 +137,7 @@ This has very niche use-cases, but comes in handy to set a solid background colo
 
 ```css
 .border-gradient {
-    background-image: linear-gradient(35deg, #1B88FF, oklch(0.82 0.13 223.75)), linear-gradient(#ecfeff);
+    background-image: linear-gradient(35deg, #1B88FF, oklch(0.82 0.13 223.75)), linear-gradient(white);
     background-clip: border-area, padding-box;
     background-origin: border-box;
     border: solid 4px transparent;
