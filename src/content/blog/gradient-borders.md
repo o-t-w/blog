@@ -103,7 +103,7 @@ Together with a border gradient, you may also want a gradient or image that isn'
 <button class="border-gradient-2">border gradient</button>
 </div>
 
-`background-image` can be used to specify multiple backgrounds, and each can be set to use a different `background-clip` value.
+`background-image` can specify multiple backgrounds, and each can be set to use a different `background-clip` value.
 
 ```css
 .border-gradient-and-background-gradient {
