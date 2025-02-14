@@ -114,7 +114,10 @@ Together with a border gradient, you may also want a gradient or image that isn'
 }
 ```
 
-In the above code, one gradient is clipped to the `border-area` and the other is clipped to the `padding-box` (everywhere except the border).
+In the above code, one gradient uses a `background-clip` value of `border-area` while the other uses a value of `padding-box`. `background-clip` values name the area that a background is _clipped into_, so `padding-box` means the image is visible everywhere except the border area.
+
+No background is drawn beneath the border.
+The background is painted within (clipped to) the area painted by the border, taking border-width and border-style into account but ignoring any transparency introduced by border-color.
 
 ## A single-color "gradient"
 
