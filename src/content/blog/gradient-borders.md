@@ -136,7 +136,7 @@ This works for `linear-gradient`, `radial-gradient` and `conic-gradient`.
 This has very niche use-cases, but comes in handy to set a solid background color when working with `background-clip: border-area`.
 
 ```css
-.border-gradient {
+.border-gradient-with-solid-bg {
     background-image: linear-gradient(35deg, #1B88FF, oklch(0.82 0.13 223.75)), linear-gradient(white);
     background-clip: border-area, padding-box;
     background-origin: border-box;
