@@ -14,3 +14,5 @@ Defining and managing Figma variables is simple. Managing an Adobe Creative Clou
 Speaking on that same podcast, here's [Jina Anne](https://www.designsystemsontheme.com/p/when-design-systems-became-a-thing-with-jina-anne), who helped popularise the concept of design tokens:
 
 > “Sometimes I do think people are tokenizing when they don't need to tokenize and they're overcomplicating things, and sometimes I think we created a monster.”
+
+I'm unconvinced that managing colors and other design variables is a labourious enough task to warrant the technical complexity of design tokens.
