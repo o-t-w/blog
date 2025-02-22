@@ -118,7 +118,7 @@ In the above code, one gradient uses a `background-clip` value of `border-area` 
 
 ## A single-color "gradient"
 
-Something that landed in all (beta) browsers recently is the ability to use a single color as the value for a gradient (currently requires Safari Technology Preview, Firefox Nightly or Chrome Canary).
+Something that landed in all (beta) browsers recently is the ability to use a single color as the value for a gradient (currently requires [Safari 18.4](https://developer.apple.com/documentation/safari-release-notes/safari-18_4-release-notes#CSS), Firefox Nightly or Chrome Canary).
 
 <div style="display: grid; grid-template-columns: max-content 1fr; gap: 16px; align-items: center;">
 <div class="gradient-demo"></div>

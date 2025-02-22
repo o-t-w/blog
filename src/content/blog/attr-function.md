@@ -31,7 +31,7 @@ h1:before {
 }
 ```
 
-This will be used as the default value when the data attribute is not included on the element in your HTML. This has been supported since [Firefox 119](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/119#css), [Safari Technology Preview 208](https://developer.apple.com/documentation/safari-technology-preview-release-notes/stp-release-208#New-Features), and in Chrome Canary (behind a flag).
+This will be used as the default value when the data attribute is not included on the element in your HTML. This has been supported since [Firefox 119](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/119#css), [Safari 18.4](https://developer.apple.com/documentation/safari-release-notes/safari-18_4-release-notes), and in Chrome Canary (behind a flag).
 
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="abeebyZ" data-pen-title="attr() fallback " data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/cssgrid/pen/abeebyZ">
@@ -56,7 +56,7 @@ In the latest W3C [CSS Values and Units specification](https://drafts.csswg.org/
 <div data-bg="blue"></div>
 ```
 
-This feature is available in Chrome Canary and is due to ship in [Chrome 133](https://chromestatus.com/feature/4680129030651904).
+This feature has been available in Chrome since [version 133](https://developer.chrome.com/release-notes/133#css_advanced_attr_function).
 
 
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwoNPjd" data-pen-title="attr function doesn't work... " data-user="cssgrid" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
