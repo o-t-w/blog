@@ -86,4 +86,4 @@ Set `focusVisible` to false and `:focus-visible` styles won't be applied, set it
 
 ## Browser support
 
-The `focusVisible` option for the `.focus()` method is supported in Firefox and Safari Technology Preview.
+The `focusVisible` option for the `.focus()` method is supported in Firefox and [Safari 18.4](https://developer.apple.com/documentation/safari-release-notes/safari-18_4-release-notes#Web-API).
