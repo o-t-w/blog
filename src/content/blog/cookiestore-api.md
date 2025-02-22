@@ -8,7 +8,7 @@ The Cookie Store API is a modern asynchronous alternative to `document.cookie`.
 
 ## Browser support
 
-The Cookie Store API has been [available](https://caniuse.com/cookie-store-api) in Chrome and Edge since version 87, released back in 2020. The API is also available in Safari Technology Preview and Firefox Nightly. Firefox and Safari decided to implement only a [subset](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Experimental_features#cookie_store_api) of the API, which is what I will cover in this article. A [polyfill](https://github.com/markcellus/cookie-store) is available.
+The Cookie Store API has been [available](https://caniuse.com/cookie-store-api) in Chrome and Edge since version 87, released back in 2020. The API shipped in [Safari 18.4](https://developer.apple.com/documentation/safari-release-notes/safari-18_4-release-notes#Web-API) and [Firefox 136](https://www.mozilla.org/en-US/firefox/136.0beta/releasenotes/#:~:text=Added%20support%20for%20the%20CookieStore%20API). Firefox and Safari decided to implement only a [subset](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Experimental_features#cookie_store_api) of the API, which is what I will cover in this article. A [polyfill](https://github.com/markcellus/cookie-store) is available.
 
 ## Set a cookie
 
