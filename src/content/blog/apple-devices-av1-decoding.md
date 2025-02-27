@@ -14,7 +14,7 @@ In 2023, Apple unveiled their M3 chip, the first Apple chip to support AV1 decod
 
 2023 also saw the release of the iPhone 15 Pro, which included hardware-accelerated decoding via the A17 Pro chip.
 
-Apple has taken a significant amount of to time to upgrade its full-range of products to the latest chips. Some devices skipped the M3 and went from the M2 to the M4. Below is a list of the first Apple devices to support hardware-accelerated AV1 video decoding:
+Apple has taken a significant amount of time to upgrade its full-range of products to the latest chips. Some devices skipped the M3 and went from the M2 to the M4. Below is a list of the first Apple devices to support hardware-accelerated AV1 video decoding:
 
 <table>
   <tr>
