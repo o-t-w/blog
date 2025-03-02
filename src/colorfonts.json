@@ -162,6 +162,15 @@
             "opensource": false
         },
         {
+            "name": "Broaduro",
+            "creator": "Jesse R. Ewing",
+            "foundry": "Midwest Type",
+            "type": ["COLRv0"],
+            "url": "https://midwesttype.com/family/broaduro/",
+            "variable": false,
+            "opensource": false
+        },
+        {
             "name": "Cairo Play",
             "creator": "Mohamed Gaber, Accademia di Belle Arti di Urbino",
             "foundry": "Google Fonts",
