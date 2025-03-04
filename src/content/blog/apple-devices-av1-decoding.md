@@ -40,6 +40,7 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
       <tr>
     <th scope="row">iPad</th>
     <td>Does not support hardware decoding</td>
+    <td>A16</td>
   </tr>
   <tr>
     <th scope="row">iPad Mini</th>
@@ -69,10 +70,12 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
   <tr>
     <th scope="row">Mac Studio</th>
     <td>Does not support hardware decoding</td>
+    <td>M2</td>
   </tr>
   <tr>
     <th scope="row">Mac Pro</th>
     <td>Does not support hardware decoding</td>
+    <td>M2</td>
   </tr>
 
    <tr>
