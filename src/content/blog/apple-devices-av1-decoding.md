@@ -4,7 +4,7 @@ title: "Which Apple devices support hardware-accelerated AV1 video decoding?"
 heroImage: "/av1.png"
 description: "AV1 decoding on Mac, iPhone and iPad"
 ---
-_This article was updated on 19 September, 2025_
+_This article was updated on 4th March, 2025_
 
 AV1 is the best video format for the web. It’s supported by all web browsers. However, for Safari, support depends on the hardware. Older Apple devices can’t play AV1 video on the web, even if they’re running the latest version of iOS and Safari.
 
@@ -48,7 +48,8 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
   </tr>
   <tr>
     <th scope="row">iPad Air</th>
-    <td>Does not support hardware decoding</td>
+    <td>2025</td>
+    <td>M3</td>
   </tr>
     <tr>
     <th scope="row">iPad Pro</th>
