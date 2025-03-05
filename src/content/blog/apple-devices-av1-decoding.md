@@ -57,25 +57,25 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
     <td>2024</td>
     <td>M4</td>
   </tr>
-      <tr>
-    <th scope="row">Mac Mini</th>
-    <td>2024</td>
-    <td>M4</td>
-  </tr>
   <tr>
     <th scope="row">iMac</th>
     <td>2023</td>
     <td>M3</td>
   </tr>
+    <tr>
+    <th scope="row">Mac Mini</th>
+    <td>2024</td>
+    <td>M4 / M4 Pro</td>
+  </tr>
   <tr>
     <th scope="row">Mac Studio</th>
-    <td>Does not support hardware decoding</td>
-    <td>M2</td>
+    <td>2025</td>
+    <td>M4 Max / M3 Ultra</td>
   </tr>
   <tr>
     <th scope="row">Mac Pro</th>
     <td>Does not support hardware decoding</td>
-    <td>M2</td>
+    <td>M2 Ultra</td>
   </tr>
 
    <tr>
@@ -87,6 +87,6 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
    <tr>
     <th scope="row">MacBook Pro</th>
     <td>2023</td>
-    <td>M3</td>
+    <td>M3 / M3 Pro / M3 Max</td>
   </tr>
 </table>
