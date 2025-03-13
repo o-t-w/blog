@@ -23,16 +23,16 @@ Popovers and dialogs are similar in many ways. That's particularly the case sinc
 
 ## Popover vs modal dialog
 
-The key difference between a popover and a modal dialog is modality. By its very definition, a modal dialog will cause everything outside of the dialog to be inert.
+Opening a modal dialog will cause everything outside of the dialog to be inert.
 
 Inert is similar to using the `disabled` HTML attribute together with setting `user-select: none` in CSS, but is more comprehensive: 
 
 - inert elements and their children are hidden from assistive technologies.
 - The browser's find-in-page search feature will not find any text within an inert element.
 
-Focus is trapped in the dialog, and the only thing that remains interactive is the dialog. 
+Focus is trapped in the dialog and it is the only thing that remains interactive. 
 
-Modality is a pretty major distinction. The differences between a popover and a non-modal dialog are more subtle.
+Modality is a major distinction between a modal dialog and a popover. The differences between a non-modal dialog and a popover are more subtle.
 
 ## Popover vs non-modal dialog
 
