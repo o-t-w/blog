@@ -23,9 +23,12 @@ description: Combining the popover attribute with the dialog element
 
 ## What's wrong with `show()`?
 
+A non-modal dialog opened via the `show()` method has the following limitations:
+
 - The dialog will not use the top layer.
 - No `::backdrop` pseudo-element. Using `::backdrop` for a non-modal dialog is somewhat uncommon, but so long as its kept mostly transparent, its a viable UX choice.
-- There's no way to open or close the dialog using the `command` and `commandfor` attributes.
+
+Without the popover API, there is no HTML-based way to open or close a non-modal dialog, whereas a popover can be opened and closed via either the `popovertarget` and `popovertargetaction` attributes or the `command` and `commandfor` attributes.
 
 ## `<dialog popover>`: combining the popover API and the dialog element
 
