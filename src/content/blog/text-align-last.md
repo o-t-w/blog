@@ -47,7 +47,7 @@ p {
 
 ## `text-align-last: center`
 
-<p class="justify pad-mobile" style="margin-top: 44px; margin-bottom: 32px !important; margin-inline: auto; text-align-last: center; background-image: linear-gradient(rgba(0, 0, 0, .6)), url(/colliseum.jpg); background-size: cover; color: white; padding: 28px 82px;">In modern historiography, ancient Rome is the Roman civilisation from the founding of the Italian city of Rome in the 8th century BC to the collapse of the Western Roman Empire.</p>
+<p class="justify pad-mobile" style="margin-top: 44px; margin-bottom: 32px !important; margin-inline: auto; text-align-last: center; background-color: rgb(52, 52, 52); background-image: linear-gradient(rgba(0, 0, 0, .6)), url(/colliseum.jpg); background-size: cover; color: white; padding: 28px 82px;">In modern historiography, ancient Rome is the Roman civilisation from the founding of the Italian city of Rome in the 8th century BC to the collapse of the Western Roman Empire.</p>
 
 ```css
 p {
