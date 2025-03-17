@@ -20,7 +20,7 @@ description: Aligning the last line of text
 
 ## `text-align-last: right`
 
-<div style="text-align: right; margin-inline: auto; display: flex; gap: 16px; align-content: center; width: 580px; max-width: 100%; margin-bottom: 32px;">
+<div style="text-align: right; margin-inline: auto; display: flex; gap: 16px; align-content: center; width: 583px; max-width: 100%; margin-bottom: 32px;">
 <div>
 <h2>Ancient Rome</h2>
 <p class="justify" style="text-align-last: right;">In modern historiography, ancient Rome is the Roman civilisation from the founding of the Italian city of Rome in the 8th century BC to the collapse of the Western Roman Empire.</p>
