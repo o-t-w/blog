@@ -23,7 +23,7 @@ description: Aligning the last line of text
 <div style="text-align: right; margin-inline: auto; display: flex; gap: 16px; align-content: center; width: 580px; max-width: 100%; margin-bottom: 32px;">
 <div>
 <h2>Ancient Rome</h2>
-<p class="justify" style="text-align-last: end;">In modern historiography, ancient Rome is the Roman civilisation from the founding of the Italian city of Rome in the 8th century BC to the collapse of the Western Roman Empire.</p>
+<p class="justify" style="text-align-last: right;">In modern historiography, ancient Rome is the Roman civilisation from the founding of the Italian city of Rome in the 8th century BC to the collapse of the Western Roman Empire.</p>
 </div> 
 <img style="width: 100px; object-fit: cover;" src="/colliseum.jpg" alt="">
 </div>
@@ -31,7 +31,7 @@ description: Aligning the last line of text
 ```css
 p {
     text-align: justify;
-    text-align-last: end;
+    text-align-last: right;
     hyphens: auto;
     text-wrap: pretty;
 }
