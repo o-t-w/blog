@@ -17,9 +17,10 @@ description: Combining the popover attribute with the dialog element
     top: auto;
     right: auto;
   }
+
 </style>
 
-<small>*Browser support note: the following examples make use of the `command` and `commandfor` attributes, which currently requires Chrome/Edge version 135 or Safari Technology Preview.*</small>
+<small>*Browser support note: One of the following examples makes use of the `command` and `commandfor` attributes, which currently requires Chrome/Edge version 135 or Safari Technology Preview.*</small>
 
 ## What's wrong with `show()`?
 
@@ -38,11 +39,11 @@ A dialog that can be closed via light dismiss or by pressing the escape key:
 
 ```html
 <dialog popover id="dialog1">Example popover dialog</dialog>
-<button command="show-popover" commandfor="dialog1">Show dialog</button>
+<button popovertarget="dialog1">Show dialog</button>
 ```
 
 <dialog popover id="dialog1">Example popover dialog</dialog>
-<button command="show-popover" commandfor="dialog1">Show dialog</button>
+<button popovertarget="dialog1">Show dialog</button>
 
 A dialog without light dismiss and that is not closed via the escape key:
 
@@ -52,7 +53,7 @@ Example popover dialog
 <button command="hide-popover" commandfor="dialog2">Close</button>
 </dialog>
 
-<button command="show-popover" commandfor="dialog2">Show dialog</button>
+<button popovertarget="dialog2">Show dialog</button>
 ```
 
 <style>
@@ -69,7 +70,7 @@ Example popover dialog
 Example popover dialog
 <button command="hide-popover" commandfor="dialog2">Close</button>
 </dialog>
-<button command="show-popover" commandfor="dialog2">Show dialog</button>
+<button popovertarget="dialog2">Show dialog</button>
 
 ## Does it behave more like a dialog, or more like a popover?
 
@@ -78,7 +79,7 @@ How a dialog/popover combo behaves depends on the method or command used to open
 - In CSS the dialog will match `:popover-open` but not `[open]` or `:open`
 - The element can only be closed via a popover method or command
 
-There aren't many behavioural differences between `<div popover>` and `<dialog popover>`, but it is important to use the most semantically correct element: the dialog element has the advantage of an implicit ARIA role of *dialog*. The one notable functional difference is focus behaviour: when shown, `<dialog popover>` will focus the first focusable element within the dialog, whereas `<div popover>`, for example, will not.
+There aren't many behavioural differences between `<div popover>` and `<dialog popover>`, but it is important to use the most semantically correct element: the dialog element has the advantage of an implicit ARIA role of *dialog*. The one notable functional difference is focus behaviour. When shown, `<dialog popover>` will focus the first focusable element within the dialog, or the dialog itself if no children are focusable. The is different from the usual popover focus behaviour: opening `<div popover>`, for example, will cause the first focusable element within the popover to be the next tab stop.
 
 ## Shortcomings of `<dialog popover>`
 
