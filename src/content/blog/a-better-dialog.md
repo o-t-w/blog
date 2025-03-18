@@ -19,7 +19,7 @@ description: Combining the popover attribute with the dialog element
   }
 </style>
 
-<small>*Browser support note: some of the following examples make use of the `command` and `commandfor` attributes and the `closedby` attribute, which currently only work in Chrome and Edge version 135 and 134 respectively.*</small>
+<small>*Browser support note: the following examples make use of the `command` and `commandfor` attributes, which currently requires Chrome/Edge version 135 or Safari Technology Preview.*</small>
 
 ## What's wrong with `show()`?
 
