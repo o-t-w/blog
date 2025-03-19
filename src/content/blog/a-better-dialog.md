@@ -48,7 +48,7 @@ A dialog without light dismiss and that is not closed via the escape key:
 ```html
 <dialog popover="manual" id="dialog2">
 Example popover dialog
-<button popovertargetaction="hide-popover" popovertarget="dialog2">Close</button>
+<button popovertargetaction="hide" popovertarget="dialog2">Close</button>
 </dialog>
 
 <button popovertarget="dialog2">Show dialog</button>
@@ -66,7 +66,7 @@ Example popover dialog
     gap: 12px;
     align-items: center;" popover="manual" id="dialog2">
 Example popover dialog
-<button popovertargetaction="hide-popover" popovertarget="dialog2">Close</button>
+<button popovertargetaction="hide" popovertarget="dialog2">Close</button>
 </dialog>
 <button popovertarget="dialog2">Show dialog</button>
 
