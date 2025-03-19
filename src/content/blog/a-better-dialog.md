@@ -20,8 +20,6 @@ description: Combining the popover attribute with the dialog element
 
 </style>
 
-<small>*Browser support note: One of the following examples makes use of the `command` and `commandfor` attributes, which currently requires Chrome/Edge version 135 or Safari Technology Preview.*</small>
-
 ## What's wrong with `show()`?
 
 A non-modal dialog opened via the `show()` method has the following limitations:
@@ -50,7 +48,7 @@ A dialog without light dismiss and that is not closed via the escape key:
 ```html
 <dialog popover="manual" id="dialog2">
 Example popover dialog
-<button command="hide-popover" commandfor="dialog2">Close</button>
+<button popovertargetaction="hide-popover" popovertarget="dialog2">Close</button>
 </dialog>
 
 <button popovertarget="dialog2">Show dialog</button>
@@ -68,7 +66,7 @@ Example popover dialog
     gap: 12px;
     align-items: center;" popover="manual" id="dialog2">
 Example popover dialog
-<button command="hide-popover" commandfor="dialog2">Close</button>
+<button popovertargetaction="hide-popover" popovertarget="dialog2">Close</button>
 </dialog>
 <button popovertarget="dialog2">Show dialog</button>
 
