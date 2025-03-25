@@ -63,16 +63,16 @@ The `prefers-color-scheme` media query can be used inside of a `<style>` block i
 ```html
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <style>
-    :root { color: black }
+    rect { fill: black; }
     @media (prefers-color-scheme: dark) {
-      :root { color: white }
+      rect { fill: white; }
     }
   </style>
-  <rect fill="currentColor" width="32" height="32"/>
+  <rect width="32" height="32"/>
 </svg>
 ```
 
-In browsers that do support `prefers-color-scheme` for non-inline SVG, the results of the query are impacted by both the `color-scheme` CSS property and by the HTML `color-scheme` meta tag.
+In browsers that do support `prefers-color-scheme` for non-inline SVG, the results of the query are [impacted](https://github.com/w3c/csswg-drafts/issues/7213) by both the `color-scheme` CSS property and by the HTML `color-scheme` meta tag.
 
 ```html
 <div style="color-scheme: light">
