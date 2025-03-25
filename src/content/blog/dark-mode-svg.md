@@ -9,7 +9,7 @@ SVG has a unique benefit over other image formats: CSS can be included within th
 
 Below are three SVG circles. One is a `<div>` using the CSS `background-image` property. The second is a HTML `<img>` element. The third uses `<use>`. Their `fill` color will depend on the users system preferences:
 
-<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; color-scheme: light dark; background-color: Canvas; padding: 16px;">
+<div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; color-scheme: light dark; background-color: Canvas; padding: 16px;">
 <div style="width: 40px; height: 40px; background-image: url('/circle.svg')">
 </div>
 <img width="40px" src="/circle.svg" alt="">
