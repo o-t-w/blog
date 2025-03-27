@@ -1,5 +1,5 @@
 ---
-pubDate: 'Mar 24 2025'
+pubDate: 'Mar 26 2025'
 title: Dark mode for SVG (and favicons)
 heroImage: "/dark-mode-svg.png"
 description: Using the light-dark() CSS function to implement light and dark mode for SVG icons and SVG favicons, including SVG used with the HTML img element or as a CSS background-image. 
@@ -7,23 +7,17 @@ description: Using the light-dark() CSS function to implement light and dark mod
 
 SVG has a unique benefit over other image formats: CSS can be included within the markup of the image itself. For inline SVG, `currentcolor` and CSS variables are simple ways to implement dark mode. When SVG is used like a typical image format, neither of those approaches work. When an `.svg` file is used (rather than including SVG markup directly within HTML) the CSS `light-dark()` function offers a solution.
 
-Below are three SVG circles. One is a `<div>` using the CSS `background-image` property. The second is a HTML `<img>` element. The third uses `<use>`. Their `fill` color will depend on the users system preferences:
+Below are two SVG circles. One is a `<div>` using the CSS `background-image` property. The second is a HTML `<img>` element. Their `fill` color will depend on the users system preferences:
 
 <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; color-scheme: light dark; background-color: Canvas; padding: 16px;">
 <div style="width: 40px; height: 40px; background-image: url('/circle.svg')">
 </div>
 <img width="40px" src="/circle.svg" alt="">
-<svg width="40" height="40">
-    <use href="/circle.svg#circle"></use>
-</svg>
 </div>
 
 ```html
 <div style="background-image: url('/circle.svg'); width: 40px; height: 40px;"></div>
 <img width="40px" src="/circle.svg" alt="">
-<svg width="40" height="40">
-    <use href="/circle.svg#circle"></use>
-</svg>
 ```
 
 The contents of the `circle.svg` file:
@@ -32,7 +26,7 @@ The contents of the `circle.svg` file:
 <svg style="color-scheme: light dark;" fill="light-dark(black, white)" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" id="circle"><circle cx="5" cy="5" r="5"/></svg>
 ```
 
-The `color-scheme` property inside the SVG is effectively saying "these are the color schemes I can support", but the actual scheme used by the SVG can be controlled from outside, either by the `color-scheme` CSS property, or by a `color-scheme` meta tag in the `<head>` of the HTML document. The code inside the SVG file defines which color themes the SVG is capable of, and the code in the HTML document specifies which theme it wants to use.
+The `color-scheme` property inside the SVG is effectively saying "these are the color schemes I can support", but the actual scheme used by the SVG can be controlled from outside, either by the `color-scheme` CSS property, or by a `color-scheme` meta tag in the `<head>` of the HTML document. The code inside the SVG file defines which color themes the SVG is capable of and the code in the HTML document specifies which theme it wants to use.
 
 ```html
 <img width="40px" src="/circle.svg" alt="">
