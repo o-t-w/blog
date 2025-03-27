@@ -1,8 +1,8 @@
 ---
 pubDate: 'Mar 26 2025'
-title: Dark mode for SVG (and favicons)
+title: Dark mode for SVG
 heroImage: "/dark-mode-svg.png"
-description: Using the light-dark() CSS function to implement light and dark mode for SVG icons and SVG favicons, including SVG used with the HTML img element or as a CSS background-image. 
+description: Using the light-dark() CSS function to implement light and dark mode for non-inline SVG icons, including SVG used with the HTML img element or as a CSS background-image. 
 ---
 
 SVG has a unique benefit over other image formats: CSS can be included within the markup of the image itself. For inline SVG, `currentcolor` and CSS variables are simple ways to implement dark mode. When SVG is used like a typical image format, neither of those approaches work. The CSS `light-dark()` function offers a solution. `light-dark()` for non-inline SVG works in Firefox, Chrome and Edge. I opened a [bug](https://bugs.webkit.org/show_bug.cgi?id=283489) in Safari and support looks set to be [landing soon](https://github.com/WebKit/WebKit/pull/42918).
