@@ -5,7 +5,7 @@ heroImage: "/dark-mode-svg.png"
 description: Using the light-dark() CSS function to implement light and dark mode for SVG icons and SVG favicons, including SVG used with the HTML img element or as a CSS background-image. 
 ---
 
-SVG has a unique benefit over other image formats: CSS can be included within the markup of the image itself. For inline SVG, `currentcolor` and CSS variables are simple ways to implement dark mode. When SVG is used like a typical image format, neither of those approaches work. When an `.svg` file is used (rather than including SVG markup directly within HTML) the CSS `light-dark()` function offers a solution.
+SVG has a unique benefit over other image formats: CSS can be included within the markup of the image itself. For inline SVG, `currentcolor` and CSS variables are simple ways to implement dark mode. When SVG is used like a typical image format, neither of those approaches work. The CSS `light-dark()` function offers a solution. `light-dark()` for non-inline SVG works in Firefox, Chrome and Edge. I opened a [bug](https://bugs.webkit.org/show_bug.cgi?id=283489) in Safari and support looks set to be [landing soon](https://github.com/WebKit/WebKit/pull/42918).
 
 Below are two SVG circles. One is a `<div>` using the CSS `background-image` property. The second is a HTML `<img>` element. Their `fill` color will depend on the users system preferences:
 
@@ -86,14 +86,4 @@ In browsers that do support `prefers-color-scheme` for non-inline SVG, the resul
 
 ### The `<picture>` element
 
-The `<picture>` element can be used to display one image for dark mode and another for light mode. This requires exporting the same SVG image as two different files. The `<picture>` markup needs to be repeated every time the icon is used. The simple `<img>` tag is less code. Unlike the `<picture>` element, using `light-dark()` within the markup of the SVG also works for CSS background images.
-
-## Dark mode for SVG favicons
-
-Safari Technology Preview recently added support for SVG favicons. Implementing a favicon is now as simple as including the following in the `<head>` of the HTML:
-
-```html
- <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-```
-
-[Previous articles](https://blog.tomayac.com/2019/09/21/prefers-color-scheme-in-svg-favicons-for-dark-mode-icons/) about dark mode for SVG favicons make use of the `prefers-color-scheme` media query, which Safari doesn't support. Historically, that hasn't mattered because Safari didn't support SVG favicons whatsoever. Now that Safari does support SVG favicons, `light-dark()` is a better approach as it will work in all browsers.
+The `<picture>` element can display one image for dark mode and another for light mode. This requires exporting the same SVG image as two different files. The `<picture>` markup is more code than a simple `<img>` tag, and needs to be repeated every time the icon is used. Unlike the `<picture>` element, using `light-dark()` within the markup of the SVG also works for CSS background images.
