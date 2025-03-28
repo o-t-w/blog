@@ -66,7 +66,7 @@ The `prefers-color-scheme` media query can be used inside of a `<style>` block i
 </svg>
 ```
 
-In browsers that do support `prefers-color-scheme` for non-inline SVG, the results of the query are [impacted](https://github.com/w3c/csswg-drafts/issues/7213) by both the `color-scheme` CSS property and by the HTML `color-scheme` meta tag.
+The results of the query are [impacted](https://github.com/w3c/csswg-drafts/issues/7213) by both the `color-scheme` CSS property and by the HTML `color-scheme` meta tag.
 
 ```html
 <div style="color-scheme: light">
