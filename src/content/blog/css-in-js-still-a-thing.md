@@ -62,4 +62,4 @@ Vanilla Extract sounds like its solving something of a [niche problem](https://x
 
 All most of use really need is [colocation and scoped styles](https://blog.mayank.co/is-css-in-js-actually-bad).
 
-There has been almost an entire decade of churn in this space, from Glamor to Glamorous ([deprecated](https://github.com/paypal/glamorous/issues/419)), to styled-components (maintenance mode) and JSS([unmaintained](https://github.com/cssinjs/jss#:~:text=no%20longer%20maintained)) and styled-jsx (mostly dead) and Emotion, to Linaria, and onto the myriad projects we have now. By contrast, frameworks like Svelte and Vue seem to have solved this problem.
+There has been almost an entire decade of churn in this space, from Glamor (unmaintained) to Glamorous ([deprecated](https://github.com/paypal/glamorous/issues/419)), to styled-components (maintenance mode) and JSS([unmaintained](https://github.com/cssinjs/jss#:~:text=no%20longer%20maintained)) and styled-jsx (mostly dead) and Emotion, to Linaria, and onto the myriad projects we have now. By contrast, frameworks like Svelte and Vue seem to have solved this problem.
