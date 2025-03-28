@@ -23,7 +23,7 @@ Below are two SVG circles. One is a `<div>` using the CSS `background-image` pro
 The contents of the `circle.svg` file:
 
 ```html
-<svg style="color-scheme: light dark;" fill="light-dark(black, white)" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" id="circle"><circle cx="5" cy="5" r="5"/></svg>
+<svg style="color-scheme: light dark;" fill="light-dark(black, white)" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5"/></svg>
 ```
 
 The `color-scheme` property inside the SVG is effectively saying "these are the color schemes I can support", but the actual scheme used by the SVG can be controlled from outside, either by the `color-scheme` CSS property, or by a `color-scheme` meta tag in the `<head>` of the HTML document. The code inside the SVG file defines which color themes the SVG is capable of and the code in the HTML document specifies which theme it wants to use.
