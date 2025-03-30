@@ -7,7 +7,7 @@ heroImage: "/webkit.jpg"
 description: Do we still need Autoprefixer?
 ---
 
-*This article was updated on 16th November 2024*
+*This article was updated on 30th March 2025*
 
 CSS prefixes are a relic from a bygone age.
 
@@ -39,7 +39,6 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 
 ## Which CSS properties still require a prefix?
 
-- `backdrop-filter`
 - `user-select`
 - `initial-letter`
 - `text-decoration` (sort of)
@@ -49,7 +48,7 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 - `box-decoration-break`
 - `stretch`/`available`/`fill-available`
 
-[`backdrop-filter`](https://caniuse.com/css-backdrop-filter), [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari. An unprefixed version of `backdrop-filter` is supported in [Safari 18](https://webkit.org/blog/15443/news-from-wwdc24-webkit-in-safari-18-beta/#:~:text=Tuesday%20June%2011.-,Backdrop%20Filter,-Originally%20shipped%20in).
+[`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari.
 
 Safari supports `text-decoration-color`, `text-decoration-line` and `text-decoration-style` without a prefix. The `text-decoration` property is meant to work as a shorthand for all three. In Safari, however, `text-decoration` can only set `text-decoration-line`. `text-decoration: underline;` works.  `text-decoration: underline orange wavy;` doesn't. `-webkit-text-decoration` works correctly when setting all three properties.
 
@@ -70,7 +69,7 @@ You might as well type that out by hand as _there will never be_ a standardised 
 
 There are a great many prefixed properties for styling scrollbars. These are not a web standard and will never be a web standard, but they do still work in Chrome and Safari. The standard properties for styling scrollbars are `scrollbar-width` and `scrollbar-color`, which have never required a prefix.
 
-The CSS `stretch` keyword as a value for `width` and `height` is not implemented in [any browser](https://caniuse.com/mdn-css_properties_width_stretch) yet. The equivalent prefixed value `-webkit-fill-available` works in Chrome/Edge and Safari. `-moz-available` is required for Firefox.
+The CSS `stretch` keyword as a value for `width` and `height` is implemented only in [Chrome/Edge](https://chromestatus.com/feature/6176445286842368). The equivalent prefixed value `-webkit-fill-available` works in Safari and older versions of Chrome/Edge. `-moz-available` is required for Firefox.
 
 `box-decoration-break` requires a `-webkit` prefix in Safari. Chrome/Edge shipped full unprefixed support for this property in [version 130](https://developer.chrome.com/blog/box-decoration-break#inline_fragmentation).
 
@@ -79,3 +78,7 @@ The CSS `stretch` keyword as a value for `width` and `height` is not implemented
 `background-clip: text` and `mask` had required a prefix for Samsung Internet browser. That is no longer the case as of Samsung Internet version 25.
 
 `ruby-position` had required a `-webkit` prefix for Safari. This is no longer the case as of [Safari 18.2](https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes#CSS).
+
+Chrome, Edge and other Chromium-based browsers had required a `-webkit-` prefix for `print-color-adjust`. This is no longer the case as of [version 136](https://chromestatus.com/feature/5159639697850368).
+
+[`backdrop-filter`](https://caniuse.com/css-backdrop-filter) had required a `-webkit-` prefix in Safari. An unprefixed version of `backdrop-filter` has been supported since [Safari 18](https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes#:~:text=unprefixed%20backdrop%2Dfilter).
