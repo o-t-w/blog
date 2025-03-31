@@ -95,7 +95,7 @@ You need to manually edit each SVG file to include an `id` on the `<svg>` elemen
 </svg>
 ```
 
-The SVG 2 spec allows omitting the fragment identifier, which would be a big improvement, but that is not supported in any browser yet.
+The SVG 2 spec allows omitting the fragment identifier, which would be a big improvement, but that is only supported in [Chrome/Edge](https://chromestatus.com/feature/5128141573718016).
 
 By storing icons as regular individual SVG files rather than as a spritesheet, its remains easy to use the icons as a CSS `background-image` or as the `src` of a HTML `<img>` tag, and you can easily open them in design software. You *can* use a spritesheet for `<img>` and `background-image`, but the code of the spritesheet gets a bit more complicated.
 
