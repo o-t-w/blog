@@ -19,7 +19,7 @@ description: Modality, light-dismiss, the popover attribute and the dialog eleme
 
 Popovers and dialogs are similar in many ways. That's particularly the case since HTML introduced the `closedby` attribute for the dialog element, enabling light-dismiss functionality. So how are they different? A dialog can be modal or non-modal, whereas a popover is never modal*. Let's compare both kinds of dialog to the popover API.
 
-<small>*Technically you _could_ toggle the `inert` attribute or the forthcoming CSS `interactivity` property when a popover opens e.g `body:has(:popover-open) main { interactivity: inert;}` but you almost certainly shouldn't, as that's better solved by the `showModal()` method of the dialog API.</small>
+<small>*Technically you _could_ toggle the `inert` attribute when a popover opens but you almost certainly shouldn't, as that's better solved by the `showModal()` method of the dialog API.</small>
 
 ## Popover vs modal dialog
 
