@@ -40,7 +40,7 @@ The naming of the commands reflects the equivalent JavaScript method. The `show-
 ```
 
 <button command="show-modal" commandfor="dialog-1">Show modal dialog</button>
-<dialog style="max-width: 100%; border-radius: 6px; border: 0;;" id="dialog-1">
+<dialog style="max-width: 100%; border-radius: 6px; border: 0;" id="dialog-1">
 <h2 style="margin: 0; font-size: 18px;">This is a modal dialog</h2>
 <button style="margin-top: 12px;" command="close" commandfor="dialog-1">Close</button>
 </dialog>
@@ -58,9 +58,9 @@ The following lines of code are equivalent:
 ```
 
 <div style="display: flex; gap: 12px; align-items: center;">
-<button popovertarget="popover1">Toggle popover 1</button><div style="position-area: bottom span-right; position-try-fallbacks: flip-block; inset: auto; margin: 0; margin-top: 4px; width: anchor-size(); text-align: center;" id="popover1" popover>Popover 1</div>
+<button popovertarget="popover1">Toggle popover 1</button><div style="inset: auto; left: 16px; bottom: 16px; text-align: center; padding-inline: 16px;" id="popover1" popover>Popover 1</div>
 <button command="toggle-popover" commandfor="popover2">Toggle popover 2</button>
-<div style="position-area: bottom span-right; position-try-fallbacks: flip-block; inset: auto; margin: 0; margin-top: 4px; width: anchor-size(); text-align: center;" id="popover2" popover>Popover 2</div>
+<div style="inset: auto; left: 16px; bottom: 16px; text-align: center; padding-inline: 16px;" id="popover2" popover>Popover 2</div>
 </div>
 
 Its nice to have a consistent approach shared between popovers and dialogs. For toggling a popover, however, using one attribute rather than two may be preferable. Toggling a popover is the default behaviour when only `popovertarget` is specified, whereas `command` and `commandfor` must both be specified.
@@ -79,7 +79,7 @@ Placeholder content...</div>
 ```
 
 <button command="toggle-popover" commandfor="popover">Toggle popover</button>
-<div oncommand="event.target.textContent = `The ${event.command} command was invoked`" style="position-area: bottom span-right; inset: auto; margin: 0; margin-top: 4px; min-width: anchor-size();" id="popover" popover>Popover content</div>
+<div oncommand="event.target.textContent = `The ${event.command} command was invoked`" style="inset: auto; left: 16px; bottom: 16px; text-align: center; padding-inline: 16px;" id="popover" popover>Popover content</div>
 
 Popovers and dialogs also have `toggle` and `beforetoggle` events, which fire whenever the element gets opened or closed — including via the escape key or light dismiss. The `command` event fires only when the associated button is pressed. The `command` event is primarily useful when working with custom commands.
 
