@@ -20,17 +20,16 @@ JavaScript developer’s have taken HTML, something a ten year old child could u
 
 Developers are approaching rendering simple UI components as if they were tackling some kind of hardcore computer science software engineering problem.
 
-Rich Harris and Ryan Carniato, creators of Svelte and Solid, respectively, have spoken of a huge roadblock to gaining adoption: the lack of UI component libraries for their particular frameworks.  
+Rich Harris and Ryan Carniato, creators of Svelte and Solid, respectively, have spoken of a huge roadblock to gaining adoption: the lack of UI component libraries for their particular frameworks. The gargantuan ecosystem of React is part of the reason newer frameworks have trouble gaining traction.
 For many developer picking a framework, an important part of that ecosystem is UI component libraries.
-Vue has … [GIVE LIST OF COMPONENT LIBRARIES] Svelte has…[LIST] React has some many component libraries its impossible to count.
 
 I was struck by [this story](https://thenewstack.io/new-york-public-library-on-choosing-react-to-rebuild-website/) of a development team changing their tech stack because they wanted to use some React components:
 
-> The old digital collections website was built using Ruby on Rails in 2013. Even though it was performant, its look was dated… They wanted to update the design of the site to be more modern and more accessible... That meant they needed a React framework.
+> The old digital collections website was built using Ruby on Rails in 2013. Even though it was performant, its look was dated… They wanted to update the design of the site to be more modern and more accessible... _That meant they needed a React framework._
 
 People are literally choosing tech stacks based on finding it too hard to style a checkbox. What effectively amounts to some CSS styling of some HTML is all too often deeply tied to a specific niche in the sprawling JavaScript ecosystem. In the longer term, this shackles teams to outdated legacy tech and creates open-source vendor lock-in.
 
-I remember the time when Bootstrap seemed unassailably popular. It consists of some CSS files with a docs site. Few people ever complained about the DX of using Bootstrap. Has the frontend churn since been genuine innovation or a series of over-engineered Rube Goldberg machines? We are endlessly reimplementing what the web already offers.
+I remember the time when Bootstrap seemed unassailably popular. Bootstrap consists of some CSS files with a docs site. Few people ever complained about the DX of using Bootstrap. Has the frontend churn since been genuine innovation or a series of over-engineered Rube Goldberg machines? Are endlessly reimplementing what the web already offers?
 
 HTML is mostly idiot-proof for anybody that can be bothered to learn it. The same can rarely be said for the series of miscellaneous dependencies, type gymnastics and CSS over-engineering that have defined the last decade.
 
@@ -92,13 +91,30 @@ But anyway, here's some JSX markup from a popular component library:
     )
 ```
 
-Rather than abstracting away complex markup, much of the time React UI component libraries are introducing their own complexity that obscures the simplicity of HTML. The ne plus ultra of this disease is the `<Box>` compontent that renders a `<div>`, or perhaps the `<Flex>` component that renders a `<div>` with `display: flex` pre-applied.
+Rather than abstracting away complex markup, much of the time UI component libraries are introducing their own complexity that obscures the simplicity of HTML. The ne plus ultra of this disease is the `<Box>` compontent that renders a `<div>`.
+Even as CSS and HTML become more powerful, many component libraries have entered a morass of complexity. HTML is endlessly configurable in a way that React code will never be.
 
-The great thing about HTML is that its infinitely configurable. You're not stuck with someone else's decisions.
+A lot of energy being expended to deliver what should be part of HTML. To take React component libraries alone, there's Shadcn, React Aria, Radix, Base UI, MUI, Chakra, Ant, Mantine, NextUI, Semantic UI, Catalyst... those are just a few that come to mind. Each one has an overwhelmingly huge docs site. They all work differently.
 
-Every time I look at the documentation for [...] I feel like I'm learning an equivalent of HTML all over again. I already know HTML. But now I have to look up what props I can use.
+When I look at the documentation for one of these projects, I feel like I'm learning an equivalent of HTML all over again. I already know HTML, but now I have to look up what props I can use. What if the documentation for a checkbox component or radio component or a dialog component was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked? What if customising it for your brand involved nothing more than setting the `accent-color` property in CSS? Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking.
 
-That's the complexity of *using* a JSX component. What about writing one. Here's the code responsible. It's times like this that I want to go to work on a farm. What does all this code do? It renders a HTML button... You have the tests to check that it renders a button. You have the Typescript interface.
+Content creators make entire educational courses about specific UI libraries. Many developers could tell you all about their component library of choice, but wouldn’t be able to answer basic questions about HTML.
+
+I regret to inform you that Radix, one of the most popular UI libraries in the React ecosystem, has been [superseded](https://x.com/vladyslavmoroz/status/1863982922568515753) by Base UI.
+
+<blockquote data-conversation="none" class="twitter-tweet"><p lang="en" dir="ltr">We have a Radix UI course launching in January, and a whole lot more planned for 2024.<br><br>Here&#39;s some of my favorite testimonials not on <a href="https://t.co/Hd6mpwpZoz">https://t.co/Hd6mpwpZoz</a> ☺️ <a href="https://t.co/Z7mP6swRWv">pic.twitter.com/Z7mP6swRWv</a></p>&mdash; Sam Selikoff (@samselikoff) <a href="https://twitter.com/samselikoff/status/1737940021913784420?ref_src=twsrc%5Etfw">December 21, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+You can spend time (and money) learning one of these UI libraries only for it to be deprecated and replaced by the new hotness.
+
+Having recently contributed to a project where some truly ghastly CSS was coming from a dependency of a dependency, I can say that I am somewhat adverse to NPM-driven development. The annoyances of installing third-party dependencies are by now overtly apparent: the persistent security warnings, breaking changes between versions...
+
+Installing a dependency is quick an easy but you’re then responsible for updating it. Your dependency could get deprecated and go completely unmaintained. None of these projects last forever, they are all, to differing degrees, transient and ephemeral.
+
+Show complex JSX: so now you’re doing an NPM install and your copying and pasting JSX markup from the documentation (would potentially could change in future versions of the component library, needing you to update your code everywhere)
+
+![Forest Gump meme: Life is like an NPM install. You never know what you're gonna get](/npminstall.jpeg)
+
+That's the complexity of *using* a JSX component. What about writing one. What does all this code do? It renders a HTML button...
 
 Last time I checked, HTML already has a reusable button component:
 
@@ -106,9 +122,9 @@ Last time I checked, HTML already has a reusable button component:
 <button>Click me</button>
 ```
 
-For all the huge advances in CSS and JavaScript over the years, rendering a button has become infinitely more complex than it was in the heyday of PHP and Rails. HTML is idiot proof. You can teach it to a child. Normal people have used it for decades to make their own websites. But you now need to be some kind of computer scientist to render a button.  
+For all the huge advances in CSS and JavaScript over the years, rendering a button has become infinitely more complex than it was in the heyday of PHP and Rails. 
 
-Some of this has been necessary. HTML has been incomplete and left much to be desired. 
+Some of this has been necessary. HTML has been incomplete. 
 
 I want to simply put a class on a HTML radio or checkbox rather than needing to hide it and reconstruct it with divs. `accent-color` got us half-way there.
 
@@ -117,26 +133,12 @@ I want to simply put a class on a HTML radio or checkbox rather than needing to 
 <figcaption>Slide from the talk <i>The How and Why of Flexible React Components</i> by Jenn Creighton</figcaption>
 </figure>
 
-
-Even as CSS and HTML become more powerful, many component libraries have entered a morass of complexity.
-
-HTML is endlessly configurable in a way that React code will never be.
-
-What do we actually achieve by creating and using a React Button over just using `<button>`?  Do people just prefer capital letters?
-
-The documentation for some of these projects is huge. It feels like learning some version HTML all over again every time you utilise a different component library. The documentation for a checkbox component or radio component or a dialog component should be MDN. Customising it for your brand should involve nothing more than `accent-color`.
-Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking. What if the docs site for all these components was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked?
-
-
 Having worked in design systems, ui design and frontend development, I’ve lost count of the amounts of component libraries I’ve perused over the years. Many of them look virtually indistinct. The design of a checkbox isn’t the best place for wildly innovative visual design. The differences are primarily confined to differing `border-radius`, `box-shadow`, etc.
 
 The web has been so deficient that sole individuals have jointly spent...
 Demonstrating the deficiencies of the web platform, Web Awesome, an open source library of web components, raised £586,622 from Kickstarter campaign. Or take the cost of a design system team: Some companies are easily spending
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Web Awesome&#39;s KickStarter is over $600k now 📈😲, which means Web Awesome Pro is getting a combo box.<br><br>There&#39;s 22 hours left ⏳ If they can get over $700k by then, Pro will get a date picker too!<br><br>I hope they make it. Spread the word! <a href="https://twitter.com/webawesomer?ref_src=twsrc%5Etfw">@webawesomer</a><a href="https://t.co/OHYQfijd1P">https://t.co/OHYQfijd1P</a></p>&mdash; Justin Fagnani (@justinfagnani) <a href="https://twitter.com/justinfagnani/status/1783217776439480329?ref_src=twsrc%5Etfw">April 24, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-some have argued that “leaf node”  components should be framework agnostic. Many of the people making this argument promote the use of web components as the answer.
-https://medium.com/hackernoon/design-systems-should-be-javascript-framework-agnostic-2a0c47129ec8
 
 "There a Solid ShadCN port yet?" [asked](https://x.com/AdamRackis/status/1767949533361607004) one JavaScript influencer, as if a nicely styled checkbox component were the primary criteria of choosing a JavaScript framework.
 
@@ -207,16 +209,11 @@ Frontend development has become more complex, even as HTML and CSS have massivel
 
 For all the diligence and sweat of myriad designers, having looked at hundreds of component libraries and design systems, there’s a limit to how different a checkbox can actually look.
 
-
 <figure>
 <img style="max-width: 320px; margin-inline: auto;" src="/colorpicker.png" alt="">
 <figcaption>Safari shipped an <code>alpha</code> attribute for the HTML color input, allowing the user to select an opacity value.
 </figcaption>
 </figure>
-
-- Safari added a week date input 
-
-The `dialog` element has been supported in all browsers for several years. It is being improved with   There's now an optional light-dismiss functionality built in (i.e. a way to close the dialog when the user clicks outside of the dialog).
 
 In all browsers, you can now use `<hr>` to visually demarcate different options of a `<select>` element.
 
@@ -230,9 +227,6 @@ In all browsers, you can now use `<hr>` to visually demarcate different options 
 <option value="apple">Apple</option>
 </select>
 
-
-- All browsers support `::file-selector-button` to style the button inside a file input.
-
 - In Chrome/Edge, we're finally getting a customizable `<select>`.
 - There have been big improvements to the `<details>` and `<summary>` elements.
 - In Safari, a toggle switch can be rendered without a single line of custom CSS, let alone JavaScript. It's just `<input switch type="checkbox">`.
@@ -240,20 +234,10 @@ In all browsers, you can now use `<hr>` to visually demarcate different options 
 - The CSS [forms spec](https://www.w3.org/TR/css-forms-1/) should eventually bring simple customization to all form controls.
 - We might finally get some kind of menu element.
 - The Chrome team have been pushing for CSS-only carousels.  
-- We've seen big improvements to the dialog element. Dialogs that can be opened and closed without a single line of JavaScript, will reliably be displayed above other elements without worrying about z-index.
-
-<button command="show-modal" commandfor="my-dialog">Show modal</button>
-
-<dialog id="my-dialog">
-<h2 style="margin-top: 0;">Dialog with no CSS and no JavaScript</h2>
-<button command="close" commandfor="my-dialog">Close dialog</button>
-</dialog>
-
-## More customisation, less JavaScript
-The popover attribute and CSS anchor positioning.
-The `command` and `commandfor` attributes, together with the `popover` attribute and improvements to the `<dialog>` element, mean that opening and closing dialogs and popovers is easy to implement without JavaScript.
-Anchor positioning in CSS allows for the abandonment of JavaScript libraries like [THING].
-
+- The `dialog` element has been supported in all browsers for several years. It is being improved with   There's now an optional light-dismiss functionality built in (i.e. a way to close the dialog when the user clicks outside of the dialog). We've seen big improvements to the dialog element. Dialogs that can be opened and closed without a single line of JavaScript, will reliably be displayed above other elements without worrying about z-index.
+- Anchor positioning in CSS allows for the abandonment of JavaScript libraries like [THING]. The combination of the popover attribute and CSS anchor positioning.
+- The `command` and `commandfor` attributes mean that opening and closing dialogs and popovers is easy to implement without JavaScript.
+- All browsers support `::file-selector-button` to style the button inside a file input.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">CSS magic: now you can animate height from 0 to auto via `calc-size(auto)` <br><br>Say goodbye to JS Calculate Height!<br><br>Combined with &lt;details name=&quot;&quot;&gt;, a nearly perfect and exclusive Accordion component can now be implemented. <a href="https://twitter.com/Una?ref_src=twsrc%5Etfw">@Una</a> <a href="https://twitter.com/davidbaron?ref_src=twsrc%5Etfw">@davidbaron</a> <a href="https://t.co/OKf6BEzETk">https://t.co/OKf6BEzETk</a> <a href="https://t.co/Jvy622RWwN">pic.twitter.com/Jvy622RWwN</a></p>&mdash; 一丝 (@yisibl) <a href="https://twitter.com/yisibl/status/1791452140663345300?ref_src=twsrc%5Etfw">May 17, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -261,7 +245,6 @@ Anchor positioning in CSS allows for the abandonment of JavaScript libraries lik
 
 ### CSS improvements
 
-- `accent-color`
 - `:has` simplifies some tasks that previously would have required JavaScript
 
 In Chrome and Edge, setting [`field-sizing: content`](https://polypane.app/blog/field-sizing-just-works/) will cause an `input`, `textarea` or `select` element to automatically grow to fit the size of its content.
@@ -272,26 +255,6 @@ In Chrome and Edge, setting [`field-sizing: content`](https://polypane.app/blog/
 While these incremental improvements might not sound revolutionary in isolation, taken as a whole, it beckons a future where framework-agnostic and tech-stack agnostic component libraries are the norm, and where fewer developers feel the need for one at all.
 
 --- 
-
-Installing a dependency is quick an easy but you’re then responsible for updating it. Your dependency could get deprecated and go completely unmaintained. None of these projects last forever, they are all, to differing degrees, transient and ephemeral.
-
-Show complex JSX: so now you’re doing an NPM install and your copying and pasting JSX markup from the documentation (would potentially could change in future versions of the component library, needing you to update your code everywhere)
-
-Plenty of React and other framework users may look at this and ask: *whats the point?* Its solving simple “problems” that were already solved by JavaScript, that were relatively trivial to implement in React. This might be a win for JS-minimalists building relatively simple sites, but does it have much to offer the rest of us?
-
-![Forest Gump meme: Life is like an NPM install. You never know what you're gonna get](/npminstall.jpeg)
-
-## `<button>` vs `<x-button>`
-
-Alongside the popularity of components built with JavaScript frameworks, we’ve also seen custom elements and shadow DOM pushed as a solution for “leaf components” and design systems. Web components add their own complexity: some component libraries make use of custom elements and shadow DOM to render what could have been a simple `<div>` with a `class` or two.
-
-For a complex component that needs to be used in a variety of frontend tech stacks, custom elements + shadow DOM is slowly becoming a good option.
-
-There are some open-source component libraries built with web components: Material Web, Ionic, and Shoelace. These all have me asking myself: was Bootstrap ever that bad? Some of these components (badge, card) could have been a `div` and a few lines of CSS. Instead they use shadow DOM. Using shadow DOM causes a flash of unstyled content ("FOUC") while loading the Shadow Root's styles - we see the rendered HTML without CSS applied.
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Couldn&#39;t agree more. We have a blog post coming up where we use FACE on a checkbox element. Even after adding 80+ lines of JS code we still don&#39;t have parity with the native checkbox element. 🤦‍♂️</p>&mdash; Begin (@begin) <a href="https://twitter.com/begin/status/1692629223427760509?ref_src=twsrc%5Etfw">August 18, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-The gargantuan ecosystem of React is part of the reason newer frameworks have trouble gaining traction.
 
 I was recently working through a course about using [Typescript with React](https://www.totaltypescript.com/tutorials/react-with-typescript/components/overriding-and-removing-component-props/solution) and as I stared at the obtuse code, I couldn’t help wonder why, with the standard tools of frontend development, rendering a button had started to feel like some kind of hardcore computer-science software engineering problem.
 
@@ -392,18 +355,4 @@ While some things in web development have become simpler over time (no more weir
 
 The first article about the new `<select>` element was published by CSS Tricks in March 2022 and its still not in all browsers. The `dialog` element was implemented in Chrome in 2014 but didn’t reach all browsers until 2022. All of this takes time, but I am hopeful that a less complex version of frontend development is possible.
 
-## Churn
 
-I regret to inform you that Radix, one of the most popular UI libraries in the React ecosystem, has been [superseded](https://x.com/vladyslavmoroz/status/1863982922568515753) by Base UI.
-
-The annoyances of installing third-party dependencies are by now overtly apparent to most developers: the persistent security warnings, breaking changes between versions...
-
-There is still a lot of energy being expended to deliver what should just be part of HTML. To take React component libraries alone, there's Shadcn, React Aria, Radix, Base UI, MUI, Chakra, Ant, Mantine, NextUI, Semantic UI, Catalyst... those are just a few that come to mind. Each one has an overwhelmingly huge docs site. They all work differently. People create entire educational courses about specific libraries. Many developers could tell you all about their component library of choice, but wouldn’t be able to answer basic questions about HTML.
-
-<blockquote data-conversation="none" class="twitter-tweet"><p lang="en" dir="ltr">We have a Radix UI course launching in January, and a whole lot more planned for 2024.<br><br>Here&#39;s some of my favorite testimonials not on <a href="https://t.co/Hd6mpwpZoz">https://t.co/Hd6mpwpZoz</a> ☺️ <a href="https://t.co/Z7mP6swRWv">pic.twitter.com/Z7mP6swRWv</a></p>&mdash; Sam Selikoff (@samselikoff) <a href="https://twitter.com/samselikoff/status/1737940021913784420?ref_src=twsrc%5Etfw">December 21, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-You can take a paid course on one of these component libraries only for it to be deprecated and replaced by the new hotness.
-
-You might spend time (and money) learning one of these UI frameworks.
-
-Having recently contributed to a project where some truly ghastly CSS was coming from a dependency of a dependency, I can say that I am somewhat adverse to NPM-driven development.
