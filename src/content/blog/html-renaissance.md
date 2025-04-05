@@ -1,20 +1,19 @@
 ---
-pubDate: 'Mar 22 2025'
+pubDate: 'Apr 06 2025'
 title: Frontend complexity and the HTML renaissance
 heroImage: "/buttonvs.png"
 description: Why I'm rooting for HTML...
 ---
 
 ## The hardest task in computer science: rendering a button?
-It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks. There is no longer a need for weird Internet Explorer hacks, CSS has a proper layout system... yet the building blocks of the web are increasingly abstracted.
-JavaScript developer’s have taken HTML, something a ten year old child could understand, and abstracted it into a 'software-engineering'/'computer science' Rube Goldberg machine.
+It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks. The building blocks of the web are increasingly abstracted into an over-engineered Rube Goldberg machine.
 
 <figure>
 <img src="/rubegoldberg.avif" alt=""/>
 <figcaption>Wow, you rendered a HTML button</figcaption>
 </figure>
 
-Developers are approaching rendering simple UI components as if they were tackling some kind of hardcore computer science software engineering problem.
+Developers are approaching rendering simple UI components as if they were tackling some kind of hardcore computer science software engineering problem. 
 
 Rich Harris and Ryan Carniato, creators of Svelte and Solid, respectively, have spoken of a huge roadblock to gaining adoption: the lack of UI component libraries for their particular frameworks. The gargantuan ecosystem of React is part of the reason newer frameworks have trouble gaining traction.
 For many developer picking a framework, an important part of that ecosystem is UI component libraries.
@@ -25,9 +24,7 @@ I was struck by [this story](https://thenewstack.io/new-york-public-library-on-c
 
 > The old digital collections website was built using Ruby on Rails in 2013. Even though it was performant, its look was dated… They wanted to update the design of the site to be more modern... _That meant they needed a React framework._
 
-People are literally choosing tech stacks based on finding it too hard to style a checkbox. What effectively amounts to some CSS styling of some HTML is all too often deeply tied to a specific niche in the sprawling JavaScript ecosystem. In the longer term, this shackles teams to outdated legacy tech and creates open-source vendor lock-in.
-
-I remember the time when Bootstrap seemed unassailably popular. Bootstrap consists of some CSS files with a docs site. Few people ever complained about the DX of using Bootstrap. Has the frontend churn since been genuine innovation or a series of over-engineered Rube Goldberg machines? Are endlessly reimplementing what the web already offers?
+People are literally choosing tech stacks based on finding it too hard to style a checkbox. What effectively amounts to some CSS styling of some HTML is all too often deeply tied to a specific niche in the sprawling JavaScript ecosystem. In the longer term, this shackles teams to outdated legacy tech and creates open-source vendor lock-in. I remember the time when Bootstrap seemed unassailably popular. Bootstrap consists of some CSS files with a docs site. Few people ever complained about the DX of using Bootstrap. Has the frontend churn since been genuine innovation? Or are we endlessly reimplementing what the web already offers?
 
 HTML is mostly idiot-proof for anybody that can be bothered to learn it. The same can rarely be said for the series of miscellaneous dependencies, type gymnastics and CSS over-engineering that have defined the last decade.
 
@@ -79,9 +76,7 @@ Here's some JSX markup from a popular component library:
 Rather than abstracting away complex markup, much of the time UI component libraries are introducing their own complexity that obscures the simplicity of HTML. The ne plus ultra of this disease is the `<Box>` compontent that renders a `<div>`.
 Even as CSS and HTML become more powerful, many component libraries have entered a morass of complexity. HTML is endlessly configurable in a way that React code will never be.
 
-A lot of energy being expended to deliver what should be part of HTML. To take React component libraries alone, there's Shadcn, React Aria, Radix, Base UI, MUI, Chakra, Ant, Mantine, Origin UI, Hero UI, Semantic UI, Catalyst... those are just a few that come to mind. Each one has an overwhelmingly huge docs site. They all work differently.
-
-When I look at the documentation for one of these projects, I feel like I'm learning an equivalent of HTML all over again. I already know HTML, but now I have to look up what props I can use. What if the documentation for a checkbox component or radio component or a dialog component was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked? What if customising it for your brand involved nothing more than setting the `accent-color` property in CSS? Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking.
+A lot of energy being expended to deliver what should be part of HTML. To take React component libraries alone, there's Shadcn, React Aria, Radix, Base UI, MUI, Chakra, Ant, Mantine, Origin UI, Hero UI, Semantic UI, Catalyst... those are just a few that come to mind. Each one has a huge docs site. They all work differently. When I look at the documentation for one of these projects, I feel like I'm learning an equivalent of HTML all over again. What if the documentation for a checkbox component or radio component or a dialog component was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked? What if customising it for your brand involved nothing more than setting the `accent-color` property in CSS? Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking.
 
 Content creators make entire educational courses about specific UI libraries. Many developers could tell you all about their component library of choice, but wouldn’t be able to answer basic questions about HTML.
 
@@ -136,9 +131,7 @@ Brad Frost, a design system consultant, has [written](https://bigmedium.com/idea
 
 > "Right now, vast numbers of human beings are devoting their time and energy to designing, building, documenting, and maintaining the exact same set of common components... By and large, these components are unexceptional commodities that assume the same general shape and behavior regardless of whether the design system serves a non-profit, a federal agency, a bank, a publication, an e-commerce site, a Fortune 500 enterprise, a dog salon, a startup, SaaS company, you get the picture."
 
-Design systems became an industry buzzword. I've perused dozens of these systems over the years. They're often carefully crafted by talented full-time teams at large companies. They're often released with blog-posts and fanfare. At some point I started to feel jaded. There are a limited amount of ways that a checkbox or a radio can actually look. We need to stop reinventing the wheel. But there was a reason we ended up here...
-
-Public releases of design systems tend to come with fanfare and self-promotion, which I've started to find faintly ridiculous. Most of these systems look much the same.
+Design systems became an industry buzzword. I've perused dozens of these systems over the years. They're often carefully crafted by talented full-time teams at large companies. There are a limited amount of ways that a checkbox or a radio can actually look. We need to stop reinventing the wheel.
 
 I’ve never fallen in love with an app due to a whimsically unique toggle switch. The best-looking native apps differentiate themselves in other ways: a tasteful color scheme, high-quality photography, nice illustration... While branding is important to business, UI components are the wrong outlet for visual ingenuity and artistic exploration.
 
