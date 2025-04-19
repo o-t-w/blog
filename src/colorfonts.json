@@ -1,6 +1,14 @@
 {
     "colrv1fonts": [
         {
+            "name": "Bitcount Ink",
+            "creator": "Petr van Blokland",
+            "type": ["COLRv1"],
+            "url": "https://github.com/petrvanblokland/TYPETR-Bitcount/tree/main/fonts/ttf/variable",
+            "variable": true,
+            "opensource": true
+        },
+        {
             "name": "Gradial",
             "creator": "Lena Weber",
             "type": ["COLRv1"],
