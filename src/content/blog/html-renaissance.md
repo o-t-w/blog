@@ -53,11 +53,11 @@ In 2022 Mozilla [published](https://www.mozilla.org/en-US/about/webvision/full/#
 
 > There are two deficiencies here that are worth addressing. The first is the lack of good standardized controls that are also easily styleable across browsers. Native app platforms such as iOS and Android provide rich libraries of controls which perform well and are styled to match the rest of the platform. By contrast, the base Web platform is comparatively deficient, with a much more limited set of built-in controls. And where the web does have equivalent controls, they’re often insufficiently styleable… which makes it difficult to make them visually consistent with the rest of the Web page. We want to fill these gaps.”
 
-Progress is slow, but it is happening. Patrick Brosset, a Product Manager on the Edge team at Microsoft, [concluded](https://2024.stateofhtml.com/en-US/conclusion/) the State of HTML survey results with the following:
+Progress is slow, but it is happening. Patrick Brosset, a Product Manager on the Edge team at Microsoft, [concluded](https://2024.stateofhtml.com/en-US/conclusion/) the 2024 State of HTML survey results with the following:
 
-> “with the increasing number of capabilities we're getting, building performant, accessible, and interactive HTML-first UIs is becoming easier all the time, making it possible to reduce JavaScript usage to where it truly matters, and letting web servers and browsers communicate how they were meant to: with HTML!”
+> with the increasing number of capabilities we're getting, building performant, accessible, and interactive HTML-first UIs is becoming easier all the time, making it possible to reduce JavaScript usage to where it truly matters, and letting web servers and browsers communicate how they were meant to: with HTML!
 
-After years of stagnation and inertia since HTML5, HTML is starting to deliver the base components and functionality developers need.
+After years of inertia since HTML5, HTML is starting to deliver the base components and functionality developers need.
 
 When you make use of the [color-scheme meta tag](https://web.dev/articles/color-scheme#the_color-scheme_meta_tag), HTML elements will support light and dark mode by default.
 
