@@ -1,8 +1,8 @@
 ---
 pubDate: 'Apr 20 2025'
 title: Frontend complexity and the HTML renaissance
-heroImage: "/buttonvs.png"
-description: Why I'm rooting for HTML...
+heroImage: "/renaissance.jpg"
+description: Why I'm rooting for HTML.
 ---
 
 Brad Frost, a design system consultant, has [written](https://bigmedium.com/ideas/a-global-design-system.html) of the wasted labour as different organizations reinvent the wheel:
@@ -34,8 +34,6 @@ Most large companies build their own unique custom component library from scratc
 
 Content creators make entire educational courses about specific UI libraries. I regret to inform you that Radix, one of the most popular UI libraries in the React ecosystem, has been [superseded](https://x.com/vladyslavmoroz/status/1863982922568515753) by Base UI.
 
-<blockquote data-conversation="none" class="twitter-tweet"><p lang="en" dir="ltr">We have a Radix UI course launching in January, and a whole lot more planned for 2024.<br><br>Here&#39;s some of my favorite testimonials not on <a href="https://t.co/Hd6mpwpZoz">https://t.co/Hd6mpwpZoz</a> ☺️ <a href="https://t.co/Z7mP6swRWv">pic.twitter.com/Z7mP6swRWv</a></p>&mdash; Sam Selikoff (@samselikoff) <a href="https://twitter.com/samselikoff/status/1737940021913784420?ref_src=twsrc%5Etfw">December 21, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 You can spend time (and, potentially, money) learning one of these UI libraries only for it to be deprecated and replaced by something new.
 
 All because the default HTML elements are *slightly* too small, *slightly* too ugly, and slightly too difficult to customise with CSS.
@@ -61,11 +59,6 @@ After years of inertia since HTML5, HTML is starting to deliver the base compone
 
 When you make use of the [color-scheme meta tag](https://web.dev/articles/color-scheme#the_color-scheme_meta_tag), HTML elements will support light and dark mode by default.
 
-<figure>
-<img style="max-width: 320px; margin-inline: auto;" src="/week-input.avif" alt="">
-<figcaption><a href="https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes#Forms">Safari 18.2</a> added support for a week input for iOS and iPadOS</figcaption>
-</figure>
-
 `accent-color` should be enough, but it’s not, because the default radio and checkbox elements look like crap in most browsers. Few websites make use of these native components. Instead we reconstruct them out of divs.
 
 <figure>
@@ -84,6 +77,7 @@ When you make use of the [color-scheme meta tag](https://web.dev/articles/color-
 - The `dialog` element has been supported in all browsers for several years. It is being improved with   There's now an optional light-dismiss functionality built in (i.e. a way to close the dialog when the user clicks outside of the dialog). We've seen big improvements to the dialog element. Dialogs that can be opened and closed without a single line of JavaScript, will reliably be displayed above other elements without worrying about z-index.
 - Anchor positioning in CSS allows for the abandonment of JavaScript libraries like [THING]. The combination of the popover attribute and CSS anchor positioning.
 - The `command` and `commandfor` attributes mean that opening and closing dialogs and popovers is easy to implement without JavaScript.
+- Safari 18.2 added support for a week input for iOS and iPadOS.
 - All browsers support `::file-selector-button` to style the button inside a file input.
 - Masonry layout once relied on JS.
 - The `:has` CSS selector simplifies certain tasks that previously would have required JavaScript
