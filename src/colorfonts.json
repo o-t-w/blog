@@ -331,6 +331,13 @@
             "variable": false
         },
         {
+            "name": "Newy",
+            "creator": "Tania Hearn",
+            "type": ["OpenType-SVG"],
+            "url": "https://www.taniahearn.com/work/newy-colour-font",
+            "variable": false
+        },
+        {
             "name": "Bixa",
             "creator": "Novo Typo",
             "type": ["OpenType-SVG"],
