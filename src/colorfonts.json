@@ -17,6 +17,14 @@
             "opensource": false
         },
         {
+            "name": "Flux",
+            "creator": "Underware",
+            "type": ["COLRv1"],
+            "url": "https://tdc.org/winner/flux-a-low-poly-paradimensional-font/",
+            "variable": true,
+            "opensource": false
+        },
+        {
             "name": "Honk",
             "creator": "Ek Type",
             "type": ["COLRv1"],
@@ -336,6 +344,13 @@
             "creator": "Novo Typo",
             "type": ["OpenType-SVG"],
             "url": "https://www.novotypo.nl/fonts/ziza.html",
+            "variable": false
+        },
+        {
+            "name": "Newy",
+            "creator": "Tania Hearn",
+            "type": ["OpenType-SVG"],
+            "url": "https://www.taniahearn.com/work/newy-colour-font",
             "variable": false
         },
         {
