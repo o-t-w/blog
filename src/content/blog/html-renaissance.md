@@ -77,7 +77,7 @@ When you make use of the [color-scheme meta tag](https://web.dev/articles/color-
 - The `dialog` element has been supported in all browsers for several years. It is being improved with   There's now an optional light-dismiss functionality built in (i.e. a way to close the dialog when the user clicks outside of the dialog). We've seen big improvements to the dialog element. Dialogs that can be opened and closed without a single line of JavaScript, will reliably be displayed above other elements without worrying about z-index.
 - Anchor positioning in CSS allows for the abandonment of JavaScript libraries like [THING]. The combination of the popover attribute and CSS anchor positioning.
 - The `command` and `commandfor` attributes mean that opening and closing dialogs and popovers is easy to implement without JavaScript.
-- Safari 18.2 added support for a week input for iOS and iPadOS.
+- Safari 18.2 added support for `<input type="week"/>` in iOS and iPadOS.
 - All browsers support `::file-selector-button` to style the button inside a file input.
 - Masonry layout once relied on JS.
 - The `:has` CSS selector simplifies certain tasks that previously would have required JavaScript
