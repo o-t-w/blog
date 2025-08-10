@@ -440,3 +440,49 @@ dialog::backdrop {
 		display: none !important;
 	}
 }
+
+@view-transition {
+	navigation: auto;
+}
+
+.accordion-summary {
+    padding-block: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.accordion-summary:after {
+    transition: rotate .3s;
+    transition-timing-function: ease-out;
+    width: 18px;
+    height: 18px;
+    content: url('/icons/icons-mini/chevron-down.svg');
+}
+
+.accordion-details[open] summary:after {
+    rotate: 180deg;
+}
+
+.accordion-details > div {
+	padding-bottom: 12px;
+}
+
+.accordion-details {
+	font-size: 16px;
+    interpolate-size: allow-keywords;
+    border-bottom: solid 1px #e4e4e7;
+}
+
+.accordion-details::details-content {
+    height: 0;
+    overflow-y: clip;
+    transition: content-visibility .3s allow-discrete, block-size .3s;
+    transition-timing-function: ease-out;
+}
+
+.accordion-details[open]::details-content {
+    height: auto;
+}
