@@ -11,25 +11,26 @@ Design system consultant Brad Frost has [written](https://bigmedium.com/ideas/a-
 
 Energy is being expended to deliver what should always have been part of HTML.
 
-I was struck by [this story](https://thenewstack.io/new-york-public-library-on-choosing-react-to-rebuild-website/) of a development team changing their tech stack:
+I was struck by [this story](https://thenewstack.io/new-york-public-library-on-choosing-react-to-rebuild-website/) of a team changing their tech stack:
 
 > The old digital collections website was built using Ruby on Rails in 2013. Even though it was performant, its look was dated… They wanted to update the design of the site to be more modern... _That meant they needed a React framework._
 
-Some teams are making key technical decisions based . "Is there a Solid ShadCN port yet?" [asked](https://x.com/AdamRackis/status/1767949533361607004) one potential Solid JS user, as if a nicely styled checkbox component were the primary criteria of choosing a JavaScript framework. Rich Harris and Ryan Carniato, creators of Svelte and Solid, have spoken of a roadblock to gaining mass adoption: the lack of UI component libraries for their respective frameworks. The gargantuan ecosystem of React is part of the reason newer frameworks have trouble gaining traction. When picking a framework, an important part of that ecosystem is UI component libraries.
+Some teams are making key technical decisions based . "Is there a Solid ShadCN port yet?" [asked](https://x.com/AdamRackis/status/1767949533361607004) one potential Solid JS user, as if a nicely styled checkbox were the primary criteria for choosing a JavaScript framework. Rich Harris and Ryan Carniato, creators of Svelte and Solid, have spoken of a roadblock to mass adoption: the lack of UI component libraries for their respective frameworks. The gargantuan ecosystem around React — including its ready-made component kits — is part of the reason newer frameworks have trouble gaining traction. What effectively amounts to some CSS styling of some HTML is all too often deeply tied to a specific niche in the sprawling JavaScript ecosystem. In the longer term, this shackles teams to outdated legacy tech and creates open-source vendor lock-in. 
 
-What effectively amounts to some CSS styling of some HTML is all too often deeply tied to a specific niche in the sprawling JavaScript ecosystem. In the longer term, this shackles teams to outdated legacy tech and creates open-source vendor lock-in.
+Most large companies build their own unique custom component library from scratch, often spending hundreds of thousands of dollars in the process. In open source, to take React component libraries alone, there's Shadcn, React Aria, Ariakit, Radix, Base UI, MUI, Chakra, Ant, Mantine, Origin UI, Hero UI, Semantic UI, Catalyst... those are just a few that come to mind. Hundreds of different, yet functionally and visually almost identical components are being designed, built and maintained. Components that look much the same but have different markup, different props, different styling APIs…
+Each one has a huge docs site. When I look at the documentation for one of these projects, I feel like I'm learning an equivalent of HTML all over again. What if the documentation for a component was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked? What if customising components to fit your brand involved nothing more than setting the `accent-color` property in CSS? 
 
-HTML is mostly idiot-proof for anybody that can be bothered to learn it. The same can rarely be said for the series of miscellaneous dependencies and over-engineered abstractions that have defined the last decade.
-
-> “Each layer of abstraction moves you further from the platform, ties you further into framework lock-in, and moves you further from fast.” - Harry Roberts
-
-Most large companies build their own unique custom component library from scratch, often spending hundreds of thousands of dollars in the process. In open source, to take React component libraries alone, there's Shadcn, React Aria, Ariakit, Radix, Base UI, MUI, Chakra, Ant, Mantine, Origin UI, Hero UI, Semantic UI, Catalyst... those are just a few that come to mind. They all work differently. Each one has a huge docs site. When I look at the documentation for one of these projects, I feel like I'm learning an equivalent of HTML all over again. What if the documentation for a component was MDN? What if you didn't need to look at any documentation if you already knew how HTML worked? What if customising components to fit your brand involved nothing more than setting the `accent-color` property in CSS? Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking.
-
-You can spend time learning one of these UI libraries only for it to become deprecated or unmaintained. To take one example: Radix, perhaps the most popular UI library in the React ecosystem, has been largely [superseded](https://x.com/vladyslavmoroz/status/1863982922568515753) by Base UI.
+Even the [most popular](https://opencollective.com/styled-components/updates/thank-you) open source projects go into maintance mode, get deprecated or go completely unmaintained. You can spend time learning and utilising a UI library only for it to become obsolete. To take one example: Radix, perhaps the most popular component library in the React ecosystem, has been largely [superseded](https://x.com/vladyslavmoroz/status/1863982922568515753) by Base UI. 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">cool to see so many of you recommending <a href="https://twitter.com/base_ui?ref_src=twsrc%5Etfw">@base_ui</a> in this thread. fwiw, i agree that radix is a liability. off all of the headless ui libs, it&#39;s the last option i&#39;d consider for any serious project. <a href="https://t.co/lykIW9nRLe">https://t.co/lykIW9nRLe</a></p>&mdash; Colm Tuite (@colmtuite) <a href="https://twitter.com/colmtuite/status/1935629877069172861?ref_src=twsrc%5Etfw">June 19, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-All because the default HTML elements are slightly too ugly and difficult to customise with CSS. Hundreds of different, yet functionally and visually almost identical components are being designed, built and maintained. Radio buttons that look much the same but have different markup, different props, different styling APIs… For all the diligence and sweat of myriad designers, there’s a limit to how different these components can (or should) actually look.
+Installing a dependency is easy but you’re then responsible for updating it in perpetuity. The annoyances of third-party dependencies are by now overtly apparent: the persistent security warnings, breaking changes between versions... That may be worthwhile for a framework or router but its questionable whether that management burden is worthwhile when what your installing is a [glorified](https://react-spectrum.adobe.com/react-spectrum/Flex.html) `div`.
+
+Abstracting away HTML has meant there's a whole generation of developers where basic knowledge of the most fundamental language of the web is often lacking. All because the default HTML elements are slightly too ugly and difficult to customise with CSS. HTML is mostly idiot-proof for anybody that can be bothered to learn it. The same can rarely be said for the series of miscellaneous dependencies and over-engineered abstractions that have defined the last decade.
+
+> “Each layer of abstraction moves you further from the platform, ties you further into framework lock-in, and moves you further from fast.” - Harry Roberts
+
+Having recently contributed to a project plagued by badly written CSS coming from _a dependency of a dependency_, I am somewhat averse to NPM-driven development.
 
 ## The HTML renaissance
 
@@ -76,10 +77,27 @@ You're free to style the accordion however you want:
 
 Let's take a brief look at what else is new and forthcoming.
 
-HTML elements support light and dark mode by default when the [color-scheme meta tag](https://web.dev/articles/color-scheme#the_color-scheme_meta_tag) is used.
+Safari shipped an [<code>alpha</code> attribute](https://webkit.org/blog/16900/p3-and-alpha-color-pickers/#:~:text=The%20new%20color%20picker&text=We%20shipped%20support%20for%20both,and%20alpha%20transparency%20is%20easy.&text=When%20you%20include%20the%20colorspace,in%20the%20P3%20color%20gamut.) for the HTML color input, allowing users to select an opacity value. 
+The best third-party color picker is probably [React Aria](https://react-spectrum.adobe.com/react-aria/ColorPicker.html) from Adobe, which offers more customization than the built-in browser picker. If you are building Photoshop for the web then you need that level of control. If your not then you don't. In my opinion the UX of the browser-native color picker on iOS is superior to anything I could achieve with React Aria.
 
-Safari shipped an <code>alpha</code> attribute for the HTML color input, allowing users to select an opacity value.
-<img style="max-width: 320px; margin-inline: auto;" src="/colorpicker.png" alt="">
+<figure>
+<img style="margin-inline: auto;" src="/color-picker.png" alt="">
+<figcaption>On the left, native iOS, on the right, React Aria</figcaption>
+</figure>
+
+Both offer the ability to provide color presets for the user to choose from. In HTML. this is achieved via a `datalist`, which is supported in all browsers.
+
+```html
+<input list="colors" type="color" value="#A00">
+
+<datalist id="colors">
+  <option value="#A00"></option>
+  <option value="#f80"></option>
+  <option value="#080"></option>
+  <option value="#08f"></option>
+  <option value="#008"></option>
+</datalist>
+```
 
 You can now use `<hr>` to visually demarcate different options of a `<select>` element.
 
@@ -100,7 +118,7 @@ Setting the CSS [`field-sizing`](https://polypane.app/blog/field-sizing-just-wor
 </div>
 
 - In Safari, a toggle switch can be rendered without a single line of custom CSS, let alone JavaScript. It's just `<input switch type="checkbox">`.
-- Chrome/Edge have been trying to standardize a customizable `<select>`.
+- Chrome and Edge have been trying to standardize a customizable `<select>` and [multi-select](https://groups.google.com/a/chromium.org/g/blink-dev/c/U-K17B966Ys/m/0IGWWJT8BgAJ).
 - The `dialog` element has been supported in all browsers for several years. There's now an optional light-dismiss functionality built in (i.e. a way to close the dialog when the user clicks outside of the dialog).
 - The `command` and `commandfor` attributes mean that opening and closing dialogs and popovers is easy to implement without JavaScript.
 - Safari 18.2 added support for `<input type="week"/>` in iOS and iPadOS.
@@ -115,7 +133,7 @@ While these improvements might not sound revolutionary in isolation, taken as a 
 
 ## The hardest task in computer science: rendering a button?
 
-It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks (lazy loading, masonry layout, anchor positioning, scroll-driven animation...) Developers are approaching rendering simple UI components as if they were tackling a hardcore software engineering problem. The building blocks of the web are increasingly abstracted into an over-engineered Rube Goldberg machine.
+It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks (lazy loading, masonry layout, anchor positioning, scroll-driven animation...) Developers are approaching rendering simple UI components as if they were tackling a hardcore software engineering problem with the building blocks of the web increasingly abstracted into an over-engineered Rube Goldberg machine.
 
 <figure>
 <img src="/rubegoldberg.avif" alt=""/>
@@ -235,10 +253,12 @@ By contrast, here's the raw HTML for the accordion from earlier:
 </details>
 ```
 
-## Dependency hell
+## Conclusion
 
-Having recently contributed to a project plagued by bad CSS coming from _a dependency of a dependency_, I am somewhat averse to NPM-driven development. The annoyances of installing third-party dependencies are by now overtly apparent: the persistent security warnings, breaking changes between versions... Developers are spending up to fifty percent of their time managing toolchains.
+HTML still leaves a lot to be desired. Form validation still looks terrible. Date inputs [WHAT IS THE CRITICISM OF DATE INPUTS??] 
+Perhaps we'll never get a date input that supports selecting a range — and that's not something I'd ever want to build myself. Some third-party components will continue to come in handy, but a better, simpler version of frontend development is possible.
 
-Installing a dependency is quick an easy but you’re then responsible for updating it. Your dependency could get deprecated and go completely unmaintained. None of these projects last forever, they are all, to differing degrees, transient and ephemeral.
+But between browsers and the OpenUI community group, work is happening in to make HTML more powerful. A simpler version of frontend development is possible. 
 
-![Forest Gump meme: Life is like an NPM install. You never know what you're gonna get](/npminstall.jpeg)
+Quote React Aria page about about the native browser color input.
+So long as a component looks good enough and works well in every browser, it’s not clear why looking exactly the same in every browser and operating system is a worthwhile goal. Users expect a native app to look different on iOS and Android. The same principle applies to the web.  
