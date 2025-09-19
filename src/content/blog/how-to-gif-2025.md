@@ -43,12 +43,6 @@ Back in 2022 I published the article [*GIFs Without the .gif: The Most Performan
     }
 </style>
 
-<!-- <picture>
-<source srcset="/animated/friends.jxl" type="image/jxl">
-<img src="/animated/jpegxl-not.png" alt="">
-</picture>
-<div class="format">JPEG-XL</div>
-<div>158 KB</div> -->
 
 GIF, PNG, WebP, AVIF and JPEG-XL support both still and animated images. The GIF format dates from 1987 and is restricted to a 256 color palette. GIF and PNG are legacy formats and WebP has largely been superseded by AVIF.
 

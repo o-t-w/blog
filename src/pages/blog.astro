@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() 
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			.title {
+				margin-top: 0;
+				color: rgb(var(--black));
+				line-height: 1.25;
+				text-wrap: balance;
+				font-size: 26px;
+			}
+			.description {
+				color: rgb(var(--black));
+				margin-bottom: 0;
+				margin-top: 8px;
+				text-wrap: pretty;
+				font-size: 18px;
+				line-height: 1.4;
+			}
+			.date {
+				margin: 0;
+				margin-top: 4px;
+				color: rgb(var(--gray));
+				font-size: 16px;
+			}
+
+			.post:hover {
+			.title {
+				color: #0B80FF;		
+			}
+			img {
+				box-shadow: var(--box-shadow);
+			}
+		}
+
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				ul li:first-child {
+					margin-bottom: 0;
+				}
+				ul li:first-child .title {
+					font-size: 1.563em;
+				}
+			}
+			.post {
+				text-decoration: none;
+				display: flex;
+				justify-content: space-between;
+				align-items: start;
+				gap: 24px;
+				border-bottom: solid 1px rgb(235,235,235);
+    			padding-bottom: 24px;
+    			margin-top: 24px;
+				@media (max-width: 600px) {
+					flex-direction: column;
+					gap: 12px;
+				}
+			}
+
+			.post img {
+				width: 100%;
+				height: auto;
+				@media (min-width: 600px) {
+					width: 260px;
+				}
+			}
+
+			.post:first-child {
+				margin-top: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section style="display: grid; max-width: 860px; margin-inline: auto;">
+					{
+						posts.map((post) => (
+								<a class="post" href={`/blog/${post.slug}/`}>
+									<div>
+										<h4 class="title">{post.data.title}</h4>
+										<p class="description">{post.data.description}</p>
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+									</div>
+									<img src={post.data.heroImage} alt="" />
+								</a>
+						))
+					}
+				
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

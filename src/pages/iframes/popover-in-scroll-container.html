@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [popover] {
+          inset: auto;
+          position: absolute;
+          left: anchor(left);
+          top: calc(anchor(bottom) + 4px);
+          position-try: flip-block;
+          max-width: 350px;
+          padding: 8px;
+          margin-bottom: 24px;
+}
+
+body {
+  font-family: system-ui;
+}
+   </style>
+</head>
+<body style="height: 300px; border: solid 2px var(--accent); overflow-y: scroll;">
+   
+  <div>
+    <button style="margin-top: 100px;" popovertarget="pop">Anchor</button>
+    <div id="pop" popover="auto">Some popover content</div>
+  </div>
+</body>
+</html>
+

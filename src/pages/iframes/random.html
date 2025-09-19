@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container > div {
+  aspect-ratio: 1;
+  width: random(15%, 100%);
+  margin: auto;
+  border-style: solid;
+  border-width: random(1px, 10px);
+  border-color: oklch(random(5%, 65%) random(35%, 100%) random(0deg, 360deg));
+  background-color: oklch(random(80%, 100%) random(10%, 100%) random(0deg, 360deg));
+  border-radius: random(0%, 50%);
+  /* border-radius: random(0%, 100%) random(0%, 100%) random(0%, 100%) random(0%, 100%) / random(0%, 100%) random(0%, 100%) random(0%, 100%) random(0%, 100%); */
+  animation: enter .35s ease-in-out;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    /* scale: .95; */
+  }
+  100% {
+    opacity: 100%;
+    /* scale: 1; */
+  }
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  margin-inline: auto;
+  max-width: 600px;
+  gap: 32px 8px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  align-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+</body>
+</html>

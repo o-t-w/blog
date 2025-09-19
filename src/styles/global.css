@@ -16,6 +16,10 @@
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 16px rgba(var(--gray), 23%);
 }
 
+html {
+	scrollbar-gutter: stable;
+}
+
 body {
 	font-family: system-ui;
 	margin: 0;
@@ -454,15 +458,17 @@ dialog::backdrop {
     cursor: pointer;
 }
 
-.accordion-summary:after {
+.accordion-summary::after {
     transition: rotate .3s;
     transition-timing-function: ease-out;
-    width: 18px;
-    height: 18px;
-    content: url('/icons/icons-mini/chevron-down.svg');
+	width: 11px;
+    height: 6px;
+    content: "";
+    background-repeat: no-repeat;
+    background-image: url(/chevron-small.svg);
 }
 
-.accordion-details[open] summary:after {
+.accordion-details[open] summary::after {
     rotate: 180deg;
 }
 
@@ -483,6 +489,66 @@ dialog::backdrop {
     transition-timing-function: ease-out;
 }
 
+.accordion-details::details-content::after {
+	content: "";
+	display: block;
+	padding-bottom: 12px;
+}
+
 .accordion-details[open]::details-content {
     height: auto;
+}
+
+
+
+.custom-select, ::picker(select) {
+    appearance: base-select;
+    border: solid 1px #CBD5E1;
+    color: #334155;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.custom-select {
+    gap: 24px;
+	align-items: center;
+    padding: 6px 10px;
+    box-shadow: rgba(0 0 0 / 4%) 0 2px 4px;
+
+    &:hover, &:open {
+        background-color: #f7f8f9;
+    }
+}
+
+::picker(select) {
+    box-shadow: rgba(0 0 0 / 6%) 0 4px 5px;
+    padding: 5px;
+    top: 3px;
+    bottom: 3px;
+	scrollbar-width: thin;
+}
+
+::picker-icon {
+    content: url(/select-chevron.svg);
+    height: 16px;
+    position: relative;
+    top: .5px;
+}
+
+.custom-select option {
+    justify-content: space-between;
+    padding-block: 4px;
+    padding-inline: 8px;
+    border-radius: 6px;
+    align-items: center;
+
+    &:hover, &:active {
+    background-color: #F1F5F9;
+    }
+}
+
+option::checkmark {
+    order: 1;
+    height: 16px;
+    content: url(/select-tick.svg);
 }

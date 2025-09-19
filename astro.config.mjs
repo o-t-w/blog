@@ -5,9 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://fullystacked.net',
+	site: 'https://olliewilliams.xyz',
 	integrations: [mdx(), sitemap()],
-	redirects: {
-		'/posts/[...slug]': '/[...slug]'
-	  }
 });
