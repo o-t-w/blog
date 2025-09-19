@@ -1,0 +1,38 @@
+---
+pubDate: 'Dec 23 2024'
+title: "Temporal: a modern JavaScript API for date and time"
+heroImage: "/temporal.png"
+description: Dates and time in JavaScript
+---
+
+import { BaselineStatus } from '@astro-community/astro-embed-baseline-status';
+
+```js
+if (Temporal.Now.plainDateISO().dayOfYear === 1) {
+  console.log("Happy New Year");
+}
+```
+
+<img src="/temporal-types.jpeg" />
+
+## Formatting a date with `toLocaleString()`
+
+```js
+const birthday = Temporal.PlainMonthDay.from("09-27");
+const birthdayIn2025 = birthday.toPlainDate({ year: 2025 });
+console.log(birthdayIn2025.toLocaleString('en-GB', {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}));
+// Saturday, 27 September 2025
+```
+
+## HTML date inputs
+
+`<input type="datetime-local">` is not timezone aware.
+
+## Browser support 
+
+<BaselineStatus id="temporal" />
