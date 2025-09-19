@@ -202,13 +202,13 @@ By contrast, here's an accordion built with raw HTML:
 </details>
 
 <details name="faq">
-	<summary>Do URL text fragments automatically open the relevant section?</summary>
-	Yes! Try clicking on the link below this example.
-</details>
-
-<details name="faq">
 	<summary>Does find-in-page search automatically open the relevant section?</summary>
 	Yes. Try searching for this text when this section is closed.
+</details>
+
+<details class="accordion-details" name="faq">
+    <summary class="accordion-summary">Lorem ipsum?</summary>
+    Lorem ipsum.
 </details>
 ```
 
@@ -220,16 +220,14 @@ There's now _more functionality_ built into a zero-JS HTML-only accordion than y
 </details>
 
 <details class="accordion-details" name="faq">
-    <summary class="accordion-summary">Do URL text fragments automatically open the correct section?</summary>
-    Yes! Try clicking on the link below this example.
-</details>
-
-<details class="accordion-details" name="faq">
     <summary class="accordion-summary">Does the relevant section open when find-in-page search is used?</summary>
         Yes. Try searching for this text when this section is closed.
 </details>
 
-Test a URL text fragment by clicking on <a href="#:~:text=section%3F-,Yes%21">this link</a>.
+<details class="accordion-details" name="faq">
+    <summary class="accordion-summary">Lorem ipsum?</summary>
+    Lorem ipsum.
+</details>
 
 You're free to style the accordion however you want:
 
