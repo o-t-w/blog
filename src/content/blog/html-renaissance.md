@@ -204,7 +204,7 @@ By contrast, here's an accordion built with raw HTML:
 </details>
 ```
 
-There's now _more functionality_ built into a zero-JS HTML-only accordion than you get from the majority of popular JavaScript framework-based accordions. When 'find in page' is used to search for text within an accordion, the relevant section will automatically open. You do not need to manually add `hidden="until-found"` as that behaviour is the default. The same applies to URL text fragments.
+There's now _more functionality_ built into a zero-JS HTML-only accordion than you get from the majority of popular JavaScript framework-based accordions. When 'find in page' is used to search for text within a `<details>` element, the relevant section will automatically open. You do not need to manually add `hidden="until-found"` as that behaviour is the default. The same applies to URL text fragments.
 
 <details class="accordion-details" name="faq">
     <summary class="accordion-summary">Is this accordion built with the HTML details and summary elements?</summary>
