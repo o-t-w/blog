@@ -4,12 +4,11 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header style="max-width: 1100px; margin-inline: auto;">
-	<nav>
-		<h2><a href="/"><img style="height: 24px;" src="/olliewilliamsxyz.svg" alt="olliewilliamsxyz"></h2>
+	<nav style="display: flex; justify-content: space-between;">
+		<h2><a href="/"><img style="height: 24px;" src="/olliewilliamsxyz.svg" alt="olliewilliamsxyz"></a></h2>
 		<div class="social-links">
 			<HeaderLink href="/blog">Blog</HeaderLink>
-			<!-- <HeaderLink href="/about">About</HeaderLink> -->
-			<a href="https://twitter.com/hypeddev" target="_blank">
+			<a class="social-link" href="https://twitter.com/hypeddev" target="_blank">
 				<span class="sr-only">Follow Ollie Williams on Twitter</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 					><path
@@ -18,7 +17,7 @@ import { SITE_TITLE } from '../consts';
 					></path></svg
 				>
 			</a>
-			<a href="https://github.com/o-t-w" target="_blank">
+			<a class="social-link" href="https://github.com/o-t-w" target="_blank">
 				<span class="sr-only">Go to Ollie William's GitHub repo</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 					><path
@@ -64,8 +63,8 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 	}
 	@media (max-width: 720px) {
-		.social-links {
-			display: none;
+		.social-link {
+			display: none !important;
 		}
 	}
 </style>

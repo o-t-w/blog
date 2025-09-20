@@ -37,6 +37,7 @@ main {
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
+	min-height: calc(100vh - 250px);
 }
 h1,
 h2,
