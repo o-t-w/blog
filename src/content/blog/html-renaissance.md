@@ -33,7 +33,8 @@ color: oklch(98% 0.00011 271);
 
 input[type="file"] {
 	margin-inline: auto; 
-	width: fit-content; 
+	width: fit-content;
+	max-width: 100%; 
 	display: block; 
 	background-color: rgb(238, 238, 238);
 	background-color: #F1F5F9;;
@@ -74,7 +75,7 @@ dialog {
 }
 </style>
 
-HTML currently leaves a lot to be desired. Form validation still looks terrible in some browsers and can’t be styled. There’s no combo-box. The UX of `<select multiple>` is abysmal on certain platforms. The date input can’t select a range between a start and end date. Building these sort of components with the correct focus management, keyboard navigation and accessibility is a tricky task. Understandably, open source component libraries have become wildly popular...
+HTML currently leaves a lot to be desired. Form validation still looks terrible in some browsers and can’t be styled. There’s no combo-box. The UX of `<select multiple>` is abysmal on certain platforms. The date input can’t select a range between a start and end date. There's a `<menu>` element but its indistinguishable from a `<ul>` and includes no menu-like behaviour whatsoever. I could go on. Building these sort of components with the correct focus management, keyboard navigation and accessibility is a tricky task. Understandably, open source component libraries have become wildly popular...
 
 ## The hardest task in computer science: rendering a button?
 
