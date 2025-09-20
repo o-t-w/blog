@@ -458,6 +458,7 @@ dialog::backdrop {
     font-weight: 500;
     cursor: pointer;
 	user-select: none;
+	gap: 12px;
 }
 
 .accordion-summary::after {
@@ -468,6 +469,7 @@ dialog::backdrop {
     content: "";
     background-repeat: no-repeat;
     background-image: url(/chevron-small.svg);
+	flex-shrink: 0;
 }
 
 .accordion-details[open] summary::after {
