@@ -308,7 +308,7 @@ You can now use `<hr>` to visually demarcate different options of a `<select>` e
 <option value="apple">Apple</option>
 </select>
 
-The long-running endeavour to make the `<select>` element customizable is finally coming to fruition. 
+The long-running endeavour to make the `<select>` element customizable is finally coming to fruition (currently supported in Chrome/Edge). 
 
  <select style="display: block; margin-bottom: 32px;" class="custom-select" name="" id="">
          <option value="">Select a fruit</option>
@@ -323,14 +323,14 @@ The native HTML checkbox and radio controls don't look too bad, but they're far 
 
 <div style="display: flex; justify-content: center; align-items: center;">
 <input checked type="checkbox">
-<input checked style="width: 16px; height: 16px; accent-color: oklch(68.5% 0.169 237.323);" type="checkbox">
 <input checked style="width: 20px; height: 20px; accent-color: oklch(52.7% 0.154 150.069);" type="checkbox">
 <input checked style="width: 24px; height: 24px; accent-color: oklch(62.7% 0.265 303.9);" type="checkbox">
+<input checked style="width: 30px; height: 30px; accent-color: oklch(68.5% 0.169 237.323);" type="checkbox">
 
 <input checked type="radio">
-<input checked style="width: 16px; height: 16px; accent-color: oklch(68.5% 0.169 237.323);" type="radio">
-<input checked style="width: 20px; height: 20px; accent-color: oklch(52.7% 0.154 150.069);" type="radio">
-<input checked style="width: 24px; height: 24px; accent-color: oklch(62.7% 0.265 303.9);" type="radio">
+<input checked style="width: 20px; height: 20px; accent-color: oklch(68.5% 0.169 237.323);" type="radio">
+<input checked style="width: 24px; height: 24px; accent-color: oklch(52.7% 0.154 150.069);" type="radio">
+<input checked style="width: 30px; height: 30px; accent-color: oklch(62.7% 0.265 303.9);" type="radio">
 </div>
 
 For some designers, that isn't enough control. If you want a custom `border-color`, `border-radius` or custom tick icon, that's only possible by hiding the default widget with `appearance: none`. The forthcoming `appearance: base` will offer a better solution, rendering the element in a way that is consistent across all browsers while being fully stylable via CSS.
