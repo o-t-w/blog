@@ -79,23 +79,14 @@ HTML currently leaves a lot to be desired. Form validation still looks terrible 
 
 ## The hardest task in computer science: rendering a button?
 
-It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks (lazy loading, masonry layout, anchor positioning, scroll-driven animation...) Developers are approaching rendering simple UI components as if they were tackling a hardcore software engineering problem with the building blocks of the web increasingly abstracted into a Rube Goldberg machine.
+It feels like frontend development has become both simpler and more complex at the same time. JavaScript has swallowed the whole of frontend development, yet the newfound power of HTML and CSS has made JS entirely unnecessary for a great many tasks (lazy loading images, masonry layout, anchor positioning, scroll-driven animation...) Developers are approaching rendering simple UI components as if they were tackling a hardcore software engineering problem with the building blocks of the web increasingly abstracted into a Rube Goldberg machine.
 
 <figure>
 <img src="/rubegoldberg.avif" alt=""/>
 <figcaption>Congratulations, you rendered a HTML element</figcaption>
 </figure>
 
-We all understand the power of components:
-
-```jsx
- <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-      />
-```
-
-Hidden out of view is a large tangle of HTML I'd rather never have to think about. UI component libraries can abstract away intricate markup and JavaScript, but they also introduce their own complexity, often [obscuring the simplicity of HTML](https://www.radix-ui.com/themes/docs/components/box). Here's the directory for the accordion component in one open source library:
+We all understand the power of components. JavaScript-based UI component libraries can abstract away intricate markup and JavaScript, but they also introduce their own complexity, often [obscuring the simplicity of HTML](https://www.radix-ui.com/themes/docs/components/box). Here's the directory for the accordion component in one open source library:
 
 <figure>
 <img src="/accordion-kobalte.png" alt=""/>
@@ -380,10 +371,10 @@ And all HTML elements support both [light and dark mode](https://web.dev/article
 
 ## The Path Forward
 
-While these improvements might not sound revolutionary in isolation, taken as a whole, they beckon a future where third-party JavaScript components are less necessary. The CSS [Forms spec](https://www.w3.org/TR/css-forms-1/) will eventually bring simple customization to all form controls, fundamentally changing how design systems are built. The Chrome team have been pushing for [CSS-only carousels](https://developer.chrome.com/blog/carousels-with-css) and are looking into [multi-select](https://groups.google.com/a/chromium.org/g/blink-dev/c/U-K17B966Ys/m/0IGWWJT8BgAJ). There's ongoing work to [standardise tooltips](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSTooltipPseudo/explainer.md). We might even get a [menu element](https://open-ui.org/components/menu.explainer/) that's actually useful. The [Open UI group](https://open-ui.org/) is working on standardisation for all sorts of useful things. Some third-party components will remain helpful but a simpler version of frontend development is possible.
+While these improvements might not sound revolutionary in isolation, taken as a whole, they beckon a future where third-party JavaScript components are less necessary. The CSS [Forms spec](https://www.w3.org/TR/css-forms-1/) will eventually bring simple customization to all form controls, fundamentally changing how design systems are built. The Chrome team have been pushing for [CSS-only carousels](https://developer.chrome.com/blog/carousels-with-css) and are looking into [multi-select](https://groups.google.com/a/chromium.org/g/blink-dev/c/U-K17B966Ys/m/0IGWWJT8BgAJ). There's ongoing work to [standardise tooltips](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSTooltipPseudo/explainer.md). We might even get a [menu element](https://open-ui.org/components/menu.explainer/) that's actually useful, and even if we don't, between `popover`, `focusgroup` and anchor positioning, it'll be fairly trivial to build your own. The [Open UI group](https://open-ui.org/) is working on standardisation for all sorts of useful things. Some third-party components will remain helpful but a simpler version of frontend development is possible.
 
 Ryan Florence, co-creator of React Router, recently tweeted:
 
-> I remember once I built a little video site for my ember tutorials and after you visited a video the link to it turned black (from red). One of the ember core team members was like "How did you do that? There's no local storage or anything what is going on?!" I used `a:visited`. Sometimes we get so caught up in complexity we forget there are actually simple solutions to things. Things you forget about when you're deep in the belly of framework abstractions. Then when you see them solve a problem you just assume it's some wild magic, but it's not.
+> Once I built a little video site for my tutorials and after you visited a video the link to it turned black (from red). One of the Ember core team members was like "How did you do that? There's no local storage or anything what is going on?!" I used `a:visited`. Sometimes we get so caught up in complexity we forget there are actually simple solutions to things. Things you forget about when you're deep in the belly of framework abstractions. Then when you see them solve a problem you just assume it's some wild magic, but it's not.
 
 It's time that developers rediscovered the power of HTML and CSS.
