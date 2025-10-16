@@ -6,7 +6,7 @@ description: "AV1 decoding on Mac, iPhone and iPad"
 ---
 _This article was updated on 5th March, 2025_
 
-AV1 is the best video format for the web. It’s supported by all web browsers. However, for Safari, support depends on the hardware. Older Apple devices can’t play AV1 video on the web, even if they’re running the latest version of iOS and Safari.
+AV1 is the best video format for the web. It’s supported by all web browsers. However, for Safari, support depends on the hardware. Older Apple devices can’t play AV1 video on the web, even when running the latest operating system and version of Safari.
 
 In 2023, Apple unveiled their M3 chip, the first Apple chip to support AV1 decoding. The press release [read](https://www.apple.com/uk/newsroom/2023/10/apple-unveils-m3-m3-pro-and-m3-max-the-most-advanced-chips-for-a-personal-computer/#:~:text=All%20three%20chips,extend%20battery%20life.):
 
@@ -88,5 +88,11 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
     <th scope="row">MacBook Pro</th>
     <td>2023</td>
     <td>M3 / M3 Pro / M3 Max</td>
+  </tr>
+
+   <tr>
+    <th scope="row">Apple TV 4K</th>
+    <td>Does not support hardware decoding</td>
+    <td>A15</td>
   </tr>
 </table>
