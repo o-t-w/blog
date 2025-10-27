@@ -5,7 +5,7 @@ heroImage: "/sethtml.png"
 description: getHTML, setHTML, setHTMLUnsafe, declarative shadow DOM and sanitization
 ---
 
-__Browser support note__: `setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe). `setHTML` is still being standardised and is only available in Firefox behind a flag. [`getHTML`](https://caniuse.com/mdn-api_element_gethtml) is supported in Firefox (since [version 128](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/128)), in Chrome and Edge (since version 125) and in Safari (since [version 18](https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes)).
+__Browser support note__: `setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe). `setHTML` is still being standardised and is only available in Firefox. [`getHTML`](https://caniuse.com/mdn-api_element_gethtml) is supported in Firefox (since [version 128](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/128)), in Chrome and Edge (since version 125) and in Safari (since [version 18](https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes)).
 
 Browsers recently implemented a new `setHTMLUnsafe` method. *Unsafe* in this context means that, just like `innerHTML`, it does not perform input sanitization. This naming is not consistent with previous browser APIs: we have `innerHTML`, not `innerHTMLUnsafe`; `eval()` not `evalUnsafe()`, etc. `setHTMLUnsafe` is certainly no more dangerous than these older methods. Unlike the older methods though, there is both a safe version (`setHTML`) and an unsafe version (`setHTMLUnsafe`) — hence the naming.
 
@@ -32,7 +32,7 @@ The Sanitizer API is still a work in progress, but it helps put the naming of `s
 
 ## setHTMLUnsafe
 
-If we’re (hopefully) getting `setHTML`, and we already have `innerHTML`, why do we even need `setHTMLUnsafe`? The answer is declarative shadow DOM.
+If we’re getting `setHTML`, and we already have `innerHTML`, why do we even need `setHTMLUnsafe`? Part of the answer is declarative shadow DOM.
 
 The HTML `<template>` element can be used in two different ways:
 
@@ -57,12 +57,11 @@ main.innerHTML = `
 
 `innerHTML` does inject the `<template>` into the page, but it remains a `<template>` element — it does not get turned into shadow DOM and its contents do not get rendered, regardless of the `shadowrootmode` attribute.
 
-`setHTML` will purposefully remove the `template` and its contents:
+By default, `setHTML` will purposefully remove the `template` and its contents:
 
 ```js
 const main = document.querySelector('main');
-main.setHTML(`
-     <h2>I am in the Light DOM</h2>
+const html = `<h2>I am in the Light DOM</h2>
     <div>
     <template shadowrootmode="open">
         <style>
@@ -70,11 +69,24 @@ main.setHTML(`
         </style>
         <h2>Shadow DOM</h2>
     </template>
-    </div>`);
+    </div>`
+main.setHTML(html);
 ```
-In the above example, the contents of the `main` is now a `h2` and an empty `div`. The template is treated as an "unsafe node".
+In the above example, the contents of the `main` is now a `h2` and an empty `div`.
 
-This is why browsers added `setHTMLUnsafe`, as a way to dynamically add declarative shadow DOM to the page.
+The sanitizer can be configured to allow the `<template>` element, but it doesn't solve the problem:
+
+```js
+const sanitizer = new Sanitizer({
+    elements: ["template", "div", "style", "h2"],
+    attributes: ["shadowrootmode"]
+});
+main.setHTML(html, {sanitizer: sanitizer});
+```
+
+The above code will inject the `template` and its contents into the page, _but it will not be rendered_.
+
+`setHTMLUnsafe` offers a way to dynamically add declarative shadow DOM to the page.
 
 ```js
 main.setHTMLUnsafe(`
