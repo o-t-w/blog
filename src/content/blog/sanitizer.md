@@ -1,0 +1,254 @@
+---
+pubDate: 'Oct 29 2025'
+title: "setHTML(), Trusted Types and the Sanitizer API"
+heroImage: "/sanitizer.png"
+description: "Avoiding cross-site scripting (XSS) attacks with new web APIs"
+---
+
+## Browser support note
+
+Chrome shipped and then [un-shipped](https://developer.chrome.com/blog/sanitizer-api-deprecation) an early version of the Sanitizer API. Avoid older resources about this API as the spec has changed over time.
+
+The Sanitizer API is supported in Firefox Nightly, in line with the latest specification. It is available in [Chrome Canary](https://issues.chromium.org/issues/356601280) behind a flag. While Safari has not started implementation work, the Safari team do have a [positive position](https://github.com/WebKit/standards-positions/issues/86) on the API.
+
+The Trusted Types API is supported in Chrome/Edge, Samsung Internet, Safari, and [Firefox Nightly](https://www.firefox.com/en-US/firefox/146.0a1/releasenotes/#:~:text=Starting%20with%20Firefox%20145%2C%20the%20Trusted%20Types%20API%2C%20primarily%20aimed%20at%20preventing%20cross%2Dsite%20scripting%20attacks%2C%20is%20now%20enabled%20in%20Nightly).
+
+`setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe).
+
+---
+
+## `setHTML()`
+
+The `setHTML()` method inserts HTML into the DOM in a way that can prevent cross-site scripting attacks.
+
+```js
+const div = document.querySelector('div'); 
+div.setHTML(html);    
+```
+
+`setHTML()` will *always* filter out inline event handlers and the following HTML elements:
+
+- `script`
+- `embed`
+- `frame`
+- `iframe`
+- `object`
+- The SVG `use` element
+
+By default, it also removes far more, but this can be configured. Other elements that get removed by default include:
+
+- `style`
+- `link`
+- `img`
+- `video`
+- `button`
+- `form`
+- `input`
+- `textarea`
+- `label`
+- `select`
+- `option`
+- `output`
+- `details`
+- `summary`
+- `template`
+- All custom elements (e.g. `<wa-dropdown>`)
+
+Data attributes, aria attributes, inline styles and HTML comments are also removed by default (this is not a fully comprehensive list and it looks like it could [potentially change](https://github.com/WICG/sanitizer-api/issues/245#issuecomment-2550797520) in the future).
+
+Given the following code:
+
+```js
+const html = 
+`<h1 onclick="console.log('hi')">testing</h1>
+<button>Click me</button>
+<img src="cat.jpg">
+<iframe src="https://olliewilliams.xyz/">`;
+
+const div = document.querySelector('div'); 
+div.setHTML(html);    
+```
+
+The contents of `div` will be the following markup:
+
+```html
+<h1>testing</h1>
+```
+
+### Configuring what gets stripped 
+
+You can configure precisely which elements and attributes will be removed by creating a sanitizer:
+
+```js
+const mySanitizer = new Sanitizer({
+    elements: ["h1"],
+    attributes: ["style"]
+});
+
+div.setHTML(html, {sanitizer: mySanitizer});   
+```
+
+Alternatively an object can be used:
+
+```js
+div.setHTML(html, {
+    elements: ["h1"],
+    attributes: ["style"]
+});   
+```
+
+For the most permissive approach, the following code will remove only `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements, and inline event handlers.
+
+```js
+div.setHTML(html, {sanitizer: {}});   
+```
+
+If you need fine-grained control, allowed attributes can be specified on an element-by-element basis:
+
+```js
+const sanitizer = new Sanitizer({
+  elements: [
+    { name: "h1", attributes: [] },
+    { name: "h2", attributes: ["style"] },
+  ],
+});
+```
+
+The above sanitizer will strip all attributes from `h1`'s, but will not strip the `style` attribute from `h2`'s.
+
+## `setHTML()` vs `setHTMLUnsafe()`
+
+It's easy to assume that `setHTML()` sanitizes and that `setHTMLUnsafe()` does not. That’s somewhat true in that `setHTMLUnsafe()` doesn’t perform any sanitization by default. However, a sanitizer can optionally be specified as a second argument.
+
+In the following example, `setHTML()` and `setHTMLUnsafe()` both use the same sanitizer.
+
+```js
+const sanitizer1 = new Sanitizer({
+    elements: ["iframe"],
+});
+const iframe = `<iframe src="https://olliewilliams.xyz/">`;
+div1.setHTMLUnsafe(iframe, {sanitizer: sanitizer1});  
+div2.setHTML(iframe, {sanitizer: sanitizer1});
+```
+
+`div1` will display the `iframe`, `div2` will be empty. 
+
+`setHTML()` will never generate any markup that executes script, meaning it will always filter XSS-unsafe entities. `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements and inline event handlers will _always_ be removed by `setHTML()`, regardless of what's specified in the sanitizer configuration. Likewise, inline event handlers are always removed by `setHTML()`, but not by `setHTMLUnsafe()`. In the following example `setHTMLUnsafe()` will remove all elements other than `button` and all attributes other than `onclick`.
+
+```js
+const sanitizer2 = new Sanitizer({
+    elements: ["button"],
+    attributes: ["onclick"]
+})
+const button = `<button onmouseover="console.log('boo')" onclick="console.log('test')">testing</button>`;
+div1.setHTMLUnsafe(button, {sanitizer: sanitizer2}); // <button onclick="console.log('test')">Click me</button>
+div2.setHTML(button, {sanitizer: sanitizer2}); // <button>Click me</button>
+```
+
+## Trusted Types and the Sanitizer API
+
+Trusted Types and the Sanitizer API have a similar goal: to prevent Cross-site scripting (XSS). The two APIs are complementary: the Sanitizer API provides a safe way to create DOM trees whereas the Trusted Types API is about enforcement: it can prevent any developer working on your codebase from passing an unsanitized string to an unsafe sink.
+
+You opt-into the Trusted Types API via the Content-Security-Policy (CSP) header.
+
+```
+Content-Security-Policy: trusted-types passthrough legacysanitize sanitize; require-trusted-types-for 'script';
+```
+
+Other directives that aren't related to Trusted Types can also be included in the CSP header, but I'm keeping the above example minimal. `passthrough`, `legacysanitize` and `sanitize` are the names of policies — you can name them whatever you want and list as many as you need. You create these policies on the frontend — the header just restricts which policy names can be used in client-side code.
+
+If the above response header is set, whenever a string is passed to an unsafe sink it will cause a TypeError e.g.:
+
+```js
+div1.setHTMLUnsafe(`<iframe src='https://olliewilliams.xyz/'/>`); // TypeError
+
+div2.innerHTML = "<h2>Hello world</h2>"; // TypeError
+```
+
+An error such as the following will be displayed in the browser devtools console:
+
+<img style="margin-bottom: 24px;" src="/trustedtypeserror.png" alt="">
+
+### What counts as an unsafe sink?
+
+Two modern examples of an unsafe sink are:
+- `setHTMLUnsafe()`
+- `Document.parseHTMLUnsafe()`
+
+Older examples include:
+- `innerHTML`
+- `outerHTML`
+- `parseFromString()`
+- `document.write`
+- `document.writeln`
+- Setting the `srcdoc` property of an `iframe` using JavaScript
+
+### Creating a policy
+
+You can still use these unsafe methods when the trusted types header is set, _but not with strings_. Instead of strings, you must work with `TrustedHTML` objects. A `TrustedHTML` object is returned by the `createHTML` method. How the string is transformed is up to you to define — the Trusted Types API itself does not sanitize the string or do anything else to make it safer. The below example takes the input HTML and returns it unchanged — but as a `TrustedHTML` object rather than a string:
+
+```js
+const passThroughPolicy = trustedTypes.createPolicy("passthrough", {
+    createHTML: (input) => input
+});
+
+const unsanitizedHTML = passThroughPolicy.createHTML(`<iframe src='https://olliewilliams.xyz/'/>);
+```
+
+The above code is effectively saying "I trust this HTML". Obviously this isn't a great general policy! Passing `myTrustedHTML` to `innerHTML` or any other sink won't result in an error, but we've done nothing to make it any safer than working with a regular string. There _might_ be some cases where it's necessary to inject HTML without sanitization in this way (the `setHTMLUnsafe()` method exists for a reason). Perhaps fetching some HTML from the server that includes declarative shadow DOM, for example:
+
+```js
+const target = document.getElementById('target');
+fetch('/hopefullyverytrustworthy')
+    .then(response => response.text())
+    .then((html) => {
+       const unsanitizedHTML = passThroughPolicy.createHTML(html);
+       target.setHTMLUnsafe(unsanitizedHTML);
+});
+```
+
+In general though, `createHTML` is used to sanitize the string. Browser support for the Trusted Types API is broader than support for the Sanitizer API, so a Trusted Types policy might sanitize the string using an open source library such as [`DOMPurify`](https://github.com/cure53/DOMPurify?tab=readme-ov-file#what-about-dompurify-and-trusted-types). 
+
+```js
+window.trustedTypes.createPolicy('legacysanitize', {
+  createHTML: (input) =>
+    DOMPurify.sanitize(input, { RETURN_TRUSTED_TYPE: false }),
+});
+```
+
+(`RETURN_TRUSTED_TYPE: false` is required because `DOMPurify.sanitize` can return a `TrustedHTML` object directly but `createHTML` expects a string.)
+
+**Once browser support for the Sanitizer API improves, there will be no need for third party tools like DOMPurify. The `createHTML` boilerplate will be avoidable in most cases as you can simply use `setHTML()` instead. The `setHTML()` and `Document.parseHTML()` are not unsafe sinks and will not cause an error when Trusted Types is enabled.** You pass them strings, not `TrustedHTML` objects.
+
+ When possible you should:
+- use `setHTML()` over `innerHTML` and `setHTMLUnsafe()`
+- use `Document.parseHTML()` over `parseFromString()` or `Document.parseHTMLUnsafe()` 
+
+There may be some cases where `setHTML()` can't be used. There is no DOM API to safely set the `srcdoc` of an `iframe`, for example: 
+
+```js
+const untrustedString =
+  "<!doctype html><body><p>I might be XSS</p><img src='doesNotExist' onerror='alert(1)'></body>";
+const iframe = document.querySelector('iframe');
+iframe.srcdoc = untrustedString; // TypeError
+```
+
+`setHTML()` can be used indirectly to sanitize the HTML:
+
+```js
+const untrustedString =
+  "<!doctype html><body><p>I might be XSS</p><img src='doesNotExist' onerror='alert(1)'></body>";
+const iframe = document.querySelector('iframe');
+
+const sanitizePolicy = trustedTypes.createPolicy("sanitize", {
+    createHTML: (input) => {
+        const div = document.createElement('div');
+        div.setHTML(input); // sanitize the HTML
+        return div.getHTML(); // return the HTML
+    }
+});
+const sanitized = sanitizePolicy.createHTML(untrustedString);
+iframe.srcdoc = sanitized;
+```
+
+This is all pretty new. If I’ve made any mistakes please let me know via [Bluesky](https://bsky.app/profile/ollie-williams.bsky.social), [Twitter](https://x.com/hypeddev), or [Mastodon](https://indieweb.social/@Olliew).
