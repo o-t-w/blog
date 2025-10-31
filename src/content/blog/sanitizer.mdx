@@ -5,6 +5,8 @@ heroImage: "/sanitizer.png"
 description: "Avoiding cross-site scripting (XSS) attacks with new web APIs"
 ---
 
+import { Code } from 'astro:components';
+
 ## Browser support note
 
 Chrome shipped and then [un-shipped](https://developer.chrome.com/blog/sanitizer-api-deprecation) an early version of the Sanitizer API. Avoid older resources about this API as the spec has changed over time.
@@ -128,15 +130,15 @@ div1.setHTMLUnsafe(button, {sanitizer: sanitizer2}); // <button onclick="console
 div2.setHTML(button, {sanitizer: sanitizer2}); // <button>Click me</button>
 ```
 
+There are a great many inline event handlers — too many to want to list them all in `"removeAttributes"` array.
+
 ## Trusted Types and the Sanitizer API
 
 Trusted Types and the Sanitizer API have a similar goal: to prevent Cross-site scripting (XSS). The two APIs are complementary: the Sanitizer API provides a safe way to create DOM trees whereas the Trusted Types API is about enforcement: it can prevent any developer working on your codebase from passing an unsanitized string to an unsafe sink.
 
 You opt-into the Trusted Types API via the Content-Security-Policy (CSP) header.
 
-```
-Content-Security-Policy: trusted-types passthrough legacysanitize sanitize; require-trusted-types-for 'script';
-```
+<Code code={`Content-Security-Policy: trusted-types passthrough legacysanitize sanitize; require-trusted-types-for 'script';`} wrap />
 
 Other directives that aren't related to Trusted Types are also typically included in the CSP header, but I'm keeping the above example minimal. `passthrough`, `legacysanitize` and `sanitize` are the names of policies I wish to create on the frontend — you can name them whatever you want and list as many as you need. The header restricts which policy names can be used in client-side code.
 
@@ -150,7 +152,7 @@ div2.innerHTML = "<h2>Hello world</h2>"; // TypeError
 
 An error such as the following will be displayed in the browser devtools console:
 
-<img style="margin-bottom: 24px;" src="/trustedtypeserror.png" alt="">
+<img style="margin-bottom: 24px;" src="/trustedtypeserror.png" alt=""/>
 
 ### What counts as an unsafe sink?
 
