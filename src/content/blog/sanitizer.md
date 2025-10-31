@@ -138,7 +138,7 @@ You opt-into the Trusted Types API via the Content-Security-Policy (CSP) header.
 Content-Security-Policy: trusted-types passthrough legacysanitize sanitize; require-trusted-types-for 'script';
 ```
 
-Other directives that aren't related to Trusted Types can also be included in the CSP header, but I'm keeping the above example minimal. `passthrough`, `legacysanitize` and `sanitize` are the names of policies — you can name them whatever you want and list as many as you need. You create these policies on the frontend — the header just restricts which policy names can be used in client-side code.
+Other directives that aren't related to Trusted Types are also typically included in the CSP header, but I'm keeping the above example minimal. `passthrough`, `legacysanitize` and `sanitize` are the names of policies I wish to create on the frontend — you can name them whatever you want and list as many as you need. The header restricts which policy names can be used in client-side code.
 
 If the above response header is set, whenever a string is passed to an unsafe sink it will cause a TypeError e.g.:
 
@@ -166,9 +166,11 @@ Older examples include:
 - `document.writeln`
 - Setting the `srcdoc` property of an `iframe` using JavaScript
 
+You can still use these unsafe methods when the trusted types header is set, _but not with strings_. Instead, you must work with `TrustedHTML` objects.
+
 ### Creating a policy
 
-You can still use these unsafe methods when the trusted types header is set, _but not with strings_. Instead of strings, you must work with `TrustedHTML` objects. A `TrustedHTML` object is returned by the `createHTML` method. How the string is transformed is up to you to define — the Trusted Types API itself does not sanitize the string or do anything else to make it safer. The below example takes the input HTML and returns it unchanged — but as a `TrustedHTML` object rather than a string:
+A `TrustedHTML` object is returned by the `createHTML` method. How the string is transformed is up to you to define — the Trusted Types API itself does not sanitize the string or do anything else to make it safer. The below example takes the input HTML and returns it unchanged — but as a `TrustedHTML` object rather than a string:
 
 ```js
 const passThroughPolicy = trustedTypes.createPolicy("passthrough", {
@@ -178,7 +180,7 @@ const passThroughPolicy = trustedTypes.createPolicy("passthrough", {
 const unsanitizedHTML = passThroughPolicy.createHTML(`<iframe src='https://olliewilliams.xyz/'/>);
 ```
 
-The above code is effectively saying "I trust this HTML". Obviously this isn't a great general policy! Passing `myTrustedHTML` to `innerHTML` or any other sink won't result in an error, but we've done nothing to make it any safer than working with a regular string. There _might_ be some cases where it's necessary to inject HTML without sanitization in this way (the `setHTMLUnsafe()` method exists for a reason). Perhaps fetching some HTML from the server that includes declarative shadow DOM, for example:
+The above code is effectively saying "I trust this HTML". Obviously this isn't a great general policy! Passing `unsanitizedHTML` to `innerHTML` or any other sink won't result in an error, but we've done nothing to make it any safer than working with a regular string. There _might_ be some cases where it's necessary to inject HTML without sanitization in this way (the `setHTMLUnsafe()` method exists for a reason). Perhaps fetching some HTML from the server that includes declarative shadow DOM, for example:
 
 ```js
 const target = document.getElementById('target');
@@ -190,7 +192,7 @@ fetch('/hopefullyverytrustworthy')
 });
 ```
 
-In general though, `createHTML` is used to sanitize the string. Browser support for the Trusted Types API is broader than support for the Sanitizer API, so a Trusted Types policy might sanitize the string using an open source library such as [`DOMPurify`](https://github.com/cure53/DOMPurify?tab=readme-ov-file#what-about-dompurify-and-trusted-types). 
+In general though, `createHTML` is used to sanitize the string. Browser support for the Trusted Types API is broader than support for the Sanitizer API, so a Trusted Types policy will typically sanitize the string using an open source library such as [`DOMPurify`](https://github.com/cure53/DOMPurify?tab=readme-ov-file#what-about-dompurify-and-trusted-types). 
 
 ```js
 window.trustedTypes.createPolicy('legacysanitize', {
