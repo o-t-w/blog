@@ -205,7 +205,7 @@ window.trustedTypes.createPolicy('legacysanitize', {
 
 (`RETURN_TRUSTED_TYPE: false` is required because `DOMPurify.sanitize` can return a `TrustedHTML` object directly but `createHTML` expects a string.)
 
-**Once browser support for the Sanitizer API improves, there will be no need for third party tools like DOMPurify. The `createHTML` boilerplate will be avoidable in most cases as you can simply use `setHTML()` instead. The `setHTML()` and `Document.parseHTML()` are not unsafe sinks and will not cause an error when Trusted Types is enabled.** You pass them strings, not `TrustedHTML` objects.
+**Once browser support for the Sanitizer API improves, there will be no need for third party tools like DOMPurify.** The `createHTML` boilerplate will be avoidable in most cases as you can simply use `setHTML()` instead. **The `setHTML()` and `Document.parseHTML()` are not unsafe sinks and will not cause an error when Trusted Types is enabled.** You pass them strings, not `TrustedHTML` objects.
 
  When possible you should:
 - use `setHTML()` over `innerHTML` and `setHTMLUnsafe()`
