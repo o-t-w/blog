@@ -130,8 +130,6 @@ div1.setHTMLUnsafe(button, {sanitizer: sanitizer2}); // <button onclick="console
 div2.setHTML(button, {sanitizer: sanitizer2}); // <button>Click me</button>
 ```
 
-There are a great many inline event handlers — too many to want to list them all in `"removeAttributes"` array.
-
 ## Trusted Types and the Sanitizer API
 
 Trusted Types and the Sanitizer API have a similar goal: to prevent Cross-site scripting (XSS). The two APIs are complementary: the Sanitizer API provides a safe way to create DOM trees whereas the Trusted Types API is about enforcement: it can prevent any developer working on your codebase from passing an unsanitized string to an unsafe sink.
