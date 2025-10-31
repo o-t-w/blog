@@ -35,24 +35,7 @@ div.setHTML(html);
 - `object`
 - The SVG `use` element
 
-By default, it also removes far more, but this can be configured. Other elements that get removed by default include:
-
-- `style`
-- `link`
-- `img`
-- `video`
-- `button`
-- `form`
-- `input`
-- `textarea`
-- `label`
-- `select`
-- `option`
-- `output`
-- `details`
-- `summary`
-- `template`
-- All custom elements (e.g. `<wa-dropdown>`)
+By default, it also removes far more, but this can be configured. Other elements that get removed by default include: `style`, `link`, `img`, `video`, `button`, `form`, `input`, `textarea`, `label`, `select`, `option`, `output`, `details`, `summary`, `template` and all custom elements (e.g. `<wa-dropdown>`).
 
 Data attributes, aria attributes, inline styles and HTML comments are also removed by default (this is not a fully comprehensive list and it looks like it could [potentially change](https://github.com/WICG/sanitizer-api/issues/245#issuecomment-2550797520) in the future).
 
