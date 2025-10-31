@@ -209,31 +209,6 @@ window.trustedTypes.createPolicy('legacysanitize', {
 - use `setHTML()` over `innerHTML` and `setHTMLUnsafe()`
 - use `Document.parseHTML()` over `parseFromString()` or `Document.parseHTMLUnsafe()` 
 
-There may be some cases where `setHTML()` can't be used. There is no DOM API to safely set the `srcdoc` of an `iframe`, for example: 
-
-```js
-const untrustedString =
-  "<!doctype html><body><p>I might be XSS</p><img src='doesNotExist' onerror='alert(1)'></body>";
-const iframe = document.querySelector('iframe');
-iframe.srcdoc = untrustedString; // TypeError
-```
-
-`setHTML()` can be used indirectly to sanitize the HTML:
-
-```js
-const untrustedString =
-  "<!doctype html><body><p>I might be XSS</p><img src='doesNotExist' onerror='alert(1)'></body>";
-const iframe = document.querySelector('iframe');
-
-const sanitizePolicy = trustedTypes.createPolicy("sanitize", {
-    createHTML: (input) => {
-        const div = document.createElement('div');
-        div.setHTML(input); // sanitize the HTML
-        return div.getHTML(); // return the HTML
-    }
-});
-const sanitized = sanitizePolicy.createHTML(untrustedString);
-iframe.srcdoc = sanitized;
-```
+There may be some cases where `setHTML()` can't be used, such as when setting the `srcdoc` of an `iframe`, for example.
 
 This is all pretty new. If I’ve made any mistakes please let me know via [Bluesky](https://bsky.app/profile/ollie-williams.bsky.social), [Twitter](https://x.com/hypeddev), or [Mastodon](https://indieweb.social/@Olliew).
