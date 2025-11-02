@@ -60,7 +60,7 @@ The contents of `div` will be the following:
 
 ### Configuring what gets stripped 
 
-You can configure precisely which elements and attributes will be removed by creating a sanitizer:
+Which elements and attributes get removed can be configured via a custom sanitizer:
 
 ```js
 const mySanitizer = new Sanitizer({
@@ -80,12 +80,6 @@ div.setHTML(html, {
 });   
 ```
 
-For the most permissive approach, the following code will remove only `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements, and inline event handlers.
-
-```js
-div.setHTML(html, {sanitizer: {}});   
-```
-
 If you need fine-grained control, allowed attributes can be specified on an element-by-element basis:
 
 ```js
@@ -98,6 +92,12 @@ const sanitizer = new Sanitizer({
 ```
 
 The above sanitizer will strip all attributes from `h1`'s, but will not strip the `style` attribute from `h2`'s.
+
+For the most permissive approach, the following code will remove only `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements, and inline event handlers:
+
+```js
+div.setHTML(html, {sanitizer: {}});   
+```
 
 ## Trusted Types and the Sanitizer API
 
