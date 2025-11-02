@@ -13,7 +13,7 @@ Chrome shipped and then [un-shipped](https://developer.chrome.com/blog/sanitizer
 
 The Sanitizer API is supported in Firefox Nightly, in line with the latest specification. It is available in [Chrome Canary](https://issues.chromium.org/issues/356601280) behind a flag. While Safari has not started implementation work, the Safari team do have a [positive position](https://github.com/WebKit/standards-positions/issues/86) on the API.
 
-The Trusted Types API is supported in Chrome/Edge, Samsung Internet, Safari, and [Firefox Nightly](https://www.firefox.com/en-US/firefox/146.0a1/releasenotes/#:~:text=Starting%20with%20Firefox%20145%2C%20the%20Trusted%20Types%20API%2C%20primarily%20aimed%20at%20preventing%20cross%2Dsite%20scripting%20attacks%2C%20is%20now%20enabled%20in%20Nightly).
+The Trusted Types API is supported in Chrome/Edge, Samsung Internet, Safari, and [Firefox Nightly](https://www.firefox.com/en-US/firefox/146.0a1/releasenotes/#:~:text=Starting%20with%20Firefox%20145%2C%20the%20Trusted%20Types%20API%2C%20primarily%20aimed%20at%20preventing%20cross%2Dsite%20scripting%20attacks%2C%20is%20now%20enabled%20in%20Nightly). Chrome has supported Trusted Types since version 83 but [version 144](https://chromestatus.com/feature/5163792014245888) brings it fully in line with other browsers and the latest specification. 
 
 `setHTMLUnsafe` is supported in [all browsers](https://caniuse.com/mdn-api_element_sethtmlunsafe).
 
@@ -37,9 +37,7 @@ div.setHTML(html);
 - `object`
 - The SVG `use` element
 
-By default, it also removes far more, but this can be configured. Other elements that get removed by default include: `style`, `link`, `img`, `video`, `button`, `form`, `input`, `textarea`, `label`, `select`, `option`, `output`, `details`, `summary`, `template` and all custom elements (e.g. `<wa-dropdown>`).
-
-Data attributes, aria attributes, inline styles and HTML comments are also removed by default (this is not a fully comprehensive list and it looks like it could [potentially change](https://github.com/WICG/sanitizer-api/issues/245#issuecomment-2550797520) in the future).
+By default, it also removes far more: `style`, `link`, `img`, `video`, `button`, `form`, `input`, `textarea`, `label`, `select`, `option`, `output`, `details`, `summary`, `template` and all custom elements (e.g. `<wa-dropdown>`), data attributes, aria attributes, inline styles and HTML comments (this is not a fully comprehensive list and it looks like it could [potentially change](https://github.com/WICG/sanitizer-api/issues/245#issuecomment-2550797520) in the future).
 
 Given the following code:
 
