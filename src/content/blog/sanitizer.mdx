@@ -58,9 +58,17 @@ The contents of `div` will be the following:
 <h1>testing</h1>
 ```
 
-### Configuring what gets stripped 
+## Configuring what gets stripped 
 
-Which elements and attributes get removed can be configured via a custom sanitizer:
+Which elements and attributes get removed can be configured via a custom sanitizer. For the most permissive approach, the following code will remove only `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements, and inline event handlers:
+
+```js
+div.setHTML(html, {sanitizer: {}});   
+```
+
+### Whitelist
+
+When using an allowlist configuration, you define which elements and attributes are permitted. Anything not listed will be removed.
 
 ```js
 const mySanitizer = new Sanitizer({
@@ -93,17 +101,24 @@ const sanitizer = new Sanitizer({
 
 The above sanitizer will strip all attributes from `h1`'s, but will not strip the `style` attribute from `h2`'s.
 
-For the most permissive approach, the following code will remove only `embed`, `frame`, `iframe`, `object`, `script`, and `use` elements, and inline event handlers:
+#### Blacklist
+
+Alternatively, you can configure the sanitizer using a blocklist approach by specifying which elements and attributes should be removed:
 
 ```js
-div.setHTML(html, {sanitizer: {}});   
+const sanitizer = new Sanitizer({
+  removeElements: ["a"],
+  removeAttributes: ["id"],
+});
 ```
+
+Given the above sanitizer, `setHTML(html, {sanitizer: sanitizer})` will only remove `a`, `script`, `embed`, `frame`, `iframe`, `object` and `use` elements, `id` attributes and inline event handlers. 
 
 ## Trusted Types and the Sanitizer API
 
 Trusted Types and the Sanitizer API share a common goal: preventing cross-site scripting (XSS). The two APIs complement each other: while the Sanitizer API provides a safe way to construct DOM trees, the Trusted Types API enforces that only sanitized content can be passed into unsafe DOM sinks, ensuring no developer can accidentally introduce XSS vulnerabilities into your codebase.
 
-You opt-into the Trusted Types API via the Content-Security-Policy (CSP) header.
+You opt in to Trusted Types via the Content-Security-Policy (CSP) header.
 
 <Code code={`Content-Security-Policy: trusted-types passthrough legacysanitize; require-trusted-types-for 'script';`} wrap />
 
