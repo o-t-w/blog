@@ -21,7 +21,7 @@ It’s been possible to style scrollbars for many years but only in a [non-stand
 
 These pseudo-elements are not on a standards track, so won’t ever get implemented in Firefox.
 
-In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121](https://developer.chrome.com/blog/new-in-chrome-121#css-updates), Chrome browser also supports both properties. Safari have expressed a positive position on [`scrollbar-color`](https://github.com/WebKit/standards-positions/issues/134) and have supported `scrollbar-width` since [version 18.2](https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes).
+In 2018 the W3C published a scrollbars styling specification which introduced the `scrollbar-width` and `scrollbar-color` CSS properties. Firefox 64, released that same year, implemented both properties. As of [version 121](https://developer.chrome.com/blog/new-in-chrome-121#css-updates), Chrome browser also supports both properties. Safari has supported `scrollbar-color` since [version 26.2](https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#CSS) and `scrollbar-width` since [version 18.2](https://developer.apple.com/documentation/safari-release-notes/safari-18_2-release-notes).
 
 The older non-standard approach allowed a great deal of control. You could even recreate Windows 95 style scrollbars for a retro look if you wanted to. The standardized CSS properties are much more limited in scope.
 
@@ -85,7 +85,7 @@ If you decide to customize the color of the scrollbar its important to take acce
 
 Part of Eric’s argument against custom scrollbars focuses on failing to respect certain [user preferences](https://polypane.app/blog/forced-colors-explained-a-practical-guide/), such as high contrast mode on Windows (also known as forced colors mode). From my own testing, scrollbars customized with the non-standardized `::-webkit-` pseudo-element approach were completely invisible and unusable in high contrast mode on Windows. However, for scrollbars customized with the `scrollbar-color` CSS property, high contrast mode worked without issue. [MDN states](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color#:~:text=Note%3A%20%40media%20(forced%2Dcolors%3A%20active)%20sets%20scrollbar%2Dcolor%20to%20auto.) “`@media (forced-colors: active)` sets `scrollbar-color` to `auto`", meaning it will automatically override your custom styling. 
 
-While I somewhat agree with Eric that styling scrollbars isn’t always a great idea, there is one situation where its important to consider: dark mode. Standard light-mode scrollbars don’t look great on websites that make heavy use of dark backgrounds. 
+While I somewhat agree with Eric that styling scrollbars isn’t always a great idea, there is one situation where it is important to consider: dark mode.
 
 ## Dark scrollbars
 
