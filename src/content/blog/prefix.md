@@ -7,7 +7,7 @@ heroImage: "/webkit.jpg"
 description: Do we still need Autoprefixer?
 ---
 
-*This article was updated on 30th March 2025*
+*This article was updated on November 5th 2025*
 
 CSS prefixes are a relic from a bygone age.
 
