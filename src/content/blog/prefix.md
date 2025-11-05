@@ -41,7 +41,6 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 
 - `user-select`
 - `initial-letter`
-- `text-decoration` (sort of)
 - `text-stroke`
 - `text-fill-color`
 - `line-clamp`
@@ -49,8 +48,6 @@ I like to keep my build process as minimal as possible. Like many people, I ditc
 - `stretch`/`available`/`fill-available`
 
 [`user-select`](https://caniuse.com/user-select-none) and [`initial-letter`](https://caniuse.com/css-initial-letter) still require a `-webkit-` prefix in Safari.
-
-Safari supports `text-decoration-color`, `text-decoration-line` and `text-decoration-style` without a prefix. The `text-decoration` property is meant to work as a shorthand for all three. In Safari, however, `text-decoration` can only set `text-decoration-line`. `text-decoration: underline;` works.  `text-decoration: underline orange wavy;` doesn't. `-webkit-text-decoration` works correctly when setting all three properties.
 
 `text-stroke` and `text-fill-color` have never been standardised, but `-webkit-text-stroke` and  `-webkit-text-fill-color` work in every browser.
 
@@ -74,6 +71,8 @@ The CSS `stretch` keyword as a value for `width` and `height` is implemented onl
 `box-decoration-break` requires a `-webkit` prefix in Safari. Chrome/Edge shipped full unprefixed support for this property in [version 130](https://developer.chrome.com/blog/box-decoration-break#inline_fragmentation).
 
 ## Updates since this article was first published
+
+Safari has long supported `text-decoration-color`, `text-decoration-line` and `text-decoration-style` without a prefix. The `text-decoration` property is meant to work as a shorthand for all three. Prior to [Safari 26.2](https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#CSS), however, `text-decoration` can only set `text-decoration-line`. `text-decoration: underline;` works.  `text-decoration: underline orange wavy;` doesn't. `-webkit-text-decoration` works correctly when setting all three properties.
 
 `background-clip: text` and `mask` had required a prefix for Samsung Internet browser. That is no longer the case as of Samsung Internet version 25.
 
