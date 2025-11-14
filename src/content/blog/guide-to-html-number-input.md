@@ -1,6 +1,6 @@
 ---
-pubDate: 'Nov 13 2025'
-title: In defence of <input type="number"/>
+pubDate: 'Nov 14 2025'
+title: A complete guide to the HTML number input
 heroImage: "/number-input.png"
 description: "Styling, UX, validation"
 ---
