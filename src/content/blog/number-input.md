@@ -11,11 +11,13 @@ description: "Styling, UX, validation"
     input[type="number"] {
         padding: 5px 6px;
         width: 80px;
+        border-radius: 6px;
+        border: solid 1px gray;
     }
     
      input[type="number"]:user-invalid {
-        border: solid 2px orangered;
-        border-radius: 2px;
+        border-color: orangered;
+        outline: solid 1px orangered;
     }
 
     label {
@@ -62,11 +64,12 @@ description: "Styling, UX, validation"
     .with-custom-spinners, [command="--increment"], [command="--decrement"] {
         height: 32.5px;
         background-color: white;
-        border: 0;
+        border: 0 !important;
     }
      .with-custom-spinners {
         padding-left: 10px !important;
         width: 60px !important;
+        border-radius: 0 !important;
      }
     .with-custom-spinners:focus {
         outline-offset: -2px;
@@ -74,24 +77,23 @@ description: "Styling, UX, validation"
     }
 
     .with-custom-spinners:user-invalid {
-        border: 0 !important;
         border-radius: 0 !important;
         outline-offset: -2px;
-        outline: solid 2px orangered;
+        outline: solid 2px orangered !important;
     }
 
     [command="--increment"] {
         padding-inline: 10px;
         align-content: center;
         display: flex;
-        border-left: solid 1px black;
+        border-left: solid 1px black !important;
     }
 
     [command="--decrement"] {
         padding-inline: 10px;
         display: flex;
         align-content: center;
-        border-right: solid 1px black;
+        border-right: solid 1px black !important; 
     }
 
     .with-custom-spinners-container {
@@ -189,7 +191,7 @@ numberInputs.forEach((input) => {
 <button commandfor="cost" command="--increment">+</button>
 ```
 
-<div class="with-custom-spinners-container">
+<div class="with-custom-spinners-container ">
 <button commandfor="cost" command="--decrement"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="14"><path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
 </svg>
 </button>
@@ -283,7 +285,7 @@ input.addEventListener("input", function (event) {
 ```
 <div>
 <label for="quantity">Enter a number between 1 an 10</label>
-<input id="quantity" required type="number" min="1" max="10" step="1" inputmode="numeric"/>
+<input id="quantity" required type="number" min="1" max="10" step="1"/>
 <p id="msg"></p>
 </div>
 
@@ -293,7 +295,7 @@ Like other inputs, the number input can be styled with `:valid`, `:invalid`, `:u
 
 ## When not to use `<input type="number" />`?
 
-As demonstrated, its easy to use CSS to remove the increment and decrement buttons from a number input. However, a user can still use the up and down arrow buttons on their physical keyboard to change the value. This makes the number input inappropriate for fields like credit card numbers, ZIP codes, social security numbers, or one-time passcodes, where `<input type="text" inputmode="numeric" />` should be used instead, together with an appropriate `pattern` attribute. If the value could potentially start with a leading 0, do not use `<input type="number" />`.
+As demonstrated, its easy to use CSS to remove the increment and decrement buttons from a number input. However, a user can still use the up and down arrow buttons on their physical keyboard to change the value. This makes the number input [inappropriate](https://kilianvalkhof.com/2022/css-html/are-you-sure-thats-a-number-input/) for fields like credit card numbers, ZIP codes, social security numbers, or one-time passcodes, where `<input type="text" inputmode="numeric" />` should be used instead, together with an appropriate `pattern` attribute. If the value could potentially start with a leading 0, do not use `<input type="number" />`.
 
 ## Conclusion
 
