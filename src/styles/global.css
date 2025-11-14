@@ -30,7 +30,7 @@ body {
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
 	font-size: 18px;
-	line-height: 1.7;
+	line-height: 1.6;
 }
 main {
 	width: 720px;
@@ -61,7 +61,7 @@ h3 {
 	font-stretch: 95%;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 19px;
 }
 h5 {
 	font-size: 1.25em;
@@ -106,6 +106,10 @@ img {
 
 video {
 	max-width: 100%;
+}
+
+li {
+    margin-bottom: 6px;
 }
 
 code {
