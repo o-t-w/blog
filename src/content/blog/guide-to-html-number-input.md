@@ -214,7 +214,7 @@ One perhaps unexpected feature of the number input tripped some users up: in des
 
 ## Numeric keyboard on mobile
 
-The default keyboard shown on iOS and iPadOS includes more than just numbers. For a numbers-only keyboard, use the `inputmode="numeric"` HTML attribute:
+The default keyboard shown on iOS and iPadOS includes more than just numbers. This can be controlled via the HTML `inputmode` attribute. For a numbers-only keyboard, specify `inputmode="numeric"`:
 
 ```html
 <input type="number" inputmode="numeric" />
@@ -222,7 +222,7 @@ The default keyboard shown on iOS and iPadOS includes more than just numbers. Fo
 
 <input class="mobile-only" type="number" inputmode="numeric" />
 
-To include a decimal point, use `inputmode="decimal"` HTML attribute:
+For a keyboard that includes only numbers and a decimal point, use `inputmode="decimal"`:
 
 ```html
 <input type="number" inputmode="decimal" step="any"/>
