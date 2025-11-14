@@ -235,6 +235,24 @@ For a keyboard that includes only numbers and a decimal point, use `inputmode="d
 
 `inputmode="numeric"` prevents users from entering anything other than whole numbers on mobile, but has no effect for users with a physical keyboard. What happens when a user types a non-numeric character? Browsers are inconsistent. In Firefox and older versions of Safari, users can type whatever they want. [Safari 26.2](https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Forms) updated the behaviour to match Chromium-based browsers. In Chrome/Edge and recent versions of Safari, disallowed characters are immediately and silently rejected: if a user types a disallowed character, it doesn't show up in the input. What characters are allowed? In all browsers a decimal point, the plus and minus symbols and the letter `e` can be typed into the input. There is no way to change this behaviour, other than via JavaScript. Notably, commas aren’t valid, so users can’t use them as delimiters when typing large numbers.
 
+### Localisation
+
+In many countries, including much of Europe and South America, a comma is used as the decimal separator rather than a period. Users in those countries expect to type 2,45 rather than 2.45, for example. The HTML spec doesn't dictate exactly how browsers should handle localisation:
+
+> A user agent designed for the French market **might** display the value with apostrophes between thousands and commas before the decimals, and allow the user to enter a value in that manner, internally converting it to the submission format described above.
+
+In Firefox, users are always free to type whatever they want, but validation depends on the language set by the HTML `lang` attribute. 
+
+```html
+<html lang="de-DE">
+```
+
+For other browsers, behaviour depends on the language settings of the device. For browsers on iOS `inputmode="decimal"` displays a comma rather than a period, when appropriate for the language.
+
+<img style="max-width: 340px; margin-inline: auto;" src="/localised-inputmode.png" alt="">
+
+Chrome allows users to type either a period or a comma. On desktop Safari (from version 26.2) when a user presses the comma key on their keyboard it will be visibly converted to a period. In all other browsers a user can type a comma and see a comma on the screen, but under the hood the browser converts it: if a user types `2,55` the string returned by `.value` in JavaScript will be `"2.55"`, and the number returned by `.valueAsNumber` will be `2.55`, rather than `NaN`.
+
 ## `.valueAsNumber`
 
 The `.valueAsNumber` property provides the value as a number rather than a string, which saves you needing to use `parseInt` or `parseFloat`.
