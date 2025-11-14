@@ -214,7 +214,7 @@ One perhaps unexpected feature of the number input tripped some users up: in des
 
 ## Numeric keyboard on mobile
 
-The default keyboard shown on iOS and iPadOS includes more than just numbers. This can be controlled via the HTML `inputmode` attribute. For a numbers-only keyboard, specify `inputmode="numeric"`:
+The default keyboard shown on iOS includes more than just numbers. This can be controlled via the HTML `inputmode` attribute. For a numbers-only keyboard, specify `inputmode="numeric"`:
 
 ```html
 <input type="number" inputmode="numeric" />
@@ -251,11 +251,11 @@ For other browsers, behaviour depends on the language settings of the device. Fo
 
 <img style="max-width: 340px; margin-inline: auto;" src="/localised-inputmode.png" alt="">
 
-Chrome allows users to type either a period or a comma. On desktop Safari (from version 26.2) when a user presses the comma key on their keyboard it will be visibly converted to a period. In all other browsers a user can type a comma and see a comma on the screen, but under the hood the browser converts it: if a user types `2,55` the string returned by `.value` in JavaScript will be `"2.55"`, and the number returned by `.valueAsNumber` will be `2.55`, rather than `NaN`.
+Desktop Safari (from version 26.2) has a unique behaviour: when a user presses the comma key on their keyboard it will be visibly converted to a period. In all other browsers a user can type a comma and see a comma on the screen, but under the hood the browser converts it: if a user types `2,55` the string returned by `.value` in JavaScript will be `"2.55"`, and the number returned by `.valueAsNumber` will be `2.55`, rather than `NaN`. On desktop, for languages where a comma is the commonly used decimal separator, Chrome allows users to type either a period or a comma. 
 
 ## `.valueAsNumber`
 
-The `.valueAsNumber` property provides the value as a number rather than a string, which saves you needing to use `parseInt` or `parseFloat`.
+The `.valueAsNumber` property provides the value as a number rather than a string, which saves you needing to use `parseInt`, `parseFloat` or `Number()`.
 
 ```js
 const input = document.querySelector('input[type="number"]');
