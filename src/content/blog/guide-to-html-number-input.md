@@ -104,6 +104,39 @@ description: "Styling, UX, validation"
         display: flex;
     }
 
+    .input-with-prefix {
+  min-width: 70px !important;
+  border: 0 !important;
+  padding: 6px !important;
+  padding-left: 20px !important;
+}
+
+.input-with-prefix:focus {
+  outline: 0 !important;
+}
+
+.input-shell {
+  border: solid 1px black;
+  width: fit-content;
+  position: relative;
+  align-items: center;
+  display: flex;
+  
+  span {
+  pointer-events: none;
+  position: absolute;
+  left: 6px;
+}
+  
+  &:has(:invalid) {
+    border-color: orangered;
+  }
+
+  &:focus-within {
+  outline: solid 1px AccentColor;
+  }
+}
+
 </style>
 
 <h2 style="margin-top: 0;">Removing the increment/decrement buttons</h2>
@@ -310,6 +343,64 @@ input.addEventListener("input", function (event) {
 ### Styling error states
 
 Like other inputs, the number input can be styled with `:valid`, `:invalid`, `:user-valid` and `:user-invalid` pseudo-classes. Additionally, there's both an `:in-range` and `:out-of-range` pseudo-class to indicate whether the value is within the limits specified by the `min` and `max` attributes. It's important to alert users to _all_ errors, so I can't think of a good use case for `:in-range` or `:out-of-range`. Unlike `rangeOverflow` and `rangeUnderflow` in JavaScript, there's no way to discern between whether the value is too high or too low in CSS.
+
+## Datalist
+
+Like most other input types, a `datalist` can be used for suggested values. 
+
+```html
+<input list="price" type="number" step="0.01">
+
+<datalist id="price">
+  <option value="2.99"></option>
+  <option value="5.00"></option>
+</datalist>
+```
+
+<input style="width: 100px;" list="price" type="number" step="0.01">
+
+<datalist id="price">
+  <option value="2.99"></option>
+  <option value="5.00"></option>
+</datalist>
+
+## Including a prefix or suffix
+
+To include a prefix or suffix that appears to be inside the input, remove the `border` from the input element and style a parent element to visibly resemble an input:
+
+<div class="input-shell">
+  <span>£</span>
+  <input class="input-with-prefix" type="number" step="0.01">
+</div>
+
+```html
+<div class="input-shell">
+  <span>£</span>
+  <input type="number" step="0.01">
+</div>
+```
+
+```css
+.input-shell {
+  border: solid 1px black;
+  width: fit-content;
+  
+  &:has(:invalid) {
+    border-color: orangered;
+  }
+
+  &:focus-within {
+  outline: solid 1px AccentColor;
+  }
+}
+
+.prefix {
+  pointer-events: none;
+  position: absolute;
+}
+```
+
+Use `pointer-events: none` on the prefix icon to ensure that clicking anywhere on the input will focus it. 
 
 ## When not to use `<input type="number" />`?
 
