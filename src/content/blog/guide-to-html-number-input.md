@@ -237,7 +237,7 @@ For a keyboard that includes only numbers and a decimal point, use `inputmode="d
 
 ### Localisation
 
-In many countries, including much of Europe and South America, a comma is used as the decimal separator rather than a period. Users in those countries expect to type 2,45 rather than 2.45, for example. The HTML spec doesn't dictate exactly how browsers should handle localisation:
+In many countries, including much of Europe and South America, a comma is used as the decimal separator rather than a period. Users in those countries expect to type 2,45 rather than 2.45, for example. The [HTML spec](https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)) doesn't dictate exactly how browsers should handle localisation:
 
 > A user agent designed for the French market **might** display the value with apostrophes between thousands and commas before the decimals, and allow the user to enter a value in that manner, internally converting it to the submission format described above.
 
