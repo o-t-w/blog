@@ -95,4 +95,10 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
     <td>Does not support hardware decoding</td>
     <td>A15</td>
   </tr>
+
+  <tr>
+    <th scope="row">Vision Pro</th>
+    <td>2025</td>
+    <td>M5</td>
+  </tr>
 </table>
