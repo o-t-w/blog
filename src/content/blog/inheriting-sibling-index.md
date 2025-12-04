@@ -43,6 +43,7 @@ body {
     animation: enter 1s both;
     animation-delay: calc(var(--i) * 0.1s);
     animation-timing-function: var(--timing);
+    transform: translateZ(0); /* Fix Safari bug */
 }
 
 @keyframes enter {
