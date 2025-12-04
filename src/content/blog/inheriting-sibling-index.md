@@ -65,9 +65,9 @@ body {
 </style>
 
 <div class="index-example-grid">
-    <div class="item"><img src="/blobmagician.png" alt="" class="inner"></div>
-    <div class="item"><img src="/angelblobemoji.png" alt="" class="inner"></div>
-    <div class="item"><img src="/blobballoon.png" alt="" class="inner"></div>
+    <div class="item"><img src="/blobmagician.avif" alt="" class="inner"></div>
+    <div class="item"><img src="/angelblobemoji.avif" alt="" class="inner"></div>
+    <div class="item"><img src="/blobballoon.avif" alt="" class="inner"></div>
 </div>
 
 One primary use case for `sibling-index()` is staggered animations. In the above example, the images I'm animating aren't siblings, but their parents are. CSS variables are inherited by default, so I assumed the following code would just work: 
