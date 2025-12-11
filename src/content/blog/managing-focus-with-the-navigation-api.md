@@ -1,6 +1,6 @@
 ---
 pubDate: 'Dec 11 2025'
-title: Focus Management with the Navigation API"
+title: Focus Management with the Navigation API
 heroImage: "/tab.png"
 description: "Managing focus when using client-side routing"
 ---
