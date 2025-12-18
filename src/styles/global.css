@@ -45,7 +45,7 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 0.5rem 0;
+	margin: 24px 0 0.5rem 0;
 	color: rgb(var(--black));
 	line-height: 1.2;
 }
@@ -54,21 +54,22 @@ h1 {
 }
 h2 {
 	font-size: 23px;
+	/* font-weight: 550; */
 }
 h3 {
 	font-size: 20px;
-	font-weight: 550;
-	font-stretch: 95%;
+	/* font-weight: 550;
+	font-stretch: 95%; */
 }
 h4 {
-	font-size: 19px;
+	font-size: 18px;
 }
 h5 {
 	font-size: 1.25em;
 }
 strong,
 b {
-	font-weight: 700;
+	font-weight: 610;
 }
 a {
 	color: var(--accent);
@@ -130,7 +131,7 @@ code * {
 	font-family: ui-monospace, monospace;
 }
 
-pre, code {
+:not(h1, h2, h3, h4, h5) > pre, :not(h1, h2, h3, h4, h5) > code {
 	font-size: 15px !important;
 }
 
@@ -559,4 +560,9 @@ option::checkmark {
     order: 1;
     height: 16px;
     content: url(/select-tick.svg);
+}
+
+.info-box {
+	background-color: #adcdff;
+	padding: 16px;
 }
