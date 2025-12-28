@@ -1,7 +1,7 @@
 ---
 pubDate: 'Dec 28 2025'
 title: Rethinking SVG icons
-heroImage: "/placeholder.png"
+heroImage: "/icons.jpg"
 description: SVG icons are still a pain
 ---
 
