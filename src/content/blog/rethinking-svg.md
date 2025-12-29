@@ -9,7 +9,6 @@ In the 2025 State of HTML survey, SVG came second in the [Graphics & Multimedia 
 
 - "No way to pass `currentColor` and other params to remote SVGs makes icons very hard to manage"
 - "I'd like to refer to an SVG (e.g. to use as a repeated icon) that's less verbose than `<svg><use>...</use></svg>`"
-- "Unable to style an SVG when its not inline. (I would like to have icons in external SVGs but still color or style them as if inline.)"
 - “Want to be able to do `<img src='file.svg'>` and still retain ability to style. Currently if i want to pass through `currentColor` for example i have to inline the entire icon which is silly if i'm using it in dozens of places"
 - "Inlining SVGs causes a lot of repetition and noise in the HTML"
 
