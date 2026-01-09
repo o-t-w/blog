@@ -175,7 +175,21 @@ navigation.addEventListener("navigate", (event) => {
 ```
 In the above example, a view transition animates out the old view and animates in a loading spinner. That might seem like a good moment to change the URL. The fetch inside the `handler()` can't start until after the animation has finished, which is far from ideal. **Including a `precommitHandler` defers the commit until all promises returned by the `precommitHandler` have resolved.**
 
-`precommitHandler` is a more recent addition to the spec and is currently only supported in Chrome/Edge and Firefox Nightly. **Safari 26.2 [supports](https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#New-Features) the Navigation API but does not yet support `precommitHandler`.**
+It's also possible to register a regular `handler` [from within](https://github.com/whatwg/html/issues/11956) a `precommitHandler`:
+
+```js
+  event.intercept({
+    async precommitHandler(controller) {
+      const response = await fetch('thing.html');
+      const html = await response.text();
+      controller.addHandler(async () => {
+          document.querySelector('root').setHTMLUnsafe(html);
+      })
+  }
+});
+```
+
+`precommitHandler` is a more recent addition to the spec and is currently only supported in Chrome/Edge and Firefox Nightly. **Safari 26.2 [supports](https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#New-Features) the Navigation API but does not yet support `precommitHandler`.** Registering a handler from within a `precommitHandler` is an even later addition that landed in [Chrome 145](https://chromestatus.com/feature/5176907844943872).
 
 ### Optional step: adding a view transition
 
