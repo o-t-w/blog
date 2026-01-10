@@ -8,6 +8,14 @@
             "variable": true,
             "opensource": true
         },
+         {
+            "name": "BM Neon",
+            "creator": "Beam Type",
+            "type": ["COLRv1"],
+            "url": "https://www.beamtype.com/neon/process",
+            "variable": true,
+            "opensource": false
+        },
         {
             "name": "Gradial",
             "creator": "Lena Weber",
