@@ -45,6 +45,20 @@ background-image: image(alpha(from black / 50%)), url('/mountains.avif');
 <h2>Moving Mountains</h2>
 </div>
 
+## All the control of `background-image`
+
+Unlike a CSS `background-color`, `background-image` comes with all sorts of ways to control its position and size. That may be useful in some scenarios.
+
+```css
+div {
+    background-image: image(yellow);
+    background-size: 50% 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid 2px;
+}
+```
+
 ## Maintain a solid background color when working with `background-clip: border-area`
 
 ```css
@@ -74,6 +88,39 @@ button {
 <div class="bg-black">
 <button class="button">Click!</button>
 </div>
+
+## Easily swapping between a gradient and a solid color
+
+The following example uses a solid color for light mode, and a gradient for dark mode.
+
+```css
+.bg {
+    background-image: light-dark(image(#efefef), linear-gradient(15deg, #2e3245, #001031));
+}
+```
+
+## `content`
+
+It saves one line of code compared to `content: ""; background-color: red;`.
+
+```css
+div::after {
+    content: image(red);
+    display: block;
+    height: 100px;
+    width: 100px;
+}
+```
+
+## A default value for a registered custom property
+
+```css
+@property --bg {
+    syntax: "<image>";
+    inherits: false;
+    initial-value: image(transparent);
+}
+```
 
 <style>
 
