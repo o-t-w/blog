@@ -5,7 +5,9 @@ heroImage: "/image-function.png"
 description: Working with the CSS image() function
 ---
 
-In CSS, the gradient syntax can be used to create a single solid non-gradient color:
+The CSS `image()` function is intended as a replacement for `url()` but for the time being it only works with colors. Using image files like `image("kitten.jpg")` doesn't work in any browser yet. In this article, I'll look at why a solid color image can be useful.
+
+In CSS, the gradient syntax can be used to create a single solid color:
 
 ```css
 div {
@@ -22,8 +24,6 @@ div {
 ```
 
 <div class="solid-bg"></div> 
-
-`image()` is intended as a replacement for `url()` but for the time being it only works with colors. Using image files like `image("kitten.jpg")` doesn't work in any browser yet.
 
 When is this useful over using a `background-color`?
 
