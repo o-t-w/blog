@@ -27,6 +27,8 @@ When is this useful over using a `background-color`?
 
 ## Place a partially transparent color over a `background-image`
 
+A `background-color` always lies beneath background images, so doesn't work for this use case.
+
 ```css
 .hero {
 background-image: image(rgb(0 0 0 / 50%)), url('/mountains.avif');
