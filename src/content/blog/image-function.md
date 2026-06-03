@@ -23,6 +23,8 @@ div {
 
 <div class="solid-bg"></div> 
 
+`image()` is intended as a replacement for `url()` but for the time being it only works with colors. Using image files like `image("kitten.jpg")` doesn't work in any browser yet.
+
 When is this useful over using a `background-color`?
 
 ## Place a partially transparent color over a `background-image`
