@@ -2,12 +2,12 @@
 pubDate: 'Dec 05 2026'
 title: Streaming HTML
 heroImage: "/stream-html.png"
-description: TODO
+description: Stream HTML with textStream() and streamHTML()
 ---
 
 <style>
     table {
-    overflow-x: scroll;
+    overflow-x: auto;
     max-width: 100%;
     display: block;
 
@@ -20,7 +20,7 @@ description: TODO
         padding-right: 16px;
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 1000px) {
         table {
             max-width: revert;
             overflow-x: revert;
@@ -32,11 +32,11 @@ description: TODO
     }
 </style>
 
-"Streaming is the process of transmitting data incrementally as it’s generated. On the web, HTML streaming means sending HTML to the browser chunk-by-chunk, as soon as it's ready" - Marko website
+"Streaming is the process of transmitting data incrementally as it’s generated. HTML streaming means sending HTML to the browser chunk-by-chunk, as soon as it's ready" - Marko website
 
 ## Getting a stream of HTML via `fetch()`
 
-How do we get a stream of text from a `fetch` call? `response.text()` decodes the response as text but returns it all at once, not as a stream. For that reason, it is not appropriate for our use case. `response.body` is a stream, but a stream of `Uint8Array`, not of text. We therefor need to pass the `response.body` byte stream through a `TextDecoderStream()`.
+How do we get a stream of text from a `fetch` call? `response.text()` decodes the response as text but returns it all at once, not as a stream. For that reason, it is not appropriate for our use case. `response.body` is a stream, but a stream of `Uint8Array`, not of text. We therefore need to pass the `response.body` byte stream through a `TextDecoderStream()`.
 
 ```js
 let response = await fetch('/');
@@ -44,14 +44,14 @@ let decoder = new TextDecoderStream();
 response.body.pipeThrough(decoder)
 ```
 
-The above code can be slightly improved by making use of the new `textStream()` method. `textStream()` returns a stream of decoded text chunks. `textStream()` is equivalent to piping the byte stream through a utf-8 `TextDecoderStream()`, so the previous code can be rewritten as:
+The above code can be improved by making use of the new `textStream()` method. `textStream()` returns a stream of string chunks. `textStream()` is equivalent to piping the body stream through a utf-8 `TextDecoderStream()`, so the previous code can be rewritten as:
 
 ```js
 let response = await fetch('/');
-response.body.textStream()
+response.textStream()
 ```
 
-Now that we have a stream of decoded text, we can stream it into the page.
+Now that we have a stream of HTML, we can stream it into the page.
 
 ## Streaming HTML into the page
 
@@ -61,7 +61,7 @@ Chrome Canary recently added new methods for streaming HTML into the DOM. The `s
 const div = document.querySelector('div');
   
 const response = await fetch('partial.html');
-response.body.textStream()
+response.textStream()
 .pipeTo(div.streamHTML());
 ```
 
@@ -72,7 +72,7 @@ response.body.textStream()
 - `streamBeforeHTML` adds the HTML before the element
 - `streamAfterHTML` adds the HTML after the element
 
-Here's a full list of the new streaming methods. They come in safe and unsafe versions. 
+There are also equivalent unsafe versions of these methods:
 
 | safe streaming methods | unsafe streaming methods | 
 | --- | --- |
@@ -88,7 +88,7 @@ The methods without `Unsafe` in their name will always sanitize the HTML. The un
 
 ## Comparison with non-streaming methods
 
-Along with all the new streaming methods, there are also new non-streaming equivalents.  
+Along with all the new streaming methods, there are also new non-streaming equivalents. Here's the full list of all the new methods: 
 
 | safe | unsafe | stream safe | stream unsafe | 
 | --- | --- | --- | --- |
@@ -121,6 +121,9 @@ There are two key differences between all the new methods with `Unsafe` in their
 These new streaming methods are part of a larger interrelated feature called [declarative partial updates](https://developer.chrome.com/blog/declarative-partial-updates#a_new_set_of_static_and_streaming_apis).
 
 ```html
+<main>
+     <?marker name="main">
+</main>
 <div>
      <?marker name="side-panel">
 </div>
@@ -128,18 +131,21 @@ These new streaming methods are part of a larger interrelated feature called [de
 
 ```html
 <template for="side-panel">
-<h1>I am inside a template</h1>
+<h1>Sidebar content</h1>
+</template>
+
+<template for="main">
+<h1>Main content</h1>
 </template>
 ```
 
-Rather than needing to `querySelector` an element in the DOM to stream into, the template can be appended to the body. The corresponding `name` and `for` attributes determine which part of the page gets updated. The contents of the template are streamed into the position of the marker.
+Rather than needing to `querySelector` an element in the DOM to stream into, `<template>` elements can be appended to the body. The corresponding `name` and `for` attributes determine which parts of the page get updated. The contents of the template are streamed into the position of the marker with the matching name.
 
 By default, all safe methods remove `<template>` elements, so you need to specify a sanitizer to allow them:
 
 ```js
 const response = await fetch('template-partial.html');
-response.body
-response.body.textStream();
+response.textStream()
 .pipeTo(document.body.streamAppendHTML({sanitizer: {}}));
 ```
 
@@ -155,13 +161,16 @@ Safe methods strip out any `<script>` tags and inline event handlers. If the HTM
 
 ```js
 const response = await fetch('template-partial.html');
-response.body.textStream();
+response.textStream()
 .pipeTo(document.body.streamAppendHTMLUnsafe({runScripts: true}));
 ```
 
 ## Browser support
 
 `textStream` is supported in Chrome Canary. The streaming DOM methods are supported in Chrome Canary. `setHTMLUnsafe` is supported in all browsers. `setHTML` is supported in Firefox and Chrome/Edge.
+
+
+SHOULD I MENTION blob.textStream()? OR OTHER WAYS TO GET A STREAM OF TEXT?
 
 https://github.com/whatwg/fetch/issues/1861
 [developer.chrome.com](https://developer.chrome.com/blog/declarative-partial-updates#renewed_html_insertion_and_streaming_methods):
