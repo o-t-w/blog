@@ -7,7 +7,7 @@ heroImage: "/webkit.jpg"
 description: Do we still need Autoprefixer?
 ---
 
-*This article was updated on November 5th 2025*
+*This article was updated on June 9th 2026*
 
 CSS prefixes are a relic from a bygone age.
 
@@ -66,7 +66,7 @@ You might as well type that out by hand as _there will never be_ a standardised 
 
 There are a great many prefixed properties for styling scrollbars. These are not a web standard and will never be a web standard, but they do still work in Chrome and Safari. The standard properties for styling scrollbars are `scrollbar-width` and `scrollbar-color`, which have never required a prefix.
 
-The CSS `stretch` keyword as a value for `width` and `height` is implemented only in [Chrome/Edge](https://chromestatus.com/feature/6176445286842368). The equivalent prefixed value `-webkit-fill-available` works in Safari and older versions of Chrome/Edge. `-moz-available` is required for Firefox.
+The CSS `stretch` keyword as a value for `width` and `height` is implemented in [Chrome/Edge](https://chromestatus.com/feature/6176445286842368) and Safari (as of [version 27](https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes#:~:text=support%20for%20the-,stretch%20keyword,-in%20box%20sizing)). The equivalent prefixed value `-webkit-fill-available` works in older versions of Safari and Chrome/Edge. Firefox had required a `-moz-available` prefix but now also [supports](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/146#:~:text=The%20legacy%20%2Dwebkit%2Dfill%2Davailable%20keyword%20is%20now%20supported%20as%20a%20value%20for%20the%20CSS%20width%20and%20height%20properties%20to%20improve%20web%20compatibility) the `-webkit-fill-available` prefix.
 
 `box-decoration-break` requires a `-webkit` prefix in Safari. Chrome/Edge shipped full unprefixed support for this property in [version 130](https://developer.chrome.com/blog/box-decoration-break#inline_fragmentation).
 

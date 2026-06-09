@@ -1,5 +1,5 @@
 ---
-pubDate: 'Dec 05 2026'
+pubDate: 'June 05 2026'
 title: Streaming HTML
 heroImage: "/stream-html.png"
 description: Stream HTML with response.textStream() and streamHTML()
