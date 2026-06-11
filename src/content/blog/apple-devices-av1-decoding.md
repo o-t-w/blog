@@ -4,7 +4,7 @@ title: "Which Apple devices support hardware-accelerated AV1 video decoding?"
 heroImage: "/av1.png"
 description: "AV1 decoding on Mac, iPhone and iPad"
 ---
-_This article was updated on 5th March, 2025_
+_This article was updated on 11th June, 2026_
 
 AV1 is the best video format for the web. It’s supported by all web browsers. However, for Safari, support depends on the hardware. Older Apple devices can’t play AV1 video on the web, even when running the latest operating system and version of Safari.
 
@@ -14,7 +14,11 @@ In 2023, Apple unveiled their M3 chip, the first Apple chip to support AV1 decod
 
 2023 also saw the release of the iPhone 15 Pro, which included hardware-accelerated decoding via the A17 Pro chip.
 
-Apple has taken a significant amount of time to upgrade its full-range of products to the latest chips. Some devices skipped the M3 and went from the M2 to the M4. Below is a list of the first Apple devices to support hardware-accelerated AV1 video decoding:
+Apple has taken a significant amount of time to upgrade its full-range of products to the latest chips. Some devices skipped the M3 and went from the M2 to the M4. 
+
+The Mac Pro has now been discontinued. The Mac Pro desktop computer used the M2 Ultra chip, which did not support AV1.
+
+Below is a list of the first Apple devices to support hardware-accelerated AV1 video decoding:
 
 <table>
   <tr>
@@ -75,7 +79,7 @@ Apple has taken a significant amount of time to upgrade its full-range of produc
   <tr>
     <th scope="row">Mac Pro</th>
     <td>Does not support hardware decoding</td>
-    <td>M2 Ultra</td>
+    <td>Discontinued</td>
   </tr>
 
    <tr>
