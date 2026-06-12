@@ -29,6 +29,32 @@ description: Implementing dark mode with minimal JavaScript and standard CSS
         background-size: contain;
         margin-top: 12px;
     }
+
+    @supports not (background-image: light-dark(linear-gradient(15deg, #b9b6ff, #308dc6), linear-gradient(15deg, #6b7495, #001339))) {
+        :nth-child(1 of .bg-gradient):after {
+            color: red;
+            content: "Your browser does not support this feature of light-dark().";
+        }
+    }
+
+    @supports not (background-image: image(#001339)) {
+    :nth-child(1 of .bg-grad-solid):after {
+        color: red;
+        content: "Your browser does not support the image() function.";
+    }
+}
+
+    @supports not (background-image: light-dark(url(/lightmode.avif), url(/darkmode.avif))) {
+
+    :nth-child(1 of .bg) {
+        aspect-ratio: revert !important;
+    }
+    
+    :nth-child(1 of .bg):after {
+        color: red;
+        content: "Your browser does not support this feature of light-dark().";
+    }
+}
 </style>
 
 Respecting the user's OS setting is straightforward: use the `prefers-color-scheme` media query in CSS. Arguably, that isn't enough: users should also be able to customise their choice on a per-site basis. A user might want dark mode for the UI of an application, but light mode for reading long-form text on content-heavy sites, for example.
