@@ -38,7 +38,7 @@ We need to:
 1. Support the user's system setting as the default for when the user lands on our website for the first time
 2. Allow the user to override their system setting with a toggle in our application.
 
-The color scheme of a web page can be set either via a HTML meta tag in the `<head>` of the document or via the CSS `color-scheme` property on the `html` element. It can take time for CSS to load on slow connections, so using the meta tag is the recommended approach. When a user lands on your website for the first time, respect their system preference by setting `<meta name="color-scheme" content="light dark">`. To override the OS setting via a control in your web app or site, use JavaScript to update the `content` attribute value to `light` to override the user's system preferences and force light mode, `dark` to force dark mode, or `light dark` to revert back to the OS setting.
+The color scheme of a web page can be set either via a HTML meta tag in the `<head>` of the document or via the CSS `color-scheme` property on the `html` element. It can take time for CSS to load on slow connections, so using the meta tag is the recommended approach. When a user lands on your website for the first time, respect their system preference by setting `<meta name="color-scheme" content="light dark">`. To override the OS setting via a control in your web app or site, use JavaScript to update the `content` attribute value to `light` to force light mode, `dark` to force dark mode, or `light dark` to revert back to the OS setting.
 
 ```js
 const metaTag = document.querySelector('[name="color-scheme"]');
