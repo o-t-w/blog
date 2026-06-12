@@ -31,14 +31,14 @@ description: Implementing dark mode with minimal JavaScript and standard CSS
     }
 </style>
 
-Respecting the users OS setting is straightforward: use the `prefers-color-scheme` media query in CSS. Arguably, that isn't enough: users should also be able to customise their choice on a per-site basis. A user might want dark mode for the UI of an application, but light mode for reading long-form text on content-heavy sites, for example.
+Respecting the user's OS setting is straightforward: use the `prefers-color-scheme` media query in CSS. Arguably, that isn't enough: users should also be able to customise their choice on a per-site basis. A user might want dark mode for the UI of an application, but light mode for reading long-form text on content-heavy sites, for example.
 
 We need to:
 
-1. Support the users system setting as the default for when the user lands on our website for the first time
+1. Support the user's system setting as the default for when the user lands on our website for the first time
 2. Allow the user to override their system setting with a toggle in our application.
 
-The color scheme of a web page can be set either via a HTML meta tag in the `<head>` of the document or via the CSS `color-scheme` property on the `html` element. It can take time for CSS to load on slow connections, so using the meta tag is the recommended approach. When a user lands on your website for the first time, respect their system preference by setting `<meta name="color-scheme" content="light dark">`. To override the OS setting via a control in your web app or site, use JavaScript to update the `content` attribute value to `light` to override the users system preferences and force light mode, `dark` to force dark mode, or `light dark` to revert back to the OS setting.
+The color scheme of a web page can be set either via a HTML meta tag in the `<head>` of the document or via the CSS `color-scheme` property on the `html` element. It can take time for CSS to load on slow connections, so using the meta tag is the recommended approach. When a user lands on your website for the first time, respect their system preference by setting `<meta name="color-scheme" content="light dark">`. To override the OS setting via a control in your web app or site, use JavaScript to update the `content` attribute value to `light` to override the user's system preferences and force light mode, `dark` to force dark mode, or `light dark` to revert back to the OS setting.
 
 ```js
 const metaTag = document.querySelector('[name="color-scheme"]');
@@ -60,20 +60,20 @@ btnsystem.addEventListener('click', function() {
 });
 ```
 
-#### What does the `color-scheme` effect?
+#### What does the `color-scheme` affect?
 
-- Colors, gradients, or images set via the `light-dark()` CSS function. 
-- System colors like `Canvas` and `CanvasText`.
-- Scrollbar colors.
-- The default colors of HTML elements like buttons.
+- Colors, gradients, or images set via the `light-dark()` CSS function
+- System colors like `Canvas` and `CanvasText`
+- Scrollbar colors
+- The default colors of HTML elements like buttons
 - iframes styles (so long as the iframe document has opted in via the meta tag)
-- SVG styles that make use of `light-dark()` or `prefers-color-scheme`
+- SVG's that make use of `light-dark()` or `prefers-color-scheme`
 
-#### What doesn't `color-scheme` effect?
+#### What doesn't `color-scheme` affect?
 
 There's an unfortunate disconnect between `color-scheme` and the `prefers-color-scheme` media query. `prefers-color-scheme` reflects the OS settings — regardless of the `color-scheme` value. If you're providing an in-page toggle that implements dark mode, you can't adopt the `prefers-color-scheme` media query.
 
-The following code would not be impacted by the `color-scheme`:
+The following code is not be impacted by `color-scheme`:
 
 ```html
 <picture>
@@ -83,9 +83,9 @@ The following code would not be impacted by the `color-scheme`:
 </picture>
 ```
 
-Other than making use of a `background-image`, there's sadly not an equivalent approach that references the `color-scheme`. 
+Other than making use of a `background-image`, there's sadly not an equivalent approach to the `<picture>` element that references the `color-scheme`. 
 
-There are two exceptions where `color-scheme` will effect the `prefers-color-scheme` media query:
+There are two exceptions where `color-scheme` will affect the `prefers-color-scheme` media query:
 
 - iframes
 - SVG
@@ -101,7 +101,7 @@ Below are two iframes that show the same document. The document inside the ifram
 
 As you can see in the above example, the `@media (prefers-color-scheme: dark)` styles are being applied when `color-scheme: dark` is used in the parent document.
 
-The same principle applies to SVG. Here's the contents of an `.svg` file:
+The same principle applies to SVG. Here's the content of an `.svg` file:
 
 ```html
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -130,12 +130,12 @@ circle {
 
 #### Some Safari caveats
 
-- Support for the `prefers-color-scheme` media query within SVG was added in [Safari 27](<https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes?changes=la,la#:~:text=175598175)-,Fixed%20an%20issue%20where,the%20system%20color%20appearance,-.%20(176413340>), but `color-scheme` does not effect the media query ([see bug report](https://bugs.webkit.org/show_bug.cgi?id=316640))
+- Support for the `prefers-color-scheme` media query within SVG was added in [Safari 27](<https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes?changes=la,la#:~:text=175598175)-,Fixed%20an%20issue%20where,the%20system%20color%20appearance,-.%20(176413340>), but `color-scheme` does not affect the media query ([see bug report](https://bugs.webkit.org/show_bug.cgi?id=316640))
 - Support for the `prefers-color-scheme` media query within iframes was added in [Safari 27](<https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes?changes=la,la#:~:text=140674753)-,Fixed%20an%20issue%20where,was%20set%20to%20dark,-.%20(142072593>) and the `color-scheme` of the parent document does override it, as it should 🎉. However, other bugs remain ([see bug report](https://bugs.webkit.org/show_bug.cgi?id=316680))
 
-## `light-dark()` CSS function now works with images
+## Using `light-dark()` with images and gradients
 
-The `light-dark()` function was originally limited to solid colors. It can now be used for gradients and images. 
+The `light-dark()` function was originally limited to colors. It can now be used for gradients and images (as of Chrome/Edge version 150, Firefox version 150, and a forthcoming version of Safari). 
 
 ```css
 .bg-gradient {
@@ -151,7 +151,7 @@ The `light-dark()` function was originally limited to solid colors. It can now b
 <div class="bg-gradient" style="color-scheme: light;"></div>
 <div class="bg-gradient" style="color-scheme: dark;"></div>
 
-Its also possible to switch between a single solid color and a gradient, depending on the `color-scheme`.
+It's also possible to switch between a single solid color and a gradient, depending on the `color-scheme`.
 
 ```css
 .bg-grad-solid {
@@ -229,6 +229,6 @@ All browsers now support style queries, which allow you to apply styles dependin
  
 We might get a way to override the `prefers-color-scheme` media query with JavaScript in the future. There's a [spec](https://drafts.csswg.org/mediaqueries-5/#script-control-user-prefs) but no browser has implemented it yet.
 
-## More than light/dark?
+<!-- ## More than light/dark?
 
-Some websites offer more than a binary choice between light/dark/system. Twitter offers both “dim” dark mode and a super-dark “lights out” mode. GitHub goes even further with a whole multitude of options (I’d hate to be a designer on GitHub.com with all of that to think about!) If you want to offer more choices than light/dark/system, `light-dark()` can’t help you.
+Some websites offer more than a binary choice between light/dark/system. Twitter offers both “dim” dark mode and a super-dark “lights out” mode. GitHub goes even further with a whole multitude of options (I’d hate to be a designer on GitHub.com with all of that to think about!) If you want to offer more choices than light/dark/system, `light-dark()` can’t help you. -->
