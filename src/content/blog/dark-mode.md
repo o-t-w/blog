@@ -215,7 +215,7 @@ It's also possible to switch between a single solid color and a gradient, depend
 
 ## Changing more than colors, images and gradients
 
-By and large, the thing you need to change between modes is color, but there are exceptions. A `box-shadow` might not be visible on a dark background in dark mode, so you may decide to apply a border instead, for example. Implementing that is currently rather challenging. The CSS standards body is planning to add a way to [detect the current color-scheme](https://github.com/w3c/csswg-drafts/issues/10577#issuecomment-3329616811) using either a CSS `if()` statement or a style query, but no browser has implemented this feature. It's possible to hack together an alternative, but I'm not sure I'd recommend this approach. 
+By and large, the thing you need to change between modes is color, but there are exceptions. A `box-shadow` might not be visible on a dark background in dark mode, so you may decide to apply a border instead, for example. Implementing that is currently rather challenging. The CSS standards body is planning to add a way to [detect the current color-scheme](https://github.com/w3c/csswg-drafts/issues/10577#issuecomment-3329616811) using either a CSS `if()` statement or a style query, but no browser has implemented this feature. It's possible to hack together an alternative. Below I'll look at two approaches.
 
 Define a CSS variable to be true when the page is using dark mode: 
 
@@ -245,6 +245,33 @@ All browsers now support style queries, which allow you to apply styles dependin
 }
 
 @container style(--dark: true) {
+  .card {
+    border: solid 1px rgb(94, 94, 94);
+  }
+}
+```
+
+A better approach that also uses style queries would be:
+
+```css
+@property --usedScheme {
+        syntax: "<color>";
+        inherits: true;
+        initial-value: transparent;
+    }
+
+body {
+    --usedScheme: light-dark(white, black);
+}
+
+@container style(--usedScheme: white) {
+    .card {
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
+@container style(--usedScheme: black) {
   .card {
     border: solid 1px rgb(94, 94, 94);
   }
