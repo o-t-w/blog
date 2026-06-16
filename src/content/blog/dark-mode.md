@@ -104,7 +104,6 @@ The following code is not be impacted by `color-scheme`:
 ```html
 <picture>
   <source srcset="logo-dark.png" media="(prefers-color-scheme: dark)" />
-  <source srcset="logo-light.png" media="(prefers-color-scheme: light)" />
   <img src="logo-light.png" alt="Product logo" />
 </picture>
 ```
