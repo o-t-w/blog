@@ -153,6 +153,8 @@ circle {
 <img style="color-scheme: light;" src="/circle-icon.svg" alt="">
 <img style="color-scheme: dark;" src="/circle-icon.svg" alt="">
 
+The CSS spec has recently been [updated](https://github.com/w3c/csswg-drafts/pull/13857#:~:text=This%20PR%20applies%20the%20resolution%20from%20the%20recent%20F2F%20in%20#13377%2C%20making%20(prefers%2Dcolor%2Dscheme)%20reflect%20the%20effects%20of%20%3Cmeta%20name=color%2Dscheme%3E) so that the color-scheme of the document does effect the media query in all contexts, but no browser has implemented this. 
+
 #### Some Safari caveats
 
 - Support for the `prefers-color-scheme` media query within SVG was added in [Safari 27](<https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes?changes=la,la#:~:text=175598175)-,Fixed%20an%20issue%20where,the%20system%20color%20appearance,-.%20(176413340>), but `color-scheme` does not affect the media query ([see bug report](https://bugs.webkit.org/show_bug.cgi?id=316640))
@@ -160,7 +162,7 @@ circle {
 
 ## Using `light-dark()` with images and gradients
 
-The `light-dark()` function was originally limited to colors. It can now be used for gradients and images (as of Chrome/Edge version 150, Firefox version 150, and a forthcoming version of Safari). 
+The `light-dark()` function was originally limited to colors. It can now be used for gradients and images (as of Chrome/Edge version 150, Firefox version 150, and Safari Technology Preview). 
 
 ```css
 .bg-gradient {
@@ -279,7 +281,7 @@ body {
 
 ## A (possible) future: overriding `prefers-color-scheme` via JS
  
-We might get a way to override the `prefers-color-scheme` media query with JavaScript in the future. There's a [spec](https://drafts.csswg.org/mediaqueries-5/#script-control-user-prefs) but no browser has implemented it yet.
+We might get a way to override the `prefers-color-scheme` media query with JavaScript in the future. There's a [spec](https://drafts.csswg.org/mediaqueries-5/#script-control-user-prefs), an [MDN entry](https://developer.mozilla.org/en-US/docs/Web/API/User_Preferences_API) and a prototype in Chrome Canary but the Safari team are [opposed to the idea](https://github.com/WebKit/standards-positions/issues/252).
 
 <!-- ## More than light/dark?
 
