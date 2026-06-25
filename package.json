@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astro-community/astro-embed-baseline-status": "^0.1.2",
+    "@astro-community/astro-embed-baseline-status": "^0.2.2",
     "@astrojs/mdx": "^7.0.0",
     "@astrojs/react": "^6.0.0",
     "@astrojs/rss": "^4.0.18",
