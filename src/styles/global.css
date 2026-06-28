@@ -498,11 +498,11 @@ dialog::backdrop {
     transition-timing-function: ease-out;
 }
 
-.accordion-details::details-content::after {
+/* .accordion-details::details-content::after {
 	content: "";
 	display: block;
 	padding-bottom: 12px;
-}
+} */
 
 .accordion-details[open]::details-content {
     height: auto;
