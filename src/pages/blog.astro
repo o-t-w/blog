@@ -14,7 +14,7 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead heroImage="/posts-social.jpg" title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			main {
 				width: 960px;
@@ -99,7 +99,7 @@ const posts = (await getCollection('blog')).sort(
 			<section style="display: grid; max-width: 860px; margin-inline: auto;">
 					{
 						posts.map((post) => (
-								<a class="post" href={`/blog/${post.slug}/`}>
+								<a class="post" href={`/blog/${post.id}/`}>
 									<div>
 										<h4 class="title">{post.data.title}</h4>
 										<p class="description">{post.data.description}</p>
