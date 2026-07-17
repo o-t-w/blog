@@ -153,7 +153,7 @@ circle {
 <img class="icon" style="color-scheme: light;" src="/circle-icon.svg" alt="">
 <img class="icon" style="color-scheme: dark;" src="/circle-icon.svg" alt="">
 
-The CSS spec has recently been [updated](https://github.com/w3c/csswg-drafts/pull/13857#:~:text=This%20PR%20applies%20the%20resolution%20from%20the%20recent%20F2F%20in%20#13377%2C%20making%20(prefers%2Dcolor%2Dscheme)%20reflect%20the%20effects%20of%20%3Cmeta%20name=color%2Dscheme%3E) so that the color-scheme of the document does effect the media query in all contexts, but no browser has implemented this. 
+The CSS spec has recently been [updated](https://github.com/w3c/csswg-drafts/pull/13857#:~:text=This%20PR%20applies%20the%20resolution%20from%20the%20recent%20F2F%20in%20#13377%2C%20making%20(prefers%2Dcolor%2Dscheme)%20reflect%20the%20effects%20of%20%3Cmeta%20name=color%2Dscheme%3E) so that the color-scheme of the document does effect the media query in all contexts, but no browser has implemented this. Click +1 on the relevant [Chromium issue](https://issues.chromium.org/issues/498561069) if you'd like to see this get prioritised.
 
 #### Some Safari caveats
 
