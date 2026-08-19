@@ -86,7 +86,7 @@ There are important use cases for the OpaqueRange API that don't involve the Cus
 
 ## Putting the two APIs together
 
-An `OpaqueRange` can be passed into the `new Highlight()` constructor:
+Pass an `OpaqueRange` into the `new Highlight()` constructor:
 
 ```js
 const input = document.querySelector('input[type="text"]');
