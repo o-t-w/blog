@@ -73,7 +73,11 @@ CSS.highlights.set("yellow", basic);
 ## What is an OpaqueRange?
 
 An `OpaqueRange` represents a portion of text within a form control's value. 
-An `OpaqueRange` object is created by calling `.createValueRange()` on a `<textarea>` or a text-based `<input>` (`type="text"`, `type="password"`, `type="search"`, `type="tel"`, `type="url"`). Inputs with a `type` of `number` or `email` do not support `.createValueRange()`.
+An `OpaqueRange` object is created by calling `.createValueRange()` on either of the following elements:
+- `<textarea>`
+- an `<input>` with a `type` of `text`, `password`, `search`, `tel` or `url`. 
+
+Inputs with a `type` of `number` or `email` do not support `.createValueRange()`.
 
 The following example would create an `OpaqueRange` from the first 4 letters of the input's value:
 
