@@ -77,8 +77,6 @@ An `OpaqueRange` object is created by calling `.createValueRange()` on either of
 - `<textarea>`
 - an `<input>` with a `type` of `text`, `password`, `search`, `tel` or `url`. 
 
-Inputs with a `type` of `number` or `email` do not support `.createValueRange()`.
-
 The following example would create an `OpaqueRange` from the first 4 letters of the input's value:
 
 ```js
@@ -125,7 +123,7 @@ blueHighlights.add(exampleRange2);
 
 ## Styling highlights
 
-There are some limitations to how you can style the highlight — only the following CSS properties are supported: 
+There are limitations to how you can style the highlight — only the following CSS properties are supported: 
 
 - `color`
 - `background-color`
