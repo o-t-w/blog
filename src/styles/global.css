@@ -562,3 +562,7 @@ option::checkmark {
 	background-color: #adcdff;
 	padding: 16px;
 }
+
+footer {
+	margin-top: 48px;
+}
