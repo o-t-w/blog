@@ -89,7 +89,7 @@ And here’s [Alex Russell](https://twitter.com/slightlylate/status/152006379019
 
 > "Page Transitions are incredibly important. We need to get away from "SPA" as the default style of building on the web; it has been an unmitigated disaster."
 
-Animated page transitions were never the main reason SPAs became popular. The vast majority of SPAs do not have page transitions, and they’re hard to implement with most JavaScript frameworks (Svelte seems to be the exception). However, the benefit of View Transitions doesn’t just lie in animation. Here’s [Fred K Schott](https://twitter.com/FredKSchott/status/1683935549504229376), the creator of Astro:
+Animated page transitions were never the main reason SPAs became popular. However, the benefit of View Transitions doesn’t just lie in animation. Here’s [Fred K Schott](https://twitter.com/FredKSchott/status/1683935549504229376), the creator of Astro:
 
 > "Transitions and animations are fun to demo, but personally for me it’s more about having persistent UI across page loads and what that unlocks. The native app shell “feel” but without the JS."
 
