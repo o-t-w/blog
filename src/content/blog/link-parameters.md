@@ -126,10 +126,12 @@ img {
 }
 ``` -->
 
-<!--
-## Transitions THIS MIGHT CHANGE. RECHECK
 
- For hover effects, for instance, a CSS `transition` does not work when applied to the `link-parameters` property. Instead, specifying the transition within a `<style>` block within the SVG code does seem to work:
+## Transitions
+
+The `link-parameters` property itself is not animatable. For hover effects, for instance, a CSS `transition` does not work when applied to the `link-parameters` property. 
+
+<!-- Instead, specifying the transition within a `<style>` block within the SVG code does seem to work:
 
 ```html
 <svg fill="env(--color1)" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -142,26 +144,24 @@ circle {
 </svg>
 ``` -->
 
-<!-- SHOULD THIS WORK???
-
-The `link-parameters` property can't be animated. For hover effects and other CSS transitions, a registered CSS custom property can be used.
+For hover effects and other CSS transitions, a registered CSS custom property can be used.
 
 ```css
-@property --color {
+@property --brandColor {
   syntax: '<color>';
   inherits: true;
   initial-value: #3498db;
 }
 
 img {
-    link-parameters: param(--color1, var(--color));
-    transition: --color 0.5s;
+    link-parameters: param(--fillColor, var(--brandColor));
+    transition: --brandColor 0.5s;
 }
 
 img:hover {
-    --color: #00568f;
+    --brandColor: #00568f;
 }
-``` -->
+```
 
 ## Values other than color
 
