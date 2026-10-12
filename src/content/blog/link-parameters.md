@@ -24,7 +24,7 @@ description: Setting colors for SVG via CSS
 
 <div class="box">
 <h2>Browser support</h2>
-<p>The link-parameters CSS property is supported in Firefox Nightly. Other aspects of the spec are not implemented anywhere. All the examples in this article require Firefox Nightly to work. Implementation work is ongoing in Chrome/Edge. You can vote for the inclusion of link parameters in <a href="https://github.com/web-platform-tests/interop/issues/1346">Interop 2027</a>.</p>
+<p>The link-parameters CSS property is supported in Firefox Nightly and Safari Technology Preview. Other aspects of the spec are not implemented anywhere. All the examples in this article require Firefox Nightly to work. Implementation work is ongoing in Chrome/Edge. You can vote for the inclusion of link parameters in <a href="https://github.com/web-platform-tests/interop/issues/1346">Interop 2027</a>.</p>
 </div>
 
 The simplest approach is using SVG is the `<img>` element, but until now its come with a big restriction: there was no way to control the colors of the SVG from CSS. Link parameters are a way to set CSS custom environment variables on an SVG `<img>`.
